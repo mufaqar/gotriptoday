@@ -11,11 +11,11 @@
             <!-- Footer Card -->
             <div class="col-12 col-sm-6 col-xl-4">
                <div class="footer-card pe-lg-5">
-                  <a href="#" class="footer-logo mb-4">
-                     <img src="assets/img/core-img/logo-five.png" alt="">
+                  <a href="<?php bloginfo('url'); ?>" class="footer-logo mb-4">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="">
                   </a>
-                  <p class="mb-4 text-white">Targeting consultation Death yet way ndulgence off under folly death wrote
-                     cause her yet way yet wayspite.</p>
+                  <p class="mb-4 text-white"> connects you with exclusive chauffeur services, focusing on luxury, comfort, and punctuality.
+We partner with top-rated, English-speaking and local drivers to ensure seamless day trips, transfers, and business travel—all with a premium fleet tailored to your needs.</p>
 
                   <!-- Subscribe Form -->
                   <div class="subscribe-form">
@@ -94,7 +94,7 @@
                         <div class="icon">
                            <i class="ti ti-mail"></i>
                         </div>
-                        <p class="mb-0 text-white">info-help@travo.com</p>
+                        <p class="mb-0 text-white">info@gotriptoday.com</p>
                      </div>
 
                      <!-- Contact Card -->
@@ -102,7 +102,7 @@
                         <div class="icon">
                            <i class="ti ti-phone"></i>
                         </div>
-                        <p class="mb-0 text-white">(+256) 214 203 215<br>(+256) 214 203 216</p>
+                        <p class="mb-0 text-white">+49 0  170 1479446</p>
                      </div>
                   </div>
                </div>

@@ -42,12 +42,9 @@ get_header(); ?>
                 <!-- Hero Content -->
                 <div class="hero-content home-one">
                     <h3 class="ff-montez text-success wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1000ms">
-                        Experience Unmatched Delight With Us.</h3>
-                    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Where
-                        Exceptional Memories Begin</h2>
-                    <p class="text-white wow fadeInUp" data-wow-delay="700ms" data-wow-duration="1000ms">Welcome to our
-                        Vitour website! We are a professional and reliable tours company
-                        that offers a wide range of printing services are many variations of passages.</p>
+                       Where Can We Take You Today?</h3>
+                    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Your Journey Begins in Comfort and Style</h2>
+                    <p class="text-white wow fadeInUp" data-wow-delay="700ms" data-wow-duration="1000ms">Book Your Next Day Trips</p>
 
                     <!-- Hero Search Form -->
                     <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
