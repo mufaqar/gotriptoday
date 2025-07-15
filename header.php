@@ -59,7 +59,7 @@
         <!-- Offcanvas Header -->
         <div class="offcanvas-header">
             <div>
-                <img src="assets/img/core-img/logo.png" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" width="150" alt="">
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -71,48 +71,48 @@
                     <!-- Single Item -->
                     <div class="about-card-sm d-flex align-items-center gap-3">
                         <div class="icon text-success">
-                            <i class="ti ti-shield-half"></i>
+                            <i class="ti ti-map-pin"></i>
                         </div>
                         <div>
-                            <h4>Safety First Always</h4>
-                            <p class="mb-0">We believe in the power of travel As avid explorer.</p>
+                            <h4>Choose Trip Type</h4>
+                            <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly Service</p>
                         </div>
                     </div>
 
                     <!-- Single Item -->
                     <div class="about-card-sm d-flex align-items-center gap-3">
                         <div class="icon text-success">
-                            <i class="ti ti-world-star"></i>
+                            <i class="ti ti-file-pencil"></i>
                         </div>
                         <div>
-                            <h4>Experience the World</h4>
-                            <p class="mb-0">We believe in the power of travel As avid explorer.</p>
+                            <h4>Enter Your Details</h4>
+                            <p class="mb-0">Add pickup & drop-off locations, date, time, and any extra preferences</p>
                         </div>
                     </div>
 
                     <!-- Single Item -->
                     <div class="about-card-sm d-flex align-items-center gap-3">
                         <div class="icon text-success">
-                            <i class="ti ti-capture"></i>
+                            <i class="ti ti-message-2-dollar"></i>
                         </div>
                         <div>
-                            <h4>Excellence in Service</h4>
-                            <p class="mb-0">We believe in the power of travel As avid explorer.</p>
+                            <h4>Get Instant Price & Confirm</h4>
+                            <p class="mb-0">See your price instantly. Review the service and confirm your booking with a few clicks</p>
                         </div>
                     </div>
 
                     <!-- Single Item -->
                     <div class="about-card-sm d-flex align-items-center gap-3">
                         <div class="icon text-success">
-                            <i class="ti ti-user"></i>
+                            <i class="ti ti-car"></i>
                         </div>
                         <div>
-                            <h4>Friendly Guider</h4>
-                            <p class="mb-0">We believe in the power of travel As avid explorer.</p>
+                            <h4>Ride in Comfort</h4>
+                            <p class="mb-0">Your professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a smooth journey</p>
                         </div>
                     </div>
 
-                    <a href="about-us.html" class="btn btn-success">Book Now <i class="icon-arrow-right"></i></a>
+                    <a href="<?php echo home_url('/custom-booking'); ?>" class="btn btn-success">Book Now <i class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>

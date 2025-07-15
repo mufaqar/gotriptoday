@@ -38,136 +38,173 @@ get_header(); ?>
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-9 offset-sm-1 col-xl-10 offset-xl-1 offset-xxl-0">
+            <div class="">
                 <!-- Hero Content -->
                 <div class="hero-content home-one">
                     <h3 class="ff-montez text-success wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1000ms">
-                       Where Can We Take You Today?</h3>
-                    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Your Journey Begins in Comfort and Style</h2>
-                    <p class="text-white wow fadeInUp" data-wow-delay="700ms" data-wow-duration="1000ms">Book Your Next Day Trips</p>
+                        Where Can We Take You Today?</h3>
+                    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Your
+                        Journey Begins in Comfort and Style</h2>
+                    <p class="text-white wow fadeInUp" data-wow-delay="700ms" data-wow-duration="1000ms">Book Your Next
+                        Day Trips</p>
 
                     <!-- Hero Search Form -->
-                    <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <form class="row align-items-center g-3 g-xxl-2" action="#">
-                            <div class="col-12 col-md-6 col-xxl">
-                                <div class="search-item d-flex align-items-center gap-3">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M9.38467 18.4463C9.38467 18.4463 3.33301 13.3496 3.33301 8.33464C3.33301 6.56653 4.03539 4.87083 5.28563 3.62059C6.53587 2.37035 8.23156 1.66797 9.99967 1.66797C11.7678 1.66797 13.4635 2.37035 14.7137 3.62059C15.964 4.87083 16.6663 6.56653 16.6663 8.33464C16.6663 13.3496 10.6147 18.4463 10.6147 18.4463C10.278 18.7563 9.72384 18.753 9.38467 18.4463ZM9.99967 11.2513C10.3827 11.2513 10.762 11.1759 11.1158 11.0293C11.4697 10.8827 11.7912 10.6679 12.0621 10.397C12.3329 10.1262 12.5477 9.80466 12.6943 9.4508C12.8409 9.09693 12.9163 8.71766 12.9163 8.33464C12.9163 7.95161 12.8409 7.57234 12.6943 7.21848C12.5477 6.86461 12.3329 6.54308 12.0621 6.27224C11.7912 6.0014 11.4697 5.78656 11.1158 5.63999C10.762 5.49341 10.3827 5.41797 9.99967 5.41797C9.22613 5.41797 8.48426 5.72526 7.93728 6.27224C7.3903 6.81922 7.08301 7.56109 7.08301 8.33464C7.08301 9.10818 7.3903 9.85005 7.93728 10.397C8.48426 10.944 9.22613 11.2513 9.99967 11.2513Z"
-                                                fill="#767676" />
-                                        </svg>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="location" class="form-label">Location</label>
-                                        <select name="location" id="location" class="touria-select">
-                                            <option value="new-york" selected>New York City</option>
-                                            <option value="paris">Paris</option>
-                                            <option value="madrid">Madrid</option>
-                                            <option value="tokyo">Tokyo</option>
-                                            <option value="rome">Rome</option>
-                                            <option value="milan">Milan</option>
-                                            <option value="amsterdam">Amsterdam</option>
-                                            <option value="sydney">Sydney</option>
-                                            <option value="singapore">Singapore</option>
-                                            <option value="barcelona">Barcelona</option>
-                                            <option value="dubai">Dubai</option>
-                                            <option value="berlin">Berlin</option>
-                                            <option value="london">London</option>
-                                            <option value="istanbul">Istanbul</option>
-                                            <option value="bangkok">Bangkok</option>
-                                            <option value="hong-kong">Hong Kong</option>
-                                            <option value="los-angeles">Los Angeles</option>
-                                            <option value="vienna">Vienna</option>
-                                            <option value="seoul">Seoul</option>
-                                            <option value="osaka">Osaka</option>
-                                            <option value="prague">Prague</option>
-                                            <option value="lisbon">Lisbon</option>
-                                            <option value="cairo">Cairo</option>
-                                            <option value="san-francisco">San Francisco</option>
-                                            <option value="budapest">Budapest</option>
-                                            <option value="shanghai">Shanghai</option>
-                                            <option value="moscow">Moscow</option>
-                                            <option value="florence">Florence</option>
-                                            <option value="toronto">Toronto</option>
-                                            <option value="mexico-city">Mexico City</option>
-                                            <option value="athens">Athens</option>
-                                            <option value="brussels">Brussels</option>
-                                            <option value="stockholm">Stockholm</option>
-                                            <option value="dubrovnik">Dubrovnik</option>
-                                            <option value="melbourne">Melbourne</option>
-                                            <option value="cape-town">Cape Town</option>
-                                            <option value="mumbai">Mumbai</option>
-                                            <option value="hanoi">Hanoi</option>
-                                            <option value="kuala-lumpur">Kuala Lumpur</option>
-                                            <option value="jakarta">Jakarta</option>
-                                            <option value="warsaw">Warsaw</option>
-                                            <option value="bucharest">Bucharest</option>
-                                            <option value="oslo">Oslo</option>
-                                            <option value="helsinki">Helsinki</option>
-                                            <option value="copenhagen">Copenhagen</option>
-                                            <option value="zurich">Zurich</option>
-                                            <option value="santiago">Santiago</option>
-                                            <option value="buenos-aires">Buenos Aires</option>
-                                            <option value="doha">Doha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-12 col-md-6 col-xxl">
-                                <div class="search-item d-flex align-items-center gap-3">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 16 16" fill="none">
-                                            <path
-                                                d="M4.5384 0C4.68692 0 4.82936 0.0589998 4.93438 0.16402C5.0394 0.269041 5.0984 0.411479 5.0984 0.56V1.6072H11.112V0.5672C11.112 0.418679 11.171 0.276241 11.276 0.17122C11.381 0.0661998 11.5235 0.0072 11.672 0.0072C11.8205 0.0072 11.963 0.0661998 12.068 0.17122C12.173 0.276241 12.232 0.418679 12.232 0.5672V1.6072H14.4C14.8242 1.6072 15.2311 1.77566 15.5311 2.07555C15.8311 2.37543 15.9998 2.78219 16 3.2064V14.4008C15.9998 14.825 15.8311 15.2318 15.5311 15.5317C15.2311 15.8315 14.8242 16 14.4 16H1.6C1.17579 16 0.768947 15.8315 0.468912 15.5317C0.168877 15.2318 0.000212104 14.825 0 14.4008L0 3.2064C0.000212104 2.78219 0.168877 2.37543 0.468912 2.07555C0.768947 1.77566 1.17579 1.6072 1.6 1.6072H3.9784V0.5592C3.97861 0.410817 4.03771 0.268585 4.1427 0.163737C4.2477 0.0588899 4.39002 -1.51411e-07 4.5384 0ZM1.12 6.1936V14.4008C1.12 14.4638 1.13242 14.5263 1.15654 14.5845C1.18066 14.6427 1.21602 14.6956 1.26059 14.7402C1.30516 14.7848 1.35808 14.8201 1.41631 14.8443C1.47455 14.8684 1.53697 14.8808 1.6 14.8808H14.4C14.463 14.8808 14.5255 14.8684 14.5837 14.8443C14.6419 14.8201 14.6948 14.7848 14.7394 14.7402C14.784 14.6956 14.8193 14.6427 14.8435 14.5845C14.8676 14.5263 14.88 14.4638 14.88 14.4008V6.2048L1.12 6.1936ZM5.3336 11.6952V13.028H4V11.6952H5.3336ZM8.6664 11.6952V13.028H7.3336V11.6952H8.6664ZM12 11.6952V13.028H10.6664V11.6952H12ZM5.3336 8.5136V9.8464H4V8.5136H5.3336ZM8.6664 8.5136V9.8464H7.3336V8.5136H8.6664ZM12 8.5136V9.8464H10.6664V8.5136H12ZM3.9784 2.7264H1.6C1.53697 2.7264 1.47455 2.73882 1.41631 2.76294C1.35808 2.78706 1.30516 2.82242 1.26059 2.86699C1.21602 2.91156 1.18066 2.96448 1.15654 3.02271C1.13242 3.08095 1.12 3.14337 1.12 3.2064V5.0744L14.88 5.0856V3.2064C14.88 3.14337 14.8676 3.08095 14.8435 3.02271C14.8193 2.96448 14.784 2.91156 14.7394 2.86699C14.6948 2.82242 14.6419 2.78706 14.5837 2.76294C14.5255 2.73882 14.463 2.7264 14.4 2.7264H12.232V3.4696C12.232 3.61812 12.173 3.76056 12.068 3.86558C11.963 3.9706 11.8205 4.0296 11.672 4.0296C11.5235 4.0296 11.381 3.9706 11.276 3.86558C11.171 3.76056 11.112 3.61812 11.112 3.4696V2.7264H5.0984V3.4624C5.0984 3.61092 5.0394 3.75336 4.93438 3.85838C4.82936 3.9634 4.68692 4.0224 4.5384 4.0224C4.38988 4.0224 4.24744 3.9634 4.14242 3.85838C4.0374 3.75336 3.9784 3.61092 3.9784 3.4624V2.7264Z"
-                                                fill="#767676" />
-                                        </svg>
-                                    </div>
-                                    <div class="form-group d-flex align-items-end">
-                                        <div>
-                                            <label class="form-label d-block" for="time-range-picker">Time
-                                                Period</label>
-                                            <input type="text" id="time-range-picker" class="time-range-picker"
-                                                placeholder="Select date range" readonly>
-                                        </div>
-                                        <i class="ti ti-chevron-down me-5"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-6 col-xxl">
-                                <div class="search-item d-flex align-items-center gap-3">
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none">
-                                            <path
-                                                d="M4.16699 18.3346V1.66797H5.83366V3.33464H17.5003L15.8337 7.5013L17.5003 11.668H5.83366V18.3346H4.16699ZM10.417 9.16797C10.8753 9.16797 11.2678 9.00491 11.5945 8.6788C11.9212 8.35269 12.0842 7.96019 12.0837 7.5013C12.0831 7.04241 11.92 6.65019 11.5945 6.32464C11.2689 5.99908 10.8764 5.83575 10.417 5.83464C9.95755 5.83352 9.56533 5.99686 9.24033 6.32464C8.91533 6.65241 8.75199 7.04464 8.75033 7.5013C8.74866 7.95797 8.91199 8.35047 9.24033 8.6788C9.56866 9.00714 9.96088 9.17019 10.417 9.16797ZM5.83366 10.0013H15.042L14.042 7.5013L15.042 5.0013H5.83366V10.0013Z"
-                                                fill="#767676" />
-                                        </svg>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tour-type" class="form-label">Tour Type</label>
-                                        <select name="tour-type" id="tour-type" class="touria-select2">
-                                            <option value="family-tour" selected>Family Tour</option>
-                                            <option value="adventure-tour">Adventure Tour</option>
-                                            <option value="solo-tour">Solo Tour</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-6 col-xxl-2">
-                                <button type="submit" class="btn btn-success w-100">Search Now</button>
-                            </div>
-                        </form>
+                    <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                        <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]')?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- About Company -->
+<section class="about-company-section">
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <!-- About Thumbnail -->
+            <div class="col-12 col-lg-6">
+                <div class="about-thumbnail">
+                    <!-- Shape -->
+                    <div class="shape wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/shape.png" alt="">
+                    </div>
+
+                    <!-- First Image -->
+                    <div class="first-img wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/7.jpg" alt="">
+                    </div>
+
+                    <!-- Second Image -->
+                    <div class="second-img wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/8.jpg" alt="">
+
+                        <!-- Play Video -->
+                        <div class="play-video-btn video-btn" data-video="https://youtu.be/zCSmY_WjvPs">
+                            <div class="icon">
+                                <i class="ti ti-player-play-filled"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third Image -->
+                    <div class="third-img wow fadeInUp" data-wow-delay="800ms" data-wow-duration="1000ms">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/9.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Content -->
+            <div class="col-12 col-lg-6">
+                <div class="about-content ps-md-5">
+                    <div class="section-heading">
+                        <span class="sub-title text-success">A Experience Built on</span>
+                        <h2 class="mb-4">Luxury, Reliability and Excellency</h2>
+                    </div>
+
+                    <div class="d-flex flex-column gap-4 mb-5">
+                        <!-- Single Item -->
+                        <div class="about-card-sm d-flex align-items-center gap-3">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="39" height="40" viewBox="0 0 39 40"
+                                    fill="none">
+                                    <path
+                                        d="M37.8232 21.6972C37.8202 21.6941 37.8171 21.6912 37.8139 21.6881C37.2653 21.154 36.5345 20.8598 35.756 20.8598C35.3398 20.8598 34.786 20.945 34.1812 21.2663V8.40094C34.1812 7.15977 33.1719 6.14984 31.9312 6.14984H27.284V4.34766C27.284 1.95031 25.3339 0 22.937 0H10.7929C8.39719 0 6.44813 1.95039 6.44813 4.34766V6.14977H2.25C1.0093 6.14977 0 7.15977 0 8.40086V29.8501C0 31.0914 1.0093 32.1012 2.25 32.1012H9.22898C9.66406 32.1012 10.0168 31.7484 10.0168 31.3134C10.0168 30.8783 9.66406 30.5255 9.22898 30.5255H2.25C1.88453 30.5255 1.5757 30.2162 1.5757 29.8501V28.0167H24.8441L26.7138 29.081L25.2102 30.8806L22.1605 29.9986C21.8781 29.9172 21.5741 29.9992 21.3713 30.2118L21.0723 30.5255H15.6395C15.2044 30.5255 14.8516 30.8783 14.8516 31.3134C14.8516 31.7484 15.2044 32.1012 15.6395 32.1012H19.6762C19.638 32.2178 19.6263 32.3432 19.6455 32.4675C19.6829 32.7092 19.8304 32.9198 20.0447 33.0375L22.3895 34.3261C21.9613 35.1327 21.8938 36.1235 22.5583 36.8519C22.5615 36.8553 22.5645 36.8587 22.5677 36.8621C22.6054 36.9019 22.645 36.9409 22.6879 36.9802C22.7314 37.0285 22.7791 37.0757 22.832 37.1228C23.1832 37.4369 23.6255 37.6029 24.1109 37.6029C24.5617 37.6029 24.9915 37.4614 25.3558 37.2634L26.6701 39.5984C26.7902 39.8117 27.0026 39.9572 27.2448 39.992C27.2821 39.9973 27.3195 39.9999 27.3567 39.9999C27.5607 39.9999 27.7587 39.9205 27.907 39.7759L29.4818 38.2395C29.6919 38.0346 29.7705 37.7298 29.6859 37.4487L28.7703 34.4055L30.553 32.882L33.3937 37.7602C33.5162 37.9705 33.7294 38.1127 33.9709 38.1447C34.2124 38.1766 34.4552 38.0952 34.6284 37.9241L36.6103 35.9648C36.821 35.7566 36.897 35.4479 36.8073 35.1657L34.8716 29.0774L37.5255 26.3642C39.1235 24.7117 38.8849 22.7656 37.8232 21.6972ZM32.6055 8.40094V15.0268C32.6055 15.3993 32.303 15.7022 31.9312 15.7022H28.3612V7.72555H31.9312C32.303 7.72555 32.6055 8.02859 32.6055 8.40094ZM7.39563 7.72555H9.87898V15.7023H7.39563V7.72555ZM26.7855 7.72555V15.7023H24.3022V7.72555H26.7855ZM23.0737 6.14984H10.6562V4.34766C10.6562 4.27313 10.7189 4.21008 10.7929 4.21008H22.937C23.0111 4.21008 23.0737 4.27313 23.0737 4.34766V6.14984ZM5.84508 17.2779H11.4297V18.9697H5.84508V17.2779ZM11.4547 15.7022V7.72555H22.7264V15.7023L11.4547 15.7022ZM22.7516 17.2779H28.3362V18.9697H22.7516V17.2779ZM10.7929 1.57578H22.937C24.4651 1.57578 25.7083 2.81922 25.7083 4.34766V6.14977H24.6495V4.34766C24.6495 3.40297 23.8812 2.63438 22.937 2.63438H10.7929C9.84867 2.63438 9.08047 3.40297 9.08047 4.34766V6.14977H8.02383V4.34766C8.02375 2.81922 9.26602 1.57578 10.7929 1.57578ZM1.5757 8.40094C1.5757 8.02852 1.8782 7.72547 2.25 7.72547H5.81992V15.7022H2.25C1.8782 15.7022 1.5757 15.3992 1.5757 15.0268V8.40094ZM1.5757 26.4412V17.1746C1.78867 17.2417 2.01516 17.2779 2.25 17.2779H4.2693V19.7575C4.2693 20.1926 4.62203 20.5454 5.05711 20.5454H12.2174C12.6525 20.5454 13.0053 20.1926 13.0053 19.7575V17.2779H21.1758V19.7575C21.1758 20.1926 21.5285 20.5454 21.9637 20.5454H29.124C29.5591 20.5454 29.9118 20.1926 29.9118 19.7575V17.2779H31.9312C32.1659 17.2779 32.3924 17.2417 32.6055 17.1746V22.5816L30.4701 24.7187L24.3669 22.8475C24.0835 22.761 23.7757 22.8402 23.5697 23.053L21.6318 25.0565C21.4624 25.2316 21.3837 25.4749 21.4182 25.7159C21.4527 25.957 21.5967 26.1684 21.8084 26.289L22.076 26.4412H1.5757V26.4412ZM36.3958 25.2656L33.414 28.3141C33.2103 28.5223 33.1381 28.8261 33.2263 29.1037L35.1595 35.1833L34.2437 36.0885L31.4395 31.2732C31.322 31.0713 31.1209 30.9321 30.8905 30.893C30.6602 30.8542 30.4243 30.919 30.2469 31.0708L27.3558 33.5413C27.1184 33.7442 27.0233 34.0681 27.1132 34.3672L28.0394 37.4452L27.5402 37.932L26.2912 35.713C26.1751 35.5067 25.9724 35.3636 25.7393 35.3232C25.6945 35.3154 25.6495 35.3116 25.6046 35.3116C25.4165 35.3116 25.2327 35.3791 25.0884 35.5043L24.9889 35.5905C24.9761 35.6017 24.9636 35.6133 24.9515 35.6252C24.7158 35.8581 24.3623 36.0272 24.1109 36.0272C23.9873 36.0272 23.9262 35.9873 23.8812 35.9472C23.8648 35.9327 23.8592 35.9261 23.8592 35.9261C23.8325 35.8937 23.8033 35.8635 23.7718 35.8358C23.7514 35.8179 23.7336 35.8009 23.7184 35.7854C23.5101 35.5466 23.7645 34.9952 24.0337 34.7175C24.0459 34.7048 24.0577 34.6919 24.0691 34.6784L24.1553 34.5764C24.3082 34.396 24.372 34.1565 24.329 33.9239C24.286 33.6913 24.1409 33.4905 23.9336 33.3766L21.7009 32.1498L22.182 31.6452L25.2662 32.5373C25.5663 32.6239 25.8895 32.5252 26.0898 32.2855L28.5275 29.3677C28.6771 29.1886 28.7397 28.9523 28.6982 28.7225C28.6567 28.4929 28.5155 28.2933 28.3126 28.1777L25.4451 26.5457C25.4376 26.5413 25.4302 26.5369 25.4224 26.5327L23.4705 25.4219L24.3666 24.4955L30.4614 26.3641C30.7405 26.4497 31.0436 26.374 31.2496 26.1677L34.2593 23.1559C34.7359 22.6846 35.2534 22.4354 35.756 22.4354C36.1193 22.4354 36.4578 22.5694 36.7101 22.8124C37.2276 23.3383 37.3297 24.3 36.3958 25.2656Z"
+                                        fill="#161920" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Premium Chauffeur Service</h4>
+                                <p class="mb-0">Travel in Style with Luxury Vehicles
+                                    Professional & Discreet Chauffeurs
+                                    Personalized Service for Every Journey
+                                    Comfort, Safety & Premium Experience</p>
+                            </div>
+                        </div>
+
+                        <!-- Single Item -->
+                        <div class="about-card-sm d-flex align-items-center gap-3">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_1_307)">
+                                        <path
+                                            d="M34.0141 24.7731C32.894 24.5939 29.3924 24.0335 28.2812 23.8557V22.4741C31.1065 21.2412 32.9688 18.4309 32.9688 15.3126V12.1095H36.875C37.3064 12.1095 37.6562 11.7596 37.6562 11.3282V10.4329C37.6562 8.55719 36.1303 7.03125 34.2547 7.03125H32.9298C32.5366 3.08883 29.2005 0 25.1562 0C21.112 0 17.7759 3.08883 17.3827 7.03125H16.0578C14.1822 7.03125 12.6562 8.55719 12.6562 10.4328V11.3281C12.6562 11.7595 13.006 12.1094 13.4375 12.1094H17.3438V15.3125C17.3438 18.431 19.2062 21.2414 22.0312 22.4741V23.8557C20.8352 24.0471 17.502 24.5805 16.2984 24.7731C12.8551 25.3244 10.3125 28.2977 10.3125 31.793V39.2188C10.3125 39.6502 10.6623 40 11.0938 40H39.2188C39.6502 40 40 39.6502 40 39.2188V31.793C40 28.3058 37.4655 25.3256 34.0141 24.7731ZM25.1562 1.5625C28.3378 1.5625 30.9698 3.95266 31.3557 7.03125H18.9568C19.3427 3.95266 21.9747 1.5625 25.1562 1.5625ZM18.9062 15.3125V12.1094H21.7188C22.1502 12.1094 22.5001 11.7595 22.5001 11.3281C22.5001 10.8967 22.1502 10.5469 21.7188 10.5469C20.9135 10.5469 15.1696 10.5469 14.2188 10.5469V10.4328C14.2188 9.41875 15.0437 8.59375 16.0578 8.59375H34.2547C35.2687 8.59375 36.0938 9.41875 36.0938 10.4328V10.5469C35.3402 10.5469 29.5725 10.5469 28.7501 10.5469C28.3187 10.5469 27.9688 10.8967 27.9688 11.3281C27.9688 11.7595 28.3187 12.1094 28.7501 12.1094H31.4062V15.3125C31.4062 18.7278 28.6416 21.5625 25.1562 21.5625C21.6711 21.5625 18.9062 18.728 18.9062 15.3125ZM22.9359 25.2933C23.315 25.2327 23.5938 24.9057 23.5938 24.5219V22.9675C24.105 23.0713 24.6273 23.125 25.1562 23.125C25.6852 23.125 26.2076 23.0713 26.7188 22.9675V24.5219C26.7188 24.9057 26.9975 25.2327 27.3766 25.2933L29.9695 25.7082L25.1562 32.126L20.343 25.7082L22.9359 25.2933ZM26.7969 38.4375H23.5938V34.8438H26.7969V38.4375ZM11.875 31.793C11.875 29.0526 13.8392 26.7491 16.5453 26.3159L18.5992 25.9873L24.0695 33.2812H22.8125C22.3811 33.2812 22.0312 33.6311 22.0312 34.0625V38.4375H16.5625V34.0625C16.5625 33.6311 16.2127 33.2812 15.7812 33.2812C15.3498 33.2812 15 33.6311 15 34.0625V38.4375H11.875V31.793ZM38.4375 38.4375H35.3125V34.0625C35.3125 33.6311 34.9627 33.2812 34.5312 33.2812C34.0998 33.2812 33.75 33.6311 33.75 34.0625V38.4375H28.3594V34.0625C28.3594 33.6311 28.0095 33.2812 27.5781 33.2812H26.243L31.7133 25.9873L33.7671 26.3159C36.4733 26.7492 38.4375 29.0526 38.4375 31.793V38.4375Z"
+                                            fill="#161920" />
+                                        <path
+                                            d="M27.8612 16.8753C28.0772 16.5018 27.9494 16.0239 27.5759 15.8079C27.2025 15.5919 26.7245 15.7197 26.5086 16.0932C26.2298 16.5754 25.7115 16.8749 25.156 16.8749C24.6004 16.8749 24.0822 16.5754 23.8034 16.0932C23.5876 15.7199 23.1098 15.5918 22.7361 15.8079C22.3626 16.0239 22.2347 16.5018 22.4508 16.8753C23.0078 17.8388 24.0444 18.4374 25.156 18.4374C26.2676 18.4374 27.3042 17.8388 27.8612 16.8753Z"
+                                            fill="#161920" />
+                                        <path
+                                            d="M0.78125 38.4375C0.349766 38.4375 0 38.7873 0 39.2188C0 39.6502 0.349766 40 0.78125 40H5.46875C5.90023 40 6.25 39.6502 6.25 39.2188C6.25 38.7873 5.90023 38.4375 5.46875 38.4375H3.90625V25.6852L15.1339 21.1941C15.4305 21.0755 15.625 20.7882 15.625 20.4688C15.625 20.1493 15.4305 19.862 15.1339 19.7434L3.90625 15.2523V11.0938C3.90625 10.6623 3.55648 10.3125 3.125 10.3125C2.69352 10.3125 2.34375 10.6623 2.34375 11.0938V38.4375H0.78125ZM12.7402 20.4688L3.90625 24.0023V16.9352L12.7402 20.4688Z"
+                                            fill="#161920" />
+                                        <path
+                                            d="M25.2344 12.1094C25.6658 12.1094 26.0156 11.7596 26.0156 11.3281C26.0156 10.8967 25.6658 10.5469 25.2344 10.5469C24.8029 10.5469 24.4531 10.8967 24.4531 11.3281C24.4531 11.7596 24.8029 12.1094 25.2344 12.1094Z"
+                                            fill="#161920" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_1_307">
+                                            <rect width="40" height="40" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Hassle-Free Airport Transfers</h4>
+                                <p class="mb-0">Punctual Pickups & Drop-offs
+                                    Flight Monitoring for Delays & Early Arrivals
+                                    Meet & Greet for a Stress-Free Experience
+                                    Seamless & Reliable Transfers</p>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
+                        <div class="about-card-sm d-flex align-items-center gap-3">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_1_307)">
+                                        <path
+                                            d="M34.0141 24.7731C32.894 24.5939 29.3924 24.0335 28.2812 23.8557V22.4741C31.1065 21.2412 32.9688 18.4309 32.9688 15.3126V12.1095H36.875C37.3064 12.1095 37.6562 11.7596 37.6562 11.3282V10.4329C37.6562 8.55719 36.1303 7.03125 34.2547 7.03125H32.9298C32.5366 3.08883 29.2005 0 25.1562 0C21.112 0 17.7759 3.08883 17.3827 7.03125H16.0578C14.1822 7.03125 12.6562 8.55719 12.6562 10.4328V11.3281C12.6562 11.7595 13.006 12.1094 13.4375 12.1094H17.3438V15.3125C17.3438 18.431 19.2062 21.2414 22.0312 22.4741V23.8557C20.8352 24.0471 17.502 24.5805 16.2984 24.7731C12.8551 25.3244 10.3125 28.2977 10.3125 31.793V39.2188C10.3125 39.6502 10.6623 40 11.0938 40H39.2188C39.6502 40 40 39.6502 40 39.2188V31.793C40 28.3058 37.4655 25.3256 34.0141 24.7731ZM25.1562 1.5625C28.3378 1.5625 30.9698 3.95266 31.3557 7.03125H18.9568C19.3427 3.95266 21.9747 1.5625 25.1562 1.5625ZM18.9062 15.3125V12.1094H21.7188C22.1502 12.1094 22.5001 11.7595 22.5001 11.3281C22.5001 10.8967 22.1502 10.5469 21.7188 10.5469C20.9135 10.5469 15.1696 10.5469 14.2188 10.5469V10.4328C14.2188 9.41875 15.0437 8.59375 16.0578 8.59375H34.2547C35.2687 8.59375 36.0938 9.41875 36.0938 10.4328V10.5469C35.3402 10.5469 29.5725 10.5469 28.7501 10.5469C28.3187 10.5469 27.9688 10.8967 27.9688 11.3281C27.9688 11.7595 28.3187 12.1094 28.7501 12.1094H31.4062V15.3125C31.4062 18.7278 28.6416 21.5625 25.1562 21.5625C21.6711 21.5625 18.9062 18.728 18.9062 15.3125ZM22.9359 25.2933C23.315 25.2327 23.5938 24.9057 23.5938 24.5219V22.9675C24.105 23.0713 24.6273 23.125 25.1562 23.125C25.6852 23.125 26.2076 23.0713 26.7188 22.9675V24.5219C26.7188 24.9057 26.9975 25.2327 27.3766 25.2933L29.9695 25.7082L25.1562 32.126L20.343 25.7082L22.9359 25.2933ZM26.7969 38.4375H23.5938V34.8438H26.7969V38.4375ZM11.875 31.793C11.875 29.0526 13.8392 26.7491 16.5453 26.3159L18.5992 25.9873L24.0695 33.2812H22.8125C22.3811 33.2812 22.0312 33.6311 22.0312 34.0625V38.4375H16.5625V34.0625C16.5625 33.6311 16.2127 33.2812 15.7812 33.2812C15.3498 33.2812 15 33.6311 15 34.0625V38.4375H11.875V31.793ZM38.4375 38.4375H35.3125V34.0625C35.3125 33.6311 34.9627 33.2812 34.5312 33.2812C34.0998 33.2812 33.75 33.6311 33.75 34.0625V38.4375H28.3594V34.0625C28.3594 33.6311 28.0095 33.2812 27.5781 33.2812H26.243L31.7133 25.9873L33.7671 26.3159C36.4733 26.7492 38.4375 29.0526 38.4375 31.793V38.4375Z"
+                                            fill="#161920" />
+                                        <path
+                                            d="M27.8612 16.8753C28.0772 16.5018 27.9494 16.0239 27.5759 15.8079C27.2025 15.5919 26.7245 15.7197 26.5086 16.0932C26.2298 16.5754 25.7115 16.8749 25.156 16.8749C24.6004 16.8749 24.0822 16.5754 23.8034 16.0932C23.5876 15.7199 23.1098 15.5918 22.7361 15.8079C22.3626 16.0239 22.2347 16.5018 22.4508 16.8753C23.0078 17.8388 24.0444 18.4374 25.156 18.4374C26.2676 18.4374 27.3042 17.8388 27.8612 16.8753Z"
+                                            fill="#161920" />
+                                        <path
+                                            d="M0.78125 38.4375C0.349766 38.4375 0 38.7873 0 39.2188C0 39.6502 0.349766 40 0.78125 40H5.46875C5.90023 40 6.25 39.6502 6.25 39.2188C6.25 38.7873 5.90023 38.4375 5.46875 38.4375H3.90625V25.6852L15.1339 21.1941C15.4305 21.0755 15.625 20.7882 15.625 20.4688C15.625 20.1493 15.4305 19.862 15.1339 19.7434L3.90625 15.2523V11.0938C3.90625 10.6623 3.55648 10.3125 3.125 10.3125C2.69352 10.3125 2.34375 10.6623 2.34375 11.0938V38.4375H0.78125ZM12.7402 20.4688L3.90625 24.0023V16.9352L12.7402 20.4688Z"
+                                            fill="#161920" />
+                                        <path
+                                            d="M25.2344 12.1094C25.6658 12.1094 26.0156 11.7596 26.0156 11.3281C26.0156 10.8967 25.6658 10.5469 25.2344 10.5469C24.8029 10.5469 24.4531 10.8967 24.4531 11.3281C24.4531 11.7596 24.8029 12.1094 25.2344 12.1094Z"
+                                            fill="#161920" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_1_307">
+                                            <rect width="40" height="40" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Day Trips & Long-Distance Rides</h4>
+                                <p class="mb-0">Relaxing & Scenic Travel
+                                    Custom Routes & Flexible Schedules
+                                    Safe, Smooth & Comfortable Rides
+                                    Ideal for Work & Leisure</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <a href="about-us.html" class="btn btn-success">More About Us <i class="icon-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
 </section>
 
 
@@ -235,6 +272,257 @@ get_header(); ?>
         <div class="divider"></div>
     </div>
 </section>
+
+<!-- Featured Destination -->
+<section class="featured-destination bg-secondary">
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="row g-4 g-lg-5 align-items-end">
+            <div class="col-12 col-sm-6">
+                <div class="section-heading">
+                    <span class="sub-title text-success">Popular Destination</span>
+                    <h2 class="mb-0">Featured Destination</h2>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
+                <div class="section-heading">
+                    <p class="mb-0">We specialize in private day trips, city-to-city transfers, airport pickups, and
+                        personalized chauffeur services acros</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider-sm"></div>
+
+        <div class="row g-4 featured-destination-cards">
+            <!-- Featured Destination Card -->
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="featured-destination-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/aireport.jpg" alt="">
+
+                    <!-- Overlay Content -->
+                    <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
+                        <div>
+                            <h4 class="text-white">Airport Transfer</h4>
+                            <p class="mt-1 text-white">Punctual, reliable, and stress-free – enjoy a smooth and
+                                comfortable ride to the airport</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Destination Card -->
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="featured-destination-card wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="">
+
+                    <!-- Overlay Content -->
+                    <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
+                        <div>
+
+                            <h4 class="text-white">City Tour</h4>
+                            <p class="mt-1 text-white">Explore the city's highlights in ultimate comfort and style</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Destination Card -->
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="featured-destination-card wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/reserve.jpg" alt="">
+
+                    <!-- Overlay Content -->
+                    <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
+                        <div>
+
+                            <h4 class="text-white">Reserve Your Fleet</h4>
+                            <p class="mt-1 text-white">Discover Our Premium Fleet Now</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section"
+    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/34.jpg');">
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-12 col-lg-6 order-2 order-lg-0">
+                <div class="section-heading">
+                    <span class="sub-title text-white">Get in touch</span>
+                    <h2 class="mb-4 text-white">Have Questions? We're Listening</h2>
+                    <p class="text-white mb-5">At GoTripToday, we turn journeys into unforgettable experiences. Based in
+                        Germany and serving international travelers,</p>
+                </div>
+
+                <form class="me-lg-5" action="#">
+                    <div class="contact-form">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="name">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M12 10C14.2091 10 16 8.20914 16 6C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6C8 8.20914 9.79086 10 12 10Z"
+                                                stroke="#767676" stroke-width="1.5" />
+                                            <path
+                                                d="M20 17.5C20 19.985 20 22 12 22C4 22 4 19.985 4 17.5C4 15.015 7.582 13 12 13C16.418 13 20 15.015 20 17.5Z"
+                                                stroke="#767676" stroke-width="1.5" />
+                                        </svg>
+                                    </label>
+                                    <input type="text" id="name" class="form-control bg-secondary" name="name"
+                                        placeholder="First Name *">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="email">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M5.856 6.83988C5.74176 6.77827 5.61348 6.74736 5.48371 6.75018C5.35395 6.753 5.22713 6.78944 5.11567 6.85596C5.00421 6.92247 4.91192 7.01677 4.84782 7.12964C4.78373 7.24251 4.75002 7.37008 4.75 7.49988V16.9999C4.75 17.1988 4.82902 17.3896 4.96967 17.5302C5.11032 17.6709 5.30109 17.7499 5.5 17.7499C5.69891 17.7499 5.88968 17.6709 6.03033 17.5302C6.17098 17.3896 6.25 17.1988 6.25 16.9999V8.75588L11.644 11.6599C11.866 11.7799 12.134 11.7799 12.356 11.6599L17.75 8.75588V16.9999C17.75 17.1988 17.829 17.3896 17.9697 17.5302C18.1103 17.6709 18.3011 17.7499 18.5 17.7499C18.6989 17.7499 18.8897 17.6709 19.0303 17.5302C19.171 17.3896 19.25 17.1988 19.25 16.9999V7.49988C19.25 7.37008 19.2163 7.24251 19.1522 7.12964C19.0881 7.01677 18.9958 6.92247 18.8843 6.85596C18.7729 6.78944 18.6461 6.753 18.5163 6.75018C18.3865 6.74736 18.2582 6.77827 18.144 6.83988L12 10.1479L5.856 6.83988Z"
+                                                fill="#767676" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M17.3098 3.72139C13.7768 3.40537 10.2227 3.40537 6.68978 3.72139L5.17178 3.85639C4.38107 3.927 3.63724 4.26207 3.06042 4.8075C2.4836 5.35293 2.10748 6.07686 1.99278 6.86239C1.49459 10.2689 1.49459 13.7298 1.99278 17.1364C2.10772 17.9219 2.48409 18.6457 3.06109 19.191C3.63809 19.7362 4.38204 20.071 5.17278 20.1414L6.68878 20.2774C10.2228 20.5934 13.7768 20.5934 17.3108 20.2774L18.8278 20.1414C19.6183 20.0708 20.3621 19.7359 20.9389 19.1907C21.5157 18.6454 21.8919 17.9217 22.0068 17.1364C22.505 13.7298 22.505 10.2689 22.0068 6.86239C21.892 6.07671 21.5158 5.35265 20.9387 4.80721C20.3617 4.26176 19.6177 3.92678 18.8268 3.85639L17.3098 3.72139ZM6.82378 5.21539C10.2682 4.90671 13.7333 4.90671 17.1778 5.21539L18.6948 5.35139C19.1495 5.39178 19.5774 5.5843 19.9093 5.89784C20.2412 6.21138 20.4576 6.62765 20.5238 7.07939C21.0009 10.342 21.0009 13.6567 20.5238 16.9194C20.4576 17.3711 20.2412 17.7874 19.9093 18.1009C19.5774 18.4145 19.1495 18.607 18.6948 18.6474L17.1778 18.7834C13.7338 19.0914 10.2678 19.0914 6.82378 18.7834L5.30678 18.6474C4.85201 18.607 4.42413 18.4145 4.09227 18.1009C3.7604 17.7874 3.54391 17.3711 3.47778 16.9194C3.00063 13.6567 3.00063 10.342 3.47778 7.07939C3.54391 6.62765 3.7604 6.21138 4.09227 5.89784C4.42413 5.5843 4.85201 5.39178 5.30678 5.35139L6.82378 5.21539Z"
+                                                fill="#767676" />
+                                        </svg>
+                                    </label>
+                                    <input type="email" id="email" class="form-control bg-secondary" name="email"
+                                        placeholder="Email Here *">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <select name="subject" id="subject" class="touria-select2 bg-secondary">
+                                    <option value="" selected>Select Subject</option>
+                                    <option value="tour-booking">Tour Booking</option>
+                                    <option value="travel-plan">Travel Plan</option>
+                                    <option value="travel-insurance">Travel Insurance</option>
+                                    <option value="travel-tips">Travel Tips</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="message">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M10.8751 12C10.8751 12.2984 10.9937 12.5845 11.2046 12.7955C11.4156 13.0065 11.7018 13.125 12.0001 13.125C12.2985 13.125 12.5846 13.0065 12.7956 12.7955C13.0066 12.5845 13.1251 12.2984 13.1251 12C13.1251 11.7016 13.0066 11.4155 12.7956 11.2045C12.5846 10.9935 12.2985 10.875 12.0001 10.875C11.7018 10.875 11.4156 10.9935 11.2046 11.2045C10.9937 11.4155 10.8751 11.7016 10.8751 12ZM15.5626 12C15.5626 12.2984 15.6812 12.5845 15.8921 12.7955C16.1031 13.0065 16.3893 13.125 16.6876 13.125C16.986 13.125 17.2721 13.0065 17.4831 12.7955C17.6941 12.5845 17.8126 12.2984 17.8126 12C17.8126 11.7016 17.6941 11.4155 17.4831 11.2045C17.2721 10.9935 16.986 10.875 16.6876 10.875C16.3893 10.875 16.1031 10.9935 15.8921 11.2045C15.6812 11.4155 15.5626 11.7016 15.5626 12ZM6.18763 12C6.18763 12.2984 6.30616 12.5845 6.51714 12.7955C6.72812 13.0065 7.01426 13.125 7.31263 13.125C7.611 13.125 7.89715 13.0065 8.10813 12.7955C8.31911 12.5845 8.43763 12.2984 8.43763 12C8.43763 11.7016 8.31911 11.4155 8.10813 11.2045C7.89715 10.9935 7.611 10.875 7.31263 10.875C7.01426 10.875 6.72812 10.9935 6.51714 11.2045C6.30616 11.4155 6.18763 11.7016 6.18763 12ZM21.6845 7.93125C21.1548 6.67266 20.3954 5.54297 19.4275 4.57266C18.4663 3.60798 17.3252 2.84117 16.0689 2.31563C14.7798 1.77422 13.4111 1.5 12.0001 1.5H11.9533C10.5329 1.50703 9.15716 1.78828 7.86341 2.34141C6.61786 2.87234 5.48749 3.64052 4.53529 4.60312C3.5767 5.57109 2.82435 6.69609 2.30404 7.95C1.76498 9.24844 1.4931 10.6289 1.50013 12.0492C1.50809 13.6769 1.89316 15.2806 2.62513 16.7344V20.2969C2.62513 20.5828 2.73872 20.857 2.94091 21.0592C3.1431 21.2614 3.41732 21.375 3.70326 21.375H7.2681C8.72192 22.107 10.3256 22.492 11.9533 22.5H12.0025C13.4064 22.5 14.7681 22.2281 16.0501 21.6961C17.3001 21.1768 18.4369 20.419 19.397 19.4648C20.365 18.5063 21.1267 17.3859 21.6587 16.1367C22.2119 14.843 22.4931 13.4672 22.5001 12.0469C22.5072 10.6195 22.2306 9.23438 21.6845 7.93125ZM18.1431 18.1969C16.5001 19.8234 14.3204 20.7188 12.0001 20.7188H11.9603C10.547 20.7117 9.1431 20.3602 7.90326 19.6992L7.70638 19.5938H4.40638V16.2938L4.30091 16.0969C3.63998 14.857 3.28841 13.4531 3.28138 12.0398C3.27201 9.70312 4.16498 7.50937 5.80326 5.85703C7.4392 4.20469 9.62591 3.29062 11.9626 3.28125H12.0025C13.1744 3.28125 14.3111 3.50859 15.3822 3.95859C16.4275 4.39687 17.365 5.02734 18.1712 5.83359C18.9751 6.6375 19.6079 7.57734 20.0462 8.62266C20.5009 9.70547 20.7283 10.8539 20.7236 12.0398C20.7095 14.3742 19.7931 16.5609 18.1431 18.1969Z"
+                                                fill="#767676" />
+                                        </svg>
+                                    </label>
+                                    <textarea name="message" id="message" class="form-control bg-secondary"
+                                        placeholder="Your Comment *"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-btn">
+                        <button type="submit" class="btn btn-light">Submit Message <i
+                                class="icon-arrow-right"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="row g-4 align-items-center">
+                    <div class="col-12 col-sm-6">
+                        <div class="d-flex gap-5 flex-column">
+                            <div class="happy-counts wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
+                                <h3 class="counter">976<span>+</span></h3>
+                                <h5 class="mb-0">Happy Traveller</h5>
+                            </div>
+
+                            <div class="happy-counts wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
+                                <h3 class="counter">986<span>+</span></h3>
+                                <h5 class="mb-0">Positive Review</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6">
+                        <div class="happy-counts wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
+                            <h3 class="counter">976<span>+</span></h3>
+                            <h5 class="mb-0">Award Wining</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="blog-section">
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="row g-5 align-items-end">
+            <div class="col-12 col-md-6">
+                <div class="section-heading">
+                    <span class="sub-title text-warning">Blog &amp; News</span>
+                    <h2 class="mb-0">Latest News &amp; Articles</h2>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="text-md-end">
+                    <a href="blog-list.html" class="btn btn-warning">View All Blogs <i class="icon-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider-sm"></div>
+
+    <div class="container">
+        <div class="row g-4 g-xxl-5">
+            <?php
+$args = array(
+    'post_type'      => 'post', // or 'tours' or any custom post type
+    'posts_per_page' => 3,
+    'post_status'    => 'publish',
+);
+
+$blog_query = new WP_Query($args);
+
+if ($blog_query->have_posts()) :
+    while ($blog_query->have_posts()) : $blog_query->the_post();
+        get_template_part('partials/blog-card');
+    endwhile;
+    wp_reset_postdata();
+else :
+    echo '<p>No blog posts found.</p>';
+endif;
+?>
+
+
+
+
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+</section>
+
 
 
 <?php get_footer(); ?>

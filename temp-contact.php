@@ -10,6 +10,26 @@ get_header(); ?>
 <div class="divider"></div>
 
 
+<section class="hero-section bg-dark">
+ <div class="container">
+        <div class="row">
+            <div class="">
+                <!-- Hero Content -->
+                <div class="hero-content home-one">
+                    <h3 class="ff-montez text-success wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1000ms">
+                        Where Can We Take You Today?</h3>
+                    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Your
+                        Journey Begins in Comfort and Style</h2>
+                    <p class="text-white wow fadeInUp" data-wow-delay="700ms" data-wow-duration="1000ms">Book Your Next
+                        Day Trips</p>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div class="container">
     <div class="row g-4">
         <!-- Contact Small Card -->

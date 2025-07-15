@@ -3,6 +3,10 @@
 	set_post_thumbnail_size( 140, 140, true );
 	add_image_size( 'single-post-thumbnail', 300, 9999 );
 
+    	add_image_size( 'tour-thumbnail', 300, 200, true );
+
+
+
 
 
     include_once('inc/class-walker-touria.php');
@@ -71,7 +75,9 @@ function pagination($pages = '', $range = 4)
 if (function_exists('register_nav_menus')) {
 register_nav_menus( array(
 		'main' => __( 'Main Menu', '' ),
-		'footer' => __( 'Footer Menu', '' ),
+		'footer_routes' => __( 'Footer Routes Menu', '' ),
+        'footer_offer' => __( 'Footer Offer Menu', '' ),
+        'footer_legal' => __( 'Footer Legaal Menu', '' ),
 	) );
 }
 
