@@ -36,9 +36,9 @@ get_header(); ?>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="">
+     <div class="container">
+         <div class="row">
+            <div class="col-12 col-sm-12">
                 <!-- Hero Content -->
                 <div class="hero-content home-one">
                     <h3 class="ff-montez text-success wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1000ms">
@@ -477,14 +477,14 @@ get_header(); ?>
         <div class="row g-5 align-items-end">
             <div class="col-12 col-md-6">
                 <div class="section-heading">
-                    <span class="sub-title text-warning">Blog &amp; News</span>
+                    <span class="sub-title text-success">Blog &amp; News</span>
                     <h2 class="mb-0">Latest News &amp; Articles</h2>
                 </div>
             </div>
 
             <div class="col-12 col-md-6">
                 <div class="text-md-end">
-                    <a href="blog-list.html" class="btn btn-warning">View All Blogs <i class="icon-arrow-right"></i></a>
+                    <a href="blog-list.html" class="btn btn-success">View All Blogs <i class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>
