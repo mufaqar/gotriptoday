@@ -28,7 +28,7 @@
 
          <div class="row g-4">
              <!-- Premium Card -->
-             <div class="col-12 col-md-6 col-lg-4">
+             <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/preimium-transfer.webp" alt="">
                      <!-- Trip Body -->
@@ -82,7 +82,7 @@
                  </div>
              </div>
              <!-- Curated Stops Card -->
-             <div class="col-12 col-md-6 col-lg-4">
+             <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Curated.webp" alt="">
                      <!-- Trip Body -->
@@ -136,9 +136,9 @@
                  </div>
              </div>
              <!-- Unforgetable Day Trips Card -->
-             <div class="col-12 col-md-6 col-lg-4">
+             <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unforgetable.webp" alt="">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unforgetable.png" alt="">
                      <!-- Trip Body -->
                      <div class="trip-body">
                          <h4 class="mb-4 trip-title">Unforgetable Day Trips</h4>
@@ -192,9 +192,9 @@
 
 
              <!-- Custom Booking Card -->
-             <div class="col-12 col-md-6 col-lg-4">
+             <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Custom-Booking.webp" alt="">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/CustomBooking.webp" alt="">
                      <!-- Trip Body -->
                      <div class="trip-body">
                          <h4 class="mb-4 trip-title">Custom Booking</h4>
