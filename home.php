@@ -196,7 +196,7 @@ get_header(); ?>
                     </div>
 
                     <!-- Button -->
-                    <a href="about-us.html" class="btn btn-success">More About Us <i class="icon-arrow-right"></i></a>
+                    <a href="<?php bloginfo('url'); ?>/about-us" class="btn btn-success">More About Us <i class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>

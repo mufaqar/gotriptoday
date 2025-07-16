@@ -9546,6 +9546,11 @@ textarea.form-control {
   background-color: #3cb371;
   color: #fff;
 }
+.footer-card ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .touria-scrolltop.theme-three::before {
   background: conic-gradient(#3cb371 var(--scroll-progress), #113d48 0);
 }
