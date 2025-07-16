@@ -10,18 +10,17 @@ get_header(); ?>
 
     <!-- Social Icons -->
     <div class="social-icons d-none d-sm-flex">
-        <a href="#"><i class="ti ti-brand-facebook"></i></a>
-        <a href="#"><i class="ti ti-brand-x"></i></a>
-        <a href="#"><i class="ti ti-brand-linkedin"></i></a>
-        <a href="#"><i class="ti ti-brand-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+        <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
+        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
     </div>
 
     <!-- Background Slider -->
     <div class="swiper background-swiper">
         <div class="swiper-wrapper h-100">
-            <div class="swiper-slide h-100" style="background-image: url('assets/img/bg-img/1.jpg')">
+            <div class="swiper-slide h-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
             </div>
-            <div class="swiper-slide h-100" style="background-image: url('assets/img/bg-img/2.jpg')">
+            <div class="swiper-slide h-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/2.jpg')">
             </div>
         </div>
     </div>
@@ -467,6 +466,9 @@ get_header(); ?>
         </div>
     </div>
 </section>
+
+
+<?php get_template_part( 'partials/home', 'services' ); ?>
 
 <!-- Blog Section -->
 <section class="blog-section">
