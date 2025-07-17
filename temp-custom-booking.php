@@ -5,52 +5,29 @@ get_header(); ?>
 
 <?php get_template_part('partials/content', 'breadcrumb'); ?>
 
-<!-- About Company -->
-<section class="about-company-section">
+<section class="">
     <!-- Divider -->
     <div class="divider"></div>
 
     <div class="container">
-        <div class="row g-5 align-items-center">
-            <!-- About Thumbnail -->
+        <div class="row g-5">
+            <!-- Form -->
             <div class="col-12 col-lg-6">
-                <div class="about-thumbnail">
-                    <!-- Shape -->
-                    <div class="shape wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/shape.png" alt="">
-                    </div>
-                    <!-- First Image -->
-                    <div class="first-img wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/7.jpg" alt="">
-                    </div>
-
-                    <!-- Second Image -->
-                    <div class="second-img wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/8.jpg" alt="">
-
-                        <!-- Play Video -->
-                        <div class="play-video-btn video-btn" data-video="https://youtu.be/zCSmY_WjvPs">
-                            <div class="icon">
-                                <i class="ti ti-player-play-filled"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Third Image -->
-                    <div class="third-img wow fadeInUp" data-wow-delay="800ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/9.jpg" alt="">
-                    </div>
+                <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                    <?php echo do_shortcode('[jet_fb_form form_id="23868" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="1" clear=""]') ?>
                 </div>
             </div>
 
-            <!-- About Content -->
+            <!-- Content -->
             <div class="col-12 col-lg-6">
                 <div class="about-content ps-md-5">
                     <div class="section-heading">
                         <span class="sub-title text-success"></span>
                         <h2 class="mb-4">Your Custom Ride</h2>
                         <p>
-                            If no suitable ride is available for your needs, you can easily make a manual booking here. We offer you the flexibility to customize your ride. Simply enter the details, and we’ll take care of ensuring you reach your destination safely and comfortably.
+                            If no suitable ride is available for your needs, you can easily make a manual booking here.
+                            We offer you the flexibility to customize your ride. Simply enter the details, and we’ll
+                            take care of ensuring you reach your destination safely and comfortably.
                         </p>
                     </div>
 
@@ -67,7 +44,8 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Custom Booking</h4>
-                                <p class="mb-0">Didn’t find a suitable ride? Book your ride according to your personal requirements.</p>
+                                <p class="mb-0">Didn’t find a suitable ride? Book your ride according to your personal
+                                    requirements.</p>
                             </div>
                         </div>
 
@@ -99,7 +77,8 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Flexible Customization </h4>
-                                <p class="mb-0">Have special requests? Let us know your needs, and we’ll tailor the ride accordingly.</p>
+                                <p class="mb-0">Have special requests? Let us know your needs, and we’ll tailor the ride
+                                    accordingly.</p>
                             </div>
                         </div>
                         <!-- Single Item -->
@@ -130,11 +109,12 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Fast Confirmation</h4>
-                                <p class="mb-0">After your manual booking, we’ll quickly confirm the details and ensure a punctual pickup.</p>
+                                <p class="mb-0">After your manual booking, we’ll quickly confirm the details and ensure
+                                    a punctual pickup.</p>
                             </div>
                         </div>
 
-                         <!-- Single Item -->
+                        <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"
@@ -162,7 +142,8 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Comfort & Safety</h4>
-                                <p class="mb-0">Even with manual bookings, we guarantee the highest level of comfort and a safe ride with an experienced chauffeur.</p>
+                                <p class="mb-0">Even with manual bookings, we guarantee the highest level of comfort and
+                                    a safe ride with an experienced chauffeur.</p>
                             </div>
                         </div>
                     </div>
