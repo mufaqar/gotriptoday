@@ -7,7 +7,11 @@ get_header();
 ?>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/nouislider.min.css">
 
-<?php get_template_part('partials/content', 'breadcrumb'); ?>
+<?php $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/slide1.webp';
+
+get_template_part('partials/content', 'breadcrumb', [
+    'bg' => $bg_image
+]); ?>
 
 <!-- Tour List Section -->
 <section class="tour-list-section">
