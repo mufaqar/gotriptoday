@@ -76,7 +76,7 @@
 
                          </div>
                          <!-- Button -->
-                         <a href="https://gotriptoday.com/booking-page/" class="btn btn-light w-100">Secure Your
+                         <a href="<?php echo home_url('/booking-page'); ?>" class="btn btn-light w-100">Secure Your
                              Ride</a>
                      </div>
                  </div>
@@ -130,8 +130,7 @@
 
                          </div>
                          <!-- Button -->
-                         <a href="https://gotriptoday.com/booking-page/" class="btn btn-light w-100">
-                             Route Builder </a>
+                         <a href="<?php echo home_url('/fleet'); ?>" class="btn btn-light w-100"> Route Builder </a>
                      </div>
                  </div>
              </div>
@@ -184,7 +183,7 @@
 
                          </div>
                          <!-- Button -->
-                         <a href="https://gotriptoday.com/booking-page/" class="btn btn-light w-100">
+                         <a href="<?php echo home_url('/day-trip'); ?>" class="btn btn-light w-100">
                              Experience Begins </a>
                      </div>
                  </div>
@@ -240,7 +239,7 @@
 
                          </div>
                          <!-- Button -->
-                         <a href="https://gotriptoday.com/booking-page/" class="btn btn-light w-100">
+                         <a href="<?php echo home_url('/custom-booking'); ?>" class="btn btn-light w-100">
                              Customize & Go </a>
                      </div>
                  </div>
