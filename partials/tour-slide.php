@@ -1,5 +1,6 @@
   <!-- Single Slide -->
   <div class="swiper-slide">
+  <div class="swiper-slide">
       <div class="trip-card wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
           <?php if ( has_post_thumbnail() ) {
 				           the_post_thumbnail('full', ['class' => 'tour_feature']);
