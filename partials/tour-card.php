@@ -31,7 +31,7 @@
                       </div>
                   </div>
                   <!-- Button -->
-                  <a href="<?php the_permalink() ?>" class="btn btn-light w-100">Book Now</a>
+                  <a href="<?php the_permalink() ?>" class="btn btn-light w-100">View Tour</a>
               </div>
 
           </div>
