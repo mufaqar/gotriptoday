@@ -39,14 +39,14 @@
                              <ul class="list-unstyled d-flex flex-column gap-3">
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-transfer"></i>
                                      </div>
                                      <h6 class="d-inline">Effortless Private Transfers</h6>
                                      <p>Door-to-door rides with your own chauffeur.</p>
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-shopping-bag"></i>
                                      </div>
                                      <h6 class="d-inline"> Instant Booking</h6>
                                      <p>Quick reservations with zero hassle.</p>
@@ -55,7 +55,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-building-burj-al-arab"></i>
                                      </div>
                                      <h6 class="d-inline">Luxury & Comfort</h6>
                                      <p>Travel in style with premium vehicles.</p>
@@ -64,7 +64,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-info-hexagon"></i>
                                      </div>
                                      <h6 class="d-inline"> 24/7 Support</h6>
                                      <p>Always available — anytime, anywhere.</p>
@@ -93,14 +93,14 @@
                              <ul class="list-unstyled d-flex flex-column gap-3">
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-route"></i>
                                      </div>
                                      <h6 class="d-inline">Set Your Route</h6>
                                      <p>Pickup, destination, and travel date.</p>
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-map-bus-stop"></i>
                                      </div>
                                      <h6 class="d-inline">Add Custom Stops</h6>
                                      <p>Scenic or personal stops onway./p>
@@ -109,7 +109,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-car"></i>
                                      </div>
                                      <h6 class="d-inline">Select Your Vehicle</h6>
                                      <p>Choose from sedans, vans, or XL rides.</p>
@@ -118,7 +118,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-map-menorah"></i>
                                      </div>
                                      <h6 class="d-inline">Confirm & Enjoy</h6>
                                      <p>With 24h free cancellation.</p>
@@ -146,14 +146,14 @@
                              <ul class="list-unstyled d-flex flex-column gap-3">
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-brand-tripadvisor"></i>
                                      </div>
                                      <h6 class="d-inline">Private Day Trips</h6>
                                      <p>Tailored journeys with flexible routes.</p>
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-chart-scatter-3d"></i>
                                      </div>
                                      <h6 class="d-inline">Scenic & Historic</h6>
                                      <p>Explore iconic sights and landscapes.</p>
@@ -162,7 +162,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-bed"></i>
                                      </div>
                                      <h6 class="d-inline">Luxury & Comfort/h6>
                                          <p>Premium vehicles, personalized service.</p>
@@ -171,7 +171,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-moped"></i>
                                      </div>
                                      <h6 class="d-inline">English-Speaking Drivers</h6>
                                      <p>Clear, friendly guidance all the way.</p>
@@ -202,14 +202,14 @@
                              <ul class="list-unstyled d-flex flex-column gap-3">
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-route-2"></i>
                                      </div>
                                      <h6 class="d-inline">Your Ride, Your Way</h6>
                                      <p>Custom trips built around you.</p>
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-route-x"></i>
                                      </div>
                                      <h6 class="d-inline">Go Where You Choose</h6>
                                      <p>Any stop, any destination.</p>
@@ -218,7 +218,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-replace"></i>
                                      </div>
                                      <h6 class="d-inline">Travel at Your Pace</h6>
                                      <p>Relax with full schedule flexibility.</p>
@@ -227,7 +227,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-pin-filled"></i>
+                                         <i class="ti ti-contract"></i>
                                      </div>
                                      <h6 class="d-inline">Trusted Private Drivers</h6>
                                      <p>Safe, discreet, and professional.</p>
