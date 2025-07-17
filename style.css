@@ -9556,10 +9556,6 @@ textarea.form-control {
   background-color: #3cb371;
 }
 
-.go_trip_bookingform .chbs-main .chbs-layout-column-left {
-  background-color: red;
-}
-
 .go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav {
   display: flex !important;
   flex-direction: row !important;
