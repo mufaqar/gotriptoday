@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*Template Name: Home*/
 
 get_header(); ?>
@@ -10,7 +10,8 @@ get_header(); ?>
 
     <!-- Social Icons -->
     <div class="social-icons d-none d-sm-flex">
-        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
+                class="ti ti-brand-facebook"></i></a>
         <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
         <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
     </div>
@@ -18,9 +19,11 @@ get_header(); ?>
     <!-- Background Slider -->
     <div class="swiper background-swiper">
         <div class="swiper-wrapper h-100">
-            <div class="swiper-slide h-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
+            <div class="swiper-slide h-100"
+                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
             </div>
-            <div class="swiper-slide h-100" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/2.jpg')">
+            <div class="swiper-slide h-100"
+                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/2.jpg')">
             </div>
         </div>
     </div>
@@ -35,8 +38,8 @@ get_header(); ?>
         </div>
     </div>
 
-     <div class="container">
-         <div class="row">
+    <div class="container">
+        <div class="row">
             <div class="col-12 col-sm-12">
                 <!-- Hero Content -->
                 <div class="hero-content home-one">
@@ -50,7 +53,7 @@ get_header(); ?>
                     <!-- Hero Search Form -->
 
                     <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]')?>
+                        <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]') ?>
                     </div>
                 </div>
             </div>
@@ -196,7 +199,8 @@ get_header(); ?>
                     </div>
 
                     <!-- Button -->
-                    <a href="<?php bloginfo('url'); ?>/about-us" class="btn btn-success">More About Us <i class="icon-arrow-right"></i></a>
+                    <a href="<?php bloginfo('url'); ?>/about-us" class="btn btn-success">More About Us <i
+                            class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -248,19 +252,20 @@ get_header(); ?>
 
                 $tours_query = new WP_Query($args);
 
-                if ($tours_query->have_posts()) :
-                    while ($tours_query->have_posts()) : $tours_query->the_post();
+                if ($tours_query->have_posts()):
+                    while ($tours_query->have_posts()):
+                        $tours_query->the_post();
                         ?>
 
-                <?php get_template_part( 'partials/tour', 'slide' ); ?>
+                        <?php get_template_part('partials/tour', 'slide'); ?>
 
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        else :
-            echo '<p>No tours found.</p>';
-        endif;
-        ?>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    echo '<p>No tours found.</p>';
+                endif;
+                ?>
 
 
 
@@ -468,7 +473,7 @@ get_header(); ?>
 </section>
 
 
-<?php get_template_part( 'partials/home', 'services' ); ?>
+<?php get_template_part('partials/home', 'services'); ?>
 
 <!-- Blog Section -->
 <section class="blog-section">
@@ -486,7 +491,7 @@ get_header(); ?>
 
             <div class="col-12 col-md-6">
                 <div class="text-md-end">
-                    <a href="blog-list.html" class="btn btn-success">View All Blogs <i class="icon-arrow-right"></i></a>
+                    <a href="<?php bloginfo('url'); ?>/blog" class="btn btn-success">View All Blogs <i class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -497,34 +502,29 @@ get_header(); ?>
     <div class="container">
         <div class="row g-4 g-xxl-5">
             <?php
-$args = array(
-    'post_type'      => 'post', // or 'tours' or any custom post type
-    'posts_per_page' => 3,
-    'post_status'    => 'publish',
-);
+            $args = array(
+                'post_type' => 'post', // or 'tours' or any custom post type
+                'posts_per_page' => 3,
+                'post_status' => 'publish',
+            );
 
-$blog_query = new WP_Query($args);
+            $blog_query = new WP_Query($args);
 
-if ($blog_query->have_posts()) :
-    while ($blog_query->have_posts()) : $blog_query->the_post();
-        get_template_part('partials/blog-card');
-    endwhile;
-    wp_reset_postdata();
-else :
-    echo '<p>No blog posts found.</p>';
-endif;
-?>
-
-
-
-
+            if ($blog_query->have_posts()):
+                while ($blog_query->have_posts()):
+                    $blog_query->the_post();
+                    get_template_part('partials/blog-card');
+                endwhile;
+                wp_reset_postdata();
+            else:
+                echo '<p>No blog posts found.</p>';
+            endif;
+            ?>
         </div>
     </div>
 
     <!-- Divider -->
     <div class="divider"></div>
 </section>
-
-
 
 <?php get_footer(); ?>

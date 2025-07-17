@@ -7347,7 +7347,7 @@ picture.jarallax-img img {
 
 .blog-card-two.theme-two .blog-meta a:hover,
 .blog-card-two.theme-two .blog-meta a:focus {
-  color: #f7921f;
+  color: #3cb371;
 }
 
 .blog-card-three {
@@ -9512,28 +9512,28 @@ textarea.form-control {
   background-color: #3cb371 !important;
 }
 
-.chbs-form-field-pickup-date-time {
+.go_trip_form .chbs-form-field-pickup-date-time {
   display: flex !important;
   flex-direction: row !important;
   width: 40% !important;
 }
 
-.ui-tabs-panel[aria-hidden="false"] {
+.go_trip_form .ui-tabs-panel[aria-hidden="false"] {
   display: flex !important;
   flex-direction: row !important;
 }
 
-.chbs-form-field {
+.go_trip_form .chbs-form-field {
   padding-top: 0 !important;
   border: none !important;
 }
 
-.chbs-form-field label {
+.go_trip_form .chbs-form-field label {
   margin-bottom: 0 !important;
   border: none !important;
 }
 
-.chbs-form-field input {
+.go_trip_form .chbs-form-field input {
   padding-bottom: 0 !important;
 }
 
@@ -9602,20 +9602,20 @@ textarea.form-control {
     border: 1px solid transparent !important;
   }
 
-  .chbs-form-field-pickup-date-time {
+  .go_trip_form .chbs-form-field-pickup-date-time {
     flex-direction: column !important;
     width: 100% !important;
   }
 
-  .ui-tabs-panel[aria-hidden="false"] {
+ .go_trip_form .ui-tabs-panel[aria-hidden="false"] {
     flex-direction: column !important;
   }
 
-  .chbs-form-field input {
+  .go_trip_form .chbs-form-field input {
     padding-bottom: 15px !important;
   }
 
-  .chbs-main.chbs-widget.chbs-widget-style-4
+  .go_trip_form .chbs-main.chbs-widget.chbs-widget-style-4
     .chbs-main-content-step-1
     > div
     + div {
