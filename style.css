@@ -9624,6 +9624,7 @@ textarea.form-control {
 }
 
 .go_trip_form {
+
   padding: 40px;
   background-color: #f7f7f7;
   border-radius: 18px 18px 0 0;
@@ -9677,4 +9678,18 @@ textarea.form-control {
 .go_trip_form .jet-form-builder__action-button:focus {
   background-color: #161920;
   color: #ffffff;
+
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 18px 18px 0 0;
+}
+
+
+.swiper.destination-details-wrapper .swiper-slide img {
+    width: 1350px;
+    height: 500px;
+    object-fit: cover; /* Crops the image proportionally */
+    display: block;
+    margin: 0 auto; /* Centers the image */
+
 }

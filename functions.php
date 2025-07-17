@@ -5,6 +5,8 @@
 
     	add_image_size( 'tour-thumbnail', 300, 200, true );
 
+         add_image_size('tour_slide', 1350, 500, true); // true = hard crop
+
 
 
 
