@@ -9674,13 +9674,12 @@ textarea.form-control {
   margin-bottom: 0.5rem;
 }
 
-.go_trip_form .layout-column .jet-form-builder__field {
+.go_trip_form  .jet-form-builder__field{
   border-radius: 8px;
-  background-color: #fff !important;
   height: 50px;
   font-size: 16px;
   border: 0;
-  padding: 20px;
+  padding: 10px 20px;
   color: #767676;
 }
 
@@ -9713,12 +9712,10 @@ textarea.form-control {
 }
 .go_trip_form .jet-form-builder__action-button:hover,
 .go_trip_form .jet-form-builder__action-button:focus {
-  background-color: #161920;
+  background-color: #161920 !important;
   color: #ffffff;
-
-  padding: 40px;
   background-color: #ffffff;
-  border-radius: 18px 18px 0 0;
+  border-radius:none;
 }
 
 .swiper.destination-details-wrapper .swiper-slide img {
