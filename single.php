@@ -20,5 +20,4 @@
 	<?php edit_post_link(__('Edit','text_domain'),'','.'); ?>
 	<?php comments_template(); ?>
 <?php endwhile; endif; ?>
-<?php get_sidebar(); ?>	
 <?php get_footer(); ?>
