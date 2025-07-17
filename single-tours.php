@@ -7,6 +7,9 @@ get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image
 ]);
 
+
+exit("Test");
+
  ?>
 <!-- Tour Details Section -->
 <div class="tour-details-section">
