@@ -8,6 +8,8 @@ get_template_part('partials/content', 'breadcrumb', [
 ]);
 
 
+     
+
  ?>
 <!-- Tour Details Section -->
 <div class="tour-details-section">
@@ -19,21 +21,23 @@ get_template_part('partials/content', 'breadcrumb', [
         <div class="swiper destination-details-wrapper mb-5">
             <div class="swiper-wrapper">
                 <?php 
-               
-               $gallery = get_post_meta($post->ID, "gallery", true);
+              $gallery = get_post_meta($post->ID, "gallery", true); // Add true to get string directly
 
-                  if (!empty($gallery) && is_array($gallery)) {
-                     foreach ($gallery as $image_id) {
+                if (!empty($gallery)) {
+                    // Convert comma-separated string into an array
+                    $image_ids = explode(',', $gallery);
+
+                    foreach ($image_ids as $image_id) {
                         $image_url = wp_get_attachment_image_url($image_id, 'full');
                         if ($image_url) {
-                              ?>
-                                 <div class="swiper-slide">
-                                    <img src="<?php echo esc_url($image_url); ?>" alt="">
-                                 </div>
-                                 <?php
+                            ?>
+                            <div class="swiper-slide">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="">
+                            </div>
+                            <?php
                         }
-                     }
-                  }
+                    }
+                }
               ?>
 
 
@@ -249,7 +253,7 @@ get_template_part('partials/content', 'breadcrumb', [
                     <div class="sidebar-widget">
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
 
-                        <?php //echo do_shortcode('[jet_fb_form form_id="24940" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear="1"]')?>
+                        <?php echo do_shortcode('[jet_fb_form form_id="24940" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear="1"]')?>
                     </div>
 
                     <!-- Widget -->
