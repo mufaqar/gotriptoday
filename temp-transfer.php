@@ -4,6 +4,9 @@
 get_header(); ?>
 
 
+
+
+  <?php get_template_part('partials/content', 'breadcrumb'); ?>
 <!-- Tour Details Section -->
 <section class="tour-details-section">
     <!-- Divider -->
@@ -12,7 +15,7 @@ get_header(); ?>
     <div class="container">
         <div class="row g-5">
             <div class="col-12 col-lg-12">
-                <?php get_template_part('partials/content', 'breadcrumb'); ?>
+              <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
             </div>
         </div>
 
@@ -23,7 +26,7 @@ get_header(); ?>
 
 
 
-<?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
+
 
 <section>
     <!-- Divider -->
