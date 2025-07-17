@@ -46,6 +46,10 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <?php
+global $template;
+echo '<!-- Current Template: ' . $template . ' -->';
+    ?>
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
@@ -310,3 +314,5 @@
             </nav>
         </div>
     </header>
+
+    
