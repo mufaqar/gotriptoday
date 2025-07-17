@@ -62,7 +62,7 @@ get_template_part('partials/content', 'breadcrumb', [
                 </div>
                 <div>
                     <h4>Call Us</h4>
-                    <p class="mb-0">+4800 45 678 900</p>
+                    <p class="mb-0">+49 174 6787494</p>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@ get_template_part('partials/content', 'breadcrumb', [
                 </div>
                 <div>
                     <h4>Email Us Anytime</h4>
-                    <p class="mb-0">contact@example.com</p>
+                    <p class="mb-0">info@gotriptoday.com</p>
                 </div>
             </div>
         </div>
