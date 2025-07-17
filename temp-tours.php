@@ -20,6 +20,13 @@ get_header();
             <div class="col-12 col-md-4">
 
                 <div class="tour-list-sidebar">
+                    <!-- Widget -->
+                    <div class="sidebar-widget">
+                        <h4 class="widget-title mb-5">Price</h4>
+                        <!-- Range Slider -->
+                        <div id="range-slider-price"></div>
+                    </div>
+
                     <div class="sidebar-widget">
                         <h4 class="widget-title mb-4">Category</h4>
 
@@ -51,14 +58,8 @@ get_header();
                         <?php endif; ?>
 
                     </div>
-                    <!-- Widget -->
-                    <div class="sidebar-widget">
-                        <h4 class="widget-title mb-5">Price</h4>
-                        <!-- Range Slider -->
-                        <div id="range-slider-price"></div>
-                    </div>
 
-                     <div class="sidebar-widget">
+                    <div class="sidebar-widget">
                         <h4 class="widget-title mb-4">Tour Duration</h4>
 
                         <?php
@@ -90,7 +91,39 @@ get_header();
 
                     </div>
 
-                    
+                    <div class="sidebar-widget">
+                        <h4 class="widget-title mb-4">Properties</h4>
+
+                        <?php
+                        $terms = get_terms([
+                            'taxonomy'   => 'toour-properties',
+                            'hide_empty' => false, // Set true to hide empty categories
+                        ]);
+
+                        if (!empty($terms) && !is_wp_error($terms)) :
+                        ?>
+                        <!-- Sidebar Checkbox List -->
+                        <ul class="sidebar-checkbox-list list-unstyled">
+                            <?php foreach ($terms as $term) : ?>
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input tour-filter-checkbox" type="checkbox"
+                                        id="term-<?php echo esc_attr($term->term_id); ?>"
+                                        value="<?php echo esc_attr($term->slug); ?>">
+                                    <label class="form-check-label flex-grow-1 ms-2"
+                                        for="term-<?php echo esc_attr($term->term_id); ?>">
+                                        <?php echo esc_html($term->name); ?>
+                                    </label>
+                                    <span class="text-muted"><?php echo esc_html($term->count); ?></span>
+                                </div>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+
+                    </div>
+
+
                 </div>
             </div>
 
