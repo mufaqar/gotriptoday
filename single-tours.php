@@ -8,8 +8,6 @@ get_template_part('partials/content', 'breadcrumb', [
 ]);
 
 
-exit("Test");
-
  ?>
 <!-- Tour Details Section -->
 <div class="tour-details-section">
@@ -22,20 +20,20 @@ exit("Test");
             <div class="swiper-wrapper">
                 <?php 
                
-               $gallery = get_post_meta($post->ID, "gallery", true);
+            //    $gallery = get_post_meta($post->ID, "gallery", true);
 
-                  if (!empty($gallery) && is_array($gallery)) {
-                     foreach ($gallery as $image_id) {
-                        $image_url = wp_get_attachment_image_url($image_id, 'full');
-                        if ($image_url) {
-                              ?>
-                                 <div class="swiper-slide">
-                                    <img src="<?php echo esc_url($image_url); ?>" alt="">
-                                 </div>
-                                 <?php
-                        }
-                     }
-                  }
+            //       if (!empty($gallery) && is_array($gallery)) {
+            //          foreach ($gallery as $image_id) {
+            //             $image_url = wp_get_attachment_image_url($image_id, 'full');
+            //             if ($image_url) {
+            //                   ?>
+            //                      <div class="swiper-slide">
+            //                         <img src="<?php echo esc_url($image_url); ?>" alt="">
+            //                      </div>
+            //                      <?php
+            //             }
+            //          }
+            //       }
               ?>
 
 
