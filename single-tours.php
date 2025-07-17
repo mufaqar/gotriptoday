@@ -1,5 +1,13 @@
 <?php get_header(); ?>
-<?php get_template_part('partials/content', 'breadcrumb'); ?>
+<?php 
+
+$bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
+
+get_template_part('partials/content', 'breadcrumb', [
+    'bg' => $bg_image
+]);
+
+ ?>
 <!-- Tour Details Section -->
    <div class="tour-details-section">
       <!-- Divider -->
@@ -32,7 +40,7 @@
          <!-- Tour Details Header -->
          <div class="tour-details-header d-flex flex-wrap gap-4 align-items-end justify-content-between">
             <div>
-               <h2 class="mb-3">The Montcalm At Brewery Japan City</h2>
+               <h2 class="mb-3"><?php the_title()?></h2>
                <p class="mb-0 d-flex flex-wrap align-items-center gap-2">
                   <span>(16 Review)</span>
                   <span class="text-warning">
@@ -42,7 +50,7 @@
                      <i class="ti ti-star-filled"></i>
                      <i class="ti ti-star-filled"></i>
                   </span>
-                  <span><i class="ti ti-map-pin text-success"></i> Bhutan, India, Pokhara</span>
+                  <span><i class="ti ti-map-pin text-success"></i> <?php echo get_post_meta($post->ID, "address", true); ?></span>
                </p>
             </div>
             <div>
@@ -75,8 +83,8 @@
                      </svg>
                   </div>
                   <div>
-                     <h4>Location</h4>
-                     <p class="mb-0">Bhutan, India</p>
+                     <h4>Departure</h4>
+                     <p class="mb-0"><?php echo get_post_meta($post->ID, "departure", true); ?></p>
                   </div>
                </div>
 
@@ -93,8 +101,8 @@
                      </svg>
                   </div>
                   <div>
-                     <h4>Activities Type</h4>
-                     <p class="mb-0">Adventure</p>
+                     <h4>Destination</h4>
+                     <p class="mb-0"><?php echo get_post_meta($post->ID, "distination", true); ?></p>
                   </div>
                </div>
 
@@ -140,7 +148,7 @@
                   </div>
                   <div>
                      <h4>Activate Day</h4>
-                     <p class="mb-0">Feb 6 - Feb 16</p>
+                     <p class="mb-0">10H</p>
                   </div>
                </div>
 
@@ -173,13 +181,13 @@
                      </svg>
                   </div>
                   <div>
-                     <h4>Traveler</h4>
-                     <p class="mb-0">02</p>
+                     <h4>Support</h4>
+                     <p class="mb-0">24h Free Cancellation </p>
                   </div>
                </div>
 
                <!-- Button -->
-               <a href="#" class="btn btn-success">$150/ Per Person <i class="icon-arrow-right"></i></a>
+               <a href="#" class="btn btn-success">Total price: €<?php echo get_post_meta($post->ID, "pricing", true); ?><i class="icon-arrow-right"></i></a>
             </div>
 
             <div class="divider-sm"></div>
@@ -192,382 +200,35 @@
                <!-- Tour Details Content -->
                <div class="tour-details-content">
                   <h2>Overview</h2>
-                  <p>Consectetur adipisicing elit sed do eiusmod tempor is incididunt ut labore et dolore of magna
-                     aliqua. ut enim ad minim veniam made of owl the quis nostrud exercitation ullamco laboris nisi ut
-                     aliquip ex ea dolor commodo consequat duis aute irure and dolor in reprehenderit.Nullam semper quam
-                     mauris nec mollis felis aliquam eu ut non gravida mi quam mauris nec mollis felis aliquam
-                     phasellus.</p>
-                  <p>Consectetur adipisicing elit sed do eiusmod tempor is incididunt ut labore et dolore of magna
-                     aliqua. ut enim ad minim veniam made of owl the quis nostrud exercitation ullamco laboris nisi ut
-                     aliquip ex ea dolor commodo consequat duis aute irure and dolor in reprehenderit.Nullam semper quam
-                     mauris.</p>
+                  <p><?php echo get_post_meta($post->ID, "tour_overview", true); ?></p>
 
-                  <h2>Experience the Difference</h2>
+                  <h2>Trip Itinerary</h2>
                   <ul class="list-unstyled">
-                     <li><i class="ti ti-rosette-discount-check"></i> Trusted, Local Travel Experts</li>
-                     <li><i class="ti ti-rosette-discount-check"></i> Flexible Cancellation Policies</li>
-                     <li><i class="ti ti-rosette-discount-check"></i> Flexible, Hassle-Free Bookings</li>
-                     <li><i class="ti ti-rosette-discount-check"></i> Customized Travel Experiences</li>
-                     <li><i class="ti ti-rosette-discount-check"></i> Real-Time Itinerary Updates</li>
-                     <li><i class="ti ti-rosette-discount-check"></i> Exclusive Travel Deals</li>
+
+                  
+                  <?php echo get_post_meta($post->ID, "trip_itinerary", true); ?>
+                    
                   </ul>
 
                   <div class="row g-4">
                      <div class="col-6">
-                        <img src="assets/img/bg-img/137.jpg" alt="">
+                        
+                         <?php echo get_post_meta($post->ID, "included", true); ?>
                      </div>
                      <div class="col-6">
-                        <img src="assets/img/bg-img/138.jpg" alt="">
+                         <?php echo get_post_meta($post->ID, "not_included", true); ?>
                      </div>
                   </div>
                </div>
+
+                  <h2 class="mb-4 mt-5 faq-title">Additional Info</h2>
+
+                        <?php echo get_post_meta($post->ID, "additional_info", true); ?>
 
                <!-- FAQs -->
                <h2 class="mb-4 mt-5 faq-title">Frequently Ask Question</h2>
 
-               <!-- FAQ Accordion -->
-               <div class="faq-accordion style-three">
-                  <div class="accordion gap-4" id="faqAccordion">
-                     <!-- Accordion Item -->
-                     <div class="accordion-item">
-                        <div class="accordion-header">
-                           <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#faqQuestion1" aria-expanded="true" aria-controls="faqQuestion1">
-                              How do I book a tour with your agency?
-                           </button>
-                        </div>
-                        <div id="faqQuestion1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                           <div class="accordion-body">
-                              <p>If you need immediate assistance, click the button below to chat live with a Customer
-                                 Service Customer live with Service Customer representative.If you need immediate
-                                 assistance, click the button below to chat live with a Customer Service Customer live
-                                 with
-                                 Service Customer representative.</p>
-                              <div class="faq-image">
-                                 <img src="assets/img/bg-img/136.jpg" alt="">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- Accordion Item -->
-                     <div class="accordion-item">
-                        <div class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#faqQuestion2" aria-expanded="false" aria-controls="faqQuestion2">
-                              What payment methods do you accept?
-                           </button>
-                        </div>
-                        <div id="faqQuestion2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                           <div class="accordion-body">
-                              <p>If you need immediate assistance, click the button below to chat live with a Customer
-                                 Service Customer live with Service Customer representative.If you need immediate
-                                 assistance, click the button below to chat live with a Customer Service Customer live
-                                 with
-                                 Service Customer representative.</p>
-                              <div class="faq-image">
-                                 <img src="assets/img/bg-img/136.jpg" alt="">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- Accordion Item -->
-                     <div class="accordion-item">
-                        <div class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#faqQuestion3" aria-expanded="false" aria-controls="faqQuestion3">
-                              Can I customize my travel itinerary?
-                           </button>
-                        </div>
-                        <div id="faqQuestion3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                           <div class="accordion-body">
-                              <p>If you need immediate assistance, click the button below to chat live with a Customer
-                                 Service Customer live with Service Customer representative.If you need immediate
-                                 assistance, click the button below to chat live with a Customer Service Customer live
-                                 with
-                                 Service Customer representative.</p>
-                              <div class="faq-image">
-                                 <img src="assets/img/bg-img/136.jpg" alt="">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- Accordion Item -->
-                     <div class="accordion-item">
-                        <div class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#faqQuestion4" aria-expanded="false" aria-controls="faqQuestion4">
-                              How do I book a tour with your agency?
-                           </button>
-                        </div>
-                        <div id="faqQuestion4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                           <div class="accordion-body">
-                              <p>If you need immediate assistance, click the button below to chat live with a Customer
-                                 Service Customer live with Service Customer representative.If you need immediate
-                                 assistance, click the button below to chat live with a Customer Service Customer live
-                                 with
-                                 Service Customer representative.</p>
-                              <div class="faq-image">
-                                 <img src="assets/img/bg-img/136.jpg" alt="">
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                  </div>
-               </div>
-
-               <!-- Customer Reviews -->
-               <h2 class="mb-4 mt-5 faq-title">Customer Reviews</h2>
-
-               <!-- Customer Review -->
-               <div class="customer-review-card">
-                  <!-- Average Rating -->
-                  <div class="average-rating">
-                     <h2>4.9</h2>
-                     <p class="mb-0 text-white">(484 Reviews)</p>
-                     <div class="rating">
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                     </div>
-                  </div>
-
-                  <!-- Rating Bars -->
-                  <div class="rating-bars">
-                     <!-- Single Item -->
-                     <div class="rating-bar">
-                        <p class="mb-0">5</p>
-                        <div class="progress">
-                           <div class="progress-bar w-100" role="progressbar"></div>
-                        </div>
-                        <div class="rating">
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                        </div>
-                     </div>
-
-                     <!-- Single Item -->
-                     <div class="rating-bar">
-                        <p class="mb-0">4</p>
-                        <div class="progress">
-                           <div class="progress-bar w-75" role="progressbar"></div>
-                        </div>
-                        <div class="rating">
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star"></i>
-                        </div>
-                     </div>
-
-                     <!-- Single Item -->
-                     <div class="rating-bar">
-                        <p class="mb-0">3</p>
-                        <div class="progress">
-                           <div class="progress-bar w-50" role="progressbar"></div>
-                        </div>
-                        <div class="rating">
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star"></i>
-                           <i class="ti ti-star"></i>
-                        </div>
-                     </div>
-
-                     <!-- Single Item -->
-                     <div class="rating-bar">
-                        <p class="mb-0">2</p>
-                        <div class="progress">
-                           <div class="progress-bar w-25" role="progressbar"></div>
-                        </div>
-                        <div class="rating">
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star"></i>
-                           <i class="ti ti-star"></i>
-                           <i class="ti ti-star"></i>
-                        </div>
-                     </div>
-
-                     <!-- Single Item -->
-                     <div class="rating-bar">
-                        <p class="mb-0">1</p>
-                        <div class="progress">
-                           <div class="progress-bar w-25" role="progressbar"></div>
-                        </div>
-                        <div class="rating">
-                           <i class="ti ti-star-filled"></i>
-                           <i class="ti ti-star"></i>
-                           <i class="ti ti-star"></i>
-                           <i class="ti ti-star"></i>
-                           <i class="ti ti-star"></i>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- Comments -->
-               <div class="blog-comments">
-                  <h2 class="mb-4 mt-5">Clients Reviews</h2>
-
-                  <ul class="blog-comments-list">
-                     <li class="single-comment">
-                        <div class="d-flex gap-4">
-                           <div class="comment-img">
-                              <img src="assets/img/bg-img/139.jpg" alt="">
-                           </div>
-                           <div class="comment-content">
-                              <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center mb-2">
-                                 <div>
-                                    <p class="mb-0 text-warning">
-                                       <i class="ti ti-star-filled"></i>
-                                       <i class="ti ti-star-filled"></i>
-                                       <i class="ti ti-star-filled"></i>
-                                       <i class="ti ti-star-filled"></i>
-                                       <i class="ti ti-star-filled"></i>
-                                    </p>
-                                    <div class="mb-0 h4 fw-bold">Mariya Dsuza</div>
-                                 </div>
-                                 <a href="#" class="btn btn-link">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                       fill="none">
-                                       <path
-                                          d="M9.16927 16.6654L0.835938 9.9987L9.16927 3.33203V7.4987C13.7716 7.4987 17.5026 11.2297 17.5026 15.832C17.5026 16.0594 17.4935 16.2848 17.4756 16.5076C16.2197 14.1239 13.7176 12.4987 10.8359 12.4987H9.16927V16.6654Z"
-                                          fill="#3CB371" />
-                                    </svg> Reply
-                                 </a>
-                              </div>
-                              <p class="mb-0">The third Monday of January is supposed to be the most depressing day
-                                 of
-                                 the year. Whether you believe that or not, the long nights, cold weather, and
-                                 trying.
-                              </p>
-                           </div>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-
-               <div class="divider-sm"></div>
-
-               <!-- Comment Form -->
-               <div class="comment-form contact-form rounded-4 p-4 p-xl-5 bg-secondary">
-                  <h2 class="mb-4">Add Your Reviews</h2>
-
-                  <div class="row g-4">
-                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="d-flex align-items-center gap-2">
-                           <p class="mb-0 text-heading">Services</p>
-                           <div class="rating text-warning">
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="d-flex align-items-center gap-2">
-                           <p class="mb-0 text-heading">Hotel</p>
-                           <div class="rating text-warning">
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="d-flex align-items-center gap-2">
-                           <p class="mb-0 text-heading">Places</p>
-                           <div class="rating text-warning">
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="d-flex align-items-center gap-2">
-                           <p class="mb-0 text-heading">Safety</p>
-                           <div class="rating text-warning">
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="d-flex align-items-center gap-2">
-                           <p class="mb-0 text-heading">Foods</p>
-                           <div class="rating text-warning">
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="d-flex align-items-center gap-2">
-                           <p class="mb-0 text-heading">Guides</p>
-                           <div class="rating text-warning">
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                              <i class="ti ti-star-filled"></i>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="mt-5"></div>
-
-                  <!-- Form -->
-                  <form action="#" method="get">
-                     <div class="row g-4">
-                        <div class="col-12 col-lg-6">
-                           <input type="text" class="form-control bg-white" placeholder="Your name">
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                           <input type="text" class="form-control bg-white" placeholder="Your phone">
-                        </div>
-
-                        <div class="col-12">
-                           <input type="email" class="form-control bg-white" placeholder="Your email">
-                        </div>
-
-                        <div class="col-12">
-                           <textarea class="form-control bg-white" rows="20" cols="30"
-                              placeholder="Type your message"></textarea>
-                        </div>
-
-                        <div class="col-12">
-                           <button type="submit" class="btn btn-success">Post Comment <i
-                                 class="icon-arrow-right"></i></button>
-                        </div>
-                     </div>
-                  </form>
-               </div>
+              
             </div>
 
             <div class="col-12 col-lg-4">
@@ -576,77 +237,13 @@
                   <div class="sidebar-widget">
                      <div class="h4 fw-bold mb-4">Tour Booking</div>
 
-                     <form action="#">
-                        <div class="row g-4">
-                           <div class="col-12">
-                              <div class="d-flex align-items-center gap-2">
-                                 <label for="tour-date" class="form-label mb-0 text-heading">Date</label>
-                                 <input type="date" id="tour-date" class="form-control p-0 bg-transparent">
-                              </div>
-                           </div>
-
-                           <div class="col-12">
-                              <div class="d-flex align-items-center justify-content-between gap-2">
-                                 <label for="tickets" class="form-label mb-0 text-heading">Tickets</label>
-                                 <select name="tickets" id="tickets" class="touria-select2 bg-transparent">
-                                    <option value="family-tour" selected>Select Date First</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                 </select>
-                              </div>
-                           </div>
-
-                           <div class="col-12">
-                              <p class="mb-4 text-heading">Extra Services</p>
-                              <ul class="sidebar-checkbox-list list-unstyled">
-                                 <li class="bg-transparent p-0">
-                                    <div class="form-check">
-                                       <input class="form-check-input" type="checkbox" id="canada">
-                                       <label class="form-check-label flex-grow-1 ms-2" for="canada">Services per
-                                          booking</label>
-                                       <span class="text-muted">$10</span>
-                                    </div>
-                                 </li>
-                                 <li class="bg-transparent p-0">
-                                    <div class="form-check">
-                                       <input class="form-check-input" type="checkbox" id="france" checked>
-                                       <label class="form-check-label flex-grow-1 ms-2" for="france">Services per
-                                          person</label>
-                                       <span class="text-muted">$10</span>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-
-                           <div class="col-12">
-                              <div class="tour-booking-summary">
-                                 <ul class="list-unstyled d-flex flex-column gap-2">
-                                    <li>
-                                       <span>Adult:</span><span>$30.00</span></li>
-                                    <li>
-                                       <span>Child:</span><span>$26.00</span></li>
-                                    <li>
-                                       <span>Total:</span><span>$56.00</span></li>
-                                 </ul>
-                              </div>
-                           </div>
-
-                           <div class="col-12">
-                              <button type="submit" class="btn btn-success w-100">Book Now <i
-                                    class="icon-arrow-right"></i></button>
-                           </div>
-                        </div>
-                     </form>
+                    <?php echo do_shortcode('[jet_fb_form form_id="24940" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear="1"]')?>
                   </div>
 
                   <!-- Widget -->
                   <div class="map-widget">
-                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158857.83988656217!2d-0.2664030361512999!3d51.52873980507674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sbd!4v1746429272896!5m2!1sen!2sbd"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                       <h2 class="mb-4 mt-5 faq-title">   Book With Extra Flexibility</h2>
+                 
                   </div>
                </div>
             </div>
