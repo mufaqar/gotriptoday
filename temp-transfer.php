@@ -3,34 +3,26 @@
 
 get_header(); ?>
 
+<?php get_template_part('partials/content', 'breadcrumb'); ?>
 
-
-
-  <?php get_template_part('partials/content', 'breadcrumb'); ?>
-<!-- Tour Details Section -->
-<section class="tour-details-section">
+<!-- Booking Section -->
+<section class="booking-section">
     <!-- Divider -->
     <div class="divider"></div>
 
     <div class="container">
-        <div class="row g-5">
-            <div class="col-12 col-lg-12">
-              <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
+        <div class="row">
+            <div class="col-12 col-lg-12 go_trip_bookingform">
+                <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
             </div>
         </div>
-
         <!-- Divider -->
         <div class="divider"></div>
     </div>
 </section>
 
-
-
-
-
 <section>
     <!-- Divider -->
-    <div class="divider"></div>
     <div class="divider-sm"></div>
 
     <div class="container">
@@ -48,15 +40,14 @@ get_header(); ?>
                 while ($vehicle_query->have_posts()):
                     $vehicle_query->the_post();
                     ?>
-            <?php get_template_part( 'partials/veh', 'card' ); ?>
-            <?php
+                    <?php get_template_part('partials/veh', 'card'); ?>
+                    <?php
                 endwhile;
                 wp_reset_postdata();
             else:
                 echo '<p>No vehicles found.</p>';
             endif;
             ?>
-
         </div>
     </div>
 
