@@ -303,7 +303,7 @@
                         </div>
 
                         <!-- Get A Quote -->
-                        <a class="btn btn-success" href="<?php echo home_url('/contact'); ?>">Get a Quote <i
+                        <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Custom Booking<i
                                 class="icon-arrow-right"></i></a>
                     </div>
                 </div>
