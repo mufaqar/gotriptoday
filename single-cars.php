@@ -135,14 +135,7 @@ get_template_part('partials/content', 'breadcrumb', [
                     <!-- Widget -->
                     <div class="sidebar-widget car_booking_form">
                         <?php echo do_shortcode('[jet_fb_form form_id="23745" submit_type="reload" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear=""]')?>
-                        <!-- Follow  -->
-                        <div class="hotel-follow-nav mt-4">
-                            <a href="#"><i class="ti ti-brand-facebook"></i></a>
-                            <a href="#"><i class="ti ti-brand-x"></i></a>
-                            <a href="#"><i class="ti ti-brand-instagram"></i></a>
-                            <a href="#"><i class="ti ti-brand-linkedin"></i></a>
-                        </div>
-                    </div>
+                     </div>
                 </div>
             </div>
         </div>
