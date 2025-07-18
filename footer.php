@@ -10,22 +10,37 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="footer-card pe-lg-5">
                     <a href="<?php bloginfo('url'); ?>" class="footer-logo mb-4">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" width="190" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" width="190"
+                            alt="">
                     </a>
                     <p class="mb-4 text-white"> connects you with exclusive chauffeur services, focusing on luxury,
                         comfort, and punctuality.
                         We partner with top-rated, English-speaking and local drivers to ensure seamless day trips,
                         transfers, and business travel—all with a premium fleet tailored to your needs.</p>
 
+
+                    <div class="footer_rating">
+                        <p>
+                            <span>
+                                <i class="ti ti-star"></i>
+                                <i class="ti ti-star"></i>
+                                <i class="ti ti-star"></i>
+                                <i class="ti ti-star"></i>
+                                <i class="ti ti-star"></i>
+                            </span>
+                            Rated 4.9/5 by 400+ happy travelers
+                        </p>
+                        <p>Secure booking guaranteed</p>
+                    </div>
+
                     <!-- Subscribe Form -->
                     <div class="subscribe-form">
-                        <input class="form-control" type="email" value="touria@gmail.com" placeholder="Email Address">
+                        <input class="form-control" type="email" value="info@gotriptoday.com"
+                            placeholder="Email Address">
                         <button type="submit" class="btn">
                             <i class="icon-arrow-right"></i>
                         </button>
                     </div>
-
-
                 </div>
             </div>
 
@@ -34,7 +49,7 @@
                 <div class="footer-card">
                     <h5 class="mb-5 card-title text-white">Popular Routes</h5>
 
-                    <?php wp_nav_menu( array( 'theme_location' => 'footer_routes', 'container'      => false, 'menu_class'     => 'footer-nav',) ); ?>
+                    <?php wp_nav_menu(array('theme_location' => 'footer_routes', 'container' => false, 'menu_class' => 'footer-nav', )); ?>
                 </div>
             </div>
 
@@ -43,7 +58,7 @@
             <div class="col-12 col-sm-6 col-xl">
                 <div class="footer-card">
                     <h5 class="mb-5 card-title text-white">We Offer</h5>
-                    <?php wp_nav_menu( array( 'theme_location' => 'footer_offer', 'container'      => false, 'menu_class'     => 'footer-nav',) ); ?>
+                    <?php wp_nav_menu(array('theme_location' => 'footer_offer', 'container' => false, 'menu_class' => 'footer-nav', )); ?>
                 </div>
             </div>
 
@@ -51,7 +66,7 @@
             <div class="col-12 col-sm-6 col-xl">
                 <div class="footer-card">
                     <h5 class="mb-5 card-title text-white">Legal Information</h5>
-                    <?php wp_nav_menu( array( 'theme_location' => 'footer_legal', 'container'      => false, 'menu_class'     => 'footer-nav',) ); ?>
+                    <?php wp_nav_menu(array('theme_location' => 'footer_legal', 'container' => false, 'menu_class' => 'footer-nav', )); ?>
                 </div>
             </div>
 
@@ -87,17 +102,14 @@
                     </div>
                     <!-- Social Nav -->
                     <div class="social-nav">
-                        <a href="#">
+                        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank">
                             <i class="ti ti-brand-facebook"></i>
                         </a>
-                        <a href="#">
-                            <i class="ti ti-brand-x"></i>
-                        </a>
-                        <a href="#">
-                            <i class="ti ti-brand-linkedin"></i>
-                        </a>
-                        <a href="#">
+                        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank">
                             <i class="ti ti-brand-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@gotriptoday" target="_blank">
+                            <i class="ti ti-brand-tiktok"></i>
                         </a>
                     </div>
                 </div>
@@ -122,10 +134,20 @@
                 <!-- Footer Bottom Nav -->
                 <div class="col-12 col-md-6">
                     <div class="footer-bottom-nav">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Legal Agreement</a>
-
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visa.png" alt="visa"
+                            width="34" />
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mastercard.png"
+                            alt="mastercard" width="34" />
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/paypal.png" alt="paypal"
+                            width="34" />
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/amex.png" alt="amex"
+                            width="34" />
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/apple-pay.png"
+                            alt="apple-pay" width="34" />
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/google-pay.png"
+                            alt="google-pay" width="34" />
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/stripe.png" alt="stripe"
+                            width="34" />
                     </div>
                 </div>
             </div>
