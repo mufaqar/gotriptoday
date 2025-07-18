@@ -9,7 +9,7 @@
               <p> <?php echo get_post_meta($post->ID, "car_equivalent", true); ?></p>
 
               <div class="post-img mb-3">
-                  <a class="" href="<?php the_permalink() ?>">
+                  <a  href="<?php the_permalink() ?>">
                       <?php if ( has_post_thumbnail() ) {
 				           the_post_thumbnail('full', ['class' => 'vehicle_feature']);
 					} else { ?>
