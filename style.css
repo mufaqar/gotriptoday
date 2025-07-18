@@ -8390,7 +8390,7 @@ picture.jarallax-img img {
 
 @media only screen and (min-width: 1200px) {
   .footer-bottom-nav {
-    gap: 2rem;
+    gap: 5px;
   }
 }
 
@@ -9712,3 +9712,10 @@ textarea.form-control {
 
 .chbs-copyright { display: none !important;}
 .mtn { margin-top: -60px;}
+.footer_rating p i{
+  color: #FFB400;
+}
+.footer_rating p{
+  font-size: 14px;
+  color: #fff;
+}
