@@ -131,7 +131,7 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                                 <i class="ti ti-plane"></i>
+                                <i class="ti ti-plane"></i>
                             </div>
                             <div>
                                 <h4>Hassle-Free Airport Transfers</h4>
@@ -144,7 +144,7 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                                  <i class="ti ti-ruler-measure"></i>
+                                <i class="ti ti-ruler-measure"></i>
                             </div>
                             <div>
                                 <h4>Day Trips & Long-Distance Rides</h4>
@@ -215,9 +215,9 @@ get_header(); ?>
                         $tours_query->the_post();
                         ?>
 
-                        <?php get_template_part('partials/tour', 'slide'); ?>
+                <?php get_template_part('partials/tour', 'slide'); ?>
 
-                        <?php
+                <?php
                     endwhile;
                     wp_reset_postdata();
                 else:
@@ -274,10 +274,10 @@ get_header(); ?>
 
                     </div>
                 </div>
-            </div>          
+            </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="featured-destination-card wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="">                
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="">
                     <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
                         <div>
                             <h4 class="text-white">City Tour</h4>
@@ -322,7 +322,7 @@ get_header(); ?>
                         Germany and serving international travelers,</p>
                 </div>
 
-                <form class="me-lg-5" action="#">
+                <form id="contactForm" class="me-lg-5" action="#" method="post">
                     <div class="contact-form">
                         <div class="row g-4">
                             <div class="col-12">
@@ -360,13 +360,8 @@ get_header(); ?>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <select name="subject" id="subject" class="touria-select2 bg-secondary">
-                                    <option value="" selected>Select Subject</option>
-                                    <option value="tour-booking">Tour Booking</option>
-                                    <option value="travel-plan">Travel Plan</option>
-                                    <option value="travel-insurance">Travel Insurance</option>
-                                    <option value="travel-tips">Travel Tips</option>
-                                </select>
+                                <input type="text" id="subject" class="form-control bg-secondary" name="subject"
+                                    placeholder="Subject">
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
@@ -379,7 +374,7 @@ get_header(); ?>
                                         </svg>
                                     </label>
                                     <textarea name="message" id="message" class="form-control bg-secondary"
-                                        placeholder="Your Comment *"></textarea>
+                                        placeholder="Your message *"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -389,6 +384,7 @@ get_header(); ?>
                                 class="icon-arrow-right"></i></button>
                     </div>
                 </form>
+                <div id="formResponse"></div>
             </div>
 
             <div class="col-12 col-lg-6">
@@ -438,7 +434,8 @@ get_header(); ?>
 
             <div class="col-12 col-md-6">
                 <div class="text-md-end">
-                    <a href="<?php bloginfo('url'); ?>/blog" class="btn btn-success">View All Blogs <i class="icon-arrow-right"></i></a>
+                    <a href="<?php bloginfo('url'); ?>/blog" class="btn btn-success">View All Blogs <i
+                            class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>

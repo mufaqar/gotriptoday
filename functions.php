@@ -12,6 +12,7 @@
 
 
     include_once('inc/class-walker-touria.php');
+        include_once('inc/extra.php');
 
 	// Add RSS links to <head> section
 	automatic_feed_links();
@@ -85,15 +86,21 @@ register_nav_menus( array(
 
 
 function fallbackmenu1(){ ?>
-			<div id="menu">
-				<ul><li> Go to Adminpanel > Appearance > Menus to create your menu. You should have WP 3.0+ version for custom menus to work.</li></ul>
-			</div>
+<div id="menu">
+    <ul>
+        <li> Go to Adminpanel > Appearance > Menus to create your menu. You should have WP 3.0+ version for custom menus
+            to work.</li>
+    </ul>
+</div>
 <?php }
 
 function fallbackmenu2(){ ?>
-			<div id="menu">
-				<ul><li> Go to Adminpanel > Appearance > Menus to create your menu. You should have WP 3.0+ version for custom menus to work.</li></ul>
-			</div>
+<div id="menu">
+    <ul>
+        <li> Go to Adminpanel > Appearance > Menus to create your menu. You should have WP 3.0+ version for custom menus
+            to work.</li>
+    </ul>
+</div>
 <?php }
 
 function add_more_buttons($buttons) {
@@ -118,4 +125,11 @@ function add_first_and_last($items) {
  
 add_filter('wp_nav_menu_objects', 'add_first_and_last');
 
-?>
+function enqueue_ajax_contact_form_script() {
+    wp_enqueue_script('ajax-contact', get_stylesheet_directory_uri() . '/assets/js/ajax.js', array('jquery'), null, true);
+    wp_localize_script('ajax-contact', 'ajaxContact', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce'   => wp_create_nonce('ajax-contact-nonce')
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_ajax_contact_form_script');

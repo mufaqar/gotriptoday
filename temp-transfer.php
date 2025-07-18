@@ -17,7 +17,14 @@ get_template_part('partials/content', 'breadcrumb', [
 
     <div class="container">
         <div class="row">
+             <div class="col-12 col-md-12">
+                <div class="section-heading text-center">             
+                    <h2 class="mtn mb-5">24h free cancellation Guaranteed</h2>
+                </div>
+            </div>
             <div class="col-12 col-lg-12 go_trip_bookingform">
+
+        
                 <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
             </div>
         </div>
