@@ -9709,3 +9709,5 @@ textarea.form-control {
   margin: 0 auto;
   /* Centers the image */
 }
+
+.chbs-copyright { display: none !important;}
