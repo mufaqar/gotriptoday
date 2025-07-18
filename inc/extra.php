@@ -18,7 +18,7 @@ function handle_contact_form() {
     }
 
     // Send Email
-    $to = get_option('admin_email');
+    $to = 'mufaqar@gmail.com';
     $headers = array('Content-Type: text/html; charset=UTF-8');
     $body = "<strong>Name:</strong> $name<br><strong>Email:</strong> $email<br><strong>Subject:</strong> $subject<br><strong>Message:</strong><br>$message";
 
