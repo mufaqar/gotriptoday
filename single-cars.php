@@ -155,5 +155,9 @@ get_template_part('partials/content', 'breadcrumb', [
 
 
 
+<?php get_template_part('partials/related', 'tours'); ?>
+
+
+
 
 <?php get_footer(); ?>

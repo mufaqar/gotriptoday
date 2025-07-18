@@ -147,7 +147,9 @@ get_template_part('partials/content', 'breadcrumb', [
                             if ($tours_query->have_posts()):
                                 while ($tours_query->have_posts()):
                                     $tours_query->the_post();
+                                    echo '<div class="col-12 col-lg-6">';
                                     get_template_part('partials/tour', 'card'); 
+                                    echo '</div>';
                                 endwhile;
                                 wp_reset_postdata();
                             else:

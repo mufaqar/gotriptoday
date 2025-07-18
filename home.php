@@ -169,22 +169,15 @@ get_header(); ?>
 </section>
 
 
-<!-- Deals Section -->
+<!-- Tours Section -->
 <section class="deals-section">
-
-
-    <!-- Deals Content -->
     <div class="container">
-        <!-- Divider -->
         <div class="divider"></div>
-
-        <!-- Section Heading -->
         <div class="d-flex flex-wrap justify-content-between gap-5 align-items-center">
             <div class="section-heading">
                 <span class="sub-title text-success">Day Trips Options</span>
                 <h2 class="mb-0 text-white">Book Your Next Day Trips</h2>
             </div>
-
             <div class="deals-navigation-container">
                 <div class="deals-button-prev">
                     <i class="icon-arrow-left"></i>
@@ -196,41 +189,38 @@ get_header(); ?>
         </div>
 
         <div class="divider-sm"></div>
-
-        <!-- Deals Slider -->
+        <!-- Tour Slider -->
         <div class="swiper deals-swiper">
             <div class="swiper-wrapper">
 
                 <?php
-                $args = array(
-                    'post_type' => 'tours',
-                    'posts_per_page' => 10, // Change this number as needed
-                    'post_status' => 'publish',
-                );
+                    $args = array(
+                        'post_type' => 'tours',
+                        'posts_per_page' => 10, // Change this number as needed
+                        'post_status' => 'publish',
+                    );
 
-                $tours_query = new WP_Query($args);
+                    $tours_query = new WP_Query($args);
 
-                if ($tours_query->have_posts()):
-                    while ($tours_query->have_posts()):
-                        $tours_query->the_post();
-                        ?>
+                    if ($tours_query->have_posts()):
+                        while ($tours_query->have_posts()):
+                            $tours_query->the_post();
+                            ?>
 
                 <?php get_template_part('partials/tour', 'slide'); ?>
 
                 <?php
-                    endwhile;
-                    wp_reset_postdata();
-                else:
-                    echo '<p>No tours found.</p>';
-                endif;
-                ?>
+                        endwhile;
+                        wp_reset_postdata();
+                    else:
+                        echo '<p>No tours found.</p>';
+                    endif;
+                    ?>
 
 
 
             </div>
         </div>
-
-        <!-- Divider -->
         <div class="divider"></div>
     </div>
 </section>
