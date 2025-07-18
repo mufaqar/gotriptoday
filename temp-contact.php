@@ -111,36 +111,37 @@ get_template_part('partials/content', 'breadcrumb', [
             <div class="divider-sm"></div>
 
             <!-- Contact Form -->
-            <form action="#">
+             <form id="contactForm" class="me-lg-5" action="#" method="post">
                 <div class="row g-4">
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="First Name*">
+                            <input type="text" id="name" class="form-control" placeholder="Your Name*">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Last Name*">
+                            <input type="text" id="subject" class="form-control" placeholder="subject">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone*">
+                            <input type="text" id="phone" class="form-control" placeholder="Phone*">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email*">
+                            <input type="email" id="email" class="form-control" placeholder="Email*">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Write your message"></textarea>
+                            <textarea class="form-control" id="message" placeholder="Write your message"></textarea>
                         </div>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-success w-100 mt-3">Send Message <i
                                 class="icon-arrow-right"></i></button>
+                                     <div id="formResponse"></div>
                     </div>
                 </div>
             </form>
