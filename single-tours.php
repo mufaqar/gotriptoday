@@ -250,7 +250,7 @@ get_template_part('partials/content', 'breadcrumb', [
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5">
                     <!-- Widget -->
-                    <div class="sidebar-widget">
+                    <div class="sidebar-widget tour_booking_form">
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
 
                         <?php echo do_shortcode('[jet_fb_form form_id="24940" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear="1"]')?>
