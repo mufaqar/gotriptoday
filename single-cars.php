@@ -133,7 +133,7 @@ get_template_part('partials/content', 'breadcrumb', [
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5">
                     <!-- Widget -->
-                    <div class="sidebar-widget">
+                    <div class="sidebar-widget car_booking_form">
                         <?php echo do_shortcode('[jet_fb_form form_id="23745" submit_type="reload" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear=""]')?>
                         <!-- Follow  -->
                         <div class="hotel-follow-nav mt-4">
