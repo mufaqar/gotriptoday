@@ -5,8 +5,8 @@
           <!-- Post Body -->
           <div class="post-body">
 
-              <h3> <a class="post-title h4" href="<?php the_permalink() ?>">Economy Van</a></h3>
-              <p> Mercedes-Benz Vito or similar</p>
+              <h3> <a class="post-title h4" href="<?php the_permalink() ?>"><?php the_title()?></a></h3>
+              <p> <?php echo get_post_meta($post->ID, "car_equivalent", true); ?></p>
 
               <div class="post-img mb-3">
                   <a class="" href="<?php the_permalink() ?>">
@@ -22,9 +22,9 @@
 
               <ul class="list-unstyled d-flex flex-row gap-3">
                   <li><i class="ti ti-location"></i>
-                      <?php //echo get_post_meta($post->ID, "distination", true); ?>Passengers 12 </li>
-                  <li><i class="ti ti-clock"></i> <?php echo get_post_meta($post->ID, "duration_time", true); ?>Luggage
-                      10-12 </li>
+                      Passengers <?php echo get_post_meta($post->ID, "passengers", true); ?> </li>
+                  <li><i class="ti ti-clock"></i> Luggage
+                      <?php echo get_post_meta($post->ID, "large_bag", true); ?> </li>
               </ul>
           </div>
       </div>
