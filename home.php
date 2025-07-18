@@ -245,7 +245,7 @@ get_header(); ?>
             <div class="col-12 col-sm-6">
                 <div class="section-heading">
                     <span class="sub-title text-success">Popular Destination</span>
-                    <h2 class="mb-0">Featured Destination</h2>
+                    <h2 class="mb-0">Top Picks for Your Journey</h2>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
@@ -274,17 +274,12 @@ get_header(); ?>
 
                     </div>
                 </div>
-            </div>
-
-            <!-- Featured Destination Card -->
+            </div>          
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="featured-destination-card wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="">
-
-                    <!-- Overlay Content -->
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="">                
                     <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
                         <div>
-
                             <h4 class="text-white">City Tour</h4>
                             <p class="mt-1 text-white">Explore the city's highlights in ultimate comfort and style</p>
                         </div>
@@ -292,16 +287,11 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-
-            <!-- Featured Destination Card -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="featured-destination-card wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/reserve.jpg" alt="">
-
-                    <!-- Overlay Content -->
                     <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
                         <div>
-
                             <h4 class="text-white">Reserve Your Fleet</h4>
                             <p class="mt-1 text-white">Discover Our Premium Fleet Now</p>
                         </div>
@@ -309,7 +299,6 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
