@@ -3,7 +3,11 @@
 
 get_header(); ?>
 
-<?php get_template_part('partials/content', 'breadcrumb'); ?>
+<?php $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/images/custom-booking.webp';
+
+get_template_part('partials/content', 'breadcrumb', [
+    'bg' => $bg_image
+]); ?>
 
 <section class="">
     <!-- Divider -->
@@ -13,7 +17,7 @@ get_header(); ?>
         <div class="row g-5">
             <!-- Form -->
             <div class="col-12 col-lg-6">
-                <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                <div class="go_trip_Customform wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
                     <?php echo do_shortcode('[jet_fb_form form_id="23868" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="1" clear=""]') ?>
                 </div>
             </div>
@@ -35,8 +39,8 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                                 <i class="ti ti-shopping-cart-cog"></i>
-                                
+                                <i class="ti ti-shopping-cart-cog"></i>
+
                             </div>
                             <div>
                                 <h4>Custom Booking</h4>
@@ -48,7 +52,7 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                                 <i class="ti ti-table-options"></i>
+                                <i class="ti ti-table-options"></i>
                             </div>
                             <div>
                                 <h4>Flexible Customization </h4>
@@ -59,7 +63,7 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                                  <i class="ti ti-clock-bolt"></i>
+                                <i class="ti ti-clock-bolt"></i>
                             </div>
                             <div>
                                 <h4>Fast Confirmation</h4>
@@ -71,7 +75,7 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                               <i class="ti ti-shield-half"></i>
+                                <i class="ti ti-shield-half"></i>
                             </div>
                             <div>
                                 <h4>Comfort & Safety</h4>
@@ -80,10 +84,6 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Button -->
-                    <a href="<?php bloginfo('url'); ?>/about-us" class="btn btn-success">More About Us <i
-                            class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>
