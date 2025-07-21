@@ -9682,8 +9682,8 @@ textarea.form-control {
 }
 .go_trip_bookingform .chbs-main .chbs-meta-icon-2
 {
-    top: 50%;
-    transform: translateY(50%);
+    top: 52%;
+    transform: translateY(52%);
 }
 
 .go_trip_bookingform .chbs-button-style-1 {
@@ -9772,13 +9772,6 @@ textarea.form-control {
 .go_trip_Customform .jet-form-builder hr {
   display: none;
 }
-
-/* .go_trip_Customform .field-type-submit-field {
-  padding: 16px 40px;
-  background-color: #3cb371;
-  border-radius: 0 0 18px 18px;
-  margin: auto -40px;
-} */
 
 .go_trip_Customform .jet-form-builder__action-button {
   background-color: #3cb371;
@@ -9940,4 +9933,14 @@ textarea.form-control {
 .footer-bottom-nav .icon {
   font-size: 32px;
   color: #ffffff;
+}
+.gotrip_login_form{
+background-color: #ffffff !important;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 0 10px 0px #00000014;
+}
+.gotrip_login_form .um-misc-img img.gravatar {
+      width: 90px;
+    margin-bottom: 25px;
 }
