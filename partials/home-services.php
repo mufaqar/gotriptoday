@@ -100,10 +100,10 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-bus-stop"></i>
+                                         <i class="ti ti-bus-stop"></i>
                                      </div>
                                      <h6 class="d-inline">Add Custom Stops</h6>
-                                     <p>Scenic or personal stops onway./p>
+                                     <p>Scenic or personal stops onway.</p>
 
 
                                  </li>
@@ -118,7 +118,7 @@
                                  </li>
                                  <li>
                                      <div class="icon">
-                                         <i class="ti ti-map-menorah"></i>
+                                         <i class="ti ti-menorah"></i>
                                      </div>
                                      <h6 class="d-inline">Confirm & Enjoy</h6>
                                      <p>With 24h free cancellation.</p>

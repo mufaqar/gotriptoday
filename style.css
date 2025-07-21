@@ -9559,10 +9559,22 @@ textarea.form-control {
 .go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav {
   display: flex !important;
   flex-direction: row !important;
+  border-radius: 50px !important;
+  background-color: #f7f7f7;
+  margin-bottom: 20px;
 }
 
 .go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav>li {
   width: 50% !important;
+  border-radius: 50px !important;
+}
+
+.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav>li a {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
 }
 
 .go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active>a {
@@ -9571,11 +9583,37 @@ textarea.form-control {
 }
 
 .go_trip_bookingform .chbs-booking-form-id-10007 .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active+li>a {
-  border-left-color: #3cb371 !important;
+  border: none !important;
 }
 
 .go_trip_bookingform .chbs-booking-form-id-10007 .chbs-tab.ui-tabs .ui-tabs-panel {
-  border-top-color: #3cb371 !important;
+  border: none !important;
+}
+
+.go_trip_bookingform .chbs-main .ui-tabs-panel {
+  padding: 25px !important;
+  border-radius: 18px !important;
+  box-shadow: 0 0 10px 0px #00000014;
+}
+
+.go_trip_bookingform .chbs-main .ui-tabs-panel .chbs-form-label-group {
+  background-color: transparent;
+  margin-top: 10px;
+}
+
+.go_trip_bookingform .chbs-main .ui-tabs-panel .chbs-form-field {
+  border: none;
+}
+
+.go_trip_bookingform .chbs-main .ui-tabs-panel input,
+.go_trip_bookingform .chbs-main .ui-tabs-panel select,
+.go_trip_bookingform .chbs-main .ui-tabs-panel .ui-selectmenu-button {
+  background-color: #f7f7ff !important;
+  border-radius: 50px;
+  font-size: 16px;
+  border: 0;
+  padding: 20px;
+  color: #767676;
 }
 
 .go_trip_bookingform .chbs-button-style-1 {
@@ -9767,9 +9805,11 @@ textarea.form-control {
   background-color: #161922;
   color: #fff;
 }
-.tour_booking_form h4{
-   color: #161922 !important;
+
+.tour_booking_form h4 {
+  color: #161922 !important;
 }
+
 .tour_booking_form input {
   height: 50px;
   font-size: 16px;
@@ -9787,14 +9827,17 @@ textarea.form-control {
   color: #161922;
   margin-bottom: 12px;
 }
-.tour_booking_form .wp-container-jet-forms-choices-field-is-layout-3d213aab{
-      flex-direction: row!important;
+
+.tour_booking_form .wp-container-jet-forms-choices-field-is-layout-3d213aab {
+  flex-direction: row !important;
 }
+
 .tour_booking_form .wp-container-jet-forms-choice-is-layout-0372c50a {
-    width: 31%;
-    background-color: #fff;
-    border-color: transparent!important;
+  width: 31%;
+  background-color: #fff;
+  border-color: transparent !important;
 }
+
 .tour_booking_form .jet-form-builder__action-button {
   background-color: rgb(60, 179, 113);
   color: rgb(255, 255, 255);
