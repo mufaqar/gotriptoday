@@ -1,5 +1,5 @@
 <?php
-/*Template Name: Login*/
+/*Template Name: Login */
 
 get_header(); ?>
 
@@ -9,6 +9,10 @@ get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image
 ]); ?>
 
+
+<div class="contact-form">
+    <?php echo do_shortcode('[ultimatemember form_id="26381"]')?>
+</div>
 
 
 
