@@ -134,6 +134,27 @@
                 <!-- Footer Bottom Nav -->
                 <div class="col-12 col-md-6">
                     <div class="footer-bottom-nav">
+                        <div class="icon">
+                            <i class="ti ti-brand-visa"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="ti ti-brand-mastercard"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="ti ti-brand-paypal"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="ti ti-brand-amex"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="ti ti-brand-apple"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="ti ti-brand-visa"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="ti ti-brand-visa"></i>
+                        </div>
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visa.png" alt="visa"
                             width="34" />
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mastercard.png"
