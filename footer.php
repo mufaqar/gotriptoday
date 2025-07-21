@@ -68,18 +68,12 @@
                 <div class="footer-card">
 
                     <h5 class="mb-5 card-title text-white">Legal Information</h5>
-                    <div class="my-5">
+                    <div class="mb-3">
                         <?php wp_nav_menu(array('theme_location' => 'footer_legal', 'container' => false, 'menu_class' => 'footer-nav', )); ?>
                     </div>
 
                     <div class="d-flex flex-column gap-4">
-                        <!-- Contact Card -->
-                        <div class="footer-contact-card">
-                            <div class="icon">
-                                <i class="ti ti-map-pin"></i>
-                            </div>
-                            <p class="mb-0 text-white">258 Street Avenue, Berlin, Germany</p>
-                        </div>
+                       
 
                         <!-- Contact Card -->
                         <div class="footer-contact-card">
