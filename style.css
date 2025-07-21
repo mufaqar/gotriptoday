@@ -9680,6 +9680,11 @@ textarea.form-control {
   padding: 10px 20px !important;
   color: #767676 !important;
 }
+.go_trip_bookingform .chbs-main .chbs-meta-icon-2
+{
+    top: 52%;
+    transform: translateY(52%);
+}
 
 .go_trip_bookingform .chbs-button-style-1 {
   background-color: #3cb371 !important;
@@ -9729,11 +9734,6 @@ textarea.form-control {
     padding-bottom: 0;
   }
 
-  .go_trip_Customform .field-type-submit-field {
-    padding: 16px 20px !important;
-    margin: auto -20px !important;
-  }
-
   .mtn {
     margin-top: 60px !important;
   }
@@ -9746,10 +9746,10 @@ textarea.form-control {
 }
 
 .go_trip_Customform {
-  background-color: #f7f7f7 !important;
-  padding: 40px;
-  padding-bottom: 0;
-  border-radius: 18px 18px 0 0;
+  background-color: #ffffff !important;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 0 10px 0px #00000014;
 }
 
 .go_trip_Customform .jet-form-builder__label-text {
@@ -9766,24 +9766,16 @@ textarea.form-control {
   border: 0;
   padding: 10px 20px;
   color: #767676;
-  background-color: #fff;
+  background-color: #f7f7f7;
 }
 
 .go_trip_Customform .jet-form-builder hr {
   display: none;
 }
 
-.go_trip_Customform .field-type-submit-field {
-  padding: 16px 40px;
-  background-color: #3cb371;
-  border-radius: 0 0 18px 18px;
-  margin: auto -40px;
-}
-
 .go_trip_Customform .jet-form-builder__action-button {
-  background-color: #ffffff;
-  color: #161920;
-  height: 60px;
+  background-color: #3cb371;
+  color: #ffffff;
   padding: 16px 32px;
   font-size: 16px;
   border-radius: 5rem;
@@ -9941,4 +9933,14 @@ textarea.form-control {
 .footer-bottom-nav .icon {
   font-size: 32px;
   color: #ffffff;
+}
+.gotrip_login_form{
+background-color: #ffffff !important;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 0 10px 0px #00000014;
+}
+.gotrip_login_form .um-misc-img img.gravatar {
+      width: 90px;
+    margin-bottom: 25px;
 }
