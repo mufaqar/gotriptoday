@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <?php if (is_search()) { ?>
     <meta name="robots" content="noindex, nofollow" />
@@ -43,6 +44,7 @@
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <?php if ( is_singular() ) wp_enqueue_script('comment-reply'); ?>
     <?php wp_head(); ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/custom.css">
 </head>
 
 <body <?php body_class(); ?>>
@@ -75,7 +77,8 @@
                         </div>
                         <div>
                             <h4>Choose Trip Type</h4>
-                            <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly Service</p>
+                            <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly Service
+                            </p>
                         </div>
                     </div>
 
@@ -97,7 +100,8 @@
                         </div>
                         <div>
                             <h4>Get Instant Price & Confirm</h4>
-                            <p class="mb-0">See your price instantly. Review the service and confirm your booking with a few clicks</p>
+                            <p class="mb-0">See your price instantly. Review the service and confirm your booking with a
+                                few clicks</p>
                         </div>
                     </div>
 
@@ -108,11 +112,13 @@
                         </div>
                         <div>
                             <h4>Ride in Comfort</h4>
-                            <p class="mb-0">Your professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a smooth journey</p>
+                            <p class="mb-0">Your professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a
+                                smooth journey</p>
                         </div>
                     </div>
 
-                    <a href="<?php echo home_url('/custom-booking'); ?>" class="btn btn-success">Book Now <i class="icon-arrow-right"></i></a>
+                    <a href="<?php echo home_url('/custom-booking'); ?>" class="btn btn-success">Book Now <i
+                            class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -280,7 +286,7 @@
                         <!-- Search Button -->
                         <div class="header-search-btn">
                             <a href="" class="btn">
-                                 <i class="ti ti-user-check"></i>
+                                <i class="ti ti-user-check"></i>
                             </a>
                         </div>
 
@@ -292,5 +298,3 @@
             </nav>
         </div>
     </header>
-
-    
