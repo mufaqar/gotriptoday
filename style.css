@@ -404,8 +404,8 @@ textarea:invalid {
 }
 
 .btn-light {
-  background-color: #ffffff;
-  color: #161920;
+  background-color: #3cb371;
+    color: #ffffff;
 }
 
 .btn-light:active,
@@ -8908,7 +8908,10 @@ textarea.form-control {
     height: 92px;
   }
 }
-
+#contactForm{
+ box-shadow: 0 0 10px 0px #00000014;
+ border-radius: 0 0 18px 18px;
+}
 .contact-section .contact-form {
   padding: 40px;
   background-color: #ffffff;
@@ -8956,7 +8959,7 @@ textarea.form-control {
 
 .contact-section .submit-btn {
   padding: 16px 40px;
-  background-color: #3cb371;
+  background-color: #ffffff;
   border-radius: 0 0 18px 18px;
 }
 
@@ -9518,6 +9521,24 @@ textarea.form-control {
   padding-bottom: 0 !important;
 }
 
+.go_trip_form .chbs-button-widget-submit {
+  background-color: #3cb371 !important;
+  color: #fff !important;
+  width: 100% !important;
+  border: none !important;
+  padding: 16px 32px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  -webkit-transition: all 350ms;
+  transition: all 350ms;
+  text-transform: capitalize;
+}
+
+.go_trip_form .chbs-button-widget-submit:hover {
+  background-color: rgb(22, 25, 34) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
 .tour_feature {
   max-height: 260px;
   object-fit: cover;
@@ -9596,24 +9617,31 @@ textarea.form-control {
   box-shadow: 0 0 10px 0px #00000014;
 }
 
-.go_trip_bookingform .chbs-main .ui-tabs-panel .chbs-form-label-group {
+.go_trip_bookingform .chbs-main .chbs-form-label-group {
   background-color: transparent;
-  margin-top: 10px;
+  color: #161920;
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.go_trip_bookingform .chbs-main .ui-tabs-panel .chbs-form-field {
+.go_trip_bookingform .chbs-main .chbs-form-field {
   border: none;
 }
+.go_trip_bookingform .chbs-main .chbs-form-field>label {
+  color: #161920;
+  font-size: 14px;
+  font-weight: 600;
+}
 
-.go_trip_bookingform .chbs-main .ui-tabs-panel input,
-.go_trip_bookingform .chbs-main .ui-tabs-panel select,
-.go_trip_bookingform .chbs-main .ui-tabs-panel .ui-selectmenu-button {
+.go_trip_bookingform .chbs-main input,
+.go_trip_bookingform .chbs-main select,
+.go_trip_bookingform .chbs-main .ui-selectmenu-button {
   background-color: #f7f7ff !important;
   border-radius: 50px;
-  font-size: 16px;
-  border: 0;
-  padding: 20px;
-  color: #767676;
+  font-size: 16px !important;
+  border: 0 !important;
+  padding: 10px 20px !important;
+  color: #767676 !important;
 }
 
 .go_trip_bookingform .chbs-button-style-1 {
