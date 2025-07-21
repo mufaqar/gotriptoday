@@ -155,20 +155,7 @@
                         <div class="icon">
                             <i class="ti ti-brand-visa"></i>
                         </div>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visa.png" alt="visa"
-                            width="34" />
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/mastercard.png"
-                            alt="mastercard" width="34" />
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/paypal.png" alt="paypal"
-                            width="34" />
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/amex.png" alt="amex"
-                            width="34" />
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/apple-pay.png"
-                            alt="apple-pay" width="34" />
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/google-pay.png"
-                            alt="google-pay" width="34" />
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/stripe.png" alt="stripe"
-                            width="34" />
+                       
                     </div>
                 </div>
             </div>
