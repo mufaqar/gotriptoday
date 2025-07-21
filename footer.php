@@ -153,7 +153,7 @@
                             <i class="ti ti-brand-visa"></i>
                         </div>
                         <div class="icon">
-                            <i class="ti ti-brand-visa"></i>
+                            <i class="ti ti-brand-stripe"></i>
                         </div>
                        
                     </div>
