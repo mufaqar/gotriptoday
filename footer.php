@@ -62,18 +62,15 @@
                 </div>
             </div>
 
-            <!-- Footer Card -->
-            <div class="col-12 col-sm-6 col-xl">
-                <div class="footer-card">
-                    <h5 class="mb-5 card-title text-white">Legal Information</h5>
-                    <?php wp_nav_menu(array('theme_location' => 'footer_legal', 'container' => false, 'menu_class' => 'footer-nav', )); ?>
-                </div>
-            </div>
 
             <!-- Footer Card -->
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="footer-card">
-                    <h5 class="mb-5 card-title text-white">Contact Us</h5>
+
+                    <h5 class="mb-5 card-title text-white">Legal Information</h5>
+                    <div class="my-5">
+                        <?php wp_nav_menu(array('theme_location' => 'footer_legal', 'container' => false, 'menu_class' => 'footer-nav', )); ?>
+                    </div>
 
                     <div class="d-flex flex-column gap-4">
                         <!-- Contact Card -->
@@ -155,7 +152,7 @@
                         <div class="icon">
                             <i class="ti ti-brand-stripe"></i>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
