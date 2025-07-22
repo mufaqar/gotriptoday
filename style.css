@@ -10015,3 +10015,6 @@ textarea.form-control {
   color: #3cb371 !important;
 }
 
+.footer-bottom-nav .icon svg{
+  width: 32px;
+}
