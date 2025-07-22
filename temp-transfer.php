@@ -18,8 +18,6 @@ get_template_part('partials/content', 'breadcrumb', [
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12 tour-details-content mtn">
-
-
                 <ul class="list-unstyled style-two style-three mb-3">
                     <li><i class="ti ti-lock-check"></i>Secure Booking </li>
                     <li><i class="ti ti-rosette-discount-check"></i>Satisfaction Guarantee </li>
