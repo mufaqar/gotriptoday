@@ -10011,5 +10011,7 @@ textarea.form-control {
 .tour-details-content ul.style-three li i {
   font-size: 32px;
 }
-
+.gotrip_login_form .um .um-field-checkbox.active:not(.um-field-radio-state-disabled) i{
+  color: #3cb371 !important;
+}
 

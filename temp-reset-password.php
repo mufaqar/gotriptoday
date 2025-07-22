@@ -1,5 +1,5 @@
 <?php
-/*Template Name: Login */
+/*Template Name: Password Reset */
 
 get_header(); ?>
 
@@ -37,8 +37,8 @@ get_template_part('partials/content', 'breadcrumb', [
             </div>
 
             <!-- Why Choose Content -->
-            <div class="col-12 col-lg-6 gotrip_login_form  align-items-center d-flex">
-                 <?php echo do_shortcode('[ultimatemember form_id="26381"]') ?>
+            <div class="col-12 col-lg-6 gotrip_login_form align-items-center d-flex">
+                 <?php echo do_shortcode('[ultimatemember_password]') ?>
             </div>
         </div>
     </div>
