@@ -25,7 +25,6 @@ get_template_part('partials/content', 'breadcrumb', [
                     <li><i class="ti ti-rosette-discount-check"></i>Satisfaction Guarantee </li>
                     <li><i class="ti ti-heart-check"></i> Flexible Scheduling </li>
                     <li><i class="ti ti-help"></i>24/7 Customer Support </li>
-                    <li><i class="ti ti-coin-euro"></i>Money-Back Guarantee </li>
                     <li><i class="ti ti-star"></i>5-Star Rated Service </li>
                     <li><i class="ti ti-plane-arrival"></i>Airport Pickup Guaranteed </li>
                 </ul>
