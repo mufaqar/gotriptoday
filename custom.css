@@ -1,3 +1,8 @@
-.chbs-meta-icon-2 .icon{
+.chbs-meta-icon-2 .icon {
   font-family: "chbs-meta-icon-2" !important;
+}
+
+
+.chbs-main [class*="chbs-meta-icon-plus"]:before , .chbs-main [class*="chbs-meta-icon-minus"]:before {
+  font-family: "chbs-meta-icon" !important;
 }

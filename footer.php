@@ -10,7 +10,7 @@
             <div class="col-12 col-sm-6 col-xl-4">
                 <div class="footer-card pe-lg-5">
                     <a href="<?php bloginfo('url'); ?>" class="footer-logo mb-4">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" width="190"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_white.png" width="190"
                             alt="">
                     </a>
                     <p class="mb-4 text-white"> connects you with exclusive chauffeur services, focusing on luxury,
