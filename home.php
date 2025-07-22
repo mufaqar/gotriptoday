@@ -175,8 +175,8 @@ get_header(); ?>
         <div class="divider"></div>
         <div class="d-flex flex-wrap justify-content-between gap-5 align-items-center">
             <div class="section-heading">
-                <span class="sub-title text-success">Day Trips Options</span>
-                <h2 class="mb-0 text-white">Book Your Next Day Trips</h2>
+                <span class="sub-title text-success">Fits Your Journey</span>
+                <h2 class="mb-0 text-white">Our Signature Travel Services</h2>
             </div>
             <div class="deals-navigation-container">
                 <div class="deals-button-prev">
