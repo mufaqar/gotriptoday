@@ -9966,3 +9966,6 @@ textarea.form-control {
   background-color: #161922 !important;
   color: #fff !important;
 }
+.gotrip_login_form .um .um-field-checkbox.active:not(.um-field-radio-state-disabled) i{
+  color: #3cb371 !important;
+}
