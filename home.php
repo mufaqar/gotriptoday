@@ -175,8 +175,8 @@ get_header(); ?>
         <div class="divider"></div>
         <div class="d-flex flex-wrap justify-content-between gap-5 align-items-center">
             <div class="section-heading">
-                <span class="sub-title text-success">Fits Your Journey</span>
-                <h2 class="mb-0 text-white">Our Signature Travel Services</h2>
+                <span class="sub-title text-success">Day Trips Options</span>
+                <h2 class="mb-0 text-white">Book Your Next Day Trips</h2>
             </div>
             <div class="deals-navigation-container">
                 <div class="deals-button-prev">
@@ -234,8 +234,9 @@ get_header(); ?>
         <div class="row g-4 g-lg-5 align-items-end">
             <div class="col-12 col-sm-6">
                 <div class="section-heading">
-                    <span class="sub-title text-success">Popular Destination</span>
-                    <h2 class="mb-0">Top Picks for Your Journey</h2>
+                    <span class="sub-title text-success">Fits Your Journey
+</span>
+                    <h2 class="mb-0">Our Signature Travel Services</h2>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
