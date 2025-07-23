@@ -765,7 +765,6 @@ textarea:invalid {
 .section-heading h2 {
   font-size: clamp(30px, 4vw, 50px);
   line-height: 1.2;
-  text-transform: capitalize;
   color: #161920;
 }
 
