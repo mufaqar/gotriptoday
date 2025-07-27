@@ -1,6 +1,27 @@
 <?php
 /* Template Name: Booking Details */
 get_header();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+    $tour_id = isset($_POST['tour_id']) ? $_POST['tour_id'] : '';
+    $tour_date = isset($_POST['tour_date']) ? $_POST['tour_date'] : '';
+    $tour_adults = isset($_POST['tour_adults']) ? $_POST['tour_adults'] : '';
+    $total_price = isset($_POST['tour_price']) ? $_POST['tour_price'] : '';
+
+
+    // Get tour details
+    $tour = get_post($tour_id);
+    if ($tour && $tour->post_type === 'tours') {
+        $tour_title = $tour->post_title;
+        $tour_image = get_the_post_thumbnail_url($post_id, 'medium');
+ 
+        }
+
+    }
+
+
 ?>
 
 
@@ -14,10 +35,10 @@ get_header();
         <div class="row g-5">
             <div class="col-12 col-lg-8">
 
-                <div class="content">                 
+                <div class="content">
                     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
                     <form action="<?php echo esc_url(site_url('/process-booking')); ?>" method="POST">
-                     
+
                         <input type="hidden" name="tour_date" value="<?php echo esc_attr($_POST['tour-date']); ?>">
                         <input type="hidden" name="adult" value="<?php echo esc_attr($_POST['tickets']); ?>">
 
@@ -25,8 +46,7 @@ get_header();
                         <div class="step p-4 shadow-sm border-0 mb-5">
                             <h5 class="mb-3"><span class="fw-bold">1</span> Contact details</h5>
                             <p class="text-muted">We’ll use this information to send you confirmation and updates about
-                                your
-                                booking</p>
+                                your booking</p>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -66,14 +86,15 @@ get_header();
                             <h5 class="mb-4"><span class="fw-bold">2</span> Activity details</h5>
 
                             <div class="d-flex gap-3 mb-4">
-                                <img src="/images/tour.jpg" class="rounded" alt="Tour Image"
-                                    style="width: 120px; height: 90px; object-fit: cover;">
+
+                                <?php
+                                      if ($tour_image) {
+                                         echo "<img src='" . esc_url($tour_image) . "' alt='" . esc_attr($tour_title) . "' width='300'>";
+                                     } ?>
                                 <div>
-                                    <h6 class="mb-1">Rhine Valley Trip from Frankfurt including Rhine River Cruise</h6>
-                                    <p class="mb-1 small text-muted"><i class="bi bi-person"></i> 3 Adults</p>
-                                    <p class="mb-1 small text-muted"><i class="bi bi-calendar-event"></i> Tue, Aug 12,
-                                        2025 •
-                                        11:15 AM
+                                    <h6 class="mb-1"><?php echo $tour_title ?></h6>
+                                    <p class="mb-1 small text-muted"><i class="bi bi-person"></i><?php echo $tour_adults ?> Adults</p>
+                                    <p class="mb-1 small text-muted"><i class="bi bi-calendar-event"></i> <?php echo $tour_date ?>
                                     </p>
                                     <p class="small text-success"><i class="bi bi-check-circle"></i> Free cancellation
                                         before

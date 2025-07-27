@@ -23,7 +23,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
         <div class="tour-details-header d-flex flex-wrap gap-4 align-items-end justify-content-between">
             <div>
                 <h2 class="mb-3"><?php the_title()?></h2>
-                <p class="mb-0 d-flex flex-wrap align-items-center gap-2">
+                <!-- <p class="mb-0 d-flex flex-wrap align-items-center gap-2">
                     <span>(16 Review)</span>
                     <span class="text-warning">
                         <i class="ti ti-star-filled"></i>
@@ -34,7 +34,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </span>
                     <span><i class="ti ti-map-pin text-success"></i>
                         <?php echo get_post_meta($post->ID, "address", true); ?></span>
-                </p>
+                </p> -->
             </div>
             <div>
                 <a href="#" class="btn btn-share">Share <i class="ti ti-share"></i></a>
@@ -255,21 +255,24 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     <!-- Widget -->
                     <div class="sidebar-widget">
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
-
+                        <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
                         <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
+                            <input type="hidden" id="tour_id" name="tour_id"  value="<?php echo $post->ID ?>">
+                             <input type="hidden" id="tour_price" name="tour_price">
                             <div class="row g-4">
                                 <div class="col-12">
                                     <div class="d-flex align-items-center gap-2">
-                                        <label for="tour-date" class="form-label mb-0 text-heading">Date</label>
-                                        <input type="date" id="tour-date" class="form-control p-0 bg-transparent">
+                                        <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
+                                        <input type="date" id="tour_date" name="tour_date"
+                                            class="form-control p-0 bg-transparent" required>
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-12">
                                     <div class="d-flex align-items-center justify-content-between gap-2">
-                                        <label for="tickets" class="form-label mb-0 text-heading">Adult</label>
-                                        <select name="tickets" id="tickets" class="touria-select2 bg-transparent">
-                                            <!-- <option value="family-tour" selected>Select Adult</option> -->
+                                        <label for="tour_adults" class="form-label mb-0 text-heading">Adult</label>
+                                        <select name="tour_adults" id="tour_adults"
+                                            class="touria-select2 bg-transparent" onchange="updateTotalPrice()">
                                             <option value="1">1</option>
                                             <option value="2" selected>2</option>
                                             <option value="3">3</option>
@@ -279,54 +282,19 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                     </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center justify-content-between gap-2">
-                                        <label for="tickets" class="form-label mb-0 text-heading">Child</label>
-                                        <select name="tickets" id="tickets" class="touria-select2 bg-transparent">
-                                            <option value="1" selected>1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <p class="mb-4 text-heading">Extra Services</p>
-                                    <ul class="sidebar-checkbox-list list-unstyled">
-                                        <li class="bg-transparent p-0">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="canada">
-                                                <label class="form-check-label flex-grow-1 ms-2" for="canada">Services
-                                                    per
-                                                    booking</label>
-                                                <span class="text-muted">$10</span>
-                                            </div>
-                                        </li>
-                                        <li class="bg-transparent p-0">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="france" checked>
-                                                <label class="form-check-label flex-grow-1 ms-2" for="france">Services
-                                                    per
-                                                    person</label>
-                                                <span class="text-muted">$10</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
                                 <div class="col-12">
                                     <div class="tour-booking-summary">
                                         <ul class="list-unstyled d-flex flex-column gap-2">
                                             <li>
-                                                <span>Adult:</span><span>$30.00</span>
+                                                <span>Adult:</span>
+                                                <span id="price-per-adult">€<?php echo $tour_price; ?></span>/Per
                                             </li>
                                             <li>
-                                                <span>Child:</span><span>$26.00</span>
+                                                <span>Child:</span><span>$0.00</span>
                                             </li>
                                             <li>
-                                                <span>Total:</span><span>$56.00</span>
+                                                <span>Total:</span>€<span
+                                                    id="total-price"><?php echo $tour_price * 2; ?></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -338,6 +306,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 </div>
                             </div>
                         </form>
+
+
                     </div>
 
                     <!-- Widget -->
@@ -354,3 +324,17 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     <div class="divider"></div>
 </div>
 <?php get_footer(); ?>
+
+
+<script>
+function updateTotalPrice() {
+    var adults = parseInt(document.getElementById('tour-adults').value);
+    var pricePerAdult = <?php echo $tour_price; ?>;
+    var totalPrice = adults * pricePerAdult;
+    document.getElementById('total-price').textContent = totalPrice;
+    document.getElementById('tour_price').value = totalPrice;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    updateTotalPrice();
+});
+</script>
