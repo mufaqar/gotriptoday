@@ -186,30 +186,25 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="swiper destination-details-wrapper mb-5">
                     <div class="swiper-wrapper">
                         <?php 
-              $gallery = get_post_meta($post->ID, "gallery", true); // Add true to get string directly
+                            $gallery = get_post_meta($post->ID, "gallery", true); // Add true to get string directly
 
-                if (!empty($gallery)) {
-                    // Convert comma-separated string into an array
-                    $image_ids = explode(',', $gallery);
+                            if (!empty($gallery)) {
+                                // Convert comma-separated string into an array
+                                $image_ids = explode(',', $gallery);
 
-                    foreach ($image_ids as $image_id) {
-                        $image_url = wp_get_attachment_image_url($image_id, 'full');
-                        if ($image_url) {
-                            ?>
-                        <div class="swiper-slide">
-                            <img src="<?php echo esc_url($image_url); ?>" alt="">
-                        </div>
-                        <?php
-                        }
-                    }
-                }
-              ?>
-
-
+                                foreach ($image_ids as $image_id) {
+                                    $image_url = wp_get_attachment_image_url($image_id, 'full');
+                                    if ($image_url) {
+                                        ?>
+                                    <div class="swiper-slide">
+                                        <img src="<?php echo esc_url($image_url); ?>" alt="">
+                                    </div>
+                                    <?php
+                                    }
+                                }
+                            }
+                        ?>
                     </div>
-
-
-
                     <!-- Tour Details Button -->
                     <button class="destination-details-button-prev">
                         <i class="icon-arrow-left"></i>
@@ -257,8 +252,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
                         <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
                         <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
-                            <input type="hidden" id="tour_id" name="tour_id"  value="<?php echo $post->ID ?>">
-                             <input type="hidden" id="tour_price" name="tour_price">
+                            <input type="text" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
+                            <input type="text" id="tour_price" name="tour_price" value="">
                             <div class="row g-4">
                                 <div class="col-12">
                                     <div class="d-flex align-items-center gap-2">
@@ -294,7 +289,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                             </li>
                                             <li>
                                                 <span>Total:</span>€<span
-                                                    id="total-price"><?php echo $tour_price * 2; ?></span>
+                                                    id="total_price"><?php echo $tour_price * 2; ?></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -328,10 +323,10 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 <script>
 function updateTotalPrice() {
-    var adults = parseInt(document.getElementById('tour-adults').value);
+    var adults = parseInt(document.getElementById('tour_adults').value);
     var pricePerAdult = <?php echo $tour_price; ?>;
     var totalPrice = adults * pricePerAdult;
-    document.getElementById('total-price').textContent = totalPrice;
+    document.getElementById('total_price').textContent = totalPrice;
     document.getElementById('tour_price').value = totalPrice;
 }
 document.addEventListener('DOMContentLoaded', function() {

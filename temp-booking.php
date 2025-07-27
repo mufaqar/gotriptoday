@@ -8,18 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tour_id = isset($_POST['tour_id']) ? $_POST['tour_id'] : '';
     $tour_date = isset($_POST['tour_date']) ? $_POST['tour_date'] : '';
     $tour_adults = isset($_POST['tour_adults']) ? $_POST['tour_adults'] : '';
-    $total_price = isset($_POST['tour_price']) ? $_POST['tour_price'] : '';
+    $tour_price = isset($_POST['tour_price']) ? $_POST['tour_price'] : '';
+
+  
 
 
     // Get tour details
-    $tour = get_post($tour_id);
-    if ($tour && $tour->post_type === 'tours') {
+        $tour = get_post($tour_id);
+        if ($tour && $tour->post_type === 'tours') {
         $tour_title = $tour->post_title;
-        $tour_image = get_the_post_thumbnail_url($post_id, 'medium');
- 
+        $tour_image = get_the_post_thumbnail_url($post_id, 'medium'); 
         }
 
-    }
+}
 
 
 ?>
@@ -44,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <!-- Step 1: Contact Info -->
                         <div class="step p-4 shadow-sm border-0 mb-5">
-                            <h5 class="mb-3"><span class="fw-bold">1</span> Contact details</h5>
+                            <h5 class="mb-3"><span class="step_number">1</span> Contact details</h5>
                             <p class="text-muted">We’ll use this information to send you confirmation and updates about
                                 your booking</p>
 
@@ -72,18 +73,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <input type="text" name="phone" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="form-check mt-3">
-                                    <input type="checkbox" class="form-check-input" id="subscribe">
-                                    <label class="form-check-label" for="subscribe">
-                                        Get emails with special offers, inspiration, tips, and other updates.
-                                    </label>
-                                </div>
+
                             </div>
                         </div>
 
                         <!-- Step 2: Activity Details -->
                         <div class="step step2 p-4 shadow-sm border-0 mb-5">
-                            <h5 class="mb-4"><span class="fw-bold">2</span> Activity details</h5>
+                            <h5 class="mb-4"><span class="step_number">2</span> Activity details</h5>
 
                             <div class="d-flex gap-3 mb-4">
 
@@ -93,8 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                      } ?>
                                 <div>
                                     <h6 class="mb-1"><?php echo $tour_title ?></h6>
-                                    <p class="mb-1 small text-muted"><i class="bi bi-person"></i><?php echo $tour_adults ?> Adults</p>
-                                    <p class="mb-1 small text-muted"><i class="bi bi-calendar-event"></i> <?php echo $tour_date ?>
+                                    <p class="mb-1 small text-muted"><i
+                                            class="bi bi-person"></i><?php echo $tour_adults ?> Adults</p>
+                                    <p class="mb-1 small text-muted"><i class="bi bi-calendar-event"></i>
+                                        <?php echo $tour_date ?>
                                     </p>
                                     <p class="small text-success"><i class="bi bi-check-circle"></i> Free cancellation
                                         before
@@ -106,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <!-- Travelers -->
                             <?php for ($i = 1; $i <= 3; $i++) : ?>
                             <div class="mb-4">
-                                <h6 class="border-bottom pb-2">Traveler <?php echo $i; ?> (Adult)</h6>
+                                <h6 class="pb-2">Traveler <?php echo $i; ?> (Adult)</h6>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <input type="text" name="traveler[<?php echo $i; ?>][first_name]"
@@ -134,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <!-- Step 3: Payment -->
                         <div class="step step3 p-4 shadow-sm border-0">
-                            <h5 class="mb-3"><span class="fw-bold">3</span> Payment details</h5>
+                            <h5 class="mb-3"><span class="step_number">3</span> Payment details</h5>
 
                             <!-- Credit/Debit Card -->
                             <div class="mb-4">
@@ -167,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     class="text-decoration-underline">Privacy Policy</a>.
                             </div>
 
-                            <button type="submit" class="btn btn-primary w-100 py-2">Book Now</button>
+                            <button type="submit" class="btn  btn-success w-100 py-2">Book Now</button>
                         </div>
                     </form>
                     <?php else : ?>
@@ -178,16 +176,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="col-12 col-lg-4">
                 <div class="blog-widget">
-                    <div class="h4 fw-bold text-success mb-4">Some Information</div>
+                    <div class="h4 fw-bold text-success mb-4"><?php echo $tour_title ?></div>
 
                     <!-- Destination Info List -->
                     <ul class="destination-info-list list-unstyled">
-                        <li><span>County:</span> <span>London</span></li>
-                        <li><span>Visa Requirements:</span> <span>Yes</span></li>
-                        <li><span>Per Person:</span> <span>1500$</span></li>
-                        <li><span>Languages:</span> <span>English, French, German</span></li>
-                        <li><span>Area(Km4):</span> <span>90.000 Km5</span></li>
+                        <li><span>Adult:</span> <span><?php echo $tour_adults  ?></span></li>
+                        <li><span>Date:</span> <span><?php echo $tour_date  ?></span></li>
+                        <li><span>Child:</span> <span><?php echo ""  ?></span></li>
+                        <li> <span>Total:</span>€<span></span><?php echo $tour_price  ?></span></li>
                     </ul>
+
+
                 </div>
 
             </div>
