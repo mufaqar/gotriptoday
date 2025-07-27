@@ -165,7 +165,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     class="text-decoration-underline">Privacy Policy</a>.
                             </div>
 
-                            <button type="submit" class="btn  btn-success w-100 py-2">Book Now</button>
+                            <button id="submit-button" class="btn btn-success w-100 py-2">
+                                <span id="button-text">Pay Now</span>
+                                <span id="button-spinner" class="spinner-border spinner-border-sm d-none"
+                                    role="status"></span>
+                            </button>
                         </div>
                     </form>
                     <?php else : ?>
@@ -196,5 +200,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </div>
 </div>
+
+<!-- Add Stripe.js and custom JS -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const stripe = Stripe('<?php echo get_option('stripe_publishable_key'); ?>');
+    let elements;
+
+    initialize();
+
+    async function initialize() {
+        // Create payment intent on server
+        const response = await fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                action: 'create_stripe_payment_intent',
+                tour_id: '<?php echo $tour_id; ?>',
+                tour_price: '<?php echo $tour_price; ?>',
+                nonce: '<?php echo wp_create_nonce("stripe_payment_nonce"); ?>'
+            })
+        });
+
+        const {
+            clientSecret
+        } = await response.json();
+
+        elements = stripe.elements({
+            clientSecret
+        });
+        const paymentElement = elements.create('payment');
+        paymentElement.mount('#payment-element');
+    }
+
+    // Handle form submission
+    document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitButton = document.getElementById('submit-button');
+        const buttonText = document.getElementById('button-text');
+        const buttonSpinner = document.getElementById('button-spinner');
+        const errorElement = document.getElementById('payment-errors');
+
+        submitButton.disabled = true;
+        buttonText.textContent = 'Processing...';
+        buttonSpinner.classList.remove('d-none');
+        errorElement.classList.add('d-none');
+
+        // Confirm payment with Stripe
+        const {
+            error
+        } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: '<?php echo esc_url(site_url('/booking-confirmation')); ?>',
+                receipt_email: document.querySelector('input[name="email"]').value,
+            }
+        });
+
+        if (error) {
+            errorElement.textContent = error.message;
+            errorElement.classList.remove('d-none');
+            submitButton.disabled = false;
+            buttonText.textContent = 'Pay Now';
+            buttonSpinner.classList.add('d-none');
+        }
+    });
+});
+</script>
 
 <?php get_footer(); ?>
