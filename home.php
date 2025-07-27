@@ -50,11 +50,10 @@ get_header(); ?>
                     <p class="text-white wow fadeInUp" data-wow-delay="700ms" data-wow-duration="1000ms">Book Your Next
                         Day Trips</p>
 
-                    <!-- Hero Search Form -->
-
-                    <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]') ?>
-                    </div>
+                     <!-- Hero Search Form -->
+                  <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                    
+                  </div>
                 </div>
             </div>
         </div>

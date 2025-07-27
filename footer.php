@@ -300,7 +300,7 @@
     <i class="icon-arrow-up"></i>
 </button>
 
-<!-- All JavaScript Files-->
+
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/slideToggle.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/swiper-bundle.min.js"></script>

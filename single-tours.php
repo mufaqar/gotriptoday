@@ -3,9 +3,9 @@
 
 $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
 
-get_template_part('partials/content', 'breadcrumb', [
-    'bg' => $bg_image
-]);
+// get_template_part('partials/content', 'breadcrumb', [
+//     'bg' => $bg_image
+// ]);
 
 
      
@@ -17,42 +17,7 @@ get_template_part('partials/content', 'breadcrumb', [
     <div class="divider"></div>
 
     <div class="container">
-        <!-- Tour Details Slider -->
-        <div class="swiper destination-details-wrapper mb-5">
-            <div class="swiper-wrapper">
-                <?php 
-              $gallery = get_post_meta($post->ID, "gallery", true); // Add true to get string directly
 
-                if (!empty($gallery)) {
-                    // Convert comma-separated string into an array
-                    $image_ids = explode(',', $gallery);
-
-                    foreach ($image_ids as $image_id) {
-                        $image_url = wp_get_attachment_image_url($image_id, 'full');
-                        if ($image_url) {
-                            ?>
-                            <div class="swiper-slide">
-                                <img src="<?php echo esc_url($image_url); ?>" alt="">
-                            </div>
-                            <?php
-                        }
-                    }
-                }
-              ?>
-
-
-            </div>
-
-
-
-            <!-- Tour Details Button -->
-            <button class="destination-details-button-prev">
-                <i class="icon-arrow-left"></i>
-            </button>
-            <button class="destination-details-button-next">
-                <i class="icon-arrow-right"></i>
-            </button>
-        </div>
 
         <!-- Tour Details Header -->
         <div class="tour-details-header d-flex flex-wrap gap-4 align-items-end justify-content-between">
@@ -216,6 +181,43 @@ get_template_part('partials/content', 'breadcrumb', [
 
         <div class="row g-5">
             <div class="col-12 col-lg-8">
+
+                <!-- Tour Details Slider -->
+                <div class="swiper destination-details-wrapper mb-5">
+                    <div class="swiper-wrapper">
+                        <?php 
+              $gallery = get_post_meta($post->ID, "gallery", true); // Add true to get string directly
+
+                if (!empty($gallery)) {
+                    // Convert comma-separated string into an array
+                    $image_ids = explode(',', $gallery);
+
+                    foreach ($image_ids as $image_id) {
+                        $image_url = wp_get_attachment_image_url($image_id, 'full');
+                        if ($image_url) {
+                            ?>
+                        <div class="swiper-slide">
+                            <img src="<?php echo esc_url($image_url); ?>" alt="">
+                        </div>
+                        <?php
+                        }
+                    }
+                }
+              ?>
+
+
+                    </div>
+
+
+
+                    <!-- Tour Details Button -->
+                    <button class="destination-details-button-prev">
+                        <i class="icon-arrow-left"></i>
+                    </button>
+                    <button class="destination-details-button-next">
+                        <i class="icon-arrow-right"></i>
+                    </button>
+                </div>
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <h2>Overview</h2>
@@ -242,7 +244,7 @@ get_template_part('partials/content', 'breadcrumb', [
 
                 <h2 class="mb-4 mt-5 faq-title">Additional Info</h2>
 
-                <?php echo get_post_meta($post->ID, "additional_info", true); ?>          
+                <?php echo get_post_meta($post->ID, "additional_info", true); ?>
 
 
             </div>
@@ -250,10 +252,92 @@ get_template_part('partials/content', 'breadcrumb', [
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5">
                     <!-- Widget -->
-                    <div class="sidebar-widget tour_booking_form">
+                    <!-- Widget -->
+                    <div class="sidebar-widget">
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
 
-                        <?php echo do_shortcode('[jet_fb_form form_id="24940" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear="1"]')?>
+                        <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="tour-date" class="form-label mb-0 text-heading">Date</label>
+                                        <input type="date" id="tour-date" class="form-control p-0 bg-transparent">
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center justify-content-between gap-2">
+                                        <label for="tickets" class="form-label mb-0 text-heading">Adult</label>
+                                        <select name="tickets" id="tickets" class="touria-select2 bg-transparent">
+                                            <!-- <option value="family-tour" selected>Select Adult</option> -->
+                                            <option value="1">1</option>
+                                            <option value="2" selected>2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center justify-content-between gap-2">
+                                        <label for="tickets" class="form-label mb-0 text-heading">Child</label>
+                                        <select name="tickets" id="tickets" class="touria-select2 bg-transparent">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <p class="mb-4 text-heading">Extra Services</p>
+                                    <ul class="sidebar-checkbox-list list-unstyled">
+                                        <li class="bg-transparent p-0">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="canada">
+                                                <label class="form-check-label flex-grow-1 ms-2" for="canada">Services
+                                                    per
+                                                    booking</label>
+                                                <span class="text-muted">$10</span>
+                                            </div>
+                                        </li>
+                                        <li class="bg-transparent p-0">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="france" checked>
+                                                <label class="form-check-label flex-grow-1 ms-2" for="france">Services
+                                                    per
+                                                    person</label>
+                                                <span class="text-muted">$10</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="tour-booking-summary">
+                                        <ul class="list-unstyled d-flex flex-column gap-2">
+                                            <li>
+                                                <span>Adult:</span><span>$30.00</span>
+                                            </li>
+                                            <li>
+                                                <span>Child:</span><span>$26.00</span>
+                                            </li>
+                                            <li>
+                                                <span>Total:</span><span>$56.00</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success w-100">Book Now <i
+                                            class="icon-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                     <!-- Widget -->
