@@ -1,6 +1,9 @@
 
 <?php
 
+
+  include_once('stripe-payments.php');
+
 function handle_contact_form() {
     check_ajax_referer('ajax-contact-nonce', 'security');
 

@@ -2,8 +2,20 @@
 /* Template Name: Booking Confirmation */
 get_header();
 
+
+ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/slide1.webp';
+
+get_template_part('partials/content', 'breadcrumb', [
+    'bg' => $bg_image
+]);
+
+
 // Retrieve the payment intent ID from URL
 $payment_intent_id = $_GET['payment_intent'] ?? '';
+
+print_r($payment_intent_id);
+
+echo "Test";
 
 if ($payment_intent_id) {
     // Initialize Stripe
@@ -13,6 +25,8 @@ if ($payment_intent_id) {
     try {
         // Retrieve payment intent
         $payment_intent = \Stripe\PaymentIntent::retrieve($payment_intent_id);
+
+        print_r($payment_intent);
         
         // Find the booking
         $bookings = get_posts([

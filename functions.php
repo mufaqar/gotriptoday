@@ -12,7 +12,7 @@
 
 
     include_once('inc/class-walker-touria.php');
-        include_once('inc/extra.php');
+    include_once('inc/extra.php');
 
 	// Add RSS links to <head> section
 	automatic_feed_links();
