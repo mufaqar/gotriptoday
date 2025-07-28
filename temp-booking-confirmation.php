@@ -13,9 +13,11 @@ get_template_part('partials/content', 'breadcrumb', [
 // Retrieve the payment intent ID from URL
 $payment_intent_id = $_GET['payment_intent'] ?? '';
 
-print_r($payment_intent_id);
 
-echo "Test";
+
+
+
+
 
 if ($payment_intent_id) {
     // Initialize Stripe
@@ -26,7 +28,28 @@ if ($payment_intent_id) {
         // Retrieve payment intent
         $payment_intent = \Stripe\PaymentIntent::retrieve($payment_intent_id);
 
-        print_r($payment_intent);
+
+        var_dump($payment_intent);
+
+
+     
+
+       if ($payment_intent->status === 'succeeded') {
+            // ✅ PAYMENT SUCCESS — finalize booking here
+
+            // 1. Save booking to database (custom post type, orders, whatever)
+            // 2. Send confirmation email
+            // 3. Show confirmation to user
+        } else {
+            // ❌ Payment failed, canceled, or pending
+            echo "<div class='alert alert-danger'>Payment not completed. Status: {$payment_intent->status}</div>";
+        }
+
+
+
+       //var_dump($payment_intent);
+
+
         
         // Find the booking
         $bookings = get_posts([
