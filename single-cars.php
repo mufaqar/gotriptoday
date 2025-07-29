@@ -132,10 +132,43 @@ get_template_part('partials/content', 'breadcrumb', [
 
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5">
-                    <!-- Widget -->
-                    <div class="sidebar-widget car_booking_form">
-                        <?php echo do_shortcode('[jet_fb_form form_id="23745" submit_type="reload" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="" clear=""]')?>
-                     </div>
+                     <!-- Widget -->
+                  <div class="sidebar-widget">
+                     <div class="h4 fw-bold mb-4">Book your Business Class</div>
+                     <form action="#">
+                        <div class="row g-4">
+
+                         <div class="col-12">
+                              <input type="date" class="form-control py-0 bg-white">
+                           </div>
+
+                           
+                           <div class="col-12">
+                              <input type="text" class="form-control bg-white" placeholder="Pickup Location *">
+                           </div>
+
+                            <div class="col-12">
+                              <input type="text" class="form-control bg-white" placeholder="Drop Location *">
+                           </div>
+
+                           <div class="col-12">
+                              <input type="text" class="form-control bg-white" placeholder="Name*">
+                           </div>
+                           <div class="col-12">
+                              <input type="text" class="form-control bg-white" placeholder="Email*">
+                           </div>
+
+                           <div class="col-12">
+                              <input type="text" class="form-control bg-white" placeholder="Phone*">
+                           </div>
+                        
+                           <div class="col-12">
+                              <button type="submit" class="btn btn-success w-100">Book Your Car Now <i
+                                    class="icon-arrow-right"></i></button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
                 </div>
             </div>
         </div>

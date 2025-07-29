@@ -36,9 +36,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <?php echo get_post_meta($post->ID, "address", true); ?></span>
                 </p> -->
             </div>
-            <div>
-                <a href="#" class="btn btn-share">Share <i class="ti ti-share"></i></a>
-            </div>
+           
         </div>
 
         <div class="divider-sm"></div>
@@ -252,8 +250,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
                         <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
                         <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
-                            <input type="text" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
-                            <input type="text" id="tour_price" name="tour_price" value="">
+                            <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
+                            <input type="hidden" id="tour_price" name="tour_price" value="">
                             <div class="row g-4">
                                 <div class="col-12">
                                     <div class="d-flex align-items-center gap-2">
