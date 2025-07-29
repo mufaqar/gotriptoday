@@ -1,26 +1,18 @@
 <?php
-/*Template Name: Fleet*/
+/*Template Name: Fleet */
 
 get_header(); ?>
-
-
 <?php $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/slide1.webp';
-
-get_template_part('partials/content', 'breadcrumb', [
-    'bg' => $bg_image
-]);?>
+get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);?>
 
 <section>
-    <!-- Divider -->
     <div class="divider"></div>
-    <div class="divider-sm"></div>
-
     <div class="container">
         <div class="row g-4 g-xxl-5">
             <?php
             $args = array(
-                'post_type' => 'chbs_vehicle',
-                'posts_per_page' => -1, // Get all vehicles
+                'post_type' => 'cars',
+                'posts_per_page' => -1, 
                 'post_status' => 'publish',
             );
 
@@ -41,9 +33,6 @@ get_template_part('partials/content', 'breadcrumb', [
 
         </div>
     </div>
-
-    <!-- Divider -->
     <div class="divider"></div>
 </section>
-
 <?php get_footer(); ?>
