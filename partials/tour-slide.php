@@ -23,7 +23,8 @@
                   </ul>
                   <div class="line"></div>
                   <div class="text-end">
-                      <span class="badge bg-success mb-2"><?php echo get_post_meta($post->ID, "duration_time", true); ?> </span>
+                      <span class="badge bg-success mb-2"><i class="ti ti-clock"></i>
+                     <?php echo get_post_meta($post->ID, "duration_time", true); ?> Hours</span>
                       <h2 class="mb-0 trip-price"><?php echo get_post_meta($post->ID, "pricing", true); ?><span>€</span>
                       </h2>
                   </div>
