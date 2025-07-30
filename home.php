@@ -52,7 +52,7 @@ get_header(); ?>
 
                     <!-- Hero Search Form -->
                     <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <form class="row align-items-center g-3 g-xxl-2" method="POST"
+                        <form class="row align-items-center g-3 g-xxl-2" method="GET"
                             action="<?php echo esc_url(home_url('/day-trips')); ?>">
                             <div class="col-12 col-md-6 col-xxl">
                                 <div class="search-item d-flex align-items-center gap-3">

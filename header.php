@@ -142,13 +142,10 @@
     <header class="header-area style-three">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-xl">
-                <!-- Navbar Brand -->
                 <a class="navbar-brand" href="<?php bloginfo('url'); ?>">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" width="190"
                         alt="<?php bloginfo('name'); ?>">
                 </a>
-
-                <!-- Navbar Toggler -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#touriaNav"
                     aria-controls="touriaNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="ti ti-menu-deep"></i>
@@ -156,142 +153,19 @@
 
                 <!-- Navbar Nav -->
                 <div class="collapse justify-content-xl-end navbar-collapse" id="touriaNav">
-                    <!-- <ul class="navbar-nav align-items-xl-center navbar-nav-scroll">
-                        <li class="touria-dd">
-                            <a href="#">Home <i class="ti ti-chevron-down"></i></a>
-                            <ul class="touria-dd-menu">
-                                <li>
-                                    <a href="index.html">Tour Booking</a>
-                                </li>
-                                <li>
-                                    <a href="index-2.html">Air Booking</a>
-                                </li>
-                                <li>
-                                    <a href="index-3.html">Hotel Booking</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="touria-dd">
-                            <a href="#">Tours <i class="ti ti-chevron-down"></i></a>
-                            <ul class="touria-dd-menu">
-                                <li>
-                                    <a href="tour-list.html">Tour List</a>
-                                </li>
-                                <li>
-                                    <a href="tour-details.html">Tour Details</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="touria-dd">
-                            <a href="#">Destinations <i class="ti ti-chevron-down"></i></a>
-                            <ul class="touria-dd-menu">
-                                <li>
-                                    <a href="destination.html">Destination</a>
-                                </li>
-                                <li>
-                                    <a href="destination-details.html">Destination Details</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="touria-dd">
-                            <a href="#">Pages <i class="ti ti-chevron-down"></i></a>
-                            <ul class="touria-dd-menu">
-                                <li class="touria-dd">
-                                    <a href="about-us.html">About Us</a>
-                                </li>
-                                <li class="touria-dd">
-                                    <a href="#">Destinations <i class="ti ti-chevron-right"></i></a>
-                                    <ul class="touria-dd-menu">
-                                        <li>
-                                            <a href="destination.html">Destination</a>
-                                        </li>
-                                        <li>
-                                            <a href="destination-details.html">Destination Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="touria-dd">
-                                    <a href="#">Tours <i class="ti ti-chevron-right"></i></a>
-                                    <ul class="touria-dd-menu">
-                                        <li>
-                                            <a href="tour-list.html">Tour List</a>
-                                        </li>
-                                        <li>
-                                            <a href="tour-details.html">Tour Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="touria-dd">
-                                    <a href="#">Hotels <i class="ti ti-chevron-right"></i></a>
-                                    <ul class="touria-dd-menu">
-                                        <li>
-                                            <a href="hotel-list.html">Hotel List</a>
-                                        </li>
-                                        <li>
-                                            <a href="hotel-details.html">Hotel Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="touria-dd">
-                                    <a href="#">Guider <i class="ti ti-chevron-right"></i></a>
-                                    <ul class="touria-dd-menu">
-                                        <li>
-                                            <a href="guider.html">Guider</a>
-                                        </li>
-                                        <li>
-                                            <a href="guider-details.html">Guider Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="faqs.html">FAQs</a>
-                                </li>
-                                <li>
-                                    <a href="gallery.html">Gallery</a>
-                                </li>
-                                <li>
-                                    <a href="404.html">404</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="touria-dd">
-                            <a href="#">Blog <i class="ti ti-chevron-down"></i></a>
-                            <ul class="touria-dd-menu">
-                                <li>
-                                    <a href="blog-list.html">Blog List</a>
-                                </li>
-                                <li>
-                                    <a href="blog-grid.html">Blog Grid</a>
-                                </li>
-                                <li>
-                                    <a href="blog-details.html">Blog Details</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
-                    </ul> -->
-
-
                     <?php wp_nav_menu([
 						'theme_location' => 'main',
 						'container' => false,
 						'menu_class' => 'navbar-nav align-items-xl-center navbar-nav-scroll',
 						'walker' => new Touria_Walker_Nav_Menu()
 					]); ?>
-                    <!-- Header Navigation -->
                     <div class="header-navigation d-flex flex-wrap align-items-center gap-3 mt-4 mt-xl-0">
-                        <!-- Search Button -->
                         <div class="header-search-btn">
                             <a href="" class="btn">
                                 <i class="ti ti-user-check"></i>
                             </a>
                         </div>
-
-                        <!-- Get A Quote -->
-                        <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Get A Quote<i
-                                class="icon-arrow-right"></i></a>
+                        <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Get A Quote<i class="icon-arrow-right"></i></a>
                     </div>
                 </div>
             </nav>
