@@ -49,11 +49,11 @@
 <body <?php body_class(); ?>>
 
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
+    <!-- <div class="preloader" id="preloader">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
+    </div> -->
 
     <!-- Right Side Offcanvas -->
     <div class="offcanvas offcanvas-end right-side-touria-offcanvas shadow-lg" tabindex="-1" id="sideMenuOffcanvas">

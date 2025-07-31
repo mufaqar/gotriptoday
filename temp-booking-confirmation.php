@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Booking Confirmation */
+/* Template Name: Process Booking */
 get_header();
 
 
