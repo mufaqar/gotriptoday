@@ -32,12 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tour_id > 0) : ?>
                     <form id="booking-form" action="<?php echo esc_url(site_url('/process-booking')); ?>" method="POST">
                         <?php wp_nonce_field('booking_nonce', 'booking_nonce_field'); ?>
-
                         <input type="hidden" name="tour_id" value="<?php echo esc_attr($tour_id); ?>">
                         <input type="hidden" name="tour_date" value="<?php echo esc_attr($tour_date); ?>">
                         <input type="hidden" name="tour_adults" value="<?php echo esc_attr($tour_adults); ?>">
                         <input type="hidden" name="tour_price" value="<?php echo esc_attr($tour_price); ?>">
-
                         <!-- Step 1: Contact Info -->
                         <div class="step p-4 shadow-sm border-0 mb-5">
                             <h5 class="mb-3"><span class="step_number">1</span> Contact details</h5>
@@ -67,7 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                             </div>
                         </div>
-
                         <!-- Step 2: Activity Details -->
                         <div class="step step2 p-4 shadow-sm border-0 mb-5">
                             <h5 class="mb-4"><span class="step_number">2</span> Activity details</h5>
@@ -104,8 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <?php endfor; ?>
                         </div>
-
-
                         <!-- Step 3: Payment -->
                         <div class="step step3 p-4 shadow-sm border-0">
                             <h5 class="mb-3"><span class="step_number">3</span> Payment details</h5>
