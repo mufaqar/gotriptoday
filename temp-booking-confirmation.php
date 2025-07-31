@@ -13,9 +13,7 @@ get_template_part('partials/content', 'breadcrumb', [
 // Retrieve the payment intent ID from URL
 $payment_intent_id = $_GET['payment_intent'] ?? '';
 
-
-
-
+print_r($payment_intent_id);
 
 
 if ($payment_intent_id) {
