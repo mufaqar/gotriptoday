@@ -44,23 +44,23 @@ if ($payment_intent_id) {
             $booking = $bookings[0];
             $tour = get_post(get_post_meta($booking->ID, 'tour_id', true));
             ?>
-<div class="container py-5 text-center">
-    <div class="text-success display-1 mb-3">
-        <i class="bi bi-check-circle-fill"></i>
-    </div>
-    <h1>Booking Confirmed!</h1>
-    <p class="lead">Your payment was successful.</p>
+            <div class="container py-5 text-center">
+                <div class="text-success display-1 mb-3">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <h1>Booking Confirmed!</h1>
+                <p class="lead">Your payment was successful.</p>
 
-    <div class="card mt-4 text-start">
-        <div class="card-body">
-            <h3><?php echo $tour->post_title; ?></h3>
-            <p>Booking ID: <?php echo $booking->post_title; ?></p>
-            <p>Amount Paid: €<?php echo get_post_meta($booking->ID, 'amount', true); ?></p>
-            <p>A confirmation has been sent to your email.</p>
-        </div>
-    </div>
-</div>
-<?php
+                <div class="card mt-4 text-start">
+                    <div class="card-body">
+                        <h3><?php echo $tour->post_title; ?></h3>
+                        <p>Booking ID: <?php echo $booking->post_title; ?></p>
+                        <p>Amount Paid: €<?php echo get_post_meta($booking->ID, 'amount', true); ?></p>
+                        <p>A confirmation has been sent to your email.</p>
+                    </div>
+                </div>
+            </div>
+            <?php
         }
          
 
