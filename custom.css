@@ -665,11 +665,20 @@
   border-bottom-right-radius: 6px;
   border-left: none;
 }
-.hero-search-form { padding: 10px;}
+.hero-search-form {
+  padding: 10px;
+}
 .hero-search-form .form-control {
   padding: 0;
   height: auto;
 }
 
-
-.touria-select, .touria-select2 { font-weight: 500;color: #767676;}
+.hero-search-form .search-item label {
+  color: #161920;
+}
+.touria-select,
+.touria-select2 {
+  font-weight: 500;
+  color: #767676;
+}
+.hero-content h2 { font-size: 56px; max-width: 65%;}

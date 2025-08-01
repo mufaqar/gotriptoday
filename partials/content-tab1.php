@@ -1,10 +1,8 @@
 <div class="hero-content home-one">
-    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Your Journey Begins in
+    <h2 class="text-white mb-5 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Your Journey Begins in
         Comfort and Style</h2>
 
-
-
-    <div class="flight-type-selector mb-4">
+    <div class="flight-type-selector mb-4 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
         <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
             <!-- One Way -->
             <label class=" btn-flight-type active">
@@ -17,11 +15,8 @@
                 <input type="radio" name="flightType" id="return" autocomplete="off">
                 Return
             </label>
-
-
         </div>
     </div>
-
     <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
         <form class="row align-items-center g-3 g-xxl-2" method="GET"
             action="<?php echo esc_url(home_url('/day-trips')); ?>">

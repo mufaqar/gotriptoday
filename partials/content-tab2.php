@@ -1,5 +1,5 @@
 <div class="hero-content home-one">
-    <h2 class="text-white mb-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
+    <h2 class="text-white mb-5 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
         Explore around, wherever you are, in one day.</h2>
 
     <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
@@ -29,22 +29,21 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-xxl">
+            <div class="col-xxl">
                 <div class="search-item d-flex align-items-center gap-3">
                     <div class="icon">
                         <i class="ti ti-calendar"></i>
                     </div>
                     <div class="form-group d-flex align-items-end">
                         <div>
-                            <label class="form-label d-block" for="time-range-picker">Time
-                                Period</label>
-                            <input type="text" id="time-range-picker" class="time-range-picker"
-                                placeholder="Select date range" readonly>
+                            <label class="form-label d-block" for="departure-date">Departure Date</label>
+                            <input type="date" id="check-out" class="form-control">
                         </div>
-                        <i class="ti ti-chevron-down me-5"></i>
+
                     </div>
                 </div>
             </div>
+
 
 
 
