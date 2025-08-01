@@ -91,44 +91,40 @@ function register_stripe_settings() {
 }
 
 
-function cptui_register_my_cpts() {
+function register_booking_cpt() {
+    $labels = array(
+        'name'                  => _x( 'Bookings', 'Post type general name', 'textdomain' ),
+        'singular_name'         => _x( 'Booking', 'Post type singular name', 'textdomain' ),
+        'menu_name'             => _x( 'Bookings', 'Admin Menu text', 'textdomain' ),
+        'name_admin_bar'        => _x( 'Booking', 'Add New on Toolbar', 'textdomain' ),
+        'add_new'               => __( 'Add New', 'textdomain' ),
+        'add_new_item'          => __( 'Add New Booking', 'textdomain' ),
+        'new_item'              => __( 'New Booking', 'textdomain' ),
+        'edit_item'             => __( 'Edit Booking', 'textdomain' ),
+        'view_item'             => __( 'View Booking', 'textdomain' ),
+        'all_items'             => __( 'All Bookings', 'textdomain' ),
+        'search_items'          => __( 'Search Bookings', 'textdomain' ),
+        'not_found'             => __( 'No bookings found.', 'textdomain' ),
+        'not_found_in_trash'    => __( 'No bookings found in Trash.', 'textdomain' ),
+    );
 
-	/**
-	 * Post Type: Booking.
-	 */
+    $args = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'query_var'             => true,
+        'rewrite'               => array( 'slug' => 'booking' ),
+        'capability_type'       => 'post',
+        'has_archive'           => true,
+        'hierarchical'          => false,
+        'menu_position'         => 20,
+        'menu_icon'             => 'dashicons-calendar-alt',
+        'supports'              => array( 'title', 'editor', 'custom-fields' ),
+        'show_in_rest'          => true, // Enables Gutenberg editor and REST API support
+    );
 
-	$labels = [
-		"name" => esc_html__( "Booking", "hello-elementor" ),
-		"singular_name" => esc_html__( "Booking", "hello-elementor" ),
-	];
-
-	$args = [
-		"label" => esc_html__( "Booking", "hello-elementor" ),
-		"labels" => $labels,
-		"description" => "",
-		"public" => true,
-		"publicly_queryable" => true,
-		"show_ui" => true,
-		"show_in_rest" => true,
-		"rest_base" => "",
-		"rest_controller_class" => "WP_REST_Posts_Controller",
-		"rest_namespace" => "wp/v2",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"delete_with_user" => false,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"can_export" => false,
-		"rewrite" => [ "slug" => "booking", "with_front" => true ],
-		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail" ],
-		"show_in_graphql" => false,
-	];
-
-	register_post_type( "booking", $args );
+    register_post_type( 'booking', $args );
 }
-
-add_action( 'init', 'cptui_register_my_cpts' );
+add_action( 'init', 'register_booking_cpt' );

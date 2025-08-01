@@ -41,25 +41,9 @@ get_header(); ?>
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12">
-                <ul class="nav forms-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="tab-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1"
-                            type="button" role="tab" aria-controls="tab1" aria-selected="true">Transfer</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="tab-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
-                            role="tab" aria-controls="tab2" aria-selected="false">Day Trip</button>
-                    </li>
-                </ul><div class="tab-content p-3 border border-top-0 rounded-bottom" id="myTabContent">
-                    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-                        <?php get_template_part('partials/content', 'tab1'); ?>
-                    </div>
-                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                         <?php get_template_part('partials/content', 'tab2'); ?>
-                    </div>
-                </div>
+                <!-- Hero Content -->
+                
             </div>
-
         </div>
     </div>
 </section>

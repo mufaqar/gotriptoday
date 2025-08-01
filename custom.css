@@ -574,3 +574,102 @@
   line-height: 1.1;
   margin-bottom: 0.75rem;
 }
+
+/* Search Tabs*/
+
+.forms-tabs {
+  background: #ffffff9f;
+  width: fit-content;
+  gap: 0;
+  border-radius: 30px;
+}
+
+.forms-tabs .tab-link {
+  padding: 8px 32px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+}
+
+.forms-tabs .tab-link.active {
+  background-color: #3cb371;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-flight-type {
+  color: #fff;
+  position: relative;
+
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-flight-type input {
+  display: none;
+}
+
+.btn-flight-type:hover {
+}
+
+.btn-flight-type.active {
+  color: #3cb371;
+}
+
+/* Remove focus outline and add subtle shadow */
+.btn-flight-type:focus {
+  outline: none;
+}
+.btn-flight-type:before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 100%;
+  border: 6px transparent;
+  left: -5px;
+  top: 12px;
+}
+.btn-flight-type.active:before {
+  border: 6px solid #3cb371;
+}
+
+/* Make buttons equal width */
+.btn-group-toggle {
+  display: flex;
+}
+
+.btn-group-toggle .btn {
+  flex: 1;
+  text-align: center;
+}
+
+/* Remove right border from middle buttons */
+.btn-group-toggle .btn:not(:first-child):not(:last-child) {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+
+/* Round corners for first and last buttons */
+.btn-group-toggle .btn:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.btn-group-toggle .btn:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-left: none;
+}
+.hero-search-form { padding: 10px;}
+.hero-search-form .form-control {
+  padding: 0;
+  height: auto;
+}
+
+
+.touria-select, .touria-select2 { font-weight: 500;color: #767676;}
