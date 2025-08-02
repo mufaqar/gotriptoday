@@ -610,15 +610,9 @@
 .btn-flight-type input {
   display: none;
 }
-
-.btn-flight-type:hover {
-}
-
 .btn-flight-type.active {
   color: #3cb371;
 }
-
-/* Remove focus outline and add subtle shadow */
 .btn-flight-type:focus {
   outline: none;
 }
@@ -637,7 +631,6 @@
   border: 6px solid #3cb371;
 }
 
-/* Make buttons equal width */
 .btn-group-toggle {
   display: flex;
 }
@@ -647,7 +640,6 @@
   text-align: center;
 }
 
-/* Remove right border from middle buttons */
 .btn-group-toggle .btn:not(:first-child):not(:last-child) {
   border-radius: 0;
   border-left: none;
@@ -672,7 +664,6 @@
   padding: 0;
   height: auto;
 }
-
 .hero-search-form .search-item label {
   color: #161920;
 }
