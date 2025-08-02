@@ -154,14 +154,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-12 col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Booking Summary</h3>
+                        <h3 class="card-title"><?php echo esc_html($tour_title); ?></h3>
                         <?php if ($tour_image) : ?>
                         <img src="<?php echo esc_url($tour_image); ?>" class="img-fluid rounded mb-3"
                             alt="<?php echo esc_attr($tour_title); ?>">
                         <?php endif; ?>
-
-                        <h5><?php echo esc_html($tour_title); ?></h5>
-
                         <ul class="list-group list-group-flush mb-3">
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Date:</span>
