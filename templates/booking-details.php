@@ -173,6 +173,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <span>€<?php echo number_format($tour_price, 2); ?></span>
                             </li>
                         </ul>
+                        <div class="icon">
+                            <i class="ti ti-calendar"></i>
+                            Free cancellation up to 24 hours before your pickup time.
+                        </div>
                     </div>
                 </div>
             </div>
