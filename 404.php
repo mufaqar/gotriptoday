@@ -20,5 +20,4 @@ get_template_part('partials/content', 'breadcrumb', [
     </div>
     <div class="divider"></div>
 </div>
-
 <?php get_footer(); ?>
