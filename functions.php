@@ -132,3 +132,5 @@ function enqueue_ajax_contact_form_script() {
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_ajax_contact_form_script');
+
+
