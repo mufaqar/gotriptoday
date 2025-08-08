@@ -12,7 +12,7 @@
   font-family: "chbs-meta-icon-2" !important;
 }
 
-[class*="icon-"]:before { font-family: "chbs-meta-icon-2" !important;}
+.chbs-main [class*="icon-"]:before { font-family: "chbs-meta-icon-2" !important;}
 
 .go_trip_form .ui-tabs-panel {
   border-radius: 100px !important;

@@ -28,7 +28,7 @@ get_template_part('partials/content', 'breadcrumb', [
                 </ul>          
 
             </div>
-            <div class="col-12 col-lg-12 go_trip_bookingform">
+            <div class="col-12 col-lg-12 go_trip_bookingform mt-5">
                 <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
             </div>
         </div>
