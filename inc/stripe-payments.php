@@ -1,6 +1,6 @@
 <?php
 
-require_once get_template_directory() . '/stripe-php/init.php';
+//require_once get_template_directory() . '/stripe-php/init.php';
 
 add_action('wp_ajax_stripe_create_payment_intent', 'stripe_create_payment_intent');
 add_action('wp_ajax_nopriv_stripe_create_payment_intent', 'stripe_create_payment_intent');

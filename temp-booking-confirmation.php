@@ -18,12 +18,16 @@ $payment_intent_id = $_GET['payment_intent'] ?? '';
 
 if ($payment_intent_id) {
     // Initialize Stripe
-    require_once get_template_directory() . '/stripe-php/init.php';
-    \Stripe\Stripe::setApiKey(get_option('stripe_secret_key'));
+    // require_once get_template_directory() . '/stripe-php/init.php';
+    // \Stripe\Stripe::setApiKey(get_option('stripe_secret_key'));
+
+    
+
+
     
     try {
         // Retrieve payment intent
-        $payment_intent = \Stripe\PaymentIntent::retrieve($payment_intent_id);
+      //  $payment_intent = \Stripe\PaymentIntent::retrieve($payment_intent_id);
 
        if ($payment_intent->status === 'succeeded') {
       

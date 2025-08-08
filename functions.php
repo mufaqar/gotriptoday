@@ -1,4 +1,4 @@
-<?php load_theme_textdomain('text_domain');
+<?php 
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 140, 140, true );
 	add_image_size( 'single-post-thumbnail', 300, 9999 );
@@ -14,8 +14,7 @@
     include_once('inc/class-walker-touria.php');
     include_once('inc/extra.php');
 
-	// Add RSS links to <head> section
-	automatic_feed_links();
+
 	
 	// Clean up the <head>
 	function removeHeadLinks() {
