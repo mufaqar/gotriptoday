@@ -5,7 +5,7 @@
     <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
         <form class="row align-items-center g-3 g-xxl-2" method="GET"
             action="<?php echo esc_url(home_url('/day-trips')); ?>">
-            <div class="col-12 col-md-6 col-xxl">
+            <div class="col-12 col-md-4 col-xxl">
                 <div class="search-item d-flex align-items-center gap-3">
                     <div class="icon">
                         <i class="ti ti-map-pin"></i>
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="col-xxl">
+             <div class="col-12 col-md-4 col-xxl">
                 <div class="search-item d-flex align-items-center gap-3">
                     <div class="icon">
                         <i class="ti ti-calendar"></i>
@@ -47,7 +47,7 @@
 
 
 
-            <div class="col-12 col-md-6 col-xxl-2">
+            <div class="col-12 col-md-4 col-xxl-2">
                 <button type="submit" class="btn btn-success w-100">Search Now</button>
             </div>
         </form>
