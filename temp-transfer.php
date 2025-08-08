@@ -25,48 +25,10 @@ get_template_part('partials/content', 'breadcrumb', [
                     <li><i class="ti ti-help"></i>24/7 Customer Support </li>
                     <li><i class="ti ti-star"></i>5-Star Rated Service </li>
                     <li><i class="ti ti-plane-arrival"></i>Airport Pickup Guaranteed </li>
-                </ul>
-                <!-- Accommodation Card -->
-                <div class="accommodation-card wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1000ms">
-                    <div class="accommodation-hidden-content">
-                        <!-- Accommodation Info -->
-                        <ul class="accommodation-info list-unstyled mb-0">
-                            <li>
-                                <i class="ti ti-users"></i>
-                                <span>2 Guests</span>
-                            </li>
-                            <li>
-                                <i class="ti ti-air-conditioning"></i>
-                                <span>Air conditioner</span>
-                            </li>
-                            <li>
-                                <i class="ti ti-bed"></i>
-                                <span>1 Bed</span>
-                            </li>
-                            <li>
-                                <i class="ti ti-router"></i>
-                                <span>Unlimited Wi-Fi</span>
-                            </li>
-                            <li>
-                                <i class="ti ti-bath"></i>
-                                <span>Shower bathtub</span>
-                            </li>
-                            <li>
-                                <i class="ti ti-square-off"></i>
-                                <span>1869 sqft</span>
-                            </li>
-                            <li>
-                                <i class="ti ti-ironing-steam"></i>
-                                <span>Free laundry service</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                </ul>          
 
             </div>
             <div class="col-12 col-lg-12 go_trip_bookingform">
-
-
                 <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
             </div>
         </div>
