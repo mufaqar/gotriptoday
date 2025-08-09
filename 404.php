@@ -2,7 +2,7 @@
 <?php $bg_image =  get_template_directory_uri() . '/assets/img/bg-img/1.jpg';
 get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image
-]); ?>
+]);?>
 <div class="error-section">
     <div class="container">
         <div class="row justify-content-center">
