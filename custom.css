@@ -9,11 +9,14 @@
 .chbs-tooltip:before {
   font-family: "chbs-meta-icon" !important;
 }
+
 .chbs-meta-icon-2::before {
   font-family: "chbs-meta-icon-2" !important;
 }
 
-.chbs-meta-icon-arrow-vertical-large:before { font-family: "chbs-meta-icon" !important;}
+.chbs-meta-icon-arrow-vertical-large:before {
+  font-family: "chbs-meta-icon" !important;
+}
 
 .go_trip_form .ui-tabs-panel {
   border-radius: 100px !important;
@@ -24,25 +27,27 @@
 
 .go_trip_form .ui-tabs-nav {
   display: flex;
+  gap: 10px;
   width: fit-content !important;
   padding: 0px !important;
   margin-bottom: 20px !important;
-  margin-left: 20px !important;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li {
   margin: 0 !important;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li > a {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li>a {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
   background-color: transparent !important;
-  border-radius: 50px;
-  padding: 10px 24px !important;
+  padding: 10px 0 !important;
   color: #fff !important;
   position: relative;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li > a::before {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li>a::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -55,14 +60,14 @@
   transition: all ease-in-out 0.3s;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li.ui-tabs-active > a::before {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active>a::before {
   border: 5px solid #3cb371;
 }
 
 .go_trip_form .chbs-form-field-pickup-date-time {
   display: flex !important;
   flex-direction: row !important;
-  width: 40% !important;
+  width: 60% !important;
 }
 
 .go_trip_form .ui-tabs-panel[aria-hidden="false"] {
@@ -72,6 +77,12 @@
 
 .go_trip_form .chbs-form-field {
   padding-top: 0 !important;
+  border-right: 1px solid #76767680!important;
+  border-bottom: 0 solid #76767680!important;
+}
+
+.go_trip_form #panel-1 .chbs-form-field-transfer-type,
+.go_trip_form #panel-2 div:nth-child(3) {
   border: none !important;
 }
 
@@ -82,6 +93,10 @@
 
 .go_trip_form .chbs-form-field input {
   padding-bottom: 0 !important;
+}
+
+.go_trip_form .chbs-main .ui-selectmenu-button {
+  padding-bottom: 5px !important;
 }
 
 .go_trip_form .chbs-button-widget-submit {
@@ -100,6 +115,10 @@
 .go_trip_form .chbs-button-widget-submit:hover {
   background-color: rgb(22, 25, 34) !important;
   color: rgb(255, 255, 255) !important;
+}
+
+.chbs-main .chbs-main-content>div>div:last-child {
+  margin-top: 20px !important;
 }
 
 .tour_feature {
@@ -136,13 +155,7 @@
   margin-right: 12px;
 }
 
-.go_trip_bookingform
-  .chbs-booking-form-id-10007
-  .chbs-main-navigation-default
-  > ul
-  > li.chbs-state-selected
-  > a
-  > span:first-child {
+.go_trip_bookingform .chbs-booking-form-id-10007 .chbs-main-navigation-default>ul>li.chbs-state-selected>a>span:first-child {
   background-color: #3cb371;
 }
 
@@ -154,12 +167,12 @@
   margin-bottom: 20px;
 }
 
-.go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav > li {
+.go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav>li {
   width: 50% !important;
   border-radius: 50px !important;
 }
 
-.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav > li a {
+.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav>li a {
   background-color: transparent !important;
   border: none !important;
   border-radius: 50px !important;
@@ -167,25 +180,16 @@
   font-weight: 700 !important;
 }
 
-.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav > li.ui-tabs-active > a {
+.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active>a {
   background-color: #3cb371 !important;
   border-color: #3cb371 !important;
 }
 
-.go_trip_bookingform
-  .chbs-booking-form-id-10007
-  .chbs-tab.ui-tabs
-  .ui-tabs-nav
-  > li.ui-tabs-active
-  + li
-  > a {
+.go_trip_bookingform .chbs-booking-form-id-10007 .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active+li>a {
   border: none !important;
 }
 
-.go_trip_bookingform
-  .chbs-booking-form-id-10007
-  .chbs-tab.ui-tabs
-  .ui-tabs-panel {
+.go_trip_bookingform .chbs-booking-form-id-10007 .chbs-tab.ui-tabs .ui-tabs-panel {
   border: none !important;
 }
 
@@ -206,7 +210,7 @@
   border: none;
 }
 
-.go_trip_bookingform .chbs-main .chbs-form-field > label {
+.go_trip_bookingform .chbs-main .chbs-form-field>label {
   color: #161920;
   font-size: 14px;
   font-weight: 600;
@@ -255,6 +259,16 @@
     width: 100% !important;
   }
 
+  .go_trip_form .chbs-form-field {
+    border-right: 0px solid #76767680!important;
+    border-bottom: 1px solid #76767680!important;
+  }
+
+  .go_trip_form #panel-1 .chbs-form-field-transfer-type,
+  .go_trip_form #panel-2 div:nth-child(3) {
+    border: none !important;
+  }
+
   .go_trip_form .ui-tabs-panel[aria-hidden="false"] {
     flex-direction: column !important;
   }
@@ -263,11 +277,7 @@
     padding-bottom: 15px !important;
   }
 
-  .go_trip_form
-    .chbs-main.chbs-widget.chbs-widget-style-4
-    .chbs-main-content-step-1
-    > div
-    + div {
+  .go_trip_form .chbs-main.chbs-widget.chbs-widget-style-4 .chbs-main-content-step-1>div+div {
     text-align: left !important;
   }
 
@@ -327,15 +337,11 @@
 
 .go_trip_Customform .jet-form-builder__field.jet-form-builder-repeater,
 .go_trip_Customform .jet-form-builder-repeater__row,
-.go_trip_Customform
-  .jet-form-builder-repeater__row-fields
-  .jet-form-builder-row {
+.go_trip_Customform .jet-form-builder-repeater__row-fields .jet-form-builder-row {
   padding: 0;
 }
 
-.go_trip_Customform
-  .jet-form-builder-repeater__row-fields
-  :where(.wp-block-columns) {
+.go_trip_Customform .jet-form-builder-repeater__row-fields :where(.wp-block-columns) {
   margin-bottom: 0;
 }
 
