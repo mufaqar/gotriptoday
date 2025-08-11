@@ -80,7 +80,7 @@
                             <div class="icon">
                                 <i class="ti ti-mail"></i>
                             </div>
-                            <p class="mb-0 text-white">info@gotriptoday.com</p>
+                            <p class="mb-0 text-white"><a href="mailto:info@gotriptoday.com">info@gotriptoday.com</a></p>
                         </div>
 
                         <!-- Contact Card -->
@@ -88,7 +88,7 @@
                             <div class="icon">
                                 <i class="ti ti-phone"></i>
                             </div>
-                            <p class="mb-0 text-white">+49 0 170 1479446</p>
+                            <p class="mb-0 text-white"><a href="tel:+4901701479446">+49 0 170 1479446</a></p>
                         </div>
                     </div>
                     <!-- Social Nav -->
