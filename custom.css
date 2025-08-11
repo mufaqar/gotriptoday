@@ -700,3 +700,7 @@
   font-weight: 500;
   color: #767676;
 }
+
+.post b, .post strong{
+  color: #161920;
+}

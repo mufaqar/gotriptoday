@@ -17,7 +17,7 @@ get_header();
             <h2>Tour Details</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-5" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2" action="#">
-                    <div class="col-12 col-md-6 col-xxl">
+                    <div class="col-12 col-md-4 col-xxl">
                         <div class="search-item d-flex align-items-center gap-3">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
@@ -43,7 +43,7 @@ get_header();
                         </div>
                     </div>
 
-                    <div class="col-xxl">
+                    <div class="col-md-4 col-xxl">
                         <div class="search-item d-flex align-items-center gap-3">
                             <div class="icon">
                                 <i class="ti ti-calendar"></i>
@@ -57,45 +57,32 @@ get_header();
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    <div class="col-12 col-md-6 col-xxl-2">
+                    <div class="col-12 col-md-4 col-xxl-2">
                         <button type="submit" class="btn btn-success w-100">Search Now</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
-
     <!-- Divider -->
     <div class="divider"></div>
 </div>
-
 
 <!-- Tour List Section -->
 <section class="tour-list-section">
     <!-- Divider -->
     <div class="divider"></div>
-
     <div class="container">
-
         <div class="row g-4">
             <div class="col-12 col-md-4">
-
                 <div class="tour-list-sidebar">
-
                     <div class="sidebar-widget">
                         <h4 class="widget-title mb-4">Category</h4>
-
                         <?php
                         $terms = get_terms([
                             'taxonomy'   => 'tour-category',
                             'hide_empty' => false, // Set true to hide empty categories
                         ]);
-
                         if (!empty($terms) && !is_wp_error($terms)) :
                         ?>
                         <!-- Sidebar Checkbox List -->
@@ -116,18 +103,14 @@ get_header();
                             <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
-
                     </div>
-
                     <div class="sidebar-widget">
                         <h4 class="widget-title mb-4">Tour Duration</h4>
-
                         <?php
                         $terms = get_terms([
                             'taxonomy'   => 'tour-duration',
                             'hide_empty' => false, // Set true to hide empty categories
                         ]);
-
                         if (!empty($terms) && !is_wp_error($terms)) :
                         ?>
                         <!-- Sidebar Checkbox List -->
@@ -148,12 +131,9 @@ get_header();
                             <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
-
                     </div>
-
                     <div class="sidebar-widget">
                         <h4 class="widget-title mb-4">Properties</h4>
-
                         <?php
                         $terms = get_terms([
                             'taxonomy'   => 'toour-properties',
@@ -180,15 +160,9 @@ get_header();
                             <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
-
                     </div>
-
-
                 </div>
             </div>
-
-
-
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
                     <div class="row g-4">
@@ -212,14 +186,10 @@ get_header();
                                 echo '<p>No tours found.</p>';
                             endif;
                             ?>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
