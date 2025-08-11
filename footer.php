@@ -1,9 +1,7 @@
 <!-- Footer -->
 <footer class="footer-wrapper style-two px-3 mx-3 mx-lg-4 mx-xxl-5 mb-3 mb-lg-4 mb-xxl-5 jarallax" data-jarallax
     data-speed="0.6" style="background-image: url('assets/img/bg-img/96.jpg');">
-    <!-- Divider -->
-    <div class="divider"></div>
-
+        <div class="divider-sm"></div>
     <div class="container-fluid">
         <div class="row g-5">
             <!-- Footer Card -->
@@ -108,8 +106,7 @@
         </div>
     </div>
 
-    <!-- Divider -->
-    <div class="divider"></div>
+     <div class="divider-sm"></div>
 
     <!-- Copyright -->
     <div class="copyright-wrapper border-top">

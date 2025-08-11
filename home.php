@@ -160,16 +160,12 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Button -->
                     <a href="<?php bloginfo('url'); ?>/contact" class="btn btn-success">Contact Us <i
                             class="icon-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Divider -->
     <div class="divider"></div>
 </section>
 
@@ -438,7 +434,6 @@ get_header(); ?>
     </div>
 
     <div class="divider-sm"></div>
-
     <div class="container">
         <div class="row g-4 g-xxl-5">
             <?php
@@ -462,24 +457,17 @@ get_header(); ?>
             ?>
         </div>
     </div>
-
-    <!-- Divider -->
     <div class="divider"></div>
 </section>
 
 <?php get_footer(); ?>
 
-
 <script>
-jQuery(document).ready(function($) {
-    $('form[name="chbs-form"]').on('submit', function(e) {
-        e.preventDefault(); // stop normal form submit
-
-        // Get booking page full URL from WordPress (PHP prints it as a string)
-        let bookingUrl = "<?php echo home_url('/booking-page/'); ?>";
-
-        // Redirect with all form data
-        window.location.href = bookingUrl + '?' + $(this).serialize();
+    jQuery(document).ready(function($) {
+        $('form[name="chbs-form"]').on('submit', function(e) {
+            e.preventDefault();
+            let bookingUrl = "<?php echo home_url('/booking-page/'); ?>";
+            window.location.href = bookingUrl + '?' + $(this).serialize();
+        });
     });
-});
 </script>
