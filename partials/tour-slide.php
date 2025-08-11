@@ -1,16 +1,16 @@
   <!-- Single Slide -->
   <div class="swiper-slide">
       <div class="trip-card wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-          <?php if ( has_post_thumbnail() ) {
+          <a href="<?php the_permalink() ?>">
+              <?php if ( has_post_thumbnail() ) {
 				           the_post_thumbnail('full', ['class' => 'tour_feature']);
 					} else { ?>
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tour.jpg" alt="Featured Thumbnail" />
-          <?php } ?>
-
-
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tour.jpg" alt="Featured Thumbnail" />
+              <?php } ?>
+          </a>
 
           <div class="trip-body">
-              <h4 class="mb-4 trip-title"><?php the_title()?></h4>
+              <h4 class="mb-4 trip-title"> <a href="<?php the_permalink() ?>"><?php the_title()?></a></h4>
               <div class="trip-meta d-flex align-items-center justify-content-between gap-3 gap-xxl-4">
                   <ul class="list-unstyled d-flex flex-column gap-3">
                       <li><i class="ti ti-map-pin-cog"></i>
