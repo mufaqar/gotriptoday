@@ -91,8 +91,8 @@ get_header(); ?>
             <div class="col-12 col-lg-6">
                 <div class="about-content ps-md-5">
                     <div class="section-heading">
-                        <span class="sub-title text-success">A Experience Built on</span>
-                        <h2 class="mb-4">Luxury, Reliability and Excellency</h2>
+                        <span class="sub-title text-success">An Experience Built on</span>
+                        <h2 class="mb-4">Luxury, Reliability and Excellence</h2>
                     </div>
 
                     <div class="d-flex flex-column gap-4 mb-5">
