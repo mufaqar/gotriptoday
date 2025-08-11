@@ -1,18 +1,19 @@
-
+.chbs-meta-icon-2 .icon {
+  font-family: "chbs-meta-icon-2" !important;
+}
 
 .chbs-main [class*="chbs-meta-icon-plus"]:before,
 .chbs-main [class*="chbs-meta-icon-minus"]:before,
 .chbs-main [class*="chbs-meta-icon-route"]:before,
 .chbs-main [class*="chbs-meta-icon-clock"]:before,
-.chbs-main [class*="chbs-tooltip"]:before {
+.chbs-tooltip:before {
   font-family: "chbs-meta-icon" !important;
 }
-
-.chbs-meta-icon-2 .icon {
+.chbs-meta-icon-2::before {
   font-family: "chbs-meta-icon-2" !important;
 }
 
-.chbs-main [class*="icon-"]:before { font-family: "chbs-meta-icon-2" !important;}
+.chbs-meta-icon-arrow-vertical-large:before { font-family: "chbs-meta-icon" !important;}
 
 .go_trip_form .ui-tabs-panel {
   border-radius: 100px !important;
@@ -281,7 +282,6 @@
 }
 
 /*Plugin Setting*/
-
 
 .go_trip_Customform {
   background-color: #ffffff !important;
