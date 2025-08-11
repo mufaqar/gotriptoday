@@ -109,8 +109,8 @@ get_header(); ?>
             <div class="col-12 col-lg-6">
                 <div class="about-content ps-md-5">
                     <div class="section-heading">
-                        <span class="sub-title text-success">A Experience Built on</span>
-                        <h2 class="mb-4">Luxury, Reliability and Excellency</h2>
+                    
+                        <h2 class="mb-4">How It Works</h2>
                     </div>
 
                     <div class="d-flex flex-column gap-4 mb-5">
@@ -125,11 +125,8 @@ get_header(); ?>
                                 </svg>
                             </div>
                             <div>
-                                <h4>Premium Chauffeur Service</h4>
-                                <p class="mb-0">Travel in Style with Luxury Vehicles
-                                    Professional & Discreet Chauffeurs
-                                    Personalized Service for Every Journey
-                                    Comfort, Safety & Premium Experience</p>
+                                <h4>Choose Trip Type</h4>
+                                <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly Service</p>
                             </div>
                         </div>
 
@@ -139,11 +136,8 @@ get_header(); ?>
                                 <i class="ti ti-plane"></i>
                             </div>
                             <div>
-                                <h4>Hassle-Free Airport Transfers</h4>
-                                <p class="mb-0">Punctual Pickups & Drop-offs
-                                    Flight Monitoring for Delays & Early Arrivals
-                                    Meet & Greet for a Stress-Free Experience
-                                    Seamless & Reliable Transfers</p>
+                                <h4>Enter Your Details</h4>
+                                <p class="mb-0">Add pickup & drop-off locations, date, time, and any extra preferences</p>
                             </div>
                         </div>
                         <!-- Single Item -->
@@ -152,11 +146,17 @@ get_header(); ?>
                                 <i class="ti ti-ruler-measure"></i>
                             </div>
                             <div>
-                                <h4>Day Trips & Long-Distance Rides</h4>
-                                <p class="mb-0">Relaxing & Scenic Travel
-                                    Custom Routes & Flexible Schedules
-                                    Safe, Smooth & Comfortable Rides
-                                    Ideal for Work & Leisure</p>
+                                <h4>Get Instant Price & Confirm</h4>
+                                <p class="mb-0">See your price instantly. Review the service and confirm your booking with a few clicks</p>
+                            </div>
+                        </div>
+                        <div class="about-card-sm d-flex align-items-center gap-3">
+                            <div class="icon">
+                                <i class="ti ti-car"></i>
+                            </div>
+                            <div>
+                                <h4>Ride in Comfort</h4>
+                                <p class="mb-0">ur professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a smooth journey</p>
                             </div>
                         </div>
                     </div>

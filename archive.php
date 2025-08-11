@@ -50,7 +50,7 @@ get_template_part('partials/content', 'breadcrumb', [
                                 <h3 class="post-title mb-4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                 <div class="d-flex flex-column gap-4">
                                     <?php the_excerpt(); ?>
-                                    <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read More</a>
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-success">Read More</a>
                                 </div>
                             </div>
 
