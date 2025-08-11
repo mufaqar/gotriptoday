@@ -48,96 +48,14 @@
 
 <body <?php body_class(); ?>>
 
-    <!-- Preloader -->
-    <!-- <div class="preloader" id="preloader">
+ 
+    <div class="preloader" id="preloader">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div> -->
-
-    <!-- Right Side Offcanvas -->
-    <div class="offcanvas offcanvas-end right-side-touria-offcanvas shadow-lg" tabindex="-1" id="sideMenuOffcanvas">
-        <!-- Offcanvas Header -->
-        <div class="offcanvas-header">
-            <div>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" width="150" alt="">
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-
-        <!-- Offcanvas Body -->
-        <div class="offcanvas-body">
-            <div class="container-fluid">
-                <div class="d-flex flex-column gap-5 mb-5">
-                    <!-- Single Item -->
-                    <div class="about-card-sm d-flex align-items-center gap-3">
-                        <div class="icon text-success">
-                            <i class="ti ti-map-pin"></i>
-                        </div>
-                        <div>
-                            <h4>Choose Trip Type</h4>
-                            <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly Service
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="about-card-sm d-flex align-items-center gap-3">
-                        <div class="icon text-success">
-                            <i class="ti ti-file-pencil"></i>
-                        </div>
-                        <div>
-                            <h4>Enter Your Details</h4>
-                            <p class="mb-0">Add pickup & drop-off locations, date, time, and any extra preferences</p>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="about-card-sm d-flex align-items-center gap-3">
-                        <div class="icon text-success">
-                            <i class="ti ti-message-2-dollar"></i>
-                        </div>
-                        <div>
-                            <h4>Get Instant Price & Confirm</h4>
-                            <p class="mb-0">See your price instantly. Review the service and confirm your booking with a
-                                few clicks</p>
-                        </div>
-                    </div>
-
-                    <!-- Single Item -->
-                    <div class="about-card-sm d-flex align-items-center gap-3">
-                        <div class="icon text-success">
-                            <i class="ti ti-car"></i>
-                        </div>
-                        <div>
-                            <h4>Ride in Comfort</h4>
-                            <p class="mb-0">Your professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a
-                                smooth journey</p>
-                        </div>
-                    </div>
-
-                    <a href="<?php echo home_url('/custom-booking'); ?>" class="btn btn-success">Book Now <i
-                            class="icon-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <!-- Search Form Overlay -->
-    <div class="search-bg-overlay" id="searchOverlay"></div>
-
-    <!-- Search Form Popup -->
-    <div class="search-form-popup">
-        <h2 class="mb-5 display-6 fw-bold text-white">How can I help you, Today?</h2>
-        <button type="button" class="close-btn" id="searchClose" aria-label="Close">
-            <i class="ti ti-x"></i>
-        </button>
-        <form class="search-form">
-            <input type="search" class="form-control" placeholder="Search...">
-            <button type="submit" class="btn btn-success d-none"><i class="ti ti-search"></i></button>
-        </form>
-    </div>
-
+   
     <!-- Header Area-->
     <header class="header-area style-three">
         <div class="container-fluid">
