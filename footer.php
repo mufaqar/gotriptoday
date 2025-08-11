@@ -13,7 +13,7 @@
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_white.png" width="190"
                             alt="">
                     </a>
-                    <p class="mb-4 text-white"> connects you with exclusive chauffeur services, focusing on luxury,
+                    <p class="mb-4 text-white"> Connects you with exclusive chauffeur services, focusing on luxury,
                         comfort, and punctuality.
                         We partner with top-rated, English-speaking and local drivers to ensure seamless day trips,
                         transfers, and business travel—all with a premium fleet tailored to your needs.</p>

@@ -280,14 +280,15 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         <ul class="list-unstyled d-flex flex-column gap-2">
                                             <li>
                                                 <span>Adult:</span>
-                                                <span id="price-per-adult">€<?php echo $tour_price; ?></span>/Per
+                                                <span id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
                                             </li>
                                             <li>
-                                                <span>Child:</span><span>$0.00</span>
+                                                <span>Child:</span><span><span>€</span>0.00</span>
                                             </li>
                                             <li>
-                                                <span>Total:</span>€<span
-                                                    id="total_price"><?php echo $tour_price * 2; ?></span>
+                                                <span>Total:</span>
+                                                <span
+                                                    id="total_price"><span>€</span><?php echo $tour_price * 2; ?></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -324,7 +325,7 @@ function updateTotalPrice() {
     var adults = parseInt(document.getElementById('tour_adults').value);
     var pricePerAdult = <?php echo $tour_price; ?>;
     var totalPrice = adults * pricePerAdult;
-    document.getElementById('total_price').textContent = totalPrice;
+    document.getElementById('total_price').textContent = "€"+totalPrice ;
     document.getElementById('tour_price').value = totalPrice;
 }
 document.addEventListener('DOMContentLoaded', function() {

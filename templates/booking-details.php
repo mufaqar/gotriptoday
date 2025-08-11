@@ -42,15 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">First name</label>
-                                    <input type="text" name="first_name" class="form-control" required>
+                                    <input type="text" name="first_name" placeholder="Enter First Name" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Last name</label>
-                                    <input type="text" name="last_name" class="form-control" required>
+                                    <input type="text" name="last_name" placeholder="Enter Last Name"  class="form-control" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" required>
+                                    <input type="email" name="email" placeholder="Enter Email Address" class="form-control" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Phone number</label>
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <option value="+92" selected>(+92) Pakistan</option>
                                             <option value="+44">(+44) UK</option>
                                         </select>
-                                        <input type="text" name="phone" class="form-control" required>
+                                        <input type="text" name="phone" class="form-control" placeholder="123-456-789" required>
                                     </div>
                                 </div>
                             </div>
