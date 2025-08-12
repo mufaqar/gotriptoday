@@ -36,7 +36,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <?php echo get_post_meta($post->ID, "address", true); ?></span>
                 </p> -->
             </div>
-           
+
         </div>
 
         <div class="divider-sm"></div>
@@ -194,10 +194,10 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) {
                                         ?>
-                                    <div class="swiper-slide">
-                                        <img src="<?php echo esc_url($image_url); ?>" alt="">
-                                    </div>
-                                    <?php
+                        <div class="swiper-slide">
+                            <img src="<?php echo esc_url($image_url); ?>" alt="">
+                        </div>
+                        <?php
                                     }
                                 }
                             }
@@ -224,13 +224,44 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                     </ul>
 
-                    <div class="row g-4">
-                        <div class="col-6">
+                    <h2>What's Included</h2>
 
-                            <?php echo get_post_meta($post->ID, "included", true); ?>
+                    <div class="row g-4">
+                        <div class="col-12">
+
+                            <ul class="list-unstyled">
+
+                                <?php $included =  get_post_meta($post->ID, "included", false);
+
+                              if (!empty($included)) {
+                                
+                                    foreach ($included[0] as $feature => $is_included) {
+                                        if ($is_included) {
+                                            echo "<li><i class='ti ti-rosette-discount-check'></i>$feature</li>";
+                                        }
+                                    }
+                                
+                                }
+                            
+                            ?>
+
+
+                                <?php $not_included =   get_post_meta($post->ID, "not_included", false);
+                             if (!empty($not_included)) {
+                                
+                                    foreach ($not_included[0] as $nofeature => $is_not_included) {
+                                        if ($is_not_included) {
+                                            echo "<li><i class='ti ti-rosette-discount-check'></i>$nofeature</li>";
+                                        }
+                                    }
+                                
+                                }
+                            
+                            ?>
+                            </ul>
                         </div>
                         <div class="col-6">
-                            <?php echo get_post_meta($post->ID, "not_included", true); ?>
+
                         </div>
                     </div>
                 </div>
@@ -255,7 +286,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                     <div class="d-flex align-items-center gap-2">
                                         <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
                                         <input type="date" id="tour_date" name="tour_date"
-                                            class="form-control p-0 bg-transparent" required>
+                                            class="form-control p-0 bg-transparent" value="<?php echo date('d/m/Y'); ?>"
+                                            required>
                                     </div>
                                 </div>
 
@@ -265,7 +297,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         <select name="tour_adults" id="tour_adults"
                                             class="touria-select2 bg-transparent" onchange="updateTotalPrice()">
                                             <option value="1" selected>1</option>
-                                            <option value="2" >2</option>
+                                            <option value="2">2</option>
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
@@ -278,7 +310,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         <ul class="list-unstyled d-flex flex-column gap-2">
                                             <li>
                                                 <span>Adult:</span>
-                                                <span id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
+                                                <span
+                                                    id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
                                             </li>
                                             <li>
                                                 <span>Child:</span><span><span>€</span>0.00</span>
@@ -302,7 +335,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                     </div>
 
-                  
+
                 </div>
             </div>
         </div>
@@ -319,7 +352,7 @@ function updateTotalPrice() {
     var adults = parseInt(document.getElementById('tour_adults').value);
     var pricePerAdult = <?php echo $tour_price; ?>;
     var totalPrice = adults * pricePerAdult;
-    document.getElementById('total_price').textContent = "€"+totalPrice ;
+    document.getElementById('total_price').textContent = "€" + totalPrice;
     document.getElementById('tour_price').value = totalPrice;
 }
 document.addEventListener('DOMContentLoaded', function() {
