@@ -2,12 +2,7 @@
 /*Template Name: Tours*/
 
 get_header(); 
-
-
 ?>
-
-
-<!-- Breadcrumb Section -->
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp');">
     <div class="container">
@@ -64,7 +59,6 @@ get_header();
             </div>
         </div>
     </div>
-    <!-- Divider -->
     <div class="divider"></div>
 </div>
 
@@ -81,11 +75,10 @@ get_header();
                         <?php
                         $terms = get_terms([
                             'taxonomy'   => 'tour-category',
-                            'hide_empty' => false, // Set true to hide empty categories
+                            'hide_empty' => false,
                         ]);
                         if (!empty($terms) && !is_wp_error($terms)) :
                         ?>
-                        <!-- Sidebar Checkbox List -->
                         <ul class="sidebar-checkbox-list list-unstyled">
                             <?php foreach ($terms as $term) : ?>
                             <li>
@@ -201,7 +194,45 @@ get_header();
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/wow.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/active.js"></script>
 
+<script>
+jQuery(document).ready(function($) {
+    // Handle category filter changes
+    $('#category-filter').on('change', '.tour-filter-checkbox', function() {
+        filterTours();
+    });
 
+    function filterTours() {
+        // Show loading spinner
+        $('#loading-spinner').show();
+
+        // Get selected categories
+        var selectedCategories = [];
+        $('#category-filter input:checked').each(function() {
+            selectedCategories.push($(this).val());
+        });
+
+        // AJAX request
+        $.ajax({
+            url: ajaxurl, // WordPress AJAX URL
+            type: 'POST',
+            data: {
+                action: 'filter_tours',
+                categories: selectedCategories,
+                // You can add other filter parameters here
+            },
+            success: function(response) {
+                $('#tour-results').html(response);
+                $('#loading-spinner').hide();
+            },
+            error: function() {
+                $('#tour-results').html(
+                    '<p>There was an error loading tours. Please try again.</p>');
+                $('#loading-spinner').hide();
+            }
+        });
+    }
+});
+</script>
 
 
 <?php get_footer(); ?>
