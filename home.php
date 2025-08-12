@@ -151,7 +151,7 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Ride in Comfort</h4>
-                                <p class="mb-0">ur professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a smooth journey</p>
+                                <p class="mb-0"> Chose your daytrip professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a smooth journey</p>
                             </div>
                         </div>
                     </div>
