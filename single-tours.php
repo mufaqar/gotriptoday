@@ -339,31 +339,31 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-jQuery(document).ready(function ($) {
-  // Cache elements
-  var $sticky = $('.sticky-sidebar');
-  var $spacer = $('.sticky-spacer');
-  var stickyOffset = $sticky.offset().top;
-  var stickyWidth = $sticky.outerWidth();
+// jQuery(document).ready(function ($) {
+//   // Cache elements
+//   var $sticky = $('.sticky-sidebar');
+//   var $spacer = $('.sticky-spacer');
+//   var stickyOffset = $sticky.offset().top;
+//   var stickyWidth = $sticky.outerWidth();
 
-  // Handle scroll event
-  $(window).scroll(function () {
-    var scrollTop = $(window).scrollTop();
+//   // Handle scroll event
+//   $(window).scroll(function () {
+//     var scrollTop = $(window).scrollTop();
 
-    if (scrollTop >= stickyOffset) {
-      $sticky.addClass('stuck').css('width', stickyWidth);
-      $spacer.addClass('active').css('height', $sticky.outerHeight());
-    } else {
-      $sticky.removeClass('stuck').css('width', '');
-      $spacer.removeClass('active').css('height', 0);
-    }
-  });
+//     if (scrollTop >= stickyOffset) {
+//       $sticky.addClass('stuck').css('width', stickyWidth);
+//       $spacer.addClass('active').css('height', $sticky.outerHeight());
+//     } else {
+//       $sticky.removeClass('stuck').css('width', '');
+//       $spacer.removeClass('active').css('height', 0);
+//     }
+//   });
 
-  // Handle window resize to adjust width
-  $(window).resize(function () {
-    if ($sticky.hasClass('stuck')) {
-      $sticky.css('width', $sticky.parent().outerWidth());
-    }
-  });
-});
+//   // Handle window resize to adjust width
+//   $(window).resize(function () {
+//     if ($sticky.hasClass('stuck')) {
+//       $sticky.css('width', $sticky.parent().outerWidth());
+//     }
+//   });
+// });
 </script>
