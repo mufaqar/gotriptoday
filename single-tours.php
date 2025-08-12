@@ -244,11 +244,9 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </div>
                 </div>
 
-                <h2 class="mb-4 mt-5 faq-title">Additional Info</h2>
+                <h2 class="mb-4 faq-title">Additional Info</h2>
 
                 <?php echo get_post_meta($post->ID, "additional_info", true); ?>
-
-
             </div>
 
             <div class="col-12 col-lg-4 ">
@@ -264,7 +262,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                     <div class="d-flex align-items-center gap-2">
                                         <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
                                         <input type="date" id="tour_date" name="tour_date"
-                                            class="form-control p-0 bg-transparent text-end" value="<?php echo date('Y-m-d'); ?>"
+                                            class="form-control p-0 bg-transparent text-end h-auto" value="<?php echo date('Y-m-d'); ?>"
                                             required>
                                     </div>
                                 </div>
@@ -285,7 +283,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                                 <div class="col-12">
                                     <div class="tour-booking-summary">
-                                        <ul class="list-unstyled d-flex flex-column gap-2">
+                                        <ul class="list-unstyled d-flex flex-column gap-4">
                                             <li>
                                                 <span>Adult:</span>
                                                 <span

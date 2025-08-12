@@ -3928,7 +3928,7 @@ picture.jarallax-img img {
 }
 @media only screen and (min-width: 1200px) {
   .tour-details-header h2 {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 .tour-details-header .btn-share {
@@ -3956,8 +3956,8 @@ picture.jarallax-img img {
   gap: 12px;
 }
 .tour-single-meta .icon {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid #3cb371;
   display: -webkit-box;
@@ -3974,8 +3974,8 @@ picture.jarallax-img img {
 }
 @media only screen and (min-width: 1200px) {
   .tour-single-meta .icon {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -4019,7 +4019,6 @@ picture.jarallax-img img {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  gap: 12px;
 }
 .tour-details-content ul li {
   -webkit-box-flex: 0;
@@ -4033,8 +4032,8 @@ picture.jarallax-img img {
   -ms-flex-align: center;
   align-items: center;
   gap: 6px;
-  color: #161920;
-  font-weight: 500;
+  color: #767676;
+  font-weight: 400;
 }
 @media only screen and (min-width: 576px) {
   .tour-details-content ul li {
@@ -7257,7 +7256,7 @@ picture.jarallax-img img {
   flex-direction: column;
 }
 .footer-card p {
-  font-size: 18px;
+  font-size: 15px;
 }
 .footer-card .footer-logo {
   margin-bottom: 32px;
@@ -7493,7 +7492,7 @@ picture.jarallax-img img {
 }
 @media only screen and (min-width: 1200px) {
   .copyright-wrapper .copyright {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 .copyright-wrapper .copyright a {
@@ -7502,7 +7501,7 @@ picture.jarallax-img img {
 }
 @media only screen and (min-width: 1200px) {
   .copyright-wrapper .copyright a {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 .copyright-wrapper .copyright a:hover,
