@@ -69,92 +69,7 @@ get_header();
     <div class="container">
         <div class="row g-4">
             <div class="col-12 col-md-4">
-                <div class="tour-list-sidebar">
-                    <div class="sidebar-widget">
-                        <h4 class="widget-title mb-4">Category</h4>
-                        <?php
-                        $terms = get_terms([
-                            'taxonomy'   => 'tour-category',
-                            'hide_empty' => false,
-                        ]);
-                        if (!empty($terms) && !is_wp_error($terms)) :
-                        ?>
-                        <ul class="sidebar-checkbox-list list-unstyled" id="category-filter">
-                            <?php foreach ($terms as $term) : ?>
-                            <li>
-                                <div class="form-check">
-                                    <input class="form-check-input tour-filter-checkbox" type="checkbox"
-                                        id="term-<?php echo esc_attr($term->term_id); ?>"
-                                        value="<?php echo esc_attr($term->slug); ?>">
-                                    <label class="form-check-label flex-grow-1 ms-2"
-                                        for="term-<?php echo esc_attr($term->term_id); ?>">
-                                        <?php echo esc_html($term->name); ?>
-                                    </label>
-                                    <span class="text-muted"><?php echo esc_html($term->count); ?></span>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php endif; ?>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h4 class="widget-title mb-4">Tour Duration</h4>
-                        <?php
-                        $terms = get_terms([
-                            'taxonomy'   => 'tour-duration',
-                            'hide_empty' => false, // Set true to hide empty categories
-                        ]);
-                        if (!empty($terms) && !is_wp_error($terms)) :
-                        ?>
-                        <!-- Sidebar Checkbox List -->
-                        <ul class="sidebar-checkbox-list list-unstyled">
-                            <?php foreach ($terms as $term) : ?>
-                            <li>
-                                <div class="form-check">
-                                    <input class="form-check-input tour-filter-checkbox" type="checkbox"
-                                        id="term-<?php echo esc_attr($term->term_id); ?>"
-                                        value="<?php echo esc_attr($term->slug); ?>">
-                                    <label class="form-check-label flex-grow-1 ms-2"
-                                        for="term-<?php echo esc_attr($term->term_id); ?>">
-                                        <?php echo esc_html($term->name); ?>
-                                    </label>
-                                    <span class="text-muted"><?php echo esc_html($term->count); ?></span>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php endif; ?>
-                    </div>
-                    <div class="sidebar-widget">
-                        <h4 class="widget-title mb-4">Properties</h4>
-                        <?php
-                        $terms = get_terms([
-                            'taxonomy'   => 'toour-properties',
-                            'hide_empty' => false, // Set true to hide empty categories
-                        ]);
-
-                        if (!empty($terms) && !is_wp_error($terms)) :
-                        ?>
-                        <!-- Sidebar Checkbox List -->
-                        <ul class="sidebar-checkbox-list list-unstyled">
-                            <?php foreach ($terms as $term) : ?>
-                            <li>
-                                <div class="form-check">
-                                    <input class="form-check-input tour-filter-checkbox" type="checkbox"
-                                        id="term-<?php echo esc_attr($term->term_id); ?>"
-                                        value="<?php echo esc_attr($term->slug); ?>">
-                                    <label class="form-check-label flex-grow-1 ms-2"
-                                        for="term-<?php echo esc_attr($term->term_id); ?>">
-                                        <?php echo esc_html($term->name); ?>
-                                    </label>
-                                    <span class="text-muted"><?php echo esc_html($term->count); ?></span>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                <?php get_template_part('partials/tours/filters'); ?>
             </div>
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
@@ -194,45 +109,6 @@ get_header();
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/wow.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/active.js"></script>
 
-<script>
-jQuery(document).ready(function($) {
-    // Handle category filter changes
-    $('#category-filter').on('change', '.tour-filter-checkbox', function() {
-        filterTours();
-    });
-
-    function filterTours() {
-        // Show loading spinner
-        $('#loading-spinner').show();
-
-        // Get selected categories
-        var selectedCategories = [];
-        $('#category-filter input:checked').each(function() {
-            selectedCategories.push($(this).val());
-        });
-
-        // AJAX request
-        $.ajax({
-            url: tours_ajax.ajaxurl, // Use the localized variable
-            type: 'POST',
-            data: {
-                action: 'filter_tours',
-                categories: selectedCategories,
-                // You can add other filter parameters here
-            },
-            success: function(response) {
-                $('#tour-results').html(response);
-                $('#loading-spinner').hide();
-            },
-            error: function() {
-                $('#tour-results').html(
-                    '<p>There was an error loading tours. Please try again.</p>');
-                $('#loading-spinner').hide();
-            }
-        });
-    }
-});
-</script>
 
 
 <?php get_footer(); ?>

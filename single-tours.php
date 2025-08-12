@@ -264,8 +264,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         <label for="tour_adults" class="form-label mb-0 text-heading">Adult</label>
                                         <select name="tour_adults" id="tour_adults"
                                             class="touria-select2 bg-transparent" onchange="updateTotalPrice()">
-                                            <option value="1">1</option>
-                                            <option value="2" selected>2</option>
+                                            <option value="1" selected>1</option>
+                                            <option value="2" >2</option>
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
