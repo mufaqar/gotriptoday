@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+ <div class="divider-sm"></div>
 <div class="booking_details">
     <div class="divider"></div>
     <div class="container">
