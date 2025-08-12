@@ -4,15 +4,23 @@
 // Enqueue scripts and localize AJAX URL
 add_action('wp_enqueue_scripts', 'tours_ajax_scripts');
 function tours_ajax_scripts() {
-    wp_enqueue_script('tours-ajax', get_template_directory_uri() . '/js/tours-ajax.js', array('jquery'), null, true);
+  // Enqueue your custom JS file
+    wp_enqueue_script(
+        'tours-ajax-script', 
+        get_template_directory_uri() . '/js/tours-ajax.js', 
+        array('jquery'), 
+        '1.0', 
+        true
+    );
     
-    // Localize the script with AJAX URL and nonce
+   
+    // Localize the script with data
     wp_localize_script(
-        'tours-ajax',
-        'tours_ajax_obj',
+        'tours-ajax-script',
+        'tours_ajax',
         array(
             'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('filter_tours_nonce'),
+            'nonce' => wp_create_nonce('filter_tours_nonce')
         )
     );
 }

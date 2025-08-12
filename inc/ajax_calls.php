@@ -5,10 +5,8 @@ add_action('wp_ajax_filter_tours', 'filter_tours_callback');
 add_action('wp_ajax_nopriv_filter_tours', 'filter_tours_callback');
 
 function filter_tours_callback() {
-    // Verify nonce for security (recommended)
-    // if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'filter_tours_nonce')) {
-    //     die('Permission denied');
-    // }
+    
+   check_ajax_referer('filter_tours_nonce', 'security');
     
     $args = array(
         'post_type' => 'tours',

@@ -79,7 +79,7 @@ get_header();
                         ]);
                         if (!empty($terms) && !is_wp_error($terms)) :
                         ?>
-                        <ul class="sidebar-checkbox-list list-unstyled">
+                        <ul class="sidebar-checkbox-list list-unstyled" id="category-filter">
                             <?php foreach ($terms as $term) : ?>
                             <li>
                                 <div class="form-check">
@@ -158,7 +158,7 @@ get_header();
             </div>
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
-                    <div class="row g-4">
+                    <div id="tour-results" class="row g-4">
                         <?php
                             $args = array(
                                 'post_type' => 'tours',
@@ -213,7 +213,7 @@ jQuery(document).ready(function($) {
 
         // AJAX request
         $.ajax({
-            url: ajaxurl, // WordPress AJAX URL
+            url: tours_ajax.ajaxurl, // Use the localized variable
             type: 'POST',
             data: {
                 action: 'filter_tours',

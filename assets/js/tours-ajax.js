@@ -16,10 +16,10 @@ jQuery(document).ready(function($) {
         
         // AJAX request
         $.ajax({
-            url: tours_ajax_obj.ajaxurl,
+              url: tours_ajax.ajaxurl, // Use the localized variable
             type: 'POST',
             data: {
-                action: 'filter_tours',
+              action: 'filter_tours',
                 categories: selectedCategories,
                 nonce: tours_ajax_obj.nonce
             },
