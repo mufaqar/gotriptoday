@@ -18,23 +18,12 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
     <div class="container">
 
-
+  <div class="divider-sm"></div>
         <!-- Tour Details Header -->
         <div class="tour-details-header d-flex flex-wrap gap-4 align-items-end justify-content-between">
             <div>
                 <h2 class="mb-3"><?php the_title()?></h2>
-                <!-- <p class="mb-0 d-flex flex-wrap align-items-center gap-2">
-                    <span>(16 Review)</span>
-                    <span class="text-warning">
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                        <i class="ti ti-star-filled"></i>
-                    </span>
-                    <span><i class="ti ti-map-pin text-success"></i>
-                        <?php echo get_post_meta($post->ID, "address", true); ?></span>
-                </p> -->
+               
             </div>
 
         </div>
