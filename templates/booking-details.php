@@ -151,15 +151,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 booking_sidebar">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title"><?php echo esc_html($tour_title); ?></h3>
+                        <h3 class="card-title mb-3"><?php echo esc_html($tour_title); ?></h3>
                         <?php if ($tour_image) : ?>
-                        <img src="<?php echo esc_url($tour_image); ?>" class="img-fluid rounded mb-3"
+                        <img src="<?php echo esc_url($tour_image); ?>" class="img-fluid rounded mb-3 w-100"
                             alt="<?php echo esc_attr($tour_title); ?>">
                         <?php endif; ?>
-                        <ul class="list-group list-group-flush mb-3">
+                        <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Date:</span>
                                 <span><?php echo esc_html($tour_date); ?></span>
@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <span>€<?php echo number_format($tour_price, 2); ?></span>
                             </li>
                         </ul>
-                        <div class="icon">
+                        <div class="icon footer_pickup">
                             <i class="ti ti-calendar"></i>
                             Free cancellation up to 24 hours before your pickup time.
                         </div>

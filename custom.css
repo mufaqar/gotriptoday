@@ -733,11 +733,18 @@
   color: #ffffff;
 }
 
+.sticky-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px; /* Adjust this value based on your navbar height */
+  height: 100vh;
+  overflow-y: auto;
+}
 
- .sticky-sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 20px; /* Adjust this value based on your navbar height */
-    height: 100vh;
-    overflow-y: auto;
-  }
+.booking_sidebar .card {
+
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  border-radius: 18px;
+}
+.footer_pickup { background: white; padding: 10px; font-size: 14px; border-top: 1px solid #dee2e6;}
