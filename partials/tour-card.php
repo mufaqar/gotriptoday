@@ -26,12 +26,11 @@
 
 
          </p>
+          <p><i class="ti ti-map-pin-cog"></i>
+                     <?php echo get_post_meta($post->ID, "address", true); ?> </p>
          <div class="trip-meta d-flex align-items-center justify-content-between gap-3 gap-xxl-4">
              <ul class="list-unstyled d-flex flex-column gap-3">
-                 <li><i class="ti ti-map-pin-cog"></i>
-                     <?php echo get_post_meta($post->ID, "address", true); ?> </li>
-
-
+                
                  <li><i class="ti ti-checkbox"></i> 24h Free Cancellation </li>
                  <li><i class="ti ti-certificate"></i> TripAdvisor Certified</li>
 
