@@ -748,3 +748,20 @@
   border-radius: 18px;
 }
 .footer_pickup { background: white; padding: 10px; font-size: 14px; border-top: 1px solid #dee2e6;}
+
+
+.sticky-sidebar {
+  z-index: 1000; /* Ensure it stays above other content */
+}
+.sticky-sidebar.stuck {
+  position: fixed;
+  top: 0;
+  width: inherit; /* Maintain column width */
+}
+.sticky-spacer {
+  display: none;
+  height: 0;
+}
+.sticky-spacer.active {
+  display: block;
+}

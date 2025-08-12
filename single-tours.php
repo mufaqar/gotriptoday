@@ -254,7 +254,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
             </div>
 
             <div class="col-12 col-lg-4 ">
-                <div class="d-flex flex-column gap-5 position-sticky top-20" style="height: fit-content;">
+                <div class="d-flex flex-column gap-5 sticky-sidebar" >
                     <div class="sidebar-widget">
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
                         <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
@@ -337,5 +337,35 @@ function updateTotalPrice() {
 }
 document.addEventListener('DOMContentLoaded', function() {
     updateTotalPrice();
+});
+</script>
+
+<script>
+jQuery(document).ready(function ($) {
+  // Cache elements
+  var $sticky = $('.sticky-sidebar');
+  var $spacer = $('.sticky-spacer');
+  var stickyOffset = $sticky.offset().top;
+  var stickyWidth = $sticky.outerWidth();
+
+  // Handle scroll event
+  $(window).scroll(function () {
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop >= stickyOffset) {
+      $sticky.addClass('stuck').css('width', stickyWidth);
+      $spacer.addClass('active').css('height', $sticky.outerHeight());
+    } else {
+      $sticky.removeClass('stuck').css('width', '');
+      $spacer.removeClass('active').css('height', 0);
+    }
+  });
+
+  // Handle window resize to adjust width
+  $(window).resize(function () {
+    if ($sticky.hasClass('stuck')) {
+      $sticky.css('width', $sticky.parent().outerWidth());
+    }
+  });
 });
 </script>

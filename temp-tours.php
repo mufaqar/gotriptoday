@@ -68,7 +68,7 @@ get_header();
     <div class="divider"></div>
     <div class="container">
         <div class="row g-4">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 ">
                 <?php get_template_part('partials/tours/filters'); ?>
             </div>
             <div class="col-12 col-md-8">
