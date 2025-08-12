@@ -264,7 +264,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                     <div class="d-flex align-items-center gap-2">
                                         <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
                                         <input type="date" id="tour_date" name="tour_date"
-                                            class="form-control p-0 bg-transparent" value="<?php echo date('Y-m-d'); ?>"
+                                            class="form-control p-0 bg-transparent text-end" value="<?php echo date('Y-m-d'); ?>"
                                             required>
                                     </div>
                                 </div>
