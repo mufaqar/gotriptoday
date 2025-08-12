@@ -310,9 +310,9 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                                 <span
                                                     id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <span>Child:</span><span><span>€</span>0.00</span>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <span>Total:</span>
                                                 <span
