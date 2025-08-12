@@ -218,10 +218,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                     <h2>Trip Itinerary</h2>
                     <ul class="list-unstyled">
-
-
                         <?php echo get_post_meta($post->ID, "trip_itinerary", true); ?>
-
                     </ul>
 
                     <h2>What's Included</h2>
