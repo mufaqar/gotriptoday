@@ -242,10 +242,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
             </div>
 
-            <div class="col-12 col-lg-4">
-                <div class="d-flex flex-column gap-5">
-                    <!-- Widget -->
-                    <!-- Widget -->
+            <div class="col-12 col-lg-4 ">
+                <div class="d-flex flex-column gap-5 position-sticky top-20" style="height: fit-content;">
                     <div class="sidebar-widget">
                         <div class="h4 fw-bold mb-4">Tour Booking</div>
                         <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
@@ -304,11 +302,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                     </div>
 
-                    <!-- Widget -->
-                    <div class="map-widget">
-                        <h2 class="mb-4 mt-5 faq-title"> Book With Extra Flexibility</h2>
-
-                    </div>
+                  
                 </div>
             </div>
         </div>

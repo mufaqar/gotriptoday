@@ -732,3 +732,12 @@
 .footer-card .footer-contact-card p a {
   color: #ffffff;
 }
+
+
+ .sticky-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px; /* Adjust this value based on your navbar height */
+    height: 100vh;
+    overflow-y: auto;
+  }
