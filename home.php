@@ -155,7 +155,7 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-                    <a href="<?php bloginfo('url'); ?>/booking-page" class="btn btn-success">Book Now <i
+                    <a href="<?php bloginfo('url'); ?>/day-trips" class="btn btn-success">Book Now <i
                             class="icon-arrow-right"></i></a>
                 </div>
             </div>
