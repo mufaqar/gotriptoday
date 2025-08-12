@@ -22,10 +22,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
             </div>
         </div>
 
-        <div class="divider-sm"></div>
-
         <div class="tour-details-meta">
-            <div class="divider-sm"></div>
+            <div class="divider-xs"></div>
 
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
                 <!-- Tour Single Meta -->
@@ -155,7 +153,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     €<?php echo get_post_meta($post->ID, "pricing", true); ?><i class="icon-arrow-right"></i></a>
             </div>
 
-            <div class="divider-sm"></div>
+            <div class="divider-xs"></div>
         </div>
 
         <div class="divider-sm"></div>
