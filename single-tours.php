@@ -13,19 +13,13 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
  ?>
 <!-- Tour Details Section -->
 <div class="tour-details-section">
-    <!-- Divider -->
     <div class="divider"></div>
-
     <div class="container">
-
-  <div class="divider-sm"></div>
-        <!-- Tour Details Header -->
+        <div class="divider-sm"></div>      
         <div class="tour-details-header d-flex flex-wrap gap-4 align-items-end justify-content-between">
             <div>
                 <h2 class="mb-3"><?php the_title()?></h2>
-               
             </div>
-
         </div>
 
         <div class="divider-sm"></div>

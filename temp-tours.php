@@ -6,7 +6,7 @@ get_header();
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp');">
     <div class="container">
-        <!-- Breadcrumb Content -->
+         <div class="divider"></div>
         <div class="search_banner">
             <div class="divider"></div>
             <h2>Tour Details</h2>
