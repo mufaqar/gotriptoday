@@ -4,7 +4,7 @@ Theme URI: https://gotriptoday.com/
 Author: Mufaqar
 Author URI: https://mufaqar.com
 Description:  Go Trip Today Theme
-Version: 1.2.4
+Version: 1.2.5
 License: GNU General Public License 
 Text Domain: gt_theme
 Tags: custom theme development for gotriptoday
@@ -4741,7 +4741,7 @@ picture.jarallax-img img {
 }
 
 .deals-swiper {
-  width: 113%;
+  width: 100%;
 }
 
 .deals-navigation-container {
@@ -4753,11 +4753,11 @@ picture.jarallax-img img {
   -ms-flex-align: center;
   align-items: center;
   gap: 10px;
-  margin-right: 10%;
+ 
 }
 @media only screen and (min-width: 992px) {
   .deals-navigation-container {
-    margin-right: 23%;
+   
   }
 }
 .deals-navigation-container .deals-button-prev,
