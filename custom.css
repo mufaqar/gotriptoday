@@ -31,13 +31,13 @@
 .chbs-main [class*="icon-"]:before {
   display: inline-block;
   font-family: "chbs-meta-icon";
-  line-height: auto;
+  line-height: 50px !important;
 }
 
 .chbs-main .chbs-meta-icon-2::before {
   display: inline-block;
   font-family: "chbs-meta-icon-2";
-  line-height: auto;
+   line-height: 50px !important;
 }
 
 .go_trip_form .ui-tabs-panel {
