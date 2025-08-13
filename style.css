@@ -199,10 +199,8 @@ textarea:invalid {
 
 [class*="icon-"]:before {
   display: inline-block;
-  /* font-family: "Glyphter"; */
   font-style: normal;
   font-weight: normal;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
