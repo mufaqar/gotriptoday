@@ -25,19 +25,19 @@
 [class*="icon-"]:before {
   display: inline-block;
   font-family: "Glyphter";
-  
+    line-height: 1;
 }
 
 .chbs-main [class*="icon-"]:before {
   display: inline-block;
   font-family: "chbs-meta-icon";
- 
+     line-height: 1;
 }
 
 .chbs-main .chbs-meta-icon-2::before {
   display: inline-block;
   font-family: "chbs-meta-icon-2";
-  
+      line-height: 1;
 }
 
 .go_trip_form .ui-tabs-panel {
