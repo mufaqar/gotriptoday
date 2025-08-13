@@ -18,7 +18,7 @@
   font-family: "chbs-meta-icon" !important;
 }
 
-[class^="chbs-meta-icon-"] {
+[class^="chbs-meta-icon-"]::before {
   font-family: "chbs-meta-icon" !important;
 }
 
