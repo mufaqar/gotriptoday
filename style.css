@@ -193,9 +193,7 @@ textarea:invalid {
   font-weight: normal;
   font-style: normal;
 }
-[class*="icon-"] {
-  line-height: 0.6 !important;
-}
+
 
 [class*="icon-"]:before {
   display: inline-block;
