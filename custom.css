@@ -1,4 +1,4 @@
-.chbs-meta-icon-2 .icon {
+/* .chbs-meta-icon-2 .icon {
   font-family: "chbs-meta-icon-2" !important;
 }
 
@@ -20,6 +20,21 @@
 
 [class^="chbs-meta-icon-"]::before {
   font-family: "chbs-meta-icon" !important;
+} */
+
+[class*="icon-"]:before {
+  display: inline-block;
+  font-family: "Glyphter";
+}
+
+.chbs-main [class*="icon-"]:before {
+  display: inline-block;
+  font-family: "chbs-meta-icon";
+}
+
+.chbs-main .chbs-meta-icon-2::before {
+  display: inline-block;
+  font-family: "chbs-meta-icon-2";
 }
 
 .go_trip_form .ui-tabs-panel {
