@@ -211,31 +211,23 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                                 <?php $included =  get_post_meta($post->ID, "included", false);
 
-                              if (!empty($included)) {
-                                
-                                    foreach ($included[0] as $feature => $is_included) {
-                                        if ($is_included) {
-                                            echo "<li><i class='ti ti-rosette-discount-check'></i>$feature</li>";
+                                if (!empty($included)) {
+                                    
+                                        foreach ($included[0] as $feature => $is_included) {
+                                            if ($is_included) {
+                                                echo "<li><i class='ti ti-rosette-discount-check'></i>$feature</li>";
+                                            }
                                         }
+                                    
                                     }
                                 
-                                }
-                            
-                            ?>
-
-
-
+                                ?>
                             </ul>
                         </div>
                     </div>
                     <h2 class="">Not Included</h2>
                     <div class="row gap-4">
-
                         <div class="col-12">
-
-
-
-
                             <ul class="list-unstyled ">
                                 <?php $not_included =   get_post_meta($post->ID, "not_included", false);
                              if (!empty($not_included)) {
@@ -250,88 +242,86 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                                 ?>
                             </ul>
-
                         </div>
                     </div>
-                
-            </div>
-
-            <h2 class="faq-title">Additional Info</h2>
-            <div class="row gap-4">
-                <div class="col-12">
-                    <?php echo get_post_meta($post->ID, "additional_info", true); ?>
                 </div>
+
+
+                <h2 class="my-3 faq-title">Additional Info</h2>
+
+                <?php echo get_post_meta($post->ID, "additional_info", true); ?>
             </div>
-        </div>
 
-        <div class="col-12 col-lg-4 ">
-            <div class="d-flex flex-column gap-5 sticky-sidebar">
-                <div class="sidebar-widget">
-                    <div class="h4 fw-bold mb-4">Tour Booking</div>
-                    <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
-                    <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
-                        <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
-                        <input type="hidden" id="tour_price" name="tour_price" value="">
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <div class="d-flex align-items-center gap-2">
-                                    <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
-                                    <input type="date" id="tour_date" name="tour_date"
-                                        class="form-control p-0 bg-transparent text-end h-auto"
-                                        value="<?php echo date('Y-m-d'); ?>" required>
+            <div class="col-12 col-lg-4 ">
+                <div class="d-flex flex-column gap-5 sticky-sidebar">
+                    <div class="sidebar-widget">
+                        <div class="h4 fw-bold mb-4">Tour Booking</div>
+                        <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
+                        <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
+                            <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
+                            <input type="hidden" id="tour_price" name="tour_price" value="">
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
+                                        <input type="date" id="tour_date" name="tour_date"
+                                            class="form-control p-0 bg-transparent text-end h-auto"
+                                            value="<?php echo date('Y-m-d'); ?>" required>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-12">
-                                <div class="d-flex align-items-center justify-content-between gap-2">
-                                    <label for="tour_adults" class="form-label mb-0 text-heading">Adult</label>
-                                    <select name="tour_adults" id="tour_adults" class="touria-select2 bg-transparent"
-                                        onchange="updateTotalPrice()">
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center justify-content-between gap-2">
+                                        <label for="tour_adults" class="form-label mb-0 text-heading">Adult</label>
+                                        <select name="tour_adults" id="tour_adults"
+                                            class="touria-select2 bg-transparent" onchange="updateTotalPrice()">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-12">
-                                <div class="tour-booking-summary">
-                                    <ul class="list-unstyled d-flex flex-column gap-4">
-                                        <li>
-                                            <span>Adult:</span>
-                                            <span id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
-                                        </li>
-                                        <!-- <li>
+                                <div class="col-12">
+                                    <div class="tour-booking-summary">
+                                        <ul class="list-unstyled d-flex flex-column gap-4">
+                                            <li>
+                                                <span>Adult:</span>
+                                                <span
+                                                    id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
+                                            </li>
+                                            <!-- <li>
                                                 <span>Child:</span><span><span>€</span>0.00</span>
                                             </li> -->
-                                        <li>
-                                            <span>Total:</span>
-                                            <span id="total_price"><span>€</span><?php echo $tour_price * 2; ?></span>
-                                        </li>
-                                    </ul>
+                                            <li>
+                                                <span>Total:</span>
+                                                <span
+                                                    id="total_price"><span>€</span><?php echo $tour_price * 2; ?></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success w-100">Book Now <i
+                                            class="icon-arrow-right"></i></button>
                                 </div>
                             </div>
+                        </form>
 
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-success w-100">Book Now <i
-                                        class="icon-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </form>
+
+                    </div>
 
 
                 </div>
-
-
             </div>
         </div>
     </div>
-</div>
 
-<!-- Divider -->
-<div class="divider"></div>
+    <!-- Divider -->
+    <div class="divider"></div>
 </div>
 <?php get_footer(); ?>
 
