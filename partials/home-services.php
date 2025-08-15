@@ -140,7 +140,7 @@
                      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unforgetable.png" alt="">
                      <!-- Trip Body -->
                      <div class="trip-body">
-                         <h4 class="mb-4 trip-title">Unforgetable Day Trips</h4>
+                         <h4 class="mb-4 trip-title">Unforgettable Day Trips</h4>
                          <!-- Trip Meta -->
                          <div class="trip-meta d-flex align-items-center justify-content-between gap-3 gap-xxl-4">
                              <ul class="list-unstyled d-flex flex-column gap-3">

@@ -224,6 +224,14 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             ?>
 
 
+                      
+                            </ul>
+                        </div>
+                        <div class="col-6">
+
+                           <h2>Not Included</h2>
+
+                           
                                 <?php $not_included =   get_post_meta($post->ID, "not_included", false);
                              if (!empty($not_included)) {
                                 
@@ -235,10 +243,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 
                                 }
                             
-                            ?>
-                            </ul>
-                        </div>
-                        <div class="col-6">
 
                         </div>
                     </div>
