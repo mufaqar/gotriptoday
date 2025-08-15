@@ -242,6 +242,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                     }
                                 
                                 }
+
+                                ?>
                             
 
                         </div>
