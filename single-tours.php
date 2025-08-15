@@ -237,7 +237,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 
                                     foreach ($not_included[0] as $nofeature => $is_not_included) {
                                         if ($is_not_included) {
-                                            echo "<li><i class='ti ti-rosette-discount-check'></i>$nofeature</li>";
+                                            echo "<li><i class='ti ti-octagon-minus'></i>$nofeature</li>";
                                         }
                                     }
                                 
