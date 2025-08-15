@@ -23,7 +23,7 @@ get_header(); ?>
                 style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
             </div>
             <div class="swiper-slide h-100"
-                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/2.jpg')">
+                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/1.jpg')">
             </div>
         </div>
     </div>
