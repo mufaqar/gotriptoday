@@ -54,7 +54,7 @@ get_header(); ?>
                 <div class="tab-content pt-3" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
                         <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                            <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]') ?>
+                             <?php get_template_part('partials/content', 'tab1'); ?>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
