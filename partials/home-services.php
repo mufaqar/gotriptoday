@@ -164,7 +164,7 @@
                                      <div class="icon">
                                          <i class="ti ti-bed"></i>
                                      </div>
-                                     <h6 class="d-inline">Luxury & Comfort/h6>
+                                     <h6 class="d-inline">Luxury & Comfort</h6>
                                          <p>Premium vehicles, personalized service.</p>
 
 

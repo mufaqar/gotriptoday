@@ -50,14 +50,15 @@ get_header(); ?>
                         <button class="tab-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
                             role="tab" aria-controls="tab2" aria-selected="false">Day Trip</button>
                     </li>
-                </ul><div class="tab-content pt-3" id="myTabContent">
+                </ul>
+                <div class="tab-content pt-3" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
                         <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                        <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]') ?>
-                    </div>
+                            <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007" widget_mode="1" widget_style="4" widget_booking_form_url=""]') ?>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                         <?php get_template_part('partials/content', 'tab2'); ?>
+                        <?php get_template_part('partials/content', 'tab2'); ?>
                     </div>
                 </div>
             </div>
@@ -109,7 +110,7 @@ get_header(); ?>
             <div class="col-12 col-lg-6">
                 <div class="about-content ps-md-5">
                     <div class="section-heading">
-                    
+
                         <h2 class="mb-4">How It Works</h2>
                     </div>
 
@@ -117,11 +118,12 @@ get_header(); ?>
                         <!-- Single Item -->
                         <div class="about-card-sm d-flex align-items-center gap-3">
                             <div class="icon">
-                                   <i class="ti ti-building-pavilion"></i>
+                                <i class="ti ti-building-pavilion"></i>
                             </div>
                             <div>
                                 <h4>Choose Trip Type</h4>
-                                <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly Service</p>
+                                <p class="mb-0">Select from Airport Transfer, City-to-City Ride, Day Trip, or Hourly
+                                    Service</p>
                             </div>
                         </div>
 
@@ -132,7 +134,8 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Enter Your Details</h4>
-                                <p class="mb-0">Add pickup & drop-off locations, date, time, and any extra preferences</p>
+                                <p class="mb-0">Add pickup & drop-off locations, date, time, and any extra preferences
+                                </p>
                             </div>
                         </div>
                         <!-- Single Item -->
@@ -142,7 +145,8 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Get Instant Price & Confirm</h4>
-                                <p class="mb-0">See your price instantly. Review the service and confirm your booking with a few clicks</p>
+                                <p class="mb-0">See your price instantly. Review the service and confirm your booking
+                                    with a few clicks</p>
                             </div>
                         </div>
                         <div class="about-card-sm d-flex align-items-center gap-3">
@@ -151,7 +155,8 @@ get_header(); ?>
                             </div>
                             <div>
                                 <h4>Ride in Comfort</h4>
-                                <p class="mb-0"> Your professional driver arrives on time. Enjoy Wi-Fi, bottled water, and a smooth journey</p>
+                                <p class="mb-0"> Your professional driver arrives on time. Enjoy Wi-Fi, bottled water,
+                                    and a smooth journey</p>
                             </div>
                         </div>
                     </div>
@@ -458,11 +463,11 @@ get_header(); ?>
 <?php get_footer(); ?>
 
 <script>
-    jQuery(document).ready(function($) {
-        $('form[name="chbs-form"]').on('submit', function(e) {
-            e.preventDefault();
-            let bookingUrl = "<?php echo home_url('/booking-page/'); ?>";
-            window.location.href = bookingUrl + '?' + $(this).serialize();
-        });
+jQuery(document).ready(function($) {
+    $('form[name="chbs-form"]').on('submit', function(e) {
+        e.preventDefault();
+        let bookingUrl = "<?php echo home_url('/booking-page/'); ?>";
+        window.location.href = bookingUrl + '?' + $(this).serialize();
     });
+});
 </script>
