@@ -246,9 +246,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </div>
                 </div>
 
-
                 <h2 class="my-3 faq-title">Additional Info</h2>
-
                 <?php echo get_post_meta($post->ID, "additional_info", true); ?>
             </div>
 
@@ -269,7 +267,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                             value="<?php echo date('Y-m-d'); ?>" required>
                                     </div>
                                 </div>
-
                                 <div class="col-12">
                                     <div class="d-flex align-items-center justify-content-between gap-2">
                                         <label for="tour_adults" class="form-label mb-0 text-heading">Adult</label>
