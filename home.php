@@ -243,7 +243,7 @@ get_header(); ?>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
                 <div class="section-heading">
                     <p class="mb-0">We specialize in private day trips, city-to-city transfers, airport pickups, and
-                        personalized chauffeur services acros</p>
+                        personalized chauffeur services across</p>
                 </div>
             </div>
         </div>

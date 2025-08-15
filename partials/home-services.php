@@ -26,7 +26,7 @@
 
          <div class="divider-sm"></div>
 
-         <div class="row g-2">
+         <div class="row g-3">
              <!-- Premium Card -->
              <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
