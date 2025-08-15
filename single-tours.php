@@ -231,13 +231,13 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                            <h2>Not Included</h2>
 
-                            <ul class="list-unstyled">
+                            <ul class="list-unstyled ">
                                 <?php $not_included =   get_post_meta($post->ID, "not_included", false);
                              if (!empty($not_included)) {
                                 
                                     foreach ($not_included[0] as $nofeature => $is_not_included) {
                                         if ($is_not_included) {
-                                            echo "<li><i class='ti ti-octagon-minus'></i>$nofeature</li>";
+                                            echo "<li><i class='text-danger ti ti-octagon-minus'></i>$nofeature</li>";
                                         }
                                     }
                                 
