@@ -67,39 +67,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <!-- Step 2: Activity Details -->
                         <div class="step step2 p-4 shadow-sm border-0 mb-5">
-                            <h5 class="mb-4"><span class="step_number">2</span> Activity details</h5>
-                            <div class="d-flex gap-3 mb-4">
-                                <?php if ($tour_image) : ?>
-                                <img src="<?php echo esc_url($tour_image); ?>"
-                                    alt="<?php echo esc_attr($tour_title); ?>" width="300">
-                                <?php endif; ?>
-                                <div>
-                                    <h6 class="mb-1"><?php echo $tour_title; ?></h6>
-                                    <p class="mb-1 small text-muted">
-                                        <i class="bi bi-person"></i><?php echo $tour_adults; ?> Adults
-                                    </p>
-                                    <p class="mb-1 small text-muted">
-                                        <i class="bi bi-calendar-event"></i><?php echo esc_html($tour_date); ?>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Travelers -->
-                            <?php for ($i = 1; $i <= $tour_adults; $i++) : ?>
+                            <h5 class="mb-4"><span class="step_number">2</span> Special Instructions</h5>
                             <div class="mb-4">
-                                <h6 class="pb-2">Traveler <?php echo $i; ?> (Adult)</h6>
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <input type="text" name="traveler[<?php echo $i; ?>][first_name]"
-                                            class="form-control" placeholder="First name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" name="traveler[<?php echo $i; ?>][last_name]"
-                                            class="form-control" placeholder="Last name" required>
+                                <h6 class="pb-2">How we can help you</h6>
+                                <div class="row g-3">                                    
+                                    <div class="col-md-12">
+                                        <textarea type="text" name="message"
+                                            class="form-control" placeholder="Enter Special Instructions" required />
                                     </div>
                                 </div>
                             </div>
-                            <?php endfor; ?>
+                           
                         </div>
                         <!-- Step 3: Payment -->
                         <div class="step step3 p-4 shadow-sm border-0">

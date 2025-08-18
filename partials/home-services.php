@@ -2,12 +2,12 @@
  <section class="trip-section">
      <!-- Trolley -->
      <div class="trolley-img">
-         <img src="assets/img/core-img/trolley.svg" alt="">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/trolley.svg" alt="">
      </div>
 
      <!-- Plane -->
      <div class="plane-img">
-         <img src="assets/img/core-img/plane.svg" alt="">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/plane.svg" alt="">
      </div>
 
      <!-- Divider -->

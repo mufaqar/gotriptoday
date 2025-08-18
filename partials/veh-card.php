@@ -21,9 +21,9 @@
               </div>
 
               <ul class="list-unstyled d-flex flex-row gap-3">
-                  <li><i class="ti ti-location"></i>
+                  <li><i class="ti ti-users"></i>
                      <?php echo get_post_meta($post->ID, "passengers", true); ?> Passengers  </li>
-                  <li><i class="ti ti-clock"></i><?php echo get_post_meta($post->ID, "large_bag", true); ?> Luggage    </li>
+                  <li><i class="ti ti-luggage"></i> <?php echo get_post_meta($post->ID, "large_bag", true); ?> Luggage    </li>
               </ul>
           </div>
       </div>
