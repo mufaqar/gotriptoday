@@ -11,7 +11,7 @@ get_header();
             <div class="divider"></div>
             <h2>Tour Details</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-5" data-wow-delay="900ms" data-wow-duration="1000ms">
-                <form class="row align-items-center g-3 g-xxl-2" action="#">
+                <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""  action="<?php echo esc_url(home_url('/')); ?>">             
                     <div class="col-12 col-md-8">
                         <div class="search-item d-flex align-items-center gap-3">
                             <div class="icon">
@@ -23,7 +23,8 @@ get_header();
                                 </svg>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="name" class="form-control" name="name" placeholder="Search Tour">
+                                <input type="text" id="name" class="form-control"  placeholder="Search Tour"    value="<?php echo get_search_query(); ?>" name="s">
+                                  <input type="hidden" name="post_type" value="tours" />
                             </div>
                         </div>
                     </div>
