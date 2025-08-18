@@ -802,3 +802,12 @@ strong {
 .sticky-spacer.active {
   display: block;
 }
+
+
+@media screen and (max-width: 993px) {
+  .sticky-sidebar.stuck {
+  position: static !important;
+ 
+}
+
+}
