@@ -7,9 +7,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 //     'bg' => $bg_image
 // ]);
 
-
-     
-
  ?>
 <!-- Tour Details Section -->
 <div class="tour-details-section">
@@ -160,7 +157,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
         <div class="row g-5">
             <div class="col-12 col-lg-8">
-
                 <!-- Tour Details Slider -->
                 <div class="swiper destination-details-wrapper mb-5">
                     <div class="swiper-wrapper">

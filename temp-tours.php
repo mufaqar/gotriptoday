@@ -9,7 +9,7 @@ get_header();
         <div class="divider"></div>
         <div class="search_banner tour_banner">
             <div class="divider"></div>
-            <h2>Tour Details</h2>
+            <h2>Day Trips</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-5" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""  action="<?php echo esc_url(home_url('/')); ?>">             
                     <div class="col-12 col-md-8">
