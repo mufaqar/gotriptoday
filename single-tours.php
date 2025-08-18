@@ -324,6 +324,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 
 <script>
+    /*update Price */
 function updateTotalPrice() {
     var adults = parseInt(document.getElementById('tour_adults').value);
     var pricePerAdult = <?php echo $tour_price; ?>;
@@ -334,34 +335,84 @@ function updateTotalPrice() {
 document.addEventListener('DOMContentLoaded', function() {
     updateTotalPrice();
 });
-</script>
 
-<script>
-// jQuery(document).ready(function ($) {
-//   // Cache elements
-//   var $sticky = $('.sticky-sidebar');
-//   var $spacer = $('.sticky-spacer');
-//   var stickyOffset = $sticky.offset().top;
-//   var stickyWidth = $sticky.outerWidth();
+  /*Sticky Sidebar */
 
-//   // Handle scroll event
-//   $(window).scroll(function () {
-//     var scrollTop = $(window).scrollTop();
+document.addEventListener('DOMContentLoaded', function() {
+  // Cache elements
+  const sticky = document.querySelector('.sticky-sidebar');
+  const spacer = document.querySelector('.sticky-spacer');
+  
+  // Only proceed if elements exist
+  if (!sticky || !spacer) return;
 
-//     if (scrollTop >= stickyOffset) {
-//       $sticky.addClass('stuck').css('width', stickyWidth);
-//       $spacer.addClass('active').css('height', $sticky.outerHeight());
-//     } else {
-//       $sticky.removeClass('stuck').css('width', '');
-//       $spacer.removeClass('active').css('height', 0);
-//     }
-//   });
+  // Function to handle sticky behavior
+  function handleSticky() {
+    // Only apply on screens wider than 768px
+    if (window.innerWidth <= 768) {
+      // Reset styles if screen is too small
+      sticky.classList.remove('stuck');
+      sticky.style.width = '';
+      spacer.classList.remove('active');
+      spacer.style.height = '0';
+      return;
+    }
 
-//   // Handle window resize to adjust width
-//   $(window).resize(function () {
-//     if ($sticky.hasClass('stuck')) {
-//       $sticky.css('width', $sticky.parent().outerWidth());
-//     }
-//   });
-// });
+    const stickyOffset = sticky.getBoundingClientRect().top + window.pageYOffset;
+    const stickyWidth = sticky.offsetWidth;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.clientHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    const windowHeight = window.innerHeight;
+    const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
+
+    // Check if we're within 200px of the bottom
+    if (distanceFromBottom < 200) {
+      sticky.classList.remove('stuck');
+      sticky.style.width = '';
+      spacer.classList.remove('active');
+      spacer.style.height = '0';
+    } 
+    // Otherwise, apply the original sticky logic
+    else if (scrollTop >= stickyOffset) {
+      sticky.classList.add('stuck');
+      sticky.style.width = `${stickyWidth}px`;
+      spacer.classList.add('active');
+      spacer.style.height = `${sticky.offsetHeight}px`;
+    } else {
+      sticky.classList.remove('stuck');
+      sticky.style.width = '';
+      spacer.classList.remove('active');
+      spacer.style.height = '0';
+    }
+  }
+
+  // Initial check
+  handleSticky();
+
+  // Handle scroll event with throttling
+  let isScrolling;
+  window.addEventListener('scroll', function() {
+    window.clearTimeout(isScrolling);
+    isScrolling = setTimeout(handleSticky, 50);
+  });
+
+  // Handle window resize with debouncing
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      handleSticky();
+      // Update width if stuck
+      if (window.innerWidth > 768 && sticky.classList.contains('stuck')) {
+        sticky.style.width = `${sticky.parentElement.offsetWidth}px`;
+      }
+    }, 100);
+  });
+});
 </script>

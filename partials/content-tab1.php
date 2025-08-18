@@ -1,4 +1,4 @@
-<h2 class="text-white mb-1 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Professional Drivers <br/>>
+<h2 class="text-white mb-1 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">Professional Drivers <br/>
 
     Offering Comfortable Car Transfers.</h2>
 
