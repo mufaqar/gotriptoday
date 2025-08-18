@@ -2,14 +2,9 @@ jQuery(document).ready(function($) {
     // Handle checkbox change event
     $('.tour-filter-checkbox').on('change', function() {
         // Collect selected filters
-        let categories = [];
+     
         let durations = [];
         let properties = [];
-
-        // Get selected category filters
-        $('#category-filter .tour-filter-checkbox:checked').each(function() {
-            categories.push($(this).val());
-        });
 
         // Get selected duration filters
         $('.sidebar-checkbox-list .tour-filter-checkbox:checked').each(function() {
@@ -30,8 +25,7 @@ jQuery(document).ready(function($) {
             url: tourFilter.ajax_url,
             type: 'POST',
             data: {
-                action: 'filter_tours',
-                categories: categories,
+                action: 'filter_tours',         
                 durations: durations,
                 properties: properties,
                 nonce: tourFilter.nonce

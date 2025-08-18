@@ -5,7 +5,7 @@ function enqueue_tour_filter_scripts() {
     wp_enqueue_script('jquery');
 
     // Enqueue custom script
-    wp_enqueue_script('tour-filter', get_template_directory_uri() . '/js/tour-filter.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('tour-filter', get_template_directory_uri() . '/assets/js/tour-filter.js', array('jquery'), '1.0', true);
 
     // Localize script to pass AJAX URL and nonce
     wp_localize_script('tour-filter', 'tourFilter', array(
@@ -26,6 +26,8 @@ function filter_tours_callback() {
 
     $durations = isset($_POST['durations']) ? array_map('sanitize_text_field', $_POST['durations']) : [];
     $properties = isset($_POST['properties']) ? array_map('sanitize_text_field', $_POST['properties']) : [];
+
+    
 
     // Build tax query
     $tax_query = [];

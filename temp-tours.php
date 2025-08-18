@@ -76,15 +76,10 @@ get_header();
         </div>
     </div>
 </section>
-
-
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/isotope.pkgd.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/flatpickr.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/nice-select2.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/nouislider.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/wow.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/active.js"></script>
-
-
-
 <?php get_footer(); ?>
