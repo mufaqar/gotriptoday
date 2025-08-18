@@ -802,6 +802,7 @@ strong {
 .sticky-spacer.active {
   display: block;
 }
+.tour_banner .hero-search-form { max-width: 750px; margin: auto;}
 
 
 @media screen and (max-width: 993px) {

@@ -6,13 +6,13 @@ get_header();
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp');">
     <div class="container">
-         <div class="divider"></div>
-        <div class="search_banner">
+        <div class="divider"></div>
+        <div class="search_banner tour_banner">
             <div class="divider"></div>
             <h2>Tour Details</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-5" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2" action="#">
-                    <div class="col-12 col-md-4 col-xxl">
+                    <div class="col-12 col-md-8">
                         <div class="search-item d-flex align-items-center gap-3">
                             <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
@@ -23,36 +23,11 @@ get_header();
                                 </svg>
                             </div>
                             <div class="form-group">
-                                <label for="location" class="form-label">Location</label>
-                                <select name="location" id="location" class="touria-select">
-                                    <option value="berlin">Berlin</option>
-                                    <option value="hamburg">Hamburg</option>
-                                    <option value="munich">Munich</option>
-                                    <option value="frankfurt">Frankfurt</option>
-                                    <option value="cologne">Cologne</option>
-                                    <option value="stuttgart">Stuttgart</option>
-                                    <option value="dusseldorf">Düsseldorf</option>
-                                    <option value="leipzig">Leipzig</option>
-                                </select>
+                                <input type="text" id="name" class="form-control" name="name" placeholder="Search Tour">
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 col-xxl">
-                        <div class="search-item d-flex align-items-center gap-3">
-                            <div class="icon">
-                                <i class="ti ti-calendar"></i>
-                            </div>
-                            <div class="form-group d-flex align-items-end">
-                                <div>
-                                    <label class="form-label d-block" for="departure-date">Departure Date</label>
-                                    <input type="date" id="check-out" class="form-control">
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 col-xxl-2">
+                    <div class="col-12 col-md-4">
                         <button type="submit" class="btn btn-success w-100">Search Now</button>
                     </div>
                 </form>
