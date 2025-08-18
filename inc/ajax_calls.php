@@ -23,19 +23,13 @@ function filter_tours_callback() {
     check_ajax_referer('tour_filter_nonce', 'nonce');
 
     // Get filter parameters
-    $categories = isset($_POST['categories']) ? array_map('sanitize_text_field', $_POST['categories']) : [];
+
     $durations = isset($_POST['durations']) ? array_map('sanitize_text_field', $_POST['durations']) : [];
     $properties = isset($_POST['properties']) ? array_map('sanitize_text_field', $_POST['properties']) : [];
 
     // Build tax query
     $tax_query = [];
-    if (!empty($categories)) {
-        $tax_query[] = [
-            'taxonomy' => 'tour-category',
-            'field' => 'slug',
-            'terms' => $categories,
-        ];
-    }
+   
     if (!empty($durations)) {
         $tax_query[] = [
             'taxonomy' => 'tour-duration',
