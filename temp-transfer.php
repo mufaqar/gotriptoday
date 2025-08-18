@@ -13,12 +13,19 @@ get_template_part('partials/content', 'breadcrumb', [
 <!-- Booking Section -->
 <section class="booking-section">
     <!-- Divider -->
-    <div class="divider"></div>
+    <div class="divider-sm"></div>
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-12 tour-details-content mtn">
-                <ul class="list-unstyled style-two style-three mb-3">
+           
+            <div class="col-12 col-lg-12 go_trip_bookingform ">
+                <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
+            </div>
+        </div>
+        <!-- Divider -->
+        <div class="divider"></div>
+         <div class="col-12 col-md-12 tour-details-content mtn">
+                <ul class="list-unstyled style-two mb-3">
                     <li><i class="ti ti-lock-check"></i>Secure Booking </li>
                     <li><i class="ti ti-rosette-discount-check"></i>Satisfaction Guarantee </li>
                     <li><i class="ti ti-heart-check"></i> Flexible Scheduling </li>
@@ -28,12 +35,6 @@ get_template_part('partials/content', 'breadcrumb', [
                 </ul>          
 
             </div>
-            <div class="col-12 col-lg-12 go_trip_bookingform mt-5">
-                <?php echo do_shortcode('[chbs_booking_form booking_form_id="10007"]') ?>
-            </div>
-        </div>
-        <!-- Divider -->
-        <div class="divider"></div>
     </div>
 </section>
 

@@ -92,7 +92,6 @@ get_template_part('partials/content', 'breadcrumb', [
                             <div class="col-12 col-sm-6 col-md-4 col-xl-4">
                                 <div class="hotel-meta-info-card-item">
                                     <div class="icon">
-
                                         <i class="ti ti-luggage"></i>
                                     </div>
                                     <div>
