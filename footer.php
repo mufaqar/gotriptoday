@@ -19,11 +19,12 @@
                     <div class="footer_rating">
                         <p>
                             <span>
-                                <i class="ti ti-star"></i>
-                                <i class="ti ti-star"></i>
-                                <i class="ti ti-star"></i>
-                                <i class="ti ti-star"></i>
-                                <i class="ti ti-star"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-filled"></i>
+                                <i class="ti ti-star-half-filled"></i>
+                               
                             </span>
                             Rated 4.9/5 by 400+ happy travelers
                         </p>
