@@ -237,7 +237,7 @@ get_header(); ?>
                 <div class="section-heading">
                     <span class="sub-title text-success">Fits Your Journey
                     </span>
-                    <h2 class="mb-0">Our Signature Travel Services</h2>
+                    <h2 class="mb-0">Premium Travel Solutions</h2>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
@@ -310,8 +310,7 @@ get_header(); ?>
                 <div class="section-heading">
                     <span class="sub-title text-white">Get in touch</span>
                     <h2 class="mb-4 text-white">Have Questions? We're Listening</h2>
-                    <p class="text-white mb-5">At GoTripToday, we turn journeys into unforgettable experiences. Based in
-                        Germany and serving international travelers,</p>
+                    <p class="text-white mb-5">At GoTripToday, we turn journeys into unforgettable experiences. Based in Germany and serving international travelers, we craft seamless and personalized travel adventures worldwide.</p>
                 </div>
 
                 <form id="contactForm" class="me-lg-5" action="#" method="post">
