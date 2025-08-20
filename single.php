@@ -89,10 +89,9 @@ get_template_part('partials/content', 'breadcrumb', [
 						<div class="blog-widget">
 							<div class="h4 fw-bold mb-4">Follow Us</div>
 							<div class="follow-nav">
-								<a href="#"><i class="ti ti-brand-facebook"></i></a>
-								<a href="#"><i class="ti ti-brand-x"></i></a>
-								<a href="#"><i class="ti ti-brand-linkedin"></i></a>
-								<a href="#"><i class="ti ti-brand-instagram"></i></a>
+								     <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i class="ti ti-brand-facebook"></i></a>
+                                <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
+                                <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
 							</div>
 						</div>
 					</div>
