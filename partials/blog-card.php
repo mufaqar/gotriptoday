@@ -33,8 +33,7 @@
                  <?php comments_number('No Comments', '1 Comment', '% Comments'); ?>
               
             </div>
-            <a class="post-title h4" href="<?php the_permalink() ?>">The Best Time to Visit New York Enjoy the
-                cherry</a>
+            <a class="post-title h4" href="<?php the_permalink() ?>"><?php the_title()?></a>
             <div class="d-block mt-4">
                 <a class="btn btn-outline-success" href="<?php the_permalink() ?>">Read More <i
                         class="icon-arrow-right"></i></a>

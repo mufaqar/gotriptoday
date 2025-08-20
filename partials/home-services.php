@@ -103,7 +103,7 @@
                                          <i class="ti ti-bus-stop"></i>
                                      </div>
                                      <h6 class="d-inline">Add Custom Stops</h6>
-                                     <p>Scenic or personal stops onway.</p>
+                                     <p>Scenic or personal stops on the way.</p>
 
 
                                  </li>
