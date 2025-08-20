@@ -397,7 +397,7 @@ get_header(); ?>
                     <div class="col-12 col-sm-6">
                         <div class="happy-counts wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
                             <h3 class="counter">260<span>+</span></h3>
-                            <h5 class="mb-0">Award Wining</h5>
+                            <h5 class="mb-0">Award Winning</h5>
                         </div>
                     </div>
                 </div>
