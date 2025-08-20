@@ -384,12 +384,12 @@ get_header(); ?>
                         <div class="d-flex gap-5 flex-column">
                             <div class="happy-counts wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
                                 <h3 class="counter">986<span>+</span></h3>
-                                <h5 class="mb-0">Happy Traveller</h5>
+                                <h5 class="mb-0">Happy Travelers</h5>
                             </div>
 
                             <div class="happy-counts wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                                <h3 class="counter">344<span>+</span></h3>
-                                <h5 class="mb-0">Positive Review</h5>
+                                <h3 class="counter">400<span>+</span></h3>
+                                <h5 class="mb-0">Positive Reviews</h5>
                             </div>
                         </div>
                     </div>
