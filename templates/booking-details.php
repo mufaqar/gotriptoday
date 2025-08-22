@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="row g-3">                                    
                                     <div class="col-md-12">
                                         <textarea type="text" name="message"
-                                            class="form-control" placeholder="Enter Special Instructions" required />
+                                            class="form-control" placeholder="Enter Special Instructions" ></textarea>
                                     </div>
                                 </div>
                             </div>
