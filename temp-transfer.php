@@ -37,17 +37,15 @@ get_template_part('partials/content', 'breadcrumb', [
             </div>
     </div>
 </section>
-
 <section>
     <!-- Divider -->
     <div class="divider-sm"></div>
-
     <div class="container">
         <div class="row g-4 g-xxl-5">
             <?php
             $args = array(
                 'post_type' => 'cars',
-                'posts_per_page' => -1, // Get all vehicles
+                'posts_per_page' => -1, 
                 'post_status' => 'publish',
             );
 
