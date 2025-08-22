@@ -46,7 +46,7 @@ get_template_part('partials/content', 'breadcrumb', [
         <div class="row g-4 g-xxl-5">
             <?php
             $args = array(
-                'post_type' => 'chbs_vehicle',
+                'post_type' => 'cars',
                 'posts_per_page' => -1, // Get all vehicles
                 'post_status' => 'publish',
             );
