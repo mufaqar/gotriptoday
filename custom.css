@@ -812,3 +812,29 @@ strong {
 }
 
 }
+
+
+/* Make thumbnail container scrollable */
+.destination-thumbs {
+  max-height: 450px; /* Adjust height */
+  overflow-y: auto;  /* Enable scrolling */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar (WebKit browsers) */
+.destination-thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.destination-thumbs .thumb-item {
+  opacity: 0.6;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.destination-thumbs .thumb-item.active {
+  opacity: 1;
+  border: 2px solid #0073e6;
+  border-radius: 6px;
+}

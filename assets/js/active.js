@@ -466,12 +466,9 @@ if (videoGallerySwiper) {
     });
 }
 
-// 2.11.0 Destination Details Swiper Slide
-
-const destinationDetailsSwiper = document.querySelector('.destination-details-wrapper');
-
-if (destinationDetailsSwiper) {
-    new Swiper('.destination-details-wrapper', {
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize main Swiper
+    const mainSwiper = new Swiper(".destination-details-wrapper", {
         loop: true,
         spaceBetween: 0,
         slidesPerView: 1,
@@ -482,11 +479,29 @@ if (destinationDetailsSwiper) {
             disableOnInteraction: false,
         },
         navigation: {
-            nextEl: '.destination-details-button-next',
-            prevEl: '.destination-details-button-prev',
+            nextEl: ".destination-details-button-next",
+            prevEl: ".destination-details-button-prev",
         },
     });
-}
+
+    // Thumbnail click handling
+    const thumbs = document.querySelectorAll(".thumb-item");
+    thumbs.forEach((thumb, index) => {
+        thumb.addEventListener("click", function () {
+            mainSwiper.slideToLoop(index); // Go to clicked slide
+            thumbs.forEach(t => t.classList.remove("active"));
+            thumb.classList.add("active");
+        });
+    });
+
+    // Sync active thumb on slide change
+    mainSwiper.on("slideChange", () => {
+        let realIndex = mainSwiper.realIndex;
+        thumbs.forEach(t => t.classList.remove("active"));
+        thumbs[realIndex]?.classList.add("active");
+    });
+});
+
 
 // 3.1.0 Range Slider Price
 
