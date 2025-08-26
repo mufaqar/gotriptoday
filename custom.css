@@ -814,7 +814,6 @@ strong {
 }
 
 
-/* Make thumbnail container scrollable */
 .destination-thumbs {
   max-height: 450px; /* Adjust height */
   overflow-y: auto;  /* Enable scrolling */

@@ -265,7 +265,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="col-12 col-lg-4 ">
                     <div class="d-flex flex-column gap-5 sticky-sidebar">
                         <div class="sidebar-widget">
-                            <div class="h4 fw-bold mb-4">Tour Booking</div>
+                            <div class="h4 fw-bold mb-4">From $149.14 <sub>Per Person</sub></div>
                             <?php $tour_price  = get_post_meta($post->ID, "pricing", true);  ?>
                             <form action="<?php echo home_url('/booking-details'); ?>" method="POST">
                                 <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
