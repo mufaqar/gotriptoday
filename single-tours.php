@@ -168,11 +168,11 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             foreach ($image_ids as $image_id) {
                                 $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                 if ($thumb_url) { ?>
-                                    <div class="thumb-item <?php echo $index === 0 ? 'active' : ''; ?>"
-                                        data-slide="<?php echo $index; ?>">
-                                        <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                                    </div>
-                                <?php }
+                        <div class="thumb-item <?php echo $index === 0 ? 'active' : ''; ?>"
+                            data-slide="<?php echo $index; ?>">
+                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                        </div>
+                        <?php }
                                 $index++;
                             }
                         } ?>
@@ -185,10 +185,10 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 foreach ($image_ids as $image_id) {
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
-                                        <div class="swiper-slide">
-                                            <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
@@ -259,88 +259,83 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </div>
                     <div class="tour_itinerary">
                         <h2 class="pb-3">OTrip Itinerary</h2>
-                        <!-- <ul class="list-unstyled">
-                            <?php //echo get_post_meta($post->ID, "trip_itinerary", true); ?>
-                        </ul> -->
-                        <div>
-                            <div class="itinerary_item">
-                                <span class="list_marker">1</span>
-                                <div>
-                                    <h5 class="pb-3">Schloss Heidelberg</h5>
-                                    <p>
-                                        Day tour to the beautiful city of Heidelberg, this historically old city on the
-                                        Neckar is visited by millions of visitors from all over the world every year.
-                                        After about 1 hour drive there we will visit Heidelberg Castle.
-                                        In our tour we will show you the famous castle from Heidelberg, which has a
-                                        historical history. The whole structure, the castle and the courtyard impress
-                                        with their ruins and construction. The castle is several centuries old and
-                                        offers a wonderful view over the city from its huge terrace. Here you are
-                                        looking at one of the largest wine barrels in the world
-                                    </p>
-                                    <p class="itinerary_detail">
-                                        1 hour 30 minutes • Admission Ticket Included
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="itinerary_item">
-                                <span class="list_marker">2</span>
-                                <div>
-                                    <h5 class="pb-3">Schloss Heidelberg</h5>
-                                    <p>
-                                        After visiting the castle we walk through the medieval center to the old bridge
-                                        and the Karlstor, the Renaissance house to the knight, the Heiliggeistkirche.
-                                        We drive about 1 hour back to the meeting point. </p>
-                                    <p class="itinerary_detail">
-                                        1 hour 30 minutes • Admission Ticket Included
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="itinerary_item">
-                                <span class="list_marker">3</span>
-                                <div>
-                                    <h5 class="pb-3">Schloss Heidelberg</h5>
-                                    <p>
-                                        After visiting the castle we walk through the medieval center to the old bridge
-                                        and the Karlstor, the Renaissance house to the knight, the Heiliggeistkirche.
-                                        We drive about 1 hour back to the meeting point. </p>
-                                    <p class="itinerary_detail">
-                                        1 hour 30 minutes • Admission Ticket Included
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tour_included d-flex flex-lg-row flex-column gap-4">
-                    <div>
-                        <h2 class="pb-3">What's Included</h2>
-                        <ul class="list-unstyled d-flex flex-column gap-2">
-                            <?php $included = get_post_meta($post->ID, "included", false);
-                            if (!empty($included)) {
-                                foreach ($included[0] as $feature => $is_included) {
-                                    if ($is_included) {
-                                        echo "<li><i class='text-success pe-1 ti ti-rosette-discount-check'></i>$feature</li>";
-                                    }
-                                }
-                            }
+
+                        <?php $trip_itinerary =  get_post_meta($post->ID, "trip_itinerary", true);
+                            
+                            
                             ?>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="pb-3">Not Included</h2>
-                        <ul class="list-unstyled d-flex flex-column gap-2">
-                            <?php $not_included = get_post_meta($post->ID, "not_included", false);
-                            if (!empty($not_included)) {
-                                foreach ($not_included[0] as $nofeature => $is_not_included) {
-                                    if ($is_not_included) {
-                                        echo "<li><i class='text-danger pe-1 ti ti-octagon-minus'></i>$nofeature</li>";
-                                    }
-                                }
+
+                        <div>
+
+                            <?php
+                            $counter = 0; 
+                            foreach ($trip_itinerary  as   $itinerary) {
+                                $counter++;
+                                $title = $itinerary['title'];
+                                $description = $itinerary['description'];
+                                $ticket_info = $itinerary['ticket_info'];                             
+                                ?>
+                            <div class="itinerary_item">
+                                <span class="list_marker"><?php echo $counter ; ?></span>
+                                <div>
+                                    <h5 class="pb-3"> <?php echo $title; ?></h5>
+                                    <p>
+                                        <?php echo $description; ?>
+                                    </p>
+                                    <p class="itinerary_detail">
+                                        <?php echo $ticket_info; ?>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <?php
                             }
 
                             ?>
+
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tour_included ">
+                     <h2 class="pb-3">What's Included</h2>
+                     <div class="d-flex flex-lg-row flex-column gap-4 align-items-start">
+                    <div>
+                       
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <?php 
+
+                                                            // ✅ INCLUDED
+                                $included = get_post_meta($post->ID, "included", true);
+
+                                if (!empty($included) && is_array($included)) {
+                                    foreach ($included as $feature => $is_included) {
+                                        if ($is_included && $is_included !== 'false') { 
+                                            echo "<li><i class='text-success pe-1 ti ti-rosette-discount-check'></i>$feature</li>";
+                                        }
+                                    }
+                                }
+                             ?>
                         </ul>
                     </div>
+                    <div>
+                     
+                        <ul class="list-unstyled d-flex flex-column gap-2 mt-">
+                            <?php 
+                          $not_included = get_post_meta($post->ID, "not_included", true);
+
+                                if (!empty($not_included) && is_array($not_included)) {
+                                    foreach ($not_included as $nofeature => $is_not_included) {
+                                        if ($is_not_included && $is_not_included !== 'false') { 
+                                            echo "<li><i class='text-danger pe-1 ti ti-octagon-minus'></i>$nofeature</li>";
+                                        }
+                                    }
+                                }
+                            ?>
+                        </ul>
+                    </div>
+                      </div>
                 </div>
                 <div class="tour_additional">
                     <h2 class="pb-3">Additional Info</h2>
@@ -434,16 +429,16 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 
 <script>
-    /*update Price */
-    function updateTotalPrice() {
-        var adults = parseInt(document.getElementById('tour_adults').value);
-        var pricePerAdult = <?php echo $tour_price; ?>;
-        var totalPrice = adults * pricePerAdult;
-        document.getElementById('total_price').textContent = "€" + totalPrice;
-        document.getElementById('tour_price').value = totalPrice;
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-        updateTotalPrice();
-    });
+/*update Price */
+function updateTotalPrice() {
+    var adults = parseInt(document.getElementById('tour_adults').value);
+    var pricePerAdult = <?php echo $tour_price; ?>;
+    var totalPrice = adults * pricePerAdult;
+    document.getElementById('total_price').textContent = "€" + totalPrice;
+    document.getElementById('tour_price').value = totalPrice;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    updateTotalPrice();
+});
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
