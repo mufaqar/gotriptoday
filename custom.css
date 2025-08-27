@@ -835,7 +835,7 @@ strong {
 }
 
 .Single_tour_booking label {
-  color: #000;
+  color: #161920;
   font-weight: 700;
 }
 
@@ -857,4 +857,87 @@ strong {
 .Single_tour_booking ul li i {
   font-size: 120%;
   color: #3cb371;
+}
+
+.meta_info {
+  border: 1px solid #D6D6D6;
+  border-left: 0;
+  border-right: 0;
+  padding: 15px 0;
+  margin-top: 20px;
+}
+
+.meta_info ul li {
+  font-size: 16px;
+  color: #161920;
+  font-weight: 500;
+}
+
+.meta_info ul li i {
+  font-size: 26px;
+  color: #3cb371;
+  margin-bottom: -4px;
+}
+
+.tour_overview,
+.tour_itinerary,
+.tour_included,
+.tour_additional,
+.tour_reviews {
+  border-bottom: 1px solid #D6D6D6;
+  padding: 48px 0;
+}
+.tour_reviews .review_box{
+  border: 1px solid #D6D6D6;
+  border-radius: 16px;
+  padding: 16px;
+}
+.tour_itinerary .itinerary_item {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  position: relative;
+  padding: 15px 0;
+}
+
+.tour_itinerary .itinerary_item::before {
+  content: '';
+  width: 2px;
+  height: 100%;
+  background-color: #3cb371;
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+  left: 17px;
+}
+
+.tour_itinerary .itinerary_item:last-child::before {
+  content: '';
+  width: 0;
+  height: 0;
+  background-color: #99073f;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 17px;
+}
+
+.tour_itinerary .itinerary_item .list_marker {
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #3cb371;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.tour_itinerary .itinerary_item .itinerary_detail {
+  margin-top: 20px;
+  font-size: 14px;
 }

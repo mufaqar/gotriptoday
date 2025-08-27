@@ -157,9 +157,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
         <div class="row g-5">
             <div class="col-12 col-lg-8">
-
                 <div class="d-flex flex-row gap-4 align-items-start">
-
                     <!-- Static Thumbnails -->
                     <div class="destination-thumbs col-lg-2 col-3 d-flex flex-column gap-3">
                         <?php
@@ -179,7 +177,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             }
                         } ?>
                     </div>
-
                     <!-- Main Slider -->
                     <div class="swiper destination-details-wrapper col-lg-10 col-9 position-relative">
                         <div class="swiper-wrapper">
@@ -199,69 +196,158 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <button class="destination-details-button-next"><i class="icon-arrow-right"></i></button>
                     </div>
                 </div>
-
-
-                <hr />
-
-                <!-- Tour Details Content -->
-                <div class="tour-details-content">
-                    <h2>Overview</h2>
-                    <p><?php echo get_post_meta($post->ID, "tour_overview", true); ?></p>
-
-                    <h2>Trip Itinerary</h2>
-                    <ul class="list-unstyled">
-                        <?php echo get_post_meta($post->ID, "trip_itinerary", true); ?>
+                <div class="meta_info">
+                    <ul class="list-unstyled d-flex flex-lg-row flex-column align-items-center gap-lg-5 gap-3">
+                        <li>
+                            <i class='icon ti ti-clock'></i> 5 hours 30 minutes (approx.)
+                        </li>
+                        <li>
+                            <i class='icon ti ti-device-mobile'></i> Mobile ticket
+                        </li>
+                        <li>
+                            <i class='icon ti ti-messages'></i> Offered in: English and 1 more
+                        </li>
                     </ul>
-
-                    <h2>What's Included</h2>
-
-                    <div class="row g-4">
-                        <div class="col-12">
-
-                            <ul class="list-unstyled">
-
-                                <?php $included = get_post_meta($post->ID, "included", false);
-
-                                if (!empty($included)) {
-
-                                    foreach ($included[0] as $feature => $is_included) {
-                                        if ($is_included) {
-                                            echo "<li><i class='ti ti-rosette-discount-check'></i>$feature</li>";
-                                        }
-                                    }
-
-                                }
-
-                                ?>
-                            </ul>
-                        </div>
+                </div>
+                <div class="tour_reviews">
+                    <div class="d-flex flex-lg-row flex-column justify-content-between">
+                        <h2 class="pb-3">Why travelers loved this</h2>
+                        <h4><i class='text-success pe-1 ti ti-star-filled'></i> 4.8 · <p
+                                class="d-inline-flex text-black text-decoration-underline">241 Reviews</p>
+                        </h4>
                     </div>
-                    <h2 class="">Not Included</h2>
-                    <div class="row gap-4">
-                        <div class="col-12">
-                            <ul class="list-unstyled ">
-                                <?php $not_included = get_post_meta($post->ID, "not_included", false);
-                                if (!empty($not_included)) {
-
-                                    foreach ($not_included[0] as $nofeature => $is_not_included) {
-                                        if ($is_not_included) {
-                                            echo "<li><i class='text-danger ti ti-octagon-minus'></i>$nofeature</li>";
-                                        }
-                                    }
-
-                                }
-
-                                ?>
-                            </ul>
+                    <div class="review_list d-flex flex-lg-row flex-column gap-4">
+                        <div class="review_box">
+                            <div class="d-flex flex-lg-row flex-column justify-content-between">
+                                <ul class="list-unstyled d-flex">
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                </ul>
+                                <p class="d-inline-flex">Lawrence_O · Aug 2025</p>
+                            </div>
+                            <p>This was a great trip! Michael was a fun and informative guide who told us about the
+                                history
+                                of Frankfurt and Heidleberg. There's plenty to see and time for lunch too. Would highly
+                                recommend Michael and Heidleberg!</p>
+                        </div>
+                        <div class="review_box">
+                            <div class="d-flex flex-lg-row flex-column justify-content-between">
+                                <ul class="list-unstyled d-flex">
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                    <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                </ul>
+                                <p class="d-inline-flex">Lawrence_O · Aug 2025</p>
+                            </div>
+                            <p>This was a great trip! Michael was a fun and informative guide who told us about the
+                                history
+                                of Frankfurt and Heidleberg. There's plenty to see and time for lunch too. Would highly
+                                recommend Michael and Heidleberg!</p>
                         </div>
                     </div>
                 </div>
+                <!-- Tour Details Content -->
+                <div class="tour-details-content">
+                    <div class="tour_overview">
+                        <h2 class="pb-3">Overview</h2>
+                        <p><?php echo get_post_meta($post->ID, "tour_overview", true); ?></p>
+                    </div>
+                    <div class="tour_itinerary">
+                        <h2 class="pb-3">OTrip Itinerary</h2>
+                        <!-- <ul class="list-unstyled">
+                            <?php //echo get_post_meta($post->ID, "trip_itinerary", true); ?>
+                        </ul> -->
+                        <div>
+                            <div class="itinerary_item">
+                                <span class="list_marker">1</span>
+                                <div>
+                                    <h5 class="pb-3">Schloss Heidelberg</h5>
+                                    <p>
+                                        Day tour to the beautiful city of Heidelberg, this historically old city on the
+                                        Neckar is visited by millions of visitors from all over the world every year.
+                                        After about 1 hour drive there we will visit Heidelberg Castle.
+                                        In our tour we will show you the famous castle from Heidelberg, which has a
+                                        historical history. The whole structure, the castle and the courtyard impress
+                                        with their ruins and construction. The castle is several centuries old and
+                                        offers a wonderful view over the city from its huge terrace. Here you are
+                                        looking at one of the largest wine barrels in the world
+                                    </p>
+                                    <p class="itinerary_detail">
+                                        1 hour 30 minutes • Admission Ticket Included
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="itinerary_item">
+                                <span class="list_marker">2</span>
+                                <div>
+                                    <h5 class="pb-3">Schloss Heidelberg</h5>
+                                    <p>
+                                        After visiting the castle we walk through the medieval center to the old bridge
+                                        and the Karlstor, the Renaissance house to the knight, the Heiliggeistkirche.
+                                        We drive about 1 hour back to the meeting point. </p>
+                                    <p class="itinerary_detail">
+                                        1 hour 30 minutes • Admission Ticket Included
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="itinerary_item">
+                                <span class="list_marker">3</span>
+                                <div>
+                                    <h5 class="pb-3">Schloss Heidelberg</h5>
+                                    <p>
+                                        After visiting the castle we walk through the medieval center to the old bridge
+                                        and the Karlstor, the Renaissance house to the knight, the Heiliggeistkirche.
+                                        We drive about 1 hour back to the meeting point. </p>
+                                    <p class="itinerary_detail">
+                                        1 hour 30 minutes • Admission Ticket Included
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tour_included d-flex flex-lg-row flex-column gap-4">
+                    <div>
+                        <h2 class="pb-3">What's Included</h2>
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <?php $included = get_post_meta($post->ID, "included", false);
+                            if (!empty($included)) {
+                                foreach ($included[0] as $feature => $is_included) {
+                                    if ($is_included) {
+                                        echo "<li><i class='text-success pe-1 ti ti-rosette-discount-check'></i>$feature</li>";
+                                    }
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="pb-3">Not Included</h2>
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <?php $not_included = get_post_meta($post->ID, "not_included", false);
+                            if (!empty($not_included)) {
+                                foreach ($not_included[0] as $nofeature => $is_not_included) {
+                                    if ($is_not_included) {
+                                        echo "<li><i class='text-danger pe-1 ti ti-octagon-minus'></i>$nofeature</li>";
+                                    }
+                                }
+                            }
 
-                <h2 class="my-3 faq-title">Additional Info</h2>
-                <?php echo get_post_meta($post->ID, "additional_info", true); ?>
-
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tour_additional">
+                    <h2 class="pb-3">Additional Info</h2>
+                    <?php echo get_post_meta($post->ID, "additional_info", true); ?>
+                </div>
             </div>
-            <div class="col-12 col-lg-4 ">
+            <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
                     <div class="sidebar-widget">
                         <div class="h4 fw-bold mb-4">From $149.14 <sub class="h6">Per Person</sub></div>
@@ -335,8 +421,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             </ul>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

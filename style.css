@@ -3828,7 +3828,8 @@ picture.jarallax-img img {
 .sidebar-widget {
   padding: 30px;
   border-radius: 18px;
-  background: #f7f7f7;
+  border: 1px solid #D6D6D6;
+  background: #ffffff;
 }
 .sidebar-widget .noUi-target {
   background: #ffffff;
@@ -3988,7 +3989,6 @@ picture.jarallax-img img {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 30px;
 }
 .tour-details-content img {
   border-radius: 18px;
@@ -4031,14 +4031,14 @@ picture.jarallax-img img {
   color: #767676;
   font-weight: 400;
 }
-@media only screen and (min-width: 576px) {
+/* @media only screen and (min-width: 576px) {
   .tour-details-content ul li {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 calc(50% - 6px);
     flex: 0 0 calc(50% - 6px);
     width: calc(50% - 6px);
   }
-}
+} */
 .tour-details-content ul li i {
   font-size: 120%;
   color: #3cb371;
