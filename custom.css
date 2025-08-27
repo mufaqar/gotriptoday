@@ -941,3 +941,9 @@ strong {
   margin-top: 20px;
   font-size: 14px;
 }
+
+.sale_price { 
+  color: #767676 !important;
+  font-size:30px !important;
+  margin-right: 8px !important;  
+}

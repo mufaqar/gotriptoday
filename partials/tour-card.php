@@ -26,11 +26,11 @@
 
 
          </p>
-          <p><i class="ti ti-map-pin-cog"></i>
-                     <?php echo get_post_meta($post->ID, "address", true); ?> </p>
+         <p><i class="ti ti-map-pin-cog"></i>
+             <?php echo get_post_meta($post->ID, "address", true); ?> </p>
          <div class="trip-meta d-flex align-items-center justify-content-between gap-3 gap-xxl-4">
              <ul class="list-unstyled d-flex flex-column gap-3">
-                
+
                  <li><i class="ti ti-checkbox"></i> 24h Free Cancellation </li>
                  <li><i class="ti ti-certificate"></i> TripAdvisor Certified</li>
 
@@ -42,9 +42,25 @@
              <div class="text-end">
                  <span class="badge bg-success mb-2"><i class="ti ti-badge"></i>
                      Popular</span>
-                 <h2 class="mb-0 trip-price">
-                     <?php echo get_post_meta($post->ID, "pricing", true); ?><span>€</span>
-                 </h2>
+                 <h3 class="mb-0 trip-price">
+                     <?php 
+                        $price = (float) get_post_meta($post->ID, "pricing", true);   // Original price
+                        $discount = (float) get_post_meta($post->ID, "discount", true); // Discount percent
+
+                        if ($price && $discount) {
+                            // Calculate discounted price
+                            $discounted_price = $price - ($price * ($discount / 100));
+                            ?>
+                                            <del class="sale_price"><?php echo number_format($price, 0); ?></del>
+                                            <?php echo number_format($discounted_price, 2); ?><span>€</span>
+                                            <?php
+                        } else {
+                            // No discount, show only price
+                            echo number_format($price, 0) . "<span>€</span>";
+                        }
+                        ?>
+                 </h3>
+
              </div>
          </div>
          <a href="<?php the_permalink() ?>" class="btn btn-light w-100">View Tour</a>
