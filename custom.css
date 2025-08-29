@@ -887,11 +887,13 @@ strong {
   border-bottom: 1px solid #D6D6D6;
   padding: 48px 0;
 }
-.tour_reviews .review_box{
+
+.tour_reviews .review_box {
   border: 1px solid #D6D6D6;
   border-radius: 16px;
   padding: 16px;
 }
+
 .tour_itinerary .itinerary_item {
   display: flex;
   align-items: start;
@@ -942,8 +944,27 @@ strong {
   font-size: 14px;
 }
 
-.sale_price { 
+.sale_price {
   color: #767676 !important;
-  font-size:30px !important;
-  margin-right: 8px !important;  
+  font-size: 30px !important;
+  margin-right: 8px !important;
+}
+.destination-details-wrapper .wishlist {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+.destination-details-wrapper .wishlist li button.wishlist_btn i{
+  font-size: 24px;
+}
+.destination-details-wrapper .wishlist li button.wishlist_btn {
+  width: auto;
+  height: 2.5rem;
+  border: .0625rem solid #D6D6D6;
+  border-radius: 1.875rem;
+  padding: .5rem .75rem .5rem .25rem;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
 }
