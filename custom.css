@@ -895,7 +895,12 @@ strong {
   border-bottom: 1px solid #D6D6D6;
   padding: 48px 0;
 }
-
+.tour_included ul li{
+  line-height: normal;
+}
+.tour_included ul li i{
+  font-size: 120%;
+}
 .tour_reviews .review_box {
   border: 1px solid #D6D6D6;
   border-radius: 16px;

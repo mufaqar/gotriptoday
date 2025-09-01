@@ -229,18 +229,23 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                 <div class="tour_included">
                     <h2 class="pb-3">What's Included</h2>
-                    <div class="d-flex flex-lg-row flex-column gap-4 align-items-start">
+                    <div class="d-flex flex-lg-row flex-column gap-2 align-items-start">
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2">
-                                <li>✓ Courteous Chauffeur (English-speaking driver)</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
+                                    Courteous Chauffeur (English-speaking driver)</li>
 
-                                <li>✓ Historic landmark visits (Frauenkirche, Semper Opera House)</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
+                                    Historic landmark visits (Frauenkirche, Semper Opera House)</li>
 
-                                <li>✓ Complimentary bottled water</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
+                                    Complimentary bottled water</li>
 
-                                <li>✓ Scenic nature stops</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
+                                    Scenic nature stops</li>
 
-                                <li>✓ Flexible itinerary</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
+                                    Flexible itinerary</li>
                                 <?php
 
                                 // ✅ INCLUDED
@@ -258,15 +263,20 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         </div>
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2 ">
-                                <li>x Courteous Chauffeur (English-speaking driver)</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Courteous
+                                    Chauffeur (English-speaking driver)</li>
 
-                                <li>x Historic landmark visits (Frauenkirche, Semper Opera House)</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Historic
+                                    landmark visits (Frauenkirche, Semper Opera House)</li>
 
-                                <li>x Complimentary bottled water</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i>
+                                    Complimentary bottled water</li>
 
-                                <li>x Scenic nature stops</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Scenic
+                                    nature stops</li>
 
-                                <li>x Flexible itinerary</li>
+                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Flexible
+                                    itinerary</li>
                                 <!-- <?php
                                 //$not_included = get_post_meta($post->ID, "not_included", true);
                                 
@@ -312,7 +322,9 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         </div>
                         <p>Need help? Contact us for any further questions</p>
                         <button>
-                            Contact Support
+                            <a href="<?php echo home_url('/contact'); ?>">
+                                Contact Support
+                            </a>
                         </button>
                     </div>
                 </div>
@@ -404,16 +416,28 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 <div class="divider"></div>
 <div class="pop_up_wrapper">
     <div class="cancellation_pop_up">
-        <div class="d-flex align-items-end justify-content-end">
+        <div class="d-flex align-items-end justify-content-end mb-1">
             <button class="close_popup" onclick="closePopup()">
-            <i class="ti ti-x"></i>
-        </button>
+                <i class="ti ti-x"></i>
+            </button>
         </div>
         <div>
-            <h3>
+            <h3 class="pb-3">
                 Cancellation
             </h3>
-
+            <p class="mb-3">
+                You can cancel up to 24 hours in advance of the experience for a full refund.
+            </p>
+            <ul class="mb-3 d-flex flex-column gap-2">
+                <li>For a full refund, you must cancel at least 24 hours before the experience’s start time. </li>
+                <li>If you cancel less than 24 hours before the experience’s start time, the amount you paid will not be
+                    refunded. </li>
+                <li>Any changes made less than 24 hours before the experience’s start time will not be accepted. </li>
+                <li>Cut-off times are based on the experience’s local time. </li>
+                <li>This experience requires a minimum number of travelers. If it’s canceled because the minimum isn’t
+                    met, you’ll be offered a different date/experience or a full refund.</li>
+            </ul>
+            Read more about Cancellation.
         </div>
     </div>
 </div>
