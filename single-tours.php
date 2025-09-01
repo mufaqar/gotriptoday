@@ -300,7 +300,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             </h4>
                         </div>
                         <p>You can cancel up to 24 hours in advance of the experience for a full refund.</p>
-                        <button>
+                        <button onclick="openPopup()">
                             Show more
                         </button>
                     </div>
@@ -312,7 +312,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         </div>
                         <p>Need help? Contact us for any further questions</p>
                         <button>
-                           Contact Support
+                            Contact Support
                         </button>
                     </div>
                 </div>
@@ -402,11 +402,39 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 <!-- Divider -->
 <div class="divider"></div>
+<div class="pop_up_wrapper">
+    <div class="cancellation_pop_up">
+        <div class="d-flex align-items-end justify-content-end">
+            <button class="close_popup" onclick="closePopup()">
+            <i class="ti ti-x"></i>
+        </button>
+        </div>
+        <div>
+            <h3>
+                Cancellation
+            </h3>
+
+        </div>
+    </div>
+</div>
 </div>
 <?php get_footer(); ?>
 
 
 <script>
+    function openPopup() {
+        document.querySelector('.pop_up_wrapper').classList.add('active');
+    }
+    function closePopup() {
+        document.querySelector('.pop_up_wrapper').classList.remove('active');
+    }
+    // Close when clicking outside popup
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('pop_up_wrapper')) {
+            closePopup();
+        }
+    });
+
     document.querySelectorAll('.wishlist_btn').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
