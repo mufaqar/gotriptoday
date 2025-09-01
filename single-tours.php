@@ -13,24 +13,58 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     <div class="divider"></div>
     <div class="container">
         <div class="divider-sm"></div>
-        <div class="tour-details-header d-flex flex-wrap gap-4 align-items-end justify-content-between">
-            <div>
+        <div class="tour-details-header d-flex gap-4 align-items-start justify-content-between">
+            <div class="col-12 col-lg-9">
+                <div class="tour-details-meta py-2 mb-3">
+                    <ul class="list-unstyled d-flex flex-wrap gap-2">
+                        <li><a href="<?php bloginfo('url'); ?>">Home</a></li>
+                        <li>/</li>
+                        <li><a href="<?php echo home_url('/tours'); ?>">tours</a></li>
+                        <li>/</li>
+                        <li><?php the_title() ?></li>
+                    </ul>
+                </div>
                 <h2 class="mb-3"><?php the_title() ?></h2>
+                <ul class="list-unstyled mb-3 d-flex gap-2 text-black" style="font-size:14px; font-weight: 500;">
+                    <li class="d-flex align-items-center">
+                        <i class='text-success pe-1 ti ti-star-filled'></i>
+                        <i class='text-success pe-1 ti ti-star-filled'></i>
+                        <i class='text-success pe-1 ti ti-star-filled'></i>
+                        <i class='text-success pe-1 ti ti-star-filled'></i>
+                        <i class='text-success pe-1 ti ti-star-filled'></i>
+                        <span class="d-inline-flex text-decoration-underline">242 Reviews</span>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <i class=' pe-1 ti ti-rosette-discount-check' style="color: #e25a3a;font-size: 120%;"></i>
+                        Recommended by 95% of travelers
+                    </li>
+                    <li>|</li>
+                    <li>
+                        Frankfurt, Germany
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-3">
+                <ul class="list-unstyled d-flex flex-column gap-1 text-black" style="font-size:14px; font-weight: 500;">
+                    <li> <i class='text-success pe-1 ti ti-phone'></i>
+                        Book online or call: <a href="tel:+4901701479446" target="_blank"
+                            class="text-decoration-underline">+49 0 170 1479446</a>
+                    </li>
+                    <li> <i class='text-success pe-1 ti ti-brand-wechat'></i>
+                        <a href="#" target="_blank" class="text-decoration-underline">Chat now</a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled d-flex justify-content-end text-black mt-5"
+                    style="font-size:14px; font-weight: 500;">
+                    <li style="background-color:#f5f5f5; width: fit-content; padding: .25rem; border-radius: .375rem;">
+                        <i class='text-success pe-1 ti ti-tag'></i> Lowest Price Guarantee
+                    </li>
+                </ul>
+
             </div>
         </div>
-
-        <div class="tour-details-meta py-2">
-            <ul class="list-unstyled d-flex flex-wrap gap-2">
-                <li><a href="<?php bloginfo('url'); ?>">Home</a></li>
-                <li>/</li>
-                <li><a href="<?php echo home_url('/tours'); ?>">tours</a></li>
-                <li>/</li>
-                <li><?php the_title() ?></li>
-            </ul>
-        </div>
-
-        <div class="divider-sm"></div>
-
+        <div class="divider-xs"></div>
         <div class="row g-5">
             <div class="col-12 col-lg-8">
                 <div class="d-flex flex-row gap-4 align-items-start">
@@ -58,8 +92,17 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <ul class="list-unstyled d-flex gap-2 wishlist">
                             <li>
                                 <button class="wishlist_btn">
-                                    <i class='icon ti ti-share'></i> Share
+                                    <i class='icon ti ti-share'></i> Share <i
+                                        class='icon ti ti-chevron-down open_share_links'></i>
                                 </button>
+                                <ul class="list-unstyled share_links">
+                                    <li>
+                                        <a href="#"><i class='icon ti ti-link'></i> Copy Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class='icon ti ti-mail'></i> Email</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <button class="wishlist_btn">
@@ -86,13 +129,13 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 </div>
                 <div class="meta_info">
                     <ul class="list-unstyled d-flex flex-lg-row flex-column align-items-center gap-lg-5 gap-3">
-                        <li>
+                        <li class="d-flex align-items-center gap-1">
                             <i class='icon ti ti-clock'></i> 5 hours 30 minutes (approx.)
                         </li>
-                        <li>
+                        <li class="d-flex align-items-center gap-1">
                             <i class='icon ti ti-device-mobile'></i> Mobile ticket
                         </li>
-                        <li>
+                        <li class="d-flex align-items-center gap-1">
                             <i class='icon ti ti-messages'></i> Offered in: English and 1 more
                         </li>
                     </ul>
@@ -143,18 +186,20 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="tour-details-content">
                     <div class="tour_overview">
                         <h2 class="pb-3">Overview</h2>
-                        <p><?php echo get_post_meta($post->ID, "tour_overview", true); ?></p>
+                        <ul class="list-disc">
+                            <!-- <li><?php echo get_post_meta($post->ID, "tour_overview", true); ?></li> -->
+                            <li> Enjoy an exclusive private vehicle with a professional driver. </li>
+                            <li>Discover local insights you won’t find in guidebooks.</li>
+                            <li>Explore at your own speed.</li>
+                            <li>Perfect for families, friends, or solo travelers.</li>
+                        </ul>
                     </div>
                     <div class="tour_itinerary">
                         <h2 class="pb-3">OTrip Itinerary</h2>
 
                         <?php $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
-
-
                         ?>
-
                         <div>
-
                             <?php
                             $counter = 0;
                             foreach ($trip_itinerary as $itinerary) {
@@ -175,32 +220,36 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         </p>
                                     </div>
                                 </div>
-
                                 <?php
                             }
-
                             ?>
-
-
                         </div>
                     </div>
                 </div>
 
-                <div class="tour_included ">
+                <div class="tour_included">
                     <h2 class="pb-3">What's Included</h2>
                     <div class="d-flex flex-lg-row flex-column gap-4 align-items-start">
                         <div>
-
                             <ul class="list-unstyled d-flex flex-column gap-2">
+                                <li>✓ Courteous Chauffeur (English-speaking driver)</li>
+
+                                <li>✓ Historic landmark visits (Frauenkirche, Semper Opera House)</li>
+
+                                <li>✓ Complimentary bottled water</li>
+
+                                <li>✓ Scenic nature stops</li>
+
+                                <li>✓ Flexible itinerary</li>
                                 <?php
 
                                 // ✅ INCLUDED
-                                $included = get_post_meta($post->ID, "included", true);
-
+                                // $included = get_post_meta($post->ID, "included", true);
+                                
                                 if (!empty($included) && is_array($included)) {
                                     foreach ($included as $feature => $is_included) {
                                         if ($is_included && $is_included !== 'false') {
-                                            echo "<li><i class='text-success pe-1 ti ti-rosette-discount-check'></i>$feature</li>";
+                                            //echo "<li>	✓ $feature</li>";
                                         }
                                     }
                                 }
@@ -208,33 +257,71 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             </ul>
                         </div>
                         <div>
+                            <ul class="list-unstyled d-flex flex-column gap-2 ">
+                                <li>x Courteous Chauffeur (English-speaking driver)</li>
 
-                            <ul class="list-unstyled d-flex flex-column gap-2 mt-">
-                                <?php
-                                $not_included = get_post_meta($post->ID, "not_included", true);
+                                <li>x Historic landmark visits (Frauenkirche, Semper Opera House)</li>
 
+                                <li>x Complimentary bottled water</li>
+
+                                <li>x Scenic nature stops</li>
+
+                                <li>x Flexible itinerary</li>
+                                <!-- <?php
+                                //$not_included = get_post_meta($post->ID, "not_included", true);
+                                
                                 if (!empty($not_included) && is_array($not_included)) {
                                     foreach ($not_included as $nofeature => $is_not_included) {
                                         if ($is_not_included && $is_not_included !== 'false') {
-                                            echo "<li><i class='text-danger pe-1 ti ti-octagon-minus'></i>$nofeature</li>";
+                                            //echo "<li>x $nofeature</li>";
                                         }
                                     }
                                 }
-                                ?>
+                                ?> -->
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="tour_additional">
                     <h2 class="pb-3">Additional Info</h2>
-                    <?php echo get_post_meta($post->ID, "additional_info", true); ?>
+                    <ul class="">
+                        <li><strong> Pickup flexibility:</strong> Driver meets you anywhere in Berlin.</li>
+                        <li><strong> Local expertise:</strong> Insider tips and recommendations.</li>
+                        <li><strong> Freedom to explore:</strong> Move at your own pace in Dresden.</li>
+                        <li><strong> Return transfer:</strong> Comfortable drive back to Berlin.</li>
+                    </ul>
+                    <!-- <?php //echo get_post_meta($post->ID, "additional_info", true); ?> -->
+                </div>
+                <div class="tour_additional_list d-flex flex-lg-row flex-column gap-4 mt-5">
+                    <div class="tour_additional_box col-lg-6 col-12">
+                        <div class="d-flex flex-lg-row flex-column justify-content-between">
+                            <h4>
+                                Cancellation Policy
+                            </h4>
+                        </div>
+                        <p>You can cancel up to 24 hours in advance of the experience for a full refund.</p>
+                        <button>
+                            Show more
+                        </button>
+                    </div>
+                    <div class="tour_additional_box col-lg-6 col-12">
+                        <div class="d-flex flex-lg-row flex-column justify-content-between">
+                            <h4>
+                                Questions?
+                            </h4>
+                        </div>
+                        <p>Need help? Contact us for any further questions</p>
+                        <button>
+                           Contact Support
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
                     <div class="sidebar-widget">
-                        <div class="h4 fw-bold mb-4">From $149.14 <sub class="h6">Per Person</sub></div>
                         <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
+                        <div class="h4 fw-bold mb-4">€ <?php echo $tour_price; ?><sub class="h6">Per Person</sub></div>
                         <form class="Single_tour_booking" action="<?php echo home_url('/booking-details'); ?>"
                             method="POST">
                             <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
@@ -243,7 +330,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 <div class="col-lg-6 col-12 gap-2 py-2 tour_date">
                                     <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
                                     <input type="date" id="tour_date" name="tour_date"
-                                        class="form-control p-0 bg-transparent text-end h-auto"
+                                        class="form-control p-0 bg-transparent h-auto"
                                         value="<?php echo date('Y-m-d'); ?>" required>
                                 </div>
                                 <div class="col-lg-6 col-12 gap-2 py-2 tour_adults">
@@ -259,7 +346,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 </div>
                                 <div class="col-12">
                                     <div class="tour-booking-summary py-2">
-                                        <ul class="list-unstyled d-flex flex-column gap-2">
+                                        <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
                                             <li>
                                                 <span><strong>Adult:</strong></span>
                                                 <span
@@ -278,17 +365,20 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 </div>
                             </div>
                             <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-success w-100">Book Now <i
+                                <button type="submit" class="btn btn-success w-100">Check Availability <i
                                         class="icon-arrow-right"></i></button>
                             </div>
                             <div class="col-12 mt-4">
                                 <ul class="list-unstyled d-flex flex-column gap-2">
                                     <li>
-                                        <i class='ti ti-circle-check-filled'></i> Free cancellationup to 24 hours before
-                                        the experience starts (local time)
+                                        <i class='ti ti-circle-check-filled'></i> <strong
+                                            class="text-decoration-underline">Free cancellationup</strong> Free
+                                        cancellation up to 24 hours
                                     </li>
                                     <li>
-                                        <i class='ti ti-circle-check-filled'></i> Reserve Now and Pay Later - Secure
+                                        <i class='ti ti-circle-check-filled'></i><strong
+                                            class="text-decoration-underline"> Reserve Now and Pay Later </strong> -
+                                        Secure
                                         your spot while staying flexible
                                     </li>
                                 </ul>
@@ -298,7 +388,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                             <ul class="list-unstyled d-flex flex-column gap-2">
                                 <li>
                                     <i class="ti ti-flame" style="color: #e25a3a;font-size: 120%;"></i>
-                                    Book ahead!
+                                    <strong>Book ahead!</strong><br />
                                     On average, this is booked 37 days in advance.
                                 </li>
                             </ul>
@@ -317,6 +407,33 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 
 <script>
+    document.querySelectorAll('.wishlist_btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Close other open dropdowns (optional)
+            document.querySelectorAll('.share_links').forEach(menu => {
+                if (menu !== this.nextElementSibling) {
+                    menu.classList.remove('active');
+                }
+            });
+
+            // Toggle this dropdown
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('active');
+        });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.wishlist li')) {
+            document.querySelectorAll('.share_links').forEach(menu => {
+                menu.classList.remove('active');
+            });
+        }
+    });
+
+
     /*update Price */
     function updateTotalPrice() {
         var adults = parseInt(document.getElementById('tour_adults').value);
