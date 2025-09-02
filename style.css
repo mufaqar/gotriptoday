@@ -4453,15 +4453,15 @@ picture.jarallax-img img {
 }
 
 .tour-details-content ul {
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 .tour-details-content ul li {
-  -webkit-box-flex: 0;
+  /* -webkit-box-flex: 0;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   width: 100%;
@@ -4470,7 +4470,7 @@ picture.jarallax-img img {
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
+  align-items: center; */
   gap: 6px;
   color: #767676;
   font-weight: 400;

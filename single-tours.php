@@ -186,13 +186,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="tour-details-content">
                     <div class="tour_overview">
                         <h2 class="pb-3">Overview</h2>
-                        <ul class="list-disc">
-                            <!-- <li><?php echo get_post_meta($post->ID, "tour_overview", true); ?></li> -->
-                            <li> Enjoy an exclusive private vehicle with a professional driver. </li>
-                            <li>Discover local insights you won’t find in guidebooks.</li>
-                            <li>Explore at your own speed.</li>
-                            <li>Perfect for families, friends, or solo travelers.</li>
-                        </ul>
+                        <?php echo get_post_meta($post->ID, "tour_overview", true); ?>
                     </div>
                     <div class="tour_itinerary">
                         <h2 class="pb-3">OTrip Itinerary</h2>
@@ -232,29 +226,15 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     <div class="d-flex flex-lg-row flex-column gap-2 align-items-start">
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2">
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
-                                    Courteous Chauffeur (English-speaking driver)</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
-                                    Historic landmark visits (Frauenkirche, Semper Opera House)</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
-                                    Complimentary bottled water</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
-                                    Scenic nature stops</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-check text-black"></i>
-                                    Flexible itinerary</li>
                                 <?php
 
                                 // ✅ INCLUDED
-                                // $included = get_post_meta($post->ID, "included", true);
-                                
+                                $included = get_post_meta($post->ID, "included", true);
+
                                 if (!empty($included) && is_array($included)) {
                                     foreach ($included as $feature => $is_included) {
                                         if ($is_included && $is_included !== 'false') {
-                                            //echo "<li>	✓ $feature</li>";
+                                            echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-check text-black'></i> $feature</li>";
                                         }
                                     }
                                 }
@@ -263,44 +243,25 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         </div>
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2 ">
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Courteous
-                                    Chauffeur (English-speaking driver)</li>
+                                <?php
+                                // ✅Not INCLUDED
+                                $not_included = get_post_meta($post->ID, "not_included", true);
 
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Historic
-                                    landmark visits (Frauenkirche, Semper Opera House)</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i>
-                                    Complimentary bottled water</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Scenic
-                                    nature stops</li>
-
-                                <li class="d-flex gap-2 align-items-center"><i class="ti ti-x text-black"></i> Flexible
-                                    itinerary</li>
-                                <!-- <?php
-                                //$not_included = get_post_meta($post->ID, "not_included", true);
-                                
                                 if (!empty($not_included) && is_array($not_included)) {
                                     foreach ($not_included as $nofeature => $is_not_included) {
                                         if ($is_not_included && $is_not_included !== 'false') {
-                                            //echo "<li>x $nofeature</li>";
+                                            echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-x text-black'></i> $nofeature</li>";
                                         }
                                     }
                                 }
-                                ?> -->
+                                ?>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="tour_additional">
                     <h2 class="pb-3">Additional Info</h2>
-                    <ul class="">
-                        <li><strong> Pickup flexibility:</strong> Driver meets you anywhere in Berlin.</li>
-                        <li><strong> Local expertise:</strong> Insider tips and recommendations.</li>
-                        <li><strong> Freedom to explore:</strong> Move at your own pace in Dresden.</li>
-                        <li><strong> Return transfer:</strong> Comfortable drive back to Berlin.</li>
-                    </ul>
-                    <!-- <?php //echo get_post_meta($post->ID, "additional_info", true); ?> -->
+                    <?php echo get_post_meta($post->ID, "additional_info", true); ?>
                 </div>
                 <div class="tour_additional_list d-flex flex-lg-row flex-column gap-4 mt-5">
                     <div class="tour_additional_box col-lg-6 col-12">
@@ -346,7 +307,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         value="<?php echo date('Y-m-d'); ?>" required>
                                 </div>
                                 <div class="col-lg-6 col-12 gap-2 py-2 tour_adults">
-                                    <label for="tour_adults" class="form-label mb-0 text-heading">Adult</label>
+                                    <label for="tour_adults" class="form-label mb-0 text-heading">Travelers </label>
                                     <select name="tour_adults" id="tour_adults" class="touria-select2 bg-transparent"
                                         onchange="updateTotalPrice()">
                                         <option value="1" selected>1</option>
@@ -356,24 +317,31 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                         <option value="5">5</option>
                                     </select>
                                 </div>
-                                <div class="col-12">
-                                    <div class="tour-booking-summary py-2">
-                                        <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
-                                            <li>
-                                                <span><strong>Adult:</strong></span>
-                                                <span
-                                                    id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
-                                            </li>
-                                            <!-- <li>
+                                <div class="col-12 gap-2 py-2 tour_time">
+                                    <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
+                                    <select name="tour_time" id="tour_time" class="touria-select2 bg-transparent">
+                                        <option value="1" selected>Select Time</option>
+                                        <option value="2">9:00 AM</option>
+                                        <option value="3">3:30 PM</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <div class="tour-booking-summary py-2">
+                                    <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
+                                        <li>
+                                            <span><strong>Adult:</strong></span>
+                                            <span id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
+                                        </li>
+                                        <!-- <li>
                                                 <span>Child:</span><span><span>€</span>0.00</span>
                                             </li> -->
-                                            <li>
-                                                <span>Total:</span>
-                                                <span
-                                                    id="total_price"><span>€</span><?php echo $tour_price * 2; ?></span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        <li>
+                                            <span>Total:</span>
+                                            <span id="total_price"><span>€</span><?php echo $tour_price * 2; ?></span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-12 mt-4">
@@ -384,7 +352,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 <ul class="list-unstyled d-flex flex-column gap-2">
                                     <li>
                                         <i class='ti ti-circle-check-filled'></i> <strong
-                                            class="text-decoration-underline">Free cancellationup</strong> Free
+                                            class="text-decoration-underline">Free cancellation</strong> Free
                                         cancellation up to 24 hours
                                     </li>
                                     <li>
@@ -414,14 +382,15 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 <!-- Divider -->
 <div class="divider"></div>
+<!-- PopUp -->
 <div class="pop_up_wrapper">
-    <div class="cancellation_pop_up">
+    <div class="cancellation_pop_up ">
         <div class="d-flex align-items-end justify-content-end mb-1">
             <button class="close_popup" onclick="closePopup()">
                 <i class="ti ti-x"></i>
             </button>
         </div>
-        <div>
+        <div class="pb-5">
             <h3 class="pb-3">
                 Cancellation
             </h3>
@@ -437,7 +406,9 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <li>This experience requires a minimum number of travelers. If it’s canceled because the minimum isn’t
                     met, you’ll be offered a different date/experience or a full refund.</li>
             </ul>
-            Read more about Cancellation.
+            <a href="#" class="text-decoration-underline">
+                Read more about Cancellation.
+            </a>
         </div>
     </div>
 </div>

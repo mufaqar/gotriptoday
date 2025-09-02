@@ -1029,7 +1029,6 @@ strong {
 }
 
 .list-disc {
-  list-style-position: inside;
   list-style-type: disc !important;
 }
 
