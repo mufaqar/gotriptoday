@@ -318,6 +318,10 @@
   .mtn {
     margin-top: 60px !important;
   }
+  .cancellation_pop_up {
+  width: 95%;
+  padding: 1.5rem 1rem;
+}
 }
 
 /*Plugin Setting*/
@@ -384,7 +388,7 @@
 
 .swiper.destination-details-wrapper .swiper-slide img {
   width: 1350px;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
   /* Crops the image proportionally */
   display: block;

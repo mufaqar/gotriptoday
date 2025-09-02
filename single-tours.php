@@ -13,7 +13,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     <div class="divider"></div>
     <div class="container">
         <div class="divider-sm"></div>
-        <div class="tour-details-header d-flex gap-4 align-items-start justify-content-between">
+        <div class="tour-details-header d-flex flex-lg-row flex-column gap-lg-4 align-items-start justify-content-between">
             <div class="col-12 col-lg-9">
                 <div class="tour-details-meta py-2 mb-3">
                     <ul class="list-unstyled d-flex flex-wrap gap-2">
@@ -25,7 +25,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </ul>
                 </div>
                 <h2 class="mb-3"><?php the_title() ?></h2>
-                <ul class="list-unstyled mb-3 d-flex gap-2 text-black" style="font-size:14px; font-weight: 500;">
+                <ul class="list-unstyled mb-3 d-flex flex-wrap gap-2 text-black" style="font-size:14px; font-weight: 500;">
                     <li class="d-flex align-items-center">
                         <i class='text-success pe-1 ti ti-star-filled'></i>
                         <i class='text-success pe-1 ti ti-star-filled'></i>
