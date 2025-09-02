@@ -813,18 +813,23 @@ strong {
   display: none;
 }
 
-.destination-thumbs .thumb-item {
-  opacity: 0.6;
+/* .destination-thumbs .thumb-item */
+
+.destination-thumbs .swiper-slide {
+   opacity: 0.6;
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 0.3s ease;
+  height: 100% !important;
 }
 
-.destination-thumbs .thumb-item.active {
-  opacity: 1;
+/* Active thumb highlight */
+.destination-thumbs .swiper-slide.active-thumb {
+ opacity: 1;
   border: 2px solid #0073e6;
   border-radius: 6px;
 }
+
 
 .Single_tour_booking .row,
 .book_ahead {

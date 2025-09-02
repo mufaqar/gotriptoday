@@ -68,25 +68,25 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
         <div class="row g-5">
             <div class="col-12 col-lg-8">
                 <div class="d-flex flex-row gap-4 align-items-start">
-                    <!-- Static Thumbnails -->
-                    <div class="destination-thumbs col-lg-2 col-3 d-flex flex-column gap-3">
-                        <?php
-                        $gallery = get_post_meta($post->ID, "gallery", true);
-                        if (!empty($gallery)) {
-                            $image_ids = explode(',', $gallery);
-                            $index = 0;
-                            foreach ($image_ids as $image_id) {
-                                $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
-                                if ($thumb_url) { ?>
-                                    <div class="thumb-item <?php echo $index === 0 ? 'active' : ''; ?>"
-                                        data-slide="<?php echo $index; ?>">
-                                        <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                                    </div>
-                                <?php }
-                                $index++;
-                            }
-                        } ?>
+                    <!-- Vertical Thumbs -->
+                    <div class="swiper destination-thumbs col-lg-2 col-3">
+                        <div class="swiper-wrapper d-flex flex-column gap-3">
+                            <?php
+                            $gallery = get_post_meta($post->ID, "gallery", true);
+                            if (!empty($gallery)) {
+                                $image_ids = explode(',', $gallery);
+                                foreach ($image_ids as $image_id) {
+                                    $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
+                                    if ($thumb_url) { ?>
+                                        <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
+                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                                        </div>
+                                    <?php }
+                                }
+                            } ?>
+                        </div>
                     </div>
+
                     <!-- Main Slider -->
                     <div class="swiper destination-details-wrapper col-lg-10 col-9 position-relative">
                         <ul class="list-unstyled d-flex gap-2 wishlist">

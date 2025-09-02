@@ -467,39 +467,75 @@ if (videoGallerySwiper) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize main Swiper
-    const mainSwiper = new Swiper(".destination-details-wrapper", {
-        loop: true,
-        spaceBetween: 0,
-        slidesPerView: 1,
-        centeredSlides: true,
-        speed: 500,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: ".destination-details-button-next",
-            prevEl: ".destination-details-button-prev",
-        },
+  // Count real slides (not duplicates)
+  const realSlides = document.querySelectorAll(
+    ".destination-details-wrapper .swiper-slide:not(.swiper-slide-duplicate)"
+  );
+  const totalSlides = realSlides.length;
+
+  // Thumbs Swiper (vertical)
+  const thumbsSwiper = new Swiper(".destination-thumbs", {
+    direction: "vertical",
+    slidesPerView: 4,
+    spaceBetween: 5,
+    loop: true,
+    loopedSlides: totalSlides,
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+    freeMode: false,
+    slideToClickedSlide: false, // we handle clicks manually
+  });
+
+  // Main Swiper
+  const mainSwiper = new Swiper(".destination-details-wrapper", {
+    loop: true,
+    loopedSlides: totalSlides,
+    slidesPerView: 1,
+    centeredSlides: true,
+    speed: 500,
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    navigation: {
+      nextEl: ".destination-details-button-next",
+      prevEl: ".destination-details-button-prev",
+    },
+    thumbs: { swiper: thumbsSwiper },
+  });
+
+  // Update active thumb when main slide changes
+  mainSwiper.on("slideChange", () => {
+    const realIndex = mainSwiper.realIndex;
+
+    thumbsSwiper.slides.forEach((slide) => {
+      slide.classList.remove("active-thumb");
+      const origIndex = parseInt(
+        slide.getAttribute("data-swiper-slide-index"),
+        10
+      );
+      if (origIndex === realIndex) {
+        slide.classList.add("active-thumb");
+      }
     });
 
-    // Thumbnail click handling
-    const thumbs = document.querySelectorAll(".thumb-item");
-    thumbs.forEach((thumb, index) => {
-        thumb.addEventListener("click", function () {
-            mainSwiper.slideToLoop(index); // Go to clicked slide
-            thumbs.forEach(t => t.classList.remove("active"));
-            thumb.classList.add("active");
-        });
-    });
+    // Move thumbs so active is visible
+    thumbsSwiper.slideToLoop(realIndex, 300);
+  });
 
-    // Sync active thumb on slide change
-    mainSwiper.on("slideChange", () => {
-        let realIndex = mainSwiper.realIndex;
-        thumbs.forEach(t => t.classList.remove("active"));
-        thumbs[realIndex]?.classList.add("active");
-    });
+  // Handle thumb clicks properly in loop mode
+  thumbsSwiper.on("click", function () {
+    const clickedIdx = thumbsSwiper.clickedIndex;
+    if (typeof clickedIdx === "undefined") return;
+
+    const clickedSlideEl = thumbsSwiper.slides[clickedIdx];
+    const origIndexAttr = clickedSlideEl.getAttribute(
+      "data-swiper-slide-index"
+    );
+    const origIndex =
+      origIndexAttr !== null ? parseInt(origIndexAttr, 10) : NaN;
+
+    if (!isNaN(origIndex)) {
+      mainSwiper.slideToLoop(origIndex, 300);
+    }
+  });
 });
 
 
@@ -512,17 +548,17 @@ if (rangeSliderPrice) {
         start: [20, 800],
         connect: true,
         tooltips: [{
-                to: function (value) {
-                    return value <= 0 ? '' : parseInt(value, 10);
-                },
-                from: Number
+            to: function (value) {
+                return value <= 0 ? '' : parseInt(value, 10);
             },
-            {
-                to: function (value) {
-                    return value <= 0 ? '' : parseInt(value, 10);
-                },
-                from: Number
-            }
+            from: Number
+        },
+        {
+            to: function (value) {
+                return value <= 0 ? '' : parseInt(value, 10);
+            },
+            from: Number
+        }
         ],
         range: {
             'min': 0,
@@ -540,17 +576,17 @@ if (rangeSliderDuration) {
         start: [1, 7],
         connect: true,
         tooltips: [{
-                to: function (value) {
-                    return value <= 0 ? '' : parseInt(value, 10);
-                },
-                from: Number
+            to: function (value) {
+                return value <= 0 ? '' : parseInt(value, 10);
             },
-            {
-                to: function (value) {
-                    return value <= 0 ? '' : parseInt(value, 10);
-                },
-                from: Number
-            }
+            from: Number
+        },
+        {
+            to: function (value) {
+                return value <= 0 ? '' : parseInt(value, 10);
+            },
+            from: Number
+        }
         ],
         range: {
             'min': 0,
@@ -833,12 +869,12 @@ if (timeRangeInput) {
     const [start, end] = getCurrentWeekRange();
 
     timeRangeInput.placeholder = `${start.toLocaleDateString(undefined, {
-          month: "short",
-          day: "2-digit",
-        })} - ${end.toLocaleDateString(undefined, {
-          month: "short",
-          day: "2-digit",
-        })}`;
+        month: "short",
+        day: "2-digit",
+    })} - ${end.toLocaleDateString(undefined, {
+        month: "short",
+        day: "2-digit",
+    })}`;
 
     flatpickr(timeRangeInput, {
         mode: "range",
