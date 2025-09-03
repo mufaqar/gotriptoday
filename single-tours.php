@@ -55,7 +55,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <a href="#" target="_blank" class="text-decoration-underline">Chat now</a>
                     </li>
                 </ul>
-                <ul class="list-unstyled d-flex justify-content-end text-black mt-5"
+                <ul class="list-unstyled d-flex justify-content-lg-end justify-content-start text-black mt-5"
                     style="font-size:14px; font-weight: 500;">
                     <li style="background-color:#f5f5f5; width: fit-content; padding: .25rem; border-radius: .375rem;">
                         <i class='text-success pe-1 ti ti-tag'></i> Lowest Price Guarantee
@@ -69,7 +69,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
             <div class="col-12 col-lg-8">
                 <div class="d-flex flex-row gap-4 align-items-start">
                     <!-- Vertical Thumbs -->
-                    <div class="swiper destination-thumbs col-lg-2 col-3">
+                    <div class="swiper destination-thumbs col-lg-2 col-3 d-lg-flex d-none">
                         <div class="swiper-wrapper d-flex flex-column gap-3">
                             <?php
                             $gallery = get_post_meta($post->ID, "gallery", true);
@@ -88,7 +88,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </div>
 
                     <!-- Main Slider -->
-                    <div class="swiper destination-details-wrapper col-lg-10 col-9 position-relative">
+                    <div class="swiper destination-details-wrapper col-lg-10 col-12 position-relative">
                         <ul class="list-unstyled d-flex gap-2 wishlist">
                             <li>
                                 <button class="wishlist_btn">

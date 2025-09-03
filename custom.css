@@ -322,6 +322,9 @@
   width: 95%;
   padding: 1.5rem 1rem;
 }
+.swiper.destination-details-wrapper .swiper-slide img {
+  height: 280px !important;
+}
 }
 
 /*Plugin Setting*/
@@ -388,7 +391,7 @@
 
 .swiper.destination-details-wrapper .swiper-slide img {
   width: 1350px;
-  height: 100%;
+  height: 450px;
   object-fit: cover;
   /* Crops the image proportionally */
   display: block;
