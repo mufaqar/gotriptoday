@@ -855,6 +855,10 @@ strong {
   border-bottom: 1px solid #D6D6D6;
 
 }
+.Single_tour_booking .tour_time {
+  border-top: 1px solid #D6D6D6;
+
+}
 
 .Single_tour_booking .tour_adults {
   border-bottom: 1px solid #D6D6D6;

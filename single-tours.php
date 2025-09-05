@@ -8,12 +8,143 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 // ]);
 
 ?>
+
+
+<style>
+.traveler-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.date-display {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.traveler-count {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+.info-text {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.age-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.age-group:last-child {
+    border-bottom: none;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.counter-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.counter-btn:hover {
+    background-color: #e9ecef;
+}
+
+.counter-value {
+    margin: 0 15px;
+    font-weight: 500;
+    min-width: 30px;
+    text-align: center;
+}
+
+.apply-btn {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.apply-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.age-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.age-range {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.traveler-selection {
+    margin-top: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.traveler-selection:hover {
+    border-color: #0d6efd;
+}
+
+.traveler-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.traveler-modal-content {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+</style>
 <!-- Tour Details Section -->
 <div class="tour-details-section">
     <div class="divider"></div>
     <div class="container">
         <div class="divider-sm"></div>
-        <div class="tour-details-header d-flex flex-lg-row flex-column gap-lg-4 align-items-start justify-content-between">
+        <div
+            class="tour-details-header d-flex flex-lg-row flex-column gap-lg-4 align-items-start justify-content-between">
             <div class="col-12 col-lg-9">
                 <div class="tour-details-meta py-2 mb-3">
                     <ul class="list-unstyled d-flex flex-wrap gap-2">
@@ -25,7 +156,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     </ul>
                 </div>
                 <h2 class="mb-3"><?php the_title() ?></h2>
-                <ul class="list-unstyled mb-3 d-flex flex-wrap gap-2 text-black" style="font-size:14px; font-weight: 500;">
+                <ul class="list-unstyled mb-3 d-flex flex-wrap gap-2 text-black"
+                    style="font-size:14px; font-weight: 500;">
                     <li class="d-flex align-items-center">
                         <i class='text-success pe-1 ti ti-star-filled'></i>
                         <i class='text-success pe-1 ti ti-star-filled'></i>
@@ -72,19 +204,22 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     <div class="swiper destination-thumbs col-lg-2 col-3 d-lg-flex d-none">
                         <div class="swiper-wrapper d-flex flex-column gap-3">
                             <?php
+                          
                             $gallery = get_post_meta($post->ID, "gallery", true);
                             if (!empty($gallery)) {
                                 $image_ids = explode(',', $gallery);
+                                $index = 0;
                                 foreach ($image_ids as $image_id) {
                                     $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                     if ($thumb_url) { ?>
-                                        <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
-                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
+                                <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
+
                     </div>
 
                     <!-- Main Slider -->
@@ -116,10 +251,10 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 foreach ($image_ids as $image_id) {
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
-                                        <div class="swiper-slide">
-                                            <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
@@ -202,19 +337,19 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 $description = $itinerary['description'];
                                 $ticket_info = $itinerary['ticket_info'];
                                 ?>
-                                <div class="itinerary_item">
-                                    <span class="list_marker"><?php echo $counter; ?></span>
-                                    <div>
-                                        <h5 class="pb-3"> <?php echo $title; ?></h5>
-                                        <p>
-                                            <?php echo $description; ?>
-                                        </p>
-                                        <p class="itinerary_detail">
-                                            <?php echo $ticket_info; ?>
-                                        </p>
-                                    </div>
+                            <div class="itinerary_item">
+                                <span class="list_marker"><?php echo $counter; ?></span>
+                                <div>
+                                    <h5 class="pb-3"> <?php echo $title; ?></h5>
+                                    <p>
+                                        <?php echo $description; ?>
+                                    </p>
+                                    <p class="itinerary_detail">
+                                        <?php echo $ticket_info; ?>
+                                    </p>
                                 </div>
-                                <?php
+                            </div>
+                            <?php
                             }
                             ?>
                         </div>
@@ -294,35 +429,62 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
                     <div class="sidebar-widget">
                         <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
-                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><sub class="h6"> Per Person</sub></div>
+                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><sub class="h6"> Per Person</sub>
+                        </div>
                         <form class="Single_tour_booking" action="<?php echo home_url('/booking-details'); ?>"
                             method="POST">
                             <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
-                            <input type="hidden" id="tour_price" name="tour_price" value="">
+                            <input type="hidden" id="tour_price" name="tour_price" value="<?php echo $tour_price; ?>">
+                            <input type="hidden" id="adult_count_input" name="adult_count" value="1">
+                            <input type="hidden" id="child_count_input" name="child_count" value="0">
                             <div class="row">
-                                <div class="col-lg-6 col-12 gap-2 py-2 tour_date">
+                                <div class="col-12 gap-2 py-2 tour_date">
                                     <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
                                     <input type="date" id="tour_date" name="tour_date"
                                         class="form-control p-0 bg-transparent h-auto"
                                         value="<?php echo date('Y-m-d'); ?>" required>
                                 </div>
-                                <div class="col-lg-6 col-12 gap-2 py-2 tour_adults">
-                                    <label for="tour_adults" class="form-label mb-0 text-heading">Travelers </label>
-                                    <select name="tour_adults" id="tour_adults" class="touria-select2 bg-transparent"
-                                        onchange="updateTotalPrice()">
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
+
+                                <div class="col-12 gap-2 py-2 tour_travelers">
+                                    <label class="form-label mb-0 text-heading">Travelers</label>
+                                    <div class="traveler-selection" onclick="openTravelerModal()">
+                                        <span id="traveler-summary">1 Adult, 0 Children</span>
+                                        <i class="ti ti-chevron-down float-end"></i>
+                                    </div>
                                 </div>
+
                                 <div class="col-12 gap-2 py-2 tour_time">
                                     <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
-                                    <select name="tour_time" id="tour_time" class="touria-select2 bg-transparent">
+                                        <?php
+                                        // Function to generate time slots
+                                        function generateTimeSlots($start_time, $end_time, $interval_minutes) {
+                                            $times = [];
+                                            $start = strtotime($start_time);
+                                            $end = strtotime($end_time);
+                                            $interval_seconds = $interval_minutes * 60;
+
+                                            while ($start <= $end) {
+                                                $times[] = date('h:i A', $start);
+                                                $start += $interval_seconds;
+                                            }
+
+                                            return $times;
+                                        }
+
+                                        // Define start and end times (e.g., 9:00 AM to 5:00 PM)
+                                        $start_time = '09:00 AM';
+                                        $end_time = '05:00 PM';
+                                        $interval = 30; // 30-minute intervals
+
+                                        // Get the time slots
+                                        $time_slots = generateTimeSlots($start_time, $end_time, $interval);
+                                        ?>
+
+                                    <select name="tour_time" id="tour_time" class="py-2 touria-select2 bg-transparent">
                                         <option value="1" selected>Select Time</option>
-                                        <option value="2">9:00 AM</option>
-                                        <option value="3">3:30 PM</option>
+                                        <?php foreach ($time_slots as $index => $time): ?>
+                                        <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
 
@@ -331,15 +493,18 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 <div class="tour-booking-summary py-2">
                                     <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
                                         <li>
-                                            <span><strong>Adult:</strong></span>
-                                            <span id="price-per-adult"><span>€</span><?php echo $tour_price; ?></span>
+                                            <span><strong>Adult (<span
+                                                        id="summary-adult-count">1</span>x):</strong></span>
+                                            <span id="price-per-adult">€<?php echo $tour_price; ?></span>
                                         </li>
-                                        <!-- <li>
-                                                <span>Child:</span><span><span>€</span>0.00</span>
-                                            </li> -->
-                                        <li>
-                                            <span>Total:</span>
-                                            <span id="total_price"><span>€</span><?php echo $tour_price * 2; ?></span>
+                                        <li id="child-price-item" style="display: none;">
+                                            <span><strong>Child (<span
+                                                        id="summary-child-count">0</span>x):</strong></span>
+                                            <span id="price-per-child">€0.00</span>
+                                        </li>
+                                        <li class="pt-2 border-top">
+                                            <span><strong>Total:</strong></span>
+                                            <span id="total_price"><strong>€<?php echo $tour_price; ?></strong></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -380,6 +545,38 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     </div>
 </div>
 
+<!-- Traveler Selection Modal -->
+<div class="traveler-modal" id="traveler-modal">
+    <div class="traveler-modal-content">
+        <h3 class="mb-3">Select Travelers</h3>
+        <div class="info-text">
+            You can select up to 15 travelers in total.
+        </div>
+
+        <div class="age-group">
+            <div class="age-title">Adult (Age 13-99)</div>
+            <div class="age-range">Minimum: 1, Maximum: 15</div>
+            <div class="counter">
+                <div class="counter-btn minus-btn" data-group="adult" onclick="updateCounter('adult', -1)">-</div>
+                <div class="counter-value" id="adult-count">1</div>
+                <div class="counter-btn plus-btn" data-group="adult" onclick="updateCounter('adult', 1)">+</div>
+            </div>
+        </div>
+
+        <div class="age-group">
+            <div class="age-title">Child (Age 0-12)</div>
+            <div class="age-range">Minimum: 0, Maximum: 15</div>
+            <div class="counter">
+                <div class="counter-btn minus-btn" data-group="child" onclick="updateCounter('child', -1)">-</div>
+                <div class="counter-value" id="child-count">0</div>
+                <div class="counter-btn plus-btn" data-group="child" onclick="updateCounter('child', 1)">+</div>
+            </div>
+        </div>
+
+        <button class="apply-btn" onclick="applyTravelerSelection()">Apply</button>
+    </div>
+</div>
+
 <!-- Divider -->
 <div class="divider"></div>
 <!-- PopUp -->
@@ -398,13 +595,13 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 You can cancel up to 24 hours in advance of the experience for a full refund.
             </p>
             <ul class="mb-3 d-flex flex-column gap-2">
-                <li>For a full refund, you must cancel at least 24 hours before the experience’s start time. </li>
-                <li>If you cancel less than 24 hours before the experience’s start time, the amount you paid will not be
+                <li>For a full refund, you must cancel at least 24 hours before the experience's start time. </li>
+                <li>If you cancel less than 24 hours before the experience's start time, the amount you paid will not be
                     refunded. </li>
-                <li>Any changes made less than 24 hours before the experience’s start time will not be accepted. </li>
-                <li>Cut-off times are based on the experience’s local time. </li>
-                <li>This experience requires a minimum number of travelers. If it’s canceled because the minimum isn’t
-                    met, you’ll be offered a different date/experience or a full refund.</li>
+                <li>Any changes made less than 24 hours before the experience's start time will not be accepted. </li>
+                <li>Cut-off times are based on the experience's local time. </li>
+                <li>This experience requires a minimum number of travelers. If it's canceled because the minimum isn't
+                    met, you'll be offered a different date/experience or a full refund.</li>
             </ul>
             <a href="#" class="text-decoration-underline">
                 Read more about Cancellation.
@@ -417,56 +614,153 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 
 <script>
-    function openPopup() {
-        document.querySelector('.pop_up_wrapper').classList.add('active');
+// Traveler selection functionality
+let adultCount = 1;
+let childCount = 0;
+const maxTravelers = 15;
+const tourPrice = <?php echo $tour_price; ?>;
+
+function openTravelerModal() {
+    document.getElementById('traveler-modal').style.display = 'flex';
+}
+
+function closeTravelerModal() {
+    document.getElementById('traveler-modal').style.display = 'none';
+}
+
+function updateCounter(type, change) {
+    if (type === 'adult') {
+        if (change === 1 && (adultCount + childCount) < maxTravelers) {
+            adultCount++;
+        } else if (change === -1 && adultCount > 1) {
+            adultCount--;
+        }
+    } else if (type === 'child') {
+        if (change === 1 && (adultCount + childCount) < maxTravelers) {
+            childCount++;
+        } else if (change === -1 && childCount > 0) {
+            childCount--;
+        }
     }
-    function closePopup() {
-        document.querySelector('.pop_up_wrapper').classList.remove('active');
-    }
-    // Close when clicking outside popup
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('pop_up_wrapper')) {
-            closePopup();
+
+    document.getElementById('adult-count').textContent = adultCount;
+    document.getElementById('child-count').textContent = childCount;
+
+    // Update button states
+    document.querySelectorAll('.counter-btn').forEach(btn => {
+        const group = btn.getAttribute('data-group');
+        const isMinus = btn.classList.contains('minus-btn');
+
+        if (group === 'adult') {
+            if (isMinus) {
+                btn.disabled = adultCount <= 1;
+                btn.style.opacity = adultCount <= 1 ? 0.5 : 1;
+            } else {
+                btn.disabled = (adultCount + childCount) >= maxTravelers;
+                btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+            }
+        } else if (group === 'child') {
+            if (isMinus) {
+                btn.disabled = childCount <= 0;
+                btn.style.opacity = childCount <= 0 ? 0.5 : 1;
+            } else {
+                btn.disabled = (adultCount + childCount) >= maxTravelers;
+                btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+            }
         }
     });
+}
 
-    document.querySelectorAll('.wishlist_btn').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
+function applyTravelerSelection() {
+    // Update summary text
+    const summaryText =
+        `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
+    document.getElementById('traveler-summary').textContent = summaryText;
 
-            // Close other open dropdowns (optional)
-            document.querySelectorAll('.share_links').forEach(menu => {
-                if (menu !== this.nextElementSibling) {
-                    menu.classList.remove('active');
-                }
-            });
+    // Update hidden inputs
+    document.getElementById('adult_count_input').value = adultCount;
+    document.getElementById('child_count_input').value = childCount;
 
-            // Toggle this dropdown
-            const dropdown = this.nextElementSibling;
-            dropdown.classList.toggle('active');
-        });
-    });
+    // Update summary counts
+    document.getElementById('summary-adult-count').textContent = adultCount;
+    document.getElementById('summary-child-count').textContent = childCount;
 
-    // Close when clicking outside
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.wishlist li')) {
-            document.querySelectorAll('.share_links').forEach(menu => {
+    // Update prices
+    updateTotalPrice();
+
+    // Close modal
+    closeTravelerModal();
+}
+
+function updateTotalPrice() {
+    const adultPrice = adultCount * tourPrice;
+    const childPrice = childCount * (tourPrice * 0.7); // Assuming children are 70% of adult price
+    const totalPrice = adultPrice + childPrice;
+
+    document.getElementById('price-per-adult').textContent = '€' + adultPrice.toFixed(2);
+
+    if (childCount > 0) {
+        document.getElementById('child-price-item').style.display = 'flex';
+        document.getElementById('price-per-child').textContent = '€' + childPrice.toFixed(2);
+    } else {
+        document.getElementById('child-price-item').style.display = 'none';
+    }
+
+    document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
+    document.getElementById('tour_price').value = totalPrice.toFixed(2);
+}
+
+// Close modal when clicking outside
+document.getElementById('traveler-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeTravelerModal();
+});
+
+// Initialize button states
+document.addEventListener('DOMContentLoaded', function() {
+    updateCounter('adult', 0);
+    updateCounter('child', 0);
+    updateTotalPrice();
+});
+
+// Existing functions
+function openPopup() {
+    document.querySelector('.pop_up_wrapper').classList.add('active');
+}
+
+function closePopup() {
+    document.querySelector('.pop_up_wrapper').classList.remove('active');
+}
+// Close when clicking outside popup
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('pop_up_wrapper')) {
+        closePopup();
+    }
+});
+
+document.querySelectorAll('.wishlist_btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Close other open dropdowns (optional)
+        document.querySelectorAll('.share_links').forEach(menu => {
+            if (menu !== this.nextElementSibling) {
                 menu.classList.remove('active');
-            });
-        }
+            }
+        });
+
+        // Toggle this dropdown
+        const dropdown = this.nextElementSibling;
+        dropdown.classList.toggle('active');
     });
+});
 
-
-    /*update Price */
-    function updateTotalPrice() {
-        var adults = parseInt(document.getElementById('tour_adults').value);
-        var pricePerAdult = <?php echo $tour_price; ?>;
-        var totalPrice = adults * pricePerAdult;
-        document.getElementById('total_price').textContent = "€" + totalPrice;
-        document.getElementById('tour_price').value = totalPrice;
+// Close when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.wishlist li')) {
+        document.querySelectorAll('.share_links').forEach(menu => {
+            menu.classList.remove('active');
+        });
     }
-    document.addEventListener('DOMContentLoaded', function () {
-        updateTotalPrice();
-    });
+});
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
