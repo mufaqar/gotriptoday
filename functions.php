@@ -132,3 +132,43 @@ function enqueue_ajax_contact_form_script() {
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_ajax_contact_form_script');
+
+
+
+function enqueue_wishlist_script() {
+    if (is_singular('tours') || is_page_template('wishlist.php')) { 
+        // enqueue on single tour AND wishlist page
+        wp_enqueue_script(
+            'wishlist-script',
+            get_stylesheet_directory_uri() . '/assets/js/wishlist.js',
+            array('jquery'),
+            null,
+            true
+        );
+        wp_localize_script('wishlist-script', 'wpvars', array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_wishlist_script');
+
+
+
+function get_tour_details_ajax() {
+    if (isset($_GET['tour_id'])) {
+        $tour_id = intval($_GET['tour_id']);
+        $tour = get_post($tour_id);
+
+        // ✅ Correct post type check
+        if ($tour && $tour->post_type === 'tours') {
+            wp_send_json(array(
+                'title'     => get_the_title($tour_id),
+                'permalink' => get_permalink($tour_id),
+                'thumbnail' => get_the_post_thumbnail_url($tour_id, 'thumbnail') // optional
+            ));
+        }
+    }
+    wp_send_json_error('Invalid tour ID');
+}
+add_action('wp_ajax_get_tour_details', 'get_tour_details_ajax');
+add_action('wp_ajax_nopriv_get_tour_details', 'get_tour_details_ajax');

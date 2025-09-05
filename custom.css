@@ -1111,3 +1111,8 @@ strong {
   max-width: 50rem;
   z-index: 20;
 }
+
+.wishlist_btn.added {
+  
+    color: #3cb371;
+}

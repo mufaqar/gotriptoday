@@ -105,7 +105,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 </ul>
                             </li>
                             <li>
-                                <button class="wishlist_btn">
+                                <button class="wishlist_btn" id="add-to-wishlist" data-tour-id="<?php the_ID(); ?>">
                                     <i class='icon ti ti-heart'></i> Add to Wishlist
                                 </button>
                             </li>
@@ -294,7 +294,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
                     <div class="sidebar-widget">
                         <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
-                        <div class="h4 fw-bold mb-4">€ <?php echo $tour_price; ?><sub class="h6">Per Person</sub></div>
+                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><sub class="h6"> Per Person</sub></div>
                         <form class="Single_tour_booking" action="<?php echo home_url('/booking-details'); ?>"
                             method="POST">
                             <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
