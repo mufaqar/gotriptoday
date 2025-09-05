@@ -429,7 +429,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
                     <div class="sidebar-widget">
                         <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
-                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><sub class="h6"> Per Person</sub>
+                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><span class="h6"> Per Person</span>
                         </div>
                         <form class="Single_tour_booking" action="<?php echo home_url('/booking-details'); ?>"
                             method="POST">
@@ -610,6 +610,46 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     </div>
 </div>
 </div>
+
+<section class="tour-list-section">
+    <!-- Divider -->
+    <div class="divider"></div>
+    <div class="container">
+        <div class="row g-4">
+            <div class="tour_overview">
+                        <h2 class="pb-3">Related Tours</h2>
+                     
+                    </div>
+            
+            <div class="col-12 col-md-8">
+                <div class="tour-list-content">
+                    <div id="tour-results" class="row g-4">
+                        <?php
+                            $args = array(
+                                'post_type' => 'tours',
+                                'posts_per_page' =>4,
+                                'post_status' => 'publish',
+                            );
+
+                            $tours_query = new WP_Query($args);
+                            if ($tours_query->have_posts()):
+                                while ($tours_query->have_posts()):
+                                    $tours_query->the_post();
+                                    echo '<div class="col-12 col-lg-6">';
+                                    get_template_part('partials/tour', 'card'); 
+                                    echo '</div>';
+                                endwhile;
+                                wp_reset_postdata();
+                            else:
+                                echo '<p>No tours found.</p>';
+                            endif;
+                            ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <?php get_footer(); ?>
 
 
