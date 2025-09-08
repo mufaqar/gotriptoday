@@ -323,7 +323,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <?php echo get_post_meta($post->ID, "tour_overview", true); ?>
                     </div>
                     <div class="tour_itinerary">
-                        <h2 class="pb-3">OTrip Itinerary</h2>
+                        <h2 class="pb-3">Trip Itinerary</h2>
 
                         <?php $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                         ?>
