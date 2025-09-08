@@ -138,7 +138,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     overflow-y: auto;
 }
 </style>
-<!-- Tour Details Section -->
 <div class="tour-details-section">
     <div class="divider"></div>
     <div class="container">
@@ -150,7 +149,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     <ul class="list-unstyled d-flex flex-wrap gap-2">
                         <li><a href="<?php bloginfo('url'); ?>">Home</a></li>
                         <li>/</li>
-                        <li><a href="<?php echo home_url('/tours'); ?>">tours</a></li>
+                        <li><a href="<?php echo home_url('/day-trips'); ?>">Tours</a></li>
                         <li>/</li>
                         <li><?php the_title() ?></li>
                     </ul>
@@ -164,7 +163,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                         <i class='text-success pe-1 ti ti-star-filled'></i>
                         <i class='text-success pe-1 ti ti-star-filled'></i>
                         <i class='text-success pe-1 ti ti-star-filled'></i>
-                        <span class="d-inline-flex text-decoration-underline">242 Reviews</span>
+                        <span class="d-inline-flex text-decoration-underline">56 Reviews</span>
                     </li>
                     <li>|</li>
                     <li>
