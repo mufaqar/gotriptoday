@@ -1208,3 +1208,9 @@ strong {
   background-color: #f7f7f7;
       border: 1px solid rgba(247, 247, 247, 0.1);
 }
+
+.filter_bar .btn{
+  font-size: 14px;
+  height: 36px;
+  padding: 10px 20px;
+}
