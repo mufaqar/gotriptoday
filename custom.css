@@ -1203,3 +1203,8 @@ strong {
 .stepper-item.completed .step-name {
   color: #000;
 }
+
+.filter_bar{
+  background-color: #f7f7f7;
+      border: 1px solid rgba(247, 247, 247, 0.1);
+}

@@ -1,17 +1,17 @@
 <?php
 /*Template Name: Tours*/
 
-get_header(); 
+get_header();
 ?>
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp');">
     <div class="container">
         <div class="divider"></div>
         <div class="search_banner tour_banner">
-            <div class="divider"></div>
             <h2>Day Trips</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-5" data-wow-delay="900ms" data-wow-duration="1000ms">
-                <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""  action="<?php echo esc_url(home_url('/')); ?>">             
+                <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""
+                    action="<?php echo esc_url(home_url('/')); ?>">
                     <div class="col-12 col-md-8">
                         <div class="search-item d-flex align-items-center gap-3">
                             <div class="icon">
@@ -23,8 +23,9 @@ get_header();
                                 </svg>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="name" class="form-control"  placeholder="Search Tour"    value="<?php echo get_search_query(); ?>" name="s">
-                                  <input type="hidden" name="post_type" value="tours" />
+                                <input type="text" id="name" class="form-control" placeholder="Search Tour"
+                                    value="<?php echo get_search_query(); ?>" name="s">
+                                <input type="hidden" name="post_type" value="tours" />
                             </div>
                         </div>
                     </div>
@@ -43,6 +44,43 @@ get_header();
     <!-- Divider -->
     <div class="divider"></div>
     <div class="container">
+        <div class="row mb-4">
+            <div
+                class="filter_bar d-flex align-items-center justify-content-between flex-wrap gap-2 p-3 rounded">
+                <!-- Left Filters -->
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-outline-dark d-flex align-items-center">
+                        <i class="ti ti-calendar me-2"></i> Sep 10
+                    </button>
+
+                    <div class="dropdown">
+                        <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            2 Adults
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">1 Adult</a></li>
+                            <li><a class="dropdown-item" href="#">2 Adults</a></li>
+                            <li><a class="dropdown-item" href="#">3 Adults</a></li>
+                        </ul>
+                    </div>
+
+                    <button class="btn btn-outline-dark d-flex align-items-center">
+                        <i class="ti ti-adjustments-horizontal me-2"></i> Filters
+                    </button>
+                </div>
+
+                <!-- Divider -->
+                <div class="vr mx-2"></div>
+
+                <!-- Category Pills -->
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn rounded-pill px-3 btn-outline-dark">Half-day Tours </button>
+                    <button class="btn rounded-pill px-3 btn-outline-dark">City Tours</button>
+                    <button class="btn rounded-pill px-3 btn-outline-dark">Private Tours</button>
+                    <button class="btn rounded-pill px-3 btn-outline-dark">Group Tours</button>
+                </div>
+            </div>
+        </div>
         <div class="row g-4">
             <div class="col-12 col-md-4 ">
                 <?php get_template_part('partials/tours/filters'); ?>
@@ -51,25 +89,25 @@ get_header();
                 <div class="tour-list-content">
                     <div id="tour-results" class="row g-4">
                         <?php
-                            $args = array(
-                                'post_type' => 'tours',
-                                'posts_per_page' =>-1,
-                                'post_status' => 'publish',
-                            );
+                        $args = array(
+                            'post_type' => 'tours',
+                            'posts_per_page' => -1,
+                            'post_status' => 'publish',
+                        );
 
-                            $tours_query = new WP_Query($args);
-                            if ($tours_query->have_posts()):
-                                while ($tours_query->have_posts()):
-                                    $tours_query->the_post();
-                                    echo '<div class="col-12 col-lg-6">';
-                                    get_template_part('partials/tour', 'card'); 
-                                    echo '</div>';
-                                endwhile;
-                                wp_reset_postdata();
-                            else:
-                                echo '<p>No tours found.</p>';
-                            endif;
-                            ?>
+                        $tours_query = new WP_Query($args);
+                        if ($tours_query->have_posts()):
+                            while ($tours_query->have_posts()):
+                                $tours_query->the_post();
+                                echo '<div class="col-12 col-lg-6">';
+                                get_template_part('partials/tour', 'card');
+                                echo '</div>';
+                            endwhile;
+                            wp_reset_postdata();
+                        else:
+                            echo '<p>No tours found.</p>';
+                        endif;
+                        ?>
                     </div>
                 </div>
             </div>
