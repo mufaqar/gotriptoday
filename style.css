@@ -277,7 +277,7 @@ textarea:invalid {
 
 @media only screen and (min-width: 1200px) {
   .btn {
-    height: 60px;
+    height: 40x;
     padding: 16px 32px;
     font-size: 16px;
   }
