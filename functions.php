@@ -172,3 +172,31 @@ function get_tour_details_ajax() {
 }
 add_action('wp_ajax_get_tour_details', 'get_tour_details_ajax');
 add_action('wp_ajax_nopriv_get_tour_details', 'get_tour_details_ajax');
+
+
+
+function get_tour_comments($post_id) {
+    $args = array(
+        'post_id' => $post_id,
+        'status'  => 'approve', // only approved comments
+        'order'   => 'DESC',    // newest first
+    );
+
+    $comments = get_comments($args);
+    $data = array();
+
+    foreach ($comments as $comment) {
+        $rating = get_comment_meta($comment->comment_ID, 'rating', true);
+
+        $data[] = array(
+            'comment_ID' => $comment->comment_ID,
+            'author'     => $comment->comment_author,
+            'content'    => $comment->comment_content,
+            'date'       => get_comment_date('', $comment),
+            'rating'     => $rating ? intval($rating) : null,
+        );
+    }
+
+    return $data;
+}
+
