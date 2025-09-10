@@ -9,141 +9,141 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 
 
-               
-                    $tour_comments = get_tour_comments(get_the_ID());
-                    $review_count  = count($tour_comments);
+
+$tour_comments = get_tour_comments(get_the_ID());
+$review_count = count($tour_comments);
 
 
 ?>
 
 
 <style>
-.traveler-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    padding: 20px;
-}
+    .traveler-container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-.date-display {
-    color: #6c757d;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
+    .date-display {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
 
-.traveler-count {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0d6efd;
-}
+    .traveler-count {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #0d6efd;
+    }
 
-.info-text {
-    color: #6c757d;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-}
+    .info-text {
+        color: #6c757d;
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
 
-.age-group {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e9ecef;
-}
+    .age-group {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e9ecef;
+    }
 
-.age-group:last-child {
-    border-bottom: none;
-}
+    .age-group:last-child {
+        border-bottom: none;
+    }
 
-.counter {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
+    .counter {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
 
-.counter-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #6c757d;
-    cursor: pointer;
-}
+    .counter-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #6c757d;
+        cursor: pointer;
+    }
 
-.counter-btn:hover {
-    background-color: #e9ecef;
-}
+    .counter-btn:hover {
+        background-color: #e9ecef;
+    }
 
-.counter-value {
-    margin: 0 15px;
-    font-weight: 500;
-    min-width: 30px;
-    text-align: center;
-}
+    .counter-value {
+        margin: 0 15px;
+        font-weight: 500;
+        min-width: 30px;
+        text-align: center;
+    }
 
-.apply-btn {
-    background-color: #0d6efd;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 500;
-    width: 100%;
-    margin-top: 15px;
-}
+    .apply-btn {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: 500;
+        width: 100%;
+        margin-top: 15px;
+    }
 
-.apply-btn:hover {
-    background-color: #0b5ed7;
-}
+    .apply-btn:hover {
+        background-color: #0b5ed7;
+    }
 
-.age-title {
-    font-weight: 500;
-    margin-bottom: 5px;
-}
+    .age-title {
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
 
-.age-range {
-    color: #6c757d;
-    font-size: 0.9rem;
-}
+    .age-range {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
 
-.traveler-selection {
-    margin-top: 15px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    padding: 12px;
-    cursor: pointer;
-}
+    .traveler-selection {
+        margin-top: 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 12px;
+        cursor: pointer;
+    }
 
-.traveler-selection:hover {
-    border-color: #0d6efd;
-}
+    .traveler-selection:hover {
+        border-color: #0d6efd;
+    }
 
-.traveler-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-}
+    .traveler-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+    }
 
-.traveler-modal-content {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-    max-height: 80vh;
-    overflow-y: auto;
-}
+    .traveler-modal-content {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
 </style>
 <div class="tour-details-section">
     <div class="divider"></div>
@@ -210,7 +210,7 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     <div class="swiper destination-thumbs col-lg-2 col-3 d-lg-flex d-none">
                         <div class="swiper-wrapper d-flex flex-column gap-3">
                             <?php
-                          
+
                             $gallery = get_post_meta($post->ID, "gallery", true);
                             if (!empty($gallery)) {
                                 $image_ids = explode(',', $gallery);
@@ -218,10 +218,10 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 foreach ($image_ids as $image_id) {
                                     $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                     if ($thumb_url) { ?>
-                            <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                            </div>
-                            <?php }
+                                        <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
+                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                                        </div>
+                                    <?php }
                                 }
                             } ?>
                         </div>
@@ -257,10 +257,10 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 foreach ($image_ids as $image_id) {
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
-                            <div class="swiper-slide">
-                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
-                            </div>
-                            <?php }
+                                        <div class="swiper-slide">
+                                            <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                                        </div>
+                                    <?php }
                                 }
                             } ?>
                         </div>
@@ -285,43 +285,46 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                     <div class="d-flex flex-lg-row flex-column justify-content-between">
                         <h2 class="pb-3">Why travelers loved this</h2>
                         <h4><i class='text-success pe-1 ti ti-star-filled'></i> 4.8 · <p
-                                class="d-inline-flex text-black text-decoration-underline"><?php echo $review_count ?>  Reviews</p>
+                                class="d-inline-flex text-black text-decoration-underline"><?php echo $review_count ?>
+                                Reviews</p>
                         </h4>
                     </div>
 
-                  
-                
-                    
-                       
-                   
+
+
+
+
+
 
 
 
                     <div class="review_list d-flex flex-lg-row flex-column gap-4">
 
-                    <?php  if (!empty($tour_comments)) : ?>                   
-                        <?php foreach ($tour_comments as $c) : ?>
-                             <div class="review_box">
-                                <div class="d-flex flex-lg-row flex-column justify-content-between">
-                                    <ul class="list-unstyled d-flex">
-                                        <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                        <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                        <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                        <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                        <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                    </ul>
-                                    <p class="d-inline-flex"><?php echo esc_html($c['author']); ?>· <?php echo esc_html($c['date']); ?></p>
+                        <?php if (!empty($tour_comments)): ?>
+                            <?php foreach ($tour_comments as $c): ?>
+                                <div class="review_box">
+                                    <div class="d-flex flex-lg-row flex-column justify-content-between">
+                                        <ul class="list-unstyled d-flex">
+                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
+                                        </ul>
+                                        <p class="d-inline-flex"><?php echo esc_html($c['author']); ?>·
+                                            <?php echo esc_html($c['date']); ?>
+                                        </p>
+                                    </div>
+                                    <p><?php echo esc_html($c['content']); ?></p>
                                 </div>
-                             <p><?php echo esc_html($c['content']); ?></p>
-                            </div>                     
-                        <?php endforeach; ?>
-                  
-                <?php endif; ?>
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
 
 
 
 
-                       
+
                     </div>
                 </div>
                 <!-- Tour Details Content -->
@@ -344,19 +347,19 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                                 $description = $itinerary['description'];
                                 $ticket_info = $itinerary['ticket_info'];
                                 ?>
-                            <div class="itinerary_item">
-                                <span class="list_marker"><?php echo $counter; ?></span>
-                                <div>
-                                    <h5 class="pb-3"> <?php echo $title; ?></h5>
-                                    <p>
-                                        <?php echo $description; ?>
-                                    </p>
-                                    <p class="itinerary_detail">
-                                        <?php echo $ticket_info; ?>
-                                    </p>
+                                <div class="itinerary_item">
+                                    <span class="list_marker"><?php echo $counter; ?></span>
+                                    <div>
+                                        <h5 class="pb-3"> <?php echo $title; ?></h5>
+                                        <p>
+                                            <?php echo $description; ?>
+                                        </p>
+                                        <p class="itinerary_detail">
+                                            <?php echo $ticket_info; ?>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <?php
+                                <?php
                             }
                             ?>
                         </div>
@@ -436,7 +439,8 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
                     <div class="sidebar-widget">
                         <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
-                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><span class="h6"> Per Person</span>
+                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><span class="h6"> Per
+                                Person</span>
                         </div>
                         <form class="Single_tour_booking" action="<?php echo home_url('/booking-details'); ?>"
                             method="POST">
@@ -462,35 +466,36 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
                                 <div class="col-12 gap-2 py-2 tour_time">
                                     <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
-                                        <?php
-                                        // Function to generate time slots
-                                        function generateTimeSlots($start_time, $end_time, $interval_minutes) {
-                                            $times = [];
-                                            $start = strtotime($start_time);
-                                            $end = strtotime($end_time);
-                                            $interval_seconds = $interval_minutes * 60;
+                                    <?php
+                                    // Function to generate time slots
+                                    function generateTimeSlots($start_time, $end_time, $interval_minutes)
+                                    {
+                                        $times = [];
+                                        $start = strtotime($start_time);
+                                        $end = strtotime($end_time);
+                                        $interval_seconds = $interval_minutes * 60;
 
-                                            while ($start <= $end) {
-                                                $times[] = date('h:i A', $start);
-                                                $start += $interval_seconds;
-                                            }
-
-                                            return $times;
+                                        while ($start <= $end) {
+                                            $times[] = date('h:i A', $start);
+                                            $start += $interval_seconds;
                                         }
 
-                                        // Define start and end times (e.g., 9:00 AM to 5:00 PM)
-                                        $start_time = '09:00 AM';
-                                        $end_time = '05:00 PM';
-                                        $interval = 30; // 30-minute intervals
+                                        return $times;
+                                    }
 
-                                        // Get the time slots
-                                        $time_slots = generateTimeSlots($start_time, $end_time, $interval);
-                                        ?>
+                                    // Define start and end times (e.g., 9:00 AM to 5:00 PM)
+                                    $start_time = '09:00 AM';
+                                    $end_time = '05:00 PM';
+                                    $interval = 30; // 30-minute intervals
+                                    
+                                    // Get the time slots
+                                    $time_slots = generateTimeSlots($start_time, $end_time, $interval);
+                                    ?>
 
                                     <select name="tour_time" id="tour_time" class="py-2 touria-select2 bg-transparent">
                                         <option value="1" selected>Select Time</option>
                                         <?php foreach ($time_slots as $index => $time): ?>
-                                        <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
+                                            <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -616,7 +621,6 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
         </div>
     </div>
 </div>
-</div>
 
 <section class="tour-list-section">
     <!-- Divider -->
@@ -624,33 +628,33 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
     <div class="container">
         <div class="row g-4">
             <div class="tour_overview">
-                        <h2 class="pb-3">Related Tours</h2>
-                     
-                    </div>
-            
+                <h2 class="pb-3">Related Tours</h2>
+
+            </div>
+
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
                     <div id="tour-results" class="row g-4">
                         <?php
-                            $args = array(
-                                'post_type' => 'tours',
-                                'posts_per_page' =>4,
-                                'post_status' => 'publish',
-                            );
+                        $args = array(
+                            'post_type' => 'tours',
+                            'posts_per_page' => 4,
+                            'post_status' => 'publish',
+                        );
 
-                            $tours_query = new WP_Query($args);
-                            if ($tours_query->have_posts()):
-                                while ($tours_query->have_posts()):
-                                    $tours_query->the_post();
-                                    echo '<div class="col-12 col-lg-6">';
-                                    get_template_part('partials/tour', 'card'); 
-                                    echo '</div>';
-                                endwhile;
-                                wp_reset_postdata();
-                            else:
-                                echo '<p>No tours found.</p>';
-                            endif;
-                            ?>
+                        $tours_query = new WP_Query($args);
+                        if ($tours_query->have_posts()):
+                            while ($tours_query->have_posts()):
+                                $tours_query->the_post();
+                                echo '<div class="col-12 col-lg-6">';
+                                get_template_part('partials/tour', 'card');
+                                echo '</div>';
+                            endwhile;
+                            wp_reset_postdata();
+                        else:
+                            echo '<p>No tours found.</p>';
+                        endif;
+                        ?>
                     </div>
                 </div>
             </div>
@@ -661,153 +665,153 @@ $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_dir
 
 
 <script>
-// Traveler selection functionality
-let adultCount = 1;
-let childCount = 0;
-const maxTravelers = 15;
-const tourPrice = <?php echo $tour_price; ?>;
+    // Traveler selection functionality
+    let adultCount = 1;
+    let childCount = 0;
+    const maxTravelers = 15;
+    const tourPrice = <?php echo $tour_price; ?>;
 
-function openTravelerModal() {
-    document.getElementById('traveler-modal').style.display = 'flex';
-}
-
-function closeTravelerModal() {
-    document.getElementById('traveler-modal').style.display = 'none';
-}
-
-function updateCounter(type, change) {
-    if (type === 'adult') {
-        if (change === 1 && (adultCount + childCount) < maxTravelers) {
-            adultCount++;
-        } else if (change === -1 && adultCount > 1) {
-            adultCount--;
-        }
-    } else if (type === 'child') {
-        if (change === 1 && (adultCount + childCount) < maxTravelers) {
-            childCount++;
-        } else if (change === -1 && childCount > 0) {
-            childCount--;
-        }
+    function openTravelerModal() {
+        document.getElementById('traveler-modal').style.display = 'flex';
     }
 
-    document.getElementById('adult-count').textContent = adultCount;
-    document.getElementById('child-count').textContent = childCount;
+    function closeTravelerModal() {
+        document.getElementById('traveler-modal').style.display = 'none';
+    }
 
-    // Update button states
-    document.querySelectorAll('.counter-btn').forEach(btn => {
-        const group = btn.getAttribute('data-group');
-        const isMinus = btn.classList.contains('minus-btn');
+    function updateCounter(type, change) {
+        if (type === 'adult') {
+            if (change === 1 && (adultCount + childCount) < maxTravelers) {
+                adultCount++;
+            } else if (change === -1 && adultCount > 1) {
+                adultCount--;
+            }
+        } else if (type === 'child') {
+            if (change === 1 && (adultCount + childCount) < maxTravelers) {
+                childCount++;
+            } else if (change === -1 && childCount > 0) {
+                childCount--;
+            }
+        }
 
-        if (group === 'adult') {
-            if (isMinus) {
-                btn.disabled = adultCount <= 1;
-                btn.style.opacity = adultCount <= 1 ? 0.5 : 1;
-            } else {
-                btn.disabled = (adultCount + childCount) >= maxTravelers;
-                btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+        document.getElementById('adult-count').textContent = adultCount;
+        document.getElementById('child-count').textContent = childCount;
+
+        // Update button states
+        document.querySelectorAll('.counter-btn').forEach(btn => {
+            const group = btn.getAttribute('data-group');
+            const isMinus = btn.classList.contains('minus-btn');
+
+            if (group === 'adult') {
+                if (isMinus) {
+                    btn.disabled = adultCount <= 1;
+                    btn.style.opacity = adultCount <= 1 ? 0.5 : 1;
+                } else {
+                    btn.disabled = (adultCount + childCount) >= maxTravelers;
+                    btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+                }
+            } else if (group === 'child') {
+                if (isMinus) {
+                    btn.disabled = childCount <= 0;
+                    btn.style.opacity = childCount <= 0 ? 0.5 : 1;
+                } else {
+                    btn.disabled = (adultCount + childCount) >= maxTravelers;
+                    btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+                }
             }
-        } else if (group === 'child') {
-            if (isMinus) {
-                btn.disabled = childCount <= 0;
-                btn.style.opacity = childCount <= 0 ? 0.5 : 1;
-            } else {
-                btn.disabled = (adultCount + childCount) >= maxTravelers;
-                btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
-            }
+        });
+    }
+
+    function applyTravelerSelection() {
+        // Update summary text
+        const summaryText =
+            `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
+        document.getElementById('traveler-summary').textContent = summaryText;
+
+        // Update hidden inputs
+        document.getElementById('adult_count_input').value = adultCount;
+        document.getElementById('child_count_input').value = childCount;
+
+        // Update summary counts
+        document.getElementById('summary-adult-count').textContent = adultCount;
+        document.getElementById('summary-child-count').textContent = childCount;
+
+        // Update prices
+        updateTotalPrice();
+
+        // Close modal
+        closeTravelerModal();
+    }
+
+    function updateTotalPrice() {
+        const adultPrice = adultCount * tourPrice;
+        const childPrice = childCount * (tourPrice * 0.7); // Assuming children are 70% of adult price
+        const totalPrice = adultPrice + childPrice;
+
+        document.getElementById('price-per-adult').textContent = '€' + adultPrice.toFixed(2);
+
+        if (childCount > 0) {
+            document.getElementById('child-price-item').style.display = 'flex';
+            document.getElementById('price-per-child').textContent = '€' + childPrice.toFixed(2);
+        } else {
+            document.getElementById('child-price-item').style.display = 'none';
+        }
+
+        document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
+        document.getElementById('tour_price').value = totalPrice.toFixed(2);
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('traveler-modal').addEventListener('click', function (e) {
+        if (e.target === this) closeTravelerModal();
+    });
+
+    // Initialize button states
+    document.addEventListener('DOMContentLoaded', function () {
+        updateCounter('adult', 0);
+        updateCounter('child', 0);
+        updateTotalPrice();
+    });
+
+    // Existing functions
+    function openPopup() {
+        document.querySelector('.pop_up_wrapper').classList.add('active');
+    }
+
+    function closePopup() {
+        document.querySelector('.pop_up_wrapper').classList.remove('active');
+    }
+    // Close when clicking outside popup
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('pop_up_wrapper')) {
+            closePopup();
         }
     });
-}
 
-function applyTravelerSelection() {
-    // Update summary text
-    const summaryText =
-        `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
-    document.getElementById('traveler-summary').textContent = summaryText;
+    document.querySelectorAll('.wishlist_btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
 
-    // Update hidden inputs
-    document.getElementById('adult_count_input').value = adultCount;
-    document.getElementById('child_count_input').value = childCount;
+            // Close other open dropdowns (optional)
+            document.querySelectorAll('.share_links').forEach(menu => {
+                if (menu !== this.nextElementSibling) {
+                    menu.classList.remove('active');
+                }
+            });
 
-    // Update summary counts
-    document.getElementById('summary-adult-count').textContent = adultCount;
-    document.getElementById('summary-child-count').textContent = childCount;
+            // Toggle this dropdown
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('active');
+        });
+    });
 
-    // Update prices
-    updateTotalPrice();
-
-    // Close modal
-    closeTravelerModal();
-}
-
-function updateTotalPrice() {
-    const adultPrice = adultCount * tourPrice;
-    const childPrice = childCount * (tourPrice * 0.7); // Assuming children are 70% of adult price
-    const totalPrice = adultPrice + childPrice;
-
-    document.getElementById('price-per-adult').textContent = '€' + adultPrice.toFixed(2);
-
-    if (childCount > 0) {
-        document.getElementById('child-price-item').style.display = 'flex';
-        document.getElementById('price-per-child').textContent = '€' + childPrice.toFixed(2);
-    } else {
-        document.getElementById('child-price-item').style.display = 'none';
-    }
-
-    document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
-    document.getElementById('tour_price').value = totalPrice.toFixed(2);
-}
-
-// Close modal when clicking outside
-document.getElementById('traveler-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeTravelerModal();
-});
-
-// Initialize button states
-document.addEventListener('DOMContentLoaded', function() {
-    updateCounter('adult', 0);
-    updateCounter('child', 0);
-    updateTotalPrice();
-});
-
-// Existing functions
-function openPopup() {
-    document.querySelector('.pop_up_wrapper').classList.add('active');
-}
-
-function closePopup() {
-    document.querySelector('.pop_up_wrapper').classList.remove('active');
-}
-// Close when clicking outside popup
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('pop_up_wrapper')) {
-        closePopup();
-    }
-});
-
-document.querySelectorAll('.wishlist_btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        // Close other open dropdowns (optional)
-        document.querySelectorAll('.share_links').forEach(menu => {
-            if (menu !== this.nextElementSibling) {
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.wishlist li')) {
+            document.querySelectorAll('.share_links').forEach(menu => {
                 menu.classList.remove('active');
-            }
-        });
-
-        // Toggle this dropdown
-        const dropdown = this.nextElementSibling;
-        dropdown.classList.toggle('active');
+            });
+        }
     });
-});
-
-// Close when clicking outside
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.wishlist li')) {
-        document.querySelectorAll('.share_links').forEach(menu => {
-            menu.classList.remove('active');
-        });
-    }
-});
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>

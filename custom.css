@@ -325,6 +325,18 @@
 .swiper.destination-details-wrapper .swiper-slide img {
   height: 350px !important;
 }
+.tour-filters{
+  grid-template-columns: repeat(1, 1fr)!important;
+}
+.filter_card {
+  border-right: 0px solid #ccc!important; 
+  border-bottom: 1px solid #ccc !important; 
+}
+
+.filter_card:nth-child(even) {
+  border-right: none;
+  border-bottom: 0px solid #ccc; 
+}
 }
 
 /*Plugin Setting*/
@@ -1213,4 +1225,19 @@ strong {
   font-size: 14px;
   height: 36px;
   padding: 10px 20px;
+}
+
+.tour-filters{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
+  gap: 20px;
+}
+.filter_card {
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  border-bottom: 0px solid #ccc !important;  
+}
+
+.filter_card:nth-child(even) {
+  border-right: none; /* last item pe line nahi hogi */
 }
