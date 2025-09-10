@@ -6,10 +6,10 @@ get_header();
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp');">
     <div class="container">
-        <div class="divider"></div>
-        <div class="search_banner tour_banner">
+        <div class="divider-sm"></div>
+        <div class="search_banner tour_banner mt-3">
             <h2>Day Trips</h2>
-            <div class="hero-search-form wow fadeInUp w-full mt-5" data-wow-delay="900ms" data-wow-duration="1000ms">
+            <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""
                     action="<?php echo esc_url(home_url('/')); ?>">
                     <div class="col-12 col-md-8">
@@ -36,15 +36,14 @@ get_header();
             </div>
         </div>
     </div>
-    <div class="divider"></div>
+    <div class="divider-sm"></div>
 </div>
 
 <!-- Tour List Section -->
 <section class="tour-list-section">
     <!-- Divider -->
-    <div class="divider"></div>
     <div class="container">
-        <div class="row mb-4">
+        <div class="row mb-4 mt-4">
             <div class="filter_bar d-flex align-items-center justify-content-between flex-wrap gap-2 p-3 rounded">
                 <!-- Left Filters -->
                 <div class="d-flex flex-wrap gap-2">
@@ -85,7 +84,7 @@ get_header();
         <div class="row">
             <div class="col-12 col-md-12">
                 <div class="tour-list-content">
-                    <div id="tour-results" class="row g-4">
+                    <div id="tour-results" class="row g-5">
                         <?php
                         $args = array(
                             'post_type' => 'tours',
@@ -97,7 +96,7 @@ get_header();
                         if ($tours_query->have_posts()):
                             while ($tours_query->have_posts()):
                                 $tours_query->the_post();
-                                echo '<div class="col-12 col-lg-4">';
+                                echo '<div class="col-12 col-lg-3">';
                                 get_template_part('partials/tour', 'box');
                                 echo '</div>';
                             endwhile;
