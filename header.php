@@ -50,12 +50,12 @@
 <body <?php body_class(); ?>>
 
  
-    <!-- <div class="preloader" id="preloader">
+    <div class="preloader" id="preloader">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>    -->
-    <!-- Header Area-->
+    </div>   
+
     <header class="header-area style-three">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-xl">
