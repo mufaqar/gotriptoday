@@ -23,6 +23,7 @@
             </ul>
         <?php endif; ?>
     </div>
+    <hr class="my-2" />
     <div class="filter_card">
         <h4 class="widget-title mb-4">Properties</h4>
         <?php
@@ -50,4 +51,8 @@
             </ul>
         <?php endif; ?>
     </div>
+</div>
+<div class="text-end mt-3 d-flex align-items-end justify-content-end">
+<button class="btn btn-secondary me-2">Clear All Filters</button>   
+<button class="btn btn-success">Apply Filters</button>
 </div>

@@ -32,7 +32,7 @@
                     <?php echo get_post_meta($post->ID, "duration_time", true); ?> hours</li>
             </ul>
             <div class="text-start">
-                <h6 class="mb-0 trip-price">
+                <h6 class="mt-1 trip-price">
                     <?php
                     $price = (float) get_post_meta($post->ID, "pricing", true);   // Original price
                     $discount = (float) get_post_meta($post->ID, "discount", true); // Discount percent

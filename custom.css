@@ -320,26 +320,12 @@
   }
 
   .cancellation_pop_up {
-    width: 95%;
-    padding: 1.5rem 1rem;
+    width: 95%!important;
+    padding: 1.5rem 1rem !important;
   }
 
   .swiper.destination-details-wrapper .swiper-slide img {
     height: 350px !important;
-  }
-
-  .tour-filters {
-    grid-template-columns: repeat(1, 1fr) !important;
-  }
-
-  .filter_card {
-    border-right: 0px solid #ccc !important;
-    border-bottom: 1px solid #ccc !important;
-  }
-
-  .filter_card:nth-child(even) {
-    border-right: none;
-    border-bottom: 0px solid #ccc;
   }
 }
 
@@ -1246,20 +1232,22 @@ strong {
 
 .tour-filters {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* 3 equal columns */
-  gap: 20px;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .filter_card {
   padding: 10px;
-  border-right: 1px solid #ccc;
-  border-bottom: 0px solid #ccc !important;
 }
 
-.filter_card:nth-child(even) {
-  border-right: none;
-  /* last item pe line nahi hogi */
+.filter_card .sidebar-checkbox-list li{
+  padding: 0px 14px;
+    border-radius: 0;
+    background: #ffffff;
+}
+
+.trip-box {
+  box-shadow: 0px 0px 5px 0px rgb(22 25 34 / 15%);
+  border-radius: 12px;
 }
 
 .trip-box .wishlist {
@@ -1268,7 +1256,6 @@ strong {
   right: 0;
   z-index: 999;
   width: 100%;
-
 }
 
 .trip-box .wishlist li button.wishlist_btn i {
@@ -1298,8 +1285,20 @@ strong {
   border-radius: 20rem;
 }
 
-.trip-box .trip-body p, .trip-box .trip-body ul li {
+.trip-box .trip-body {
+  padding: 15px;
+  height: 200px;
+}
+
+.trip-box .trip-body p,
+.trip-box .trip-body ul li {
   font-size: 12px;
   color: #161920;
   font-weight: 500;
+}
+
+.trip-box .tour_feature {
+  max-height: 230px !important;
+  object-fit: cover;
+  border-radius: 12px;
 }

@@ -84,7 +84,7 @@ get_header();
         <div class="row">
             <div class="col-12 col-md-12">
                 <div class="tour-list-content">
-                    <div id="tour-results" class="row g-5">
+                    <div id="tour-results" class="row g-4">
                         <?php
                         $args = array(
                             'post_type' => 'tours',
@@ -114,7 +114,7 @@ get_header();
 
 <div class="pop_up_wrapper">
     <div class="cancellation_pop_up ">
-        <div class="d-flex align-items-end justify-content-end mb-5">
+        <div class="d-flex align-items-end justify-content-end mb-3">
             <button class="close_popup" onclick="closePopup()">
                 <i class="ti ti-x"></i>
             </button>
