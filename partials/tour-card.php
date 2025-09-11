@@ -41,7 +41,7 @@
              <div class="line"></div>
              <div class="text-end">
                  <span class="badge bg-success mb-2"><i class="ti ti-badge"></i>
-                     Popular</span>
+                     <?php echo get_post_meta($post->ID, "badge", true); ?></span>
                  <h3 class="mb-0 trip-price">
                      <?php 
                         $price = (float) get_post_meta($post->ID, "pricing", true);   // Original price

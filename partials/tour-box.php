@@ -2,7 +2,7 @@
     <ul class="list-unstyled d-flex justify-content-between gap-2 wishlist">
         <li>
             <span class="badge bg-success mb-2"><i class="ti ti-badge"></i>
-                Popular</span>
+                <?php echo get_post_meta($post->ID, "badge", true); ?> </span>
         </li>
         <li>
             <button class="wishlist_btn" id="add-to-wishlist" data-tour-id="<?php the_ID(); ?>">
