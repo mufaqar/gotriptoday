@@ -45,39 +45,26 @@ get_header();
     <div class="container">
         <div class="row mb-4 mt-4">
             <div class="filter_bar d-flex align-items-center justify-content-between flex-wrap gap-2 p-3 rounded">
-                <!-- Left Filters -->
-                <div class="d-flex flex-wrap gap-2">
-                    <button id="dateBtn" class="btn btn-outline-dark d-flex align-items-center">
-                        <i class="ti ti-calendar me-2"></i>
-                        <span id="dateText"></span>
-                        <input type="date" id="dateInput" style="width:0; height:0; border: 0px;" />
-                    </button>
-
-                    <div class="dropdown">
-                        <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            2 Adults
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">1 Adult</a></li>
-                            <li><a class="dropdown-item" href="#">2 Adults</a></li>
-                            <li><a class="dropdown-item" href="#">3 Adults</a></li>
-                        </ul>
-                    </div>
-
-                    <button onclick="openPopup()" class="btn btn-outline-dark d-flex align-items-center">
-                        <i class="ti ti-adjustments-horizontal me-2"></i> Filters
-                    </button>
-                </div>
-
-                <!-- Divider -->
-                <div class="vr mx-2 d-lg-flex d-none"></div>
 
                 <!-- Category Pills -->
                 <div class="d-flex flex-wrap gap-2">
-                    <button class="btn rounded-pill px-3 btn-outline-dark">Half-day Tours </button>
-                    <button class="btn rounded-pill px-3 btn-outline-dark">City Tours</button>
-                    <button class="btn rounded-pill px-3 btn-outline-dark">Private Tours</button>
-                    <button class="btn rounded-pill px-3 btn-outline-dark">Group Tours</button>
+
+
+                    <?php
+                        $terms = get_terms([
+                            'taxonomy'   => 'toour-properties',
+                            'hide_empty' => true, // Hide empty categories
+                        ]);
+
+                        if (!empty($terms) && !is_wp_error($terms)) :
+                            foreach ($terms as $term) :  ?>
+                    <button class="btn rounded-pill px-3 btn-outline-dark tour-filter-button"
+                        value="<?php echo esc_attr($term->term_id); ?>">
+                        <?php echo esc_html($term->name); ?> [<?php echo intval($term->count); ?>]
+                    </button>
+                    <?php endforeach;
+                        endif;
+                        ?>
                 </div>
             </div>
         </div>
@@ -112,40 +99,6 @@ get_header();
     </div>
 </section>
 <div class="divider"></div>
-<div class="pop_up_wrapper">
-    <div class="cancellation_pop_up ">
-        <div class="d-flex align-items-end justify-content-end mb-3">
-            <button class="close_popup" onclick="closePopup()">
-                <i class="ti ti-x"></i>
-            </button>
-        </div>
-        <?php get_template_part('partials/tours/filters'); ?>
-    </div>
-</div>
-
-
-<script>
-    // Filter Popup functions
-    function openPopup() {
-        document.querySelector('.pop_up_wrapper').classList.add('active');
-    }
-
-    function closePopup() {
-        document.querySelector('.pop_up_wrapper').classList.remove('active');
-    }
-    // Close when clicking outside popup
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('pop_up_wrapper')) {
-            closePopup();
-        }
-    });
-    // datepicker functions
-    const d = new Date(), i = dateInput, t = dateText;
-    i.value = d.toISOString().split("T")[0];
-    t.textContent = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    dateBtn.onclick = () => i.showPicker();
-    i.onchange = () => t.textContent = new Date(i.value).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-</script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/isotope.pkgd.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/flatpickr.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/nice-select2.js"></script>

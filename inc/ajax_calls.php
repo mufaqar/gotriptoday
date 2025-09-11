@@ -16,47 +16,31 @@ function enqueue_tour_filter_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_tour_filter_scripts');
 
 
-
-
 function filter_tours_callback() {
     // Verify nonce
     check_ajax_referer('tour_filter_nonce', 'nonce');
 
-    // Get filter parameters
-
-    $durations = isset($_POST['durations']) ? array_map('sanitize_text_field', $_POST['durations']) : [];
-    $properties = isset($_POST['properties']) ? array_map('sanitize_text_field', $_POST['properties']) : [];
-
-    
+    // Get selected term(s)
+    $termIds = isset($_POST['termId']) 
+        ? array_map('intval', (array) $_POST['termId']) 
+        : [];
 
     // Build tax query
     $tax_query = [];
-   
-    if (!empty($durations)) {
-        $tax_query[] = [
-            'taxonomy' => 'tour-duration',
-            'field' => 'slug',
-            'terms' => $durations,
-        ];
-    }
-    if (!empty($properties)) {
+
+    if (!empty($termIds)) {
         $tax_query[] = [
             'taxonomy' => 'toour-properties',
-            'field' => 'slug',
-            'terms' => $properties,
+            'field'    => 'id',   // since we're passing term_id
+            'terms'    => $termIds,
         ];
-    }
-
-    // If multiple taxonomies are selected, use AND relation
-    if (count($tax_query) > 1) {
-        $tax_query['relation'] = 'AND';
     }
 
     // WP_Query arguments
     $args = [
-        'post_type' => 'tours',
+        'post_type'      => 'tours',
         'posts_per_page' => -1,
-        'post_status' => 'publish',
+        'post_status'    => 'publish',
     ];
 
     if (!empty($tax_query)) {
@@ -67,11 +51,12 @@ function filter_tours_callback() {
 
     // Start output buffering to capture HTML
     ob_start();
+
     if ($tours_query->have_posts()) {
         while ($tours_query->have_posts()) {
             $tours_query->the_post();
-            echo '<div class="col-12 col-lg-6">';
-            get_template_part('partials/tour', 'card');
+            echo '<div class="col-12 col-lg-3">';
+            get_template_part('partials/tour', 'box');
             echo '</div>';
         }
         wp_reset_postdata();
@@ -84,5 +69,7 @@ function filter_tours_callback() {
     // Return JSON response
     wp_send_json_success(['html' => $html]);
 }
+
+
 add_action('wp_ajax_filter_tours', 'filter_tours_callback');
 add_action('wp_ajax_nopriv_filter_tours', 'filter_tours_callback');
