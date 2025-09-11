@@ -7,7 +7,7 @@ get_header();
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp');">
     <div class="container">
         <div class="divider-sm"></div>
-        <div class="search_banner tour_banner mt-3">
+        <div class="search_banner tour_banner mt-5">
             <h2>Day Trips</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""
@@ -111,7 +111,7 @@ get_header();
         </div>
     </div>
 </section>
-
+<div class="divider"></div>
 <div class="pop_up_wrapper">
     <div class="cancellation_pop_up ">
         <div class="d-flex align-items-end justify-content-end mb-3">
