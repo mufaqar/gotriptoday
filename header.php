@@ -49,12 +49,12 @@
 
 <body <?php body_class(); ?>>
 
- 
+
     <div class="preloader" id="preloader">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>   
+    </div>
 
     <header class="header-area style-three">
         <div class="container-fluid">
@@ -82,7 +82,8 @@
                                 <i class="ti ti-user-check"></i>
                             </a>
                         </div>
-                        <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Get A Quote<i class="icon-arrow-right"></i></a>
+                        <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Get A Quote<i
+                                class="icon-arrow-right"></i></a>
                     </div>
                 </div>
             </nav>
