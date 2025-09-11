@@ -1,9 +1,16 @@
 <div class="trip-box wow fadeInUp position-relative" data-wow-delay="400ms" data-wow-duration="1000ms">
     <ul class="list-unstyled d-flex justify-content-between gap-2 wishlist">
-        <li>
-            <span class="badge bg-success mb-2"><i class="ti ti-badge"></i>
-                <?php echo get_post_meta($post->ID, "badge", true); ?> </span>
-        </li>
+         <li>
+        <?php 
+            $badge = get_post_meta($post->ID, 'badge', true); 
+            if (!empty($badge)) : ?>
+               
+                    <span class="badge bg-success mb-2">
+                        <i class="ti ti-badge"></i> <?php echo esc_html($badge); ?>
+                    </span>
+               
+            <?php endif; ?>
+             </li>
         <li>
             <button class="wishlist_btn" id="add-to-wishlist" data-tour-id="<?php the_ID(); ?>">
                 <i class='icon ti ti-heart'></i>
