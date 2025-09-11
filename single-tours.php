@@ -406,7 +406,18 @@ $review_count = count($tour_comments);
                 </div>
                 <div class="tour_additional">
                     <h2 class="pb-3">Additional Info</h2>
-                    <?php echo get_post_meta($post->ID, "additional_info", true); ?>
+                    <ul class="list-disc d-flex flex-column gap-2 mb-3">
+                        <li>
+                            Confirmation will be received at time of booking
+                        </li>
+                        <li>
+                            Wheelchair accessible
+                        </li>
+                    </ul>
+                    <button onclick="openPopup('tour_additional_popup')">
+                        Show more
+                    </button>
+
                 </div>
                 <div class="tour_additional_list d-flex flex-lg-row flex-column gap-4 mt-5">
                     <div class="tour_additional_box col-lg-6 col-12">
@@ -416,7 +427,7 @@ $review_count = count($tour_comments);
                             </h4>
                         </div>
                         <p>You can cancel up to 24 hours in advance of the experience for a full refund.</p>
-                        <button onclick="openPopup()">
+                        <button onclick="openPopup('cancellation_popup')">
                             Show more
                         </button>
                     </div>
@@ -427,10 +438,8 @@ $review_count = count($tour_comments);
                             </h4>
                         </div>
                         <p>Need help? Contact us for any further questions</p>
-                        <button>
-                            <a href="<?php echo home_url('/contact'); ?>">
-                                Contact Support
-                            </a>
+                        <button onclick="openPopup('questions_popup')">
+                            Contact Support
                         </button>
                     </div>
                 </div>
@@ -591,18 +600,35 @@ $review_count = count($tour_comments);
 
 <!-- Divider -->
 <div class="divider"></div>
-<!-- PopUp -->
-<div class="pop_up_wrapper">
+<!-- Tour_additional Popup -->
+<div id="tour_additional_popup" class="pop_up_wrapper">
     <div class="cancellation_pop_up ">
-        <div class="d-flex align-items-end justify-content-end mb-1">
-            <button class="close_popup" onclick="closePopup()">
+        <div class="d-flex align-items-start justify-content-between pb-2 mb-4 border-bottom">
+            <h3>
+                Additional Info
+            </h3>
+            <button class="close_popup" onclick="closePopup('tour_additional_popup')">
                 <i class="ti ti-x"></i>
             </button>
         </div>
         <div class="pb-5">
-            <h3 class="pb-3">
+
+            <?php echo get_post_meta($post->ID, "additional_info", true); ?>
+        </div>
+    </div>
+</div>
+<!-- Cancellation Popup -->
+<div id="cancellation_popup" class="pop_up_wrapper">
+    <div class="cancellation_pop_up ">
+        <div class="d-flex align-items-start justify-content-between pb-2 mb-4 border-bottom">
+            <h3>
                 Cancellation
             </h3>
+            <button class="close_popup" onclick="closePopup('cancellation_popup')">
+                <i class="ti ti-x"></i>
+            </button>
+        </div>
+        <div class="pb-5">
             <p class="mb-3">
                 You can cancel up to 24 hours in advance of the experience for a full refund.
             </p>
@@ -621,17 +647,103 @@ $review_count = count($tour_comments);
         </div>
     </div>
 </div>
+<!-- Questions Popup -->
+<div id="questions_popup" class="pop_up_wrapper">
+    <div class="cancellation_pop_up ">
+        <div class="d-flex align-items-start justify-content-between pb-2 mb-4 border-bottom">
+            <h3>
+                Questions?
+            </h3>
+            <button class="close_popup" onclick="closePopup('questions_popup')">
+                <i class="ti ti-x"></i>
+            </button>
+        </div>
+        <div class="pb-5">
+            <div class="accordion" id="faqAccordion">
+
+                <!-- FAQ 1 (Open by default) -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button d-flex justify-content-between align-items-center" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                            What is included in the tour package?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our tour packages usually include transportation, guided tours, entrance fees, and
+                            accommodation. Meals may vary depending on the package.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed d-flex justify-content-between align-items-center"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false"
+                            aria-controls="faq2">
+                            Can I cancel or reschedule my booking?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! You can cancel or reschedule up to 24 hours before the start of your tour for a full
+                            refund.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed d-flex justify-content-between align-items-center"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false"
+                            aria-controls="faq3">
+                            Do you offer group discounts?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we provide special discounts for groups of 10 or more. Contact us for customized group
+                            pricing.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed d-flex justify-content-between align-items-center"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false"
+                            aria-controls="faq4">
+                            What should I bring for the tour?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We recommend bringing comfortable shoes, sunscreen, a hat, water, and a valid ID/passport
+                            depending on the destination.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <section class="tour-list-section">
     <!-- Divider -->
-    <div class="divider"></div>
     <div class="container">
         <div class="row g-4">
             <div class="tour_overview">
                 <h2 class="pb-3">Related Tours</h2>
-
             </div>
-
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
                     <div id="tour-results" class="row g-4">
@@ -641,7 +753,6 @@ $review_count = count($tour_comments);
                             'posts_per_page' => 4,
                             'post_status' => 'publish',
                         );
-
                         $tours_query = new WP_Query($args);
                         if ($tours_query->have_posts()):
                             while ($tours_query->have_posts()):
@@ -773,18 +884,20 @@ $review_count = count($tour_comments);
         updateTotalPrice();
     });
 
-    // Existing functions
-    function openPopup() {
-        document.querySelector('.pop_up_wrapper').classList.add('active');
+    // Open popup by ID
+    function openPopup(id) {
+        document.getElementById(id).classList.add('active');
     }
 
-    function closePopup() {
-        document.querySelector('.pop_up_wrapper').classList.remove('active');
+    // Close popup by ID
+    function closePopup(id) {
+        document.getElementById(id).classList.remove('active');
     }
+
     // Close when clicking outside popup
     document.addEventListener('click', function (e) {
         if (e.target.classList.contains('pop_up_wrapper')) {
-            closePopup();
+            e.target.classList.remove('active');
         }
     });
 
@@ -813,5 +926,6 @@ $review_count = count($tour_comments);
             });
         }
     });
+
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
