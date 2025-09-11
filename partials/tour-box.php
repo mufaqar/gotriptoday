@@ -17,7 +17,7 @@
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tour.jpg" alt="Featured Thumbnail" />
         <?php } ?>
     </a>
-    <div class="trip-body mt-2">
+    <div class="trip-body mt-2 d-flex flex-column justify-content-between">
         <p class="mb-1">
             <span class="text-success">
                 <i class="ti ti-star-filled"></i>

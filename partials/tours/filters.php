@@ -53,6 +53,6 @@
     </div>
 </div>
 <div class="text-end mt-3 d-flex align-items-end justify-content-end">
-<button class="btn btn-secondary me-2">Clear All Filters</button>   
-<button class="btn btn-success">Apply Filters</button>
+    <button class="btn btn-secondary me-2">Clear All Filters</button>
+    <button class="btn btn-success">Apply Filters</button>
 </div>

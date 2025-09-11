@@ -1302,3 +1302,6 @@ strong {
   object-fit: cover;
   border-radius: 12px;
 }
+.jet-form-builder__field-wrap.checkradio-wrap span{
+  flex-wrap: wrap;
+}
