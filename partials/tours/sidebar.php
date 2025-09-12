@@ -2,7 +2,6 @@
      <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
      <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><span class="h6"> Per Person</span>
      </div>
-
      <form class="single_tour_booking" method="POST" action="<?php echo home_url('/booking-details'); ?>">
          <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
          <input type="hidden" id="tour_price" name="tour_price" value="<?php echo $tour_price; ?>">
@@ -35,9 +34,7 @@
                      <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
                      <?php endforeach; ?>
                  </select>
-
              </div>
-
          </div>
          <div class="col-12">
              <div class="tour-booking-summary py-2">
