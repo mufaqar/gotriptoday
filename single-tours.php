@@ -3,13 +3,6 @@
 
 $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
 
-// get_template_part('partials/content', 'breadcrumb', [
-//     'bg' => $bg_image
-// ]);
-
-
-
-
 $tour_comments = get_tour_comments(get_the_ID());
 $review_count = count($tour_comments);
 
@@ -17,134 +10,6 @@ $review_count = count($tour_comments);
 ?>
 
 
-<style>
-    .traveler-container {
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .date-display {
-        color: #6c757d;
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-
-    .traveler-count {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #0d6efd;
-    }
-
-    .info-text {
-        color: #6c757d;
-        font-size: 0.85rem;
-        margin-bottom: 20px;
-    }
-
-    .age-group {
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .age-group:last-child {
-        border-bottom: none;
-    }
-
-    .counter {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-    }
-
-    .counter-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        color: #6c757d;
-        cursor: pointer;
-    }
-
-    .counter-btn:hover {
-        background-color: #e9ecef;
-    }
-
-    .counter-value {
-        margin: 0 15px;
-        font-weight: 500;
-        min-width: 30px;
-        text-align: center;
-    }
-
-    .apply-btn {
-        background-color: #0d6efd;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: 500;
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    .apply-btn:hover {
-        background-color: #0b5ed7;
-    }
-
-    .age-title {
-        font-weight: 500;
-        margin-bottom: 5px;
-    }
-
-    .age-range {
-        color: #6c757d;
-        font-size: 0.9rem;
-    }
-
-    .traveler-selection {
-        margin-top: 15px;
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        padding: 12px;
-        cursor: pointer;
-    }
-
-    .traveler-selection:hover {
-        border-color: #0d6efd;
-    }
-
-    .traveler-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .traveler-modal-content {
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        width: 90%;
-        max-width: 500px;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-</style>
 <div class="tour-details-section">
     <div class="divider"></div>
     <div class="container">
@@ -446,120 +311,7 @@ $review_count = count($tour_comments);
             </div>
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
-                    <div class="sidebar-widget">
-                        <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
-                        <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><span class="h6"> Per
-                                Person</span>
-                        </div>
-                        <form class="Single_tour_booking" action="<?php echo home_url('/booking-details'); ?>"
-                            method="POST">
-                            <input type="hidden" id="tour_id" name="tour_id" value="<?php echo $post->ID ?>">
-                            <input type="hidden" id="tour_price" name="tour_price" value="<?php echo $tour_price; ?>">
-                            <input type="hidden" id="adult_count_input" name="adult_count" value="1">
-                            <input type="hidden" id="child_count_input" name="child_count" value="0">
-                            <div class="row">
-                                <div class="col-12 gap-2 py-2 tour_date">
-                                    <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
-                                    <input type="date" id="tour_date" name="tour_date"
-                                        class="form-control p-0 bg-transparent h-auto"
-                                        value="<?php echo date('Y-m-d'); ?>" required>
-                                </div>
-
-                                <div class="col-12 gap-2 py-2 tour_travelers">
-                                    <label class="form-label mb-0 text-heading">Travelers</label>
-                                    <div class="traveler-selection" onclick="openTravelerModal()">
-                                        <span id="traveler-summary">1 Adult, 0 Children</span>
-                                        <i class="ti ti-chevron-down float-end"></i>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 gap-2 py-2 tour_time">
-                                    <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
-                                    <?php
-                                    // Function to generate time slots
-                                    function generateTimeSlots($start_time, $end_time, $interval_minutes)
-                                    {
-                                        $times = [];
-                                        $start = strtotime($start_time);
-                                        $end = strtotime($end_time);
-                                        $interval_seconds = $interval_minutes * 60;
-
-                                        while ($start <= $end) {
-                                            $times[] = date('h:i A', $start);
-                                            $start += $interval_seconds;
-                                        }
-
-                                        return $times;
-                                    }
-
-                                    // Define start and end times (e.g., 9:00 AM to 5:00 PM)
-                                    $start_time = '09:00 AM';
-                                    $end_time = '05:00 PM';
-                                    $interval = 30; // 30-minute intervals
-                                    
-                                    // Get the time slots
-                                    $time_slots = generateTimeSlots($start_time, $end_time, $interval);
-                                    ?>
-
-                                    <select name="tour_time" id="tour_time" class="py-2 touria-select2 bg-transparent">
-                                        <option value="1" selected>Select Time</option>
-                                        <?php foreach ($time_slots as $index => $time): ?>
-                                            <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-
-                            </div>
-                            <div class="col-12">
-                                <div class="tour-booking-summary py-2">
-                                    <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
-                                        <li>
-                                            <span><strong>Adult (<span
-                                                        id="summary-adult-count">1</span>x):</strong></span>
-                                            <span id="price-per-adult">€<?php echo $tour_price; ?></span>
-                                        </li>
-                                        <li id="child-price-item" style="display: none;">
-                                            <span><strong>Child (<span
-                                                        id="summary-child-count">0</span>x):</strong></span>
-                                            <span id="price-per-child">€0.00</span>
-                                        </li>
-                                        <li class="pt-2 border-top">
-                                            <span><strong>Total:</strong></span>
-                                            <span id="total_price"><strong>€<?php echo $tour_price; ?></strong></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-success w-100">Check Availability <i
-                                        class="icon-arrow-right"></i></button>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <ul class="list-unstyled d-flex flex-column gap-2">
-                                    <li>
-                                        <i class='ti ti-circle-check-filled'></i> <strong
-                                            class="text-decoration-underline">Free cancellation</strong> Free
-                                        cancellation up to 24 hours
-                                    </li>
-                                    <li>
-                                        <i class='ti ti-circle-check-filled'></i><strong
-                                            class="text-decoration-underline"> Reserve Now and Pay Later </strong> -
-                                        Secure
-                                        your spot while staying flexible
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                        <div class="col-12 mt-4 p-2 pb-0 book_ahead">
-                            <ul class="list-unstyled d-flex flex-column gap-2">
-                                <li>
-                                    <i class="ti ti-flame" style="color: #e25a3a;font-size: 120%;"></i>
-                                    <strong>Book ahead!</strong><br />
-                                    On average, this is booked 37 days in advance.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                   <?php get_template_part('partials/tours/sidebar'); ?>
                 </div>
             </div>
         </div>
@@ -571,12 +323,11 @@ $review_count = count($tour_comments);
     <div class="traveler-modal-content">
         <h3 class="mb-3">Select Travelers</h3>
         <div class="info-text">
-            You can select up to 15 travelers in total.
+            You can select up to 14 travelers in total.
         </div>
-
         <div class="age-group">
             <div class="age-title">Adult (Age 13-99)</div>
-            <div class="age-range">Minimum: 1, Maximum: 15</div>
+            <div class="age-range">Minimum: 1, Maximum: 14</div>
             <div class="counter">
                 <div class="counter-btn minus-btn" data-group="adult" onclick="updateCounter('adult', -1)">-</div>
                 <div class="counter-value" id="adult-count">1</div>
@@ -586,7 +337,7 @@ $review_count = count($tour_comments);
 
         <div class="age-group">
             <div class="age-title">Child (Age 0-12)</div>
-            <div class="age-range">Minimum: 0, Maximum: 15</div>
+            <div class="age-range">Minimum: 0, Maximum: 14</div>
             <div class="counter">
                 <div class="counter-btn minus-btn" data-group="child" onclick="updateCounter('child', -1)">-</div>
                 <div class="counter-value" id="child-count">0</div>
@@ -777,113 +528,7 @@ $review_count = count($tour_comments);
 
 <script>
     // Traveler selection functionality
-    let adultCount = 1;
-    let childCount = 0;
-    const maxTravelers = 15;
-    const tourPrice = <?php echo $tour_price; ?>;
-
-    function openTravelerModal() {
-        document.getElementById('traveler-modal').style.display = 'flex';
-    }
-
-    function closeTravelerModal() {
-        document.getElementById('traveler-modal').style.display = 'none';
-    }
-
-    function updateCounter(type, change) {
-        if (type === 'adult') {
-            if (change === 1 && (adultCount + childCount) < maxTravelers) {
-                adultCount++;
-            } else if (change === -1 && adultCount > 1) {
-                adultCount--;
-            }
-        } else if (type === 'child') {
-            if (change === 1 && (adultCount + childCount) < maxTravelers) {
-                childCount++;
-            } else if (change === -1 && childCount > 0) {
-                childCount--;
-            }
-        }
-
-        document.getElementById('adult-count').textContent = adultCount;
-        document.getElementById('child-count').textContent = childCount;
-
-        // Update button states
-        document.querySelectorAll('.counter-btn').forEach(btn => {
-            const group = btn.getAttribute('data-group');
-            const isMinus = btn.classList.contains('minus-btn');
-
-            if (group === 'adult') {
-                if (isMinus) {
-                    btn.disabled = adultCount <= 1;
-                    btn.style.opacity = adultCount <= 1 ? 0.5 : 1;
-                } else {
-                    btn.disabled = (adultCount + childCount) >= maxTravelers;
-                    btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
-                }
-            } else if (group === 'child') {
-                if (isMinus) {
-                    btn.disabled = childCount <= 0;
-                    btn.style.opacity = childCount <= 0 ? 0.5 : 1;
-                } else {
-                    btn.disabled = (adultCount + childCount) >= maxTravelers;
-                    btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
-                }
-            }
-        });
-    }
-
-    function applyTravelerSelection() {
-        // Update summary text
-        const summaryText =
-            `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
-        document.getElementById('traveler-summary').textContent = summaryText;
-
-        // Update hidden inputs
-        document.getElementById('adult_count_input').value = adultCount;
-        document.getElementById('child_count_input').value = childCount;
-
-        // Update summary counts
-        document.getElementById('summary-adult-count').textContent = adultCount;
-        document.getElementById('summary-child-count').textContent = childCount;
-
-        // Update prices
-        updateTotalPrice();
-
-        // Close modal
-        closeTravelerModal();
-    }
-
-    function updateTotalPrice() {
-        const adultPrice = adultCount * tourPrice;
-        const childPrice = childCount * (tourPrice * 0.7); // Assuming children are 70% of adult price
-        const totalPrice = adultPrice + childPrice;
-
-        document.getElementById('price-per-adult').textContent = '€' + adultPrice.toFixed(2);
-
-        if (childCount > 0) {
-            document.getElementById('child-price-item').style.display = 'flex';
-            document.getElementById('price-per-child').textContent = '€' + childPrice.toFixed(2);
-        } else {
-            document.getElementById('child-price-item').style.display = 'none';
-        }
-
-        document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
-        document.getElementById('tour_price').value = totalPrice.toFixed(2);
-    }
-
-    // Close modal when clicking outside
-    document.getElementById('traveler-modal').addEventListener('click', function (e) {
-        if (e.target === this) closeTravelerModal();
-    });
-
-    // Initialize button states
-    document.addEventListener('DOMContentLoaded', function () {
-        updateCounter('adult', 0);
-        updateCounter('child', 0);
-        updateTotalPrice();
-    });
-
+   
     // Open popup by ID
     function openPopup(id) {
         document.getElementById(id).classList.add('active');
@@ -929,3 +574,4 @@ $review_count = count($tour_comments);
 
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
+

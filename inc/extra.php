@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -52,36 +51,39 @@ function add_stripe_settings_page() {
 
 function stripe_settings_page() {
     ?>
-    <div class="wrap">
-        <h1>Stripe Payment Settings</h1>
-        <form method="post" action="options.php">
-            <?php settings_fields('stripe-settings-group'); ?>
-            <?php do_settings_sections('stripe-settings-group'); ?>
-            <table class="form-table">
-                <tr valign="top">
-                    <th scope="row">Stripe Publishable Key</th>
-                    <td>
-                        <input type="text" name="stripe_publishable_key" value="<?php echo esc_attr(get_option('stripe_publishable_key')); ?>" class="regular-text">
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Stripe Secret Key</th>
-                    <td>
-                        <input type="password" name="stripe_secret_key" value="<?php echo esc_attr(get_option('stripe_secret_key')); ?>" class="regular-text">
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row">Webhook Secret</th>
-                    <td>
-                        <input type="password" name="stripe_webhook_secret" value="<?php echo esc_attr(get_option('stripe_webhook_secret')); ?>" class="regular-text">
-                        <p class="description">Endpoint: <?php echo rest_url('stripe/v1/webhook'); ?></p>
-                    </td>
-                </tr>
-            </table>
-            <?php submit_button(); ?>
-        </form>
-    </div>
-    <?php
+<div class="wrap">
+    <h1>Stripe Payment Settings</h1>
+    <form method="post" action="options.php">
+        <?php settings_fields('stripe-settings-group'); ?>
+        <?php do_settings_sections('stripe-settings-group'); ?>
+        <table class="form-table">
+            <tr valign="top">
+                <th scope="row">Stripe Publishable Key</th>
+                <td>
+                    <input type="text" name="stripe_publishable_key"
+                        value="<?php echo esc_attr(get_option('stripe_publishable_key')); ?>" class="regular-text">
+                </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row">Stripe Secret Key</th>
+                <td>
+                    <input type="password" name="stripe_secret_key"
+                        value="<?php echo esc_attr(get_option('stripe_secret_key')); ?>" class="regular-text">
+                </td>
+            </tr>
+            <tr valign="top">
+                <th scope="row">Webhook Secret</th>
+                <td>
+                    <input type="password" name="stripe_webhook_secret"
+                        value="<?php echo esc_attr(get_option('stripe_webhook_secret')); ?>" class="regular-text">
+                    <p class="description">Endpoint: <?php echo rest_url('stripe/v1/webhook'); ?></p>
+                </td>
+            </tr>
+        </table>
+        <?php submit_button(); ?>
+    </form>
+</div>
+<?php
 }
 
 // Register settings
@@ -130,3 +132,18 @@ function register_booking_cpt() {
     register_post_type( 'booking', $args );
 }
 add_action( 'init', 'register_booking_cpt' );
+
+
+ function generateTimeSlots($start_time, $end_time, $interval_minutes)    {
+        $times = [];
+        $start = strtotime($start_time);
+        $end = strtotime($end_time);
+        $interval_seconds = $interval_minutes * 60;
+
+        while ($start <= $end) {
+            $times[] = date('h:i A', $start);
+            $start += $interval_seconds;
+        }
+
+        return $times;
+    }
