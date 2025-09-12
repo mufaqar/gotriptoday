@@ -19,6 +19,10 @@
                      <span id="traveler-summary">1 Adult, 0 Children</span>
                      <i class="ti ti-chevron-down float-end"></i>
                  </div>
+                 <!-- Helper line -->
+                <small id="traveler-helper" class="text-muted d-block mt-1">
+                    Minimum charge equals 3 passengers (sedan base).
+                </small>
              </div>
              <div class="col-12 gap-2 py-2 tour_times">
                  <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
@@ -149,35 +153,47 @@ function applyTravelerSelection() {
         `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
     document.getElementById('traveler-summary').textContent = summaryText;
 
-    // Update hidden inputs
+    // Hidden inputs
     document.getElementById('adult_count_input').value = adultCount;
     document.getElementById('child_count_input').value = childCount;
 
-    // Update summary counts
+    // Summary counts
     document.getElementById('summary-adult-count').textContent = adultCount;
     document.getElementById('summary-child-count').textContent = childCount;
 
-    // Update prices
+    // Helper line
+    const totalTravelers = adultCount + childCount;
+    const helperEl = document.getElementById('traveler-helper');
+    if (totalTravelers <= 3) {
+        helperEl.textContent = "Minimum charge equals 3 passengers (sedan base).";
+    } else {
+        helperEl.textContent = `Price = 3-passenger base + (${totalTravelers - 3}) additional passenger${(totalTravelers - 3) > 1 ? 's' : ''}.`;
+    }
+
+    // Prices
     updateTotalPrice();
 
     // Close modal
     closeTravelerModal();
 }
 
-function updateTotalPrice() {
-    const adultPrice = adultCount * tourPrice;
-    const childPrice = childCount * (tourPrice * 0.7); // Assuming children are 70% of adult price
-    const totalPrice = adultPrice + childPrice;
 
-    document.getElementById('price-per-adult').textContent = '€' + adultPrice.toFixed(2);
+function updateTotalPrice() {
+    const selectedPassengers = adultCount + childCount;
+    const billablePassengers = Math.max(3, selectedPassengers);
+    const totalPrice = billablePassengers * tourPrice;
+
+    // Breakdown display
+    document.getElementById('price-per-adult').textContent = '€' + (adultCount * tourPrice).toFixed(2);
 
     if (childCount > 0) {
         document.getElementById('child-price-item').style.display = 'flex';
-        document.getElementById('price-per-child').textContent = '€' + childPrice.toFixed(2);
+        document.getElementById('price-per-child').textContent = '€' + (childCount * tourPrice).toFixed(2);
     } else {
         document.getElementById('child-price-item').style.display = 'none';
     }
 
+    // Total
     document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
     document.getElementById('tour_price').value = totalPrice.toFixed(2);
 }

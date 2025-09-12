@@ -147,3 +147,8 @@ add_action( 'init', 'register_booking_cpt' );
 
         return $times;
     }
+
+
+
+
+
