@@ -177,7 +177,6 @@ function applyTravelerSelection() {
     closeTravelerModal();
 }
 
-
 function updateTotalPrice() {
     const selectedPassengers = adultCount + childCount;
     const billablePassengers = Math.max(3, selectedPassengers);
