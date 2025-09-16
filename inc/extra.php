@@ -151,4 +151,32 @@ add_action( 'init', 'register_booking_cpt' );
 
 
 
+function get_discounted_price($post_id, $formatted = true) {
+    $price    = (float) get_post_meta($post_id, "pricing", true);   // Original price
+    $discount = (float) get_post_meta($post_id, "discount", true);  // Discount percent
+
+    if ($price <= 0) {
+        return $formatted ? "N/A" : 0;
+    }
+
+    // Calculate discounted price if discount exists
+    if ($discount > 0) {
+        $discounted_price = $price - ($price * ($discount / 100));
+
+        if ($formatted) {
+            return sprintf(
+                '<del class="sale_price">%s€</del> %s€',
+                number_format($price, 0),
+                number_format($discounted_price, 2)
+            );
+        }
+
+        return $discounted_price;
+    }
+
+    // No discount case
+    return $formatted ? number_format($price, 0) . "€" : $price;
+}
+
+
 

@@ -41,20 +41,11 @@
             <div class="text-start">
                 <h6 class="mt-1 trip-price">
                     <?php
-                    $price = (float) get_post_meta($post->ID, "pricing", true);   // Original price
-                    $discount = (float) get_post_meta($post->ID, "discount", true); // Discount percent
-                    
-                    if ($price && $discount) {
-                        // Calculate discounted price
-                        $discounted_price = $price - ($price * ($discount / 100));
-                        ?>
-                        <del class="sale_price"><?php echo number_format($price, 0); ?></del>
-                        <?php echo number_format($discounted_price, 2); ?><span>€</span>
-                        <?php
-                    } else {
-                        // No discount, show only price
-                        echo number_format($price, 0) . "<span>€</span>";
-                    }
+                   
+
+                   echo get_discounted_price(get_the_ID());
+
+                   
                     ?>
                 </h6>
             </div>

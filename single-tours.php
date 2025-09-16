@@ -154,12 +154,7 @@ $review_count = count($tour_comments);
                                 Reviews</p>
                         </h4>
                     </div>
-
-
-
-
                     <div class="review_list d-flex flex-lg-row flex-column gap-4">
-
                         <?php if (!empty($tour_comments)): ?>
                             <?php foreach ($tour_comments as $c): ?>
                                 <div class="review_box">
@@ -178,13 +173,7 @@ $review_count = count($tour_comments);
                                     <p><?php echo esc_html($c['content']); ?></p>
                                 </div>
                             <?php endforeach; ?>
-
                         <?php endif; ?>
-
-
-
-
-
                     </div>
                 </div>
                 <!-- Tour Details Content -->
