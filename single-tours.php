@@ -44,7 +44,7 @@ $review_count = count($tour_comments);
                     </li>
                     <li>|</li>
                     <li>
-                        Frankfurt, Germany
+                       <?php echo get_post_meta($post->ID, "address", true); ?>
                     </li>
                 </ul>
             </div>
@@ -154,11 +154,6 @@ $review_count = count($tour_comments);
                                 Reviews</p>
                         </h4>
                     </div>
-
-
-
-
-
 
 
 
