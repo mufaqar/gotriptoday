@@ -440,33 +440,58 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 
-// Price calculation
+// Price calculation with detailed breakdown
 function calculateTotalPrice() {
     let basePrice = <?php echo $tour_price; ?>;
     let extraCost = 0;
+    let breakdown = [];
     
     // Vehicle premium upgrade
-    if (document.querySelector('#premium_upgrade').checked) {
-        extraCost += basePrice * 0.2; // 20% premium
+    const premiumUpgrade = document.querySelector('#premium_upgrade').checked;
+    if (premiumUpgrade) {
+        const premiumCost = basePrice * 0.2;
+        extraCost += premiumCost;
+        breakdown.push(`Premium Upgrade: €${premiumCost.toFixed(2)}`);
     }
     
-    // Child seats (example: €5 each)
+    // Child seats (€5 each)
     const babySeats = parseInt(document.querySelector('input[name="baby_seat"]').value) || 0;
     const toddlerSeats = parseInt(document.querySelector('input[name="toddler_seat"]').value) || 0;
     const boosterSeats = parseInt(document.querySelector('input[name="booster_seat"]').value) || 0;
-    extraCost += (babySeats + toddlerSeats + boosterSeats) * 5;
+    const seatCost = (babySeats + toddlerSeats + boosterSeats) * 5;
+    if (seatCost > 0) {
+        extraCost += seatCost;
+        breakdown.push(`Child Seats: €${seatCost.toFixed(2)}`);
+    }
     
-    // Additional hours (example: €50 per hour)
+    // Additional hours (€50 per hour)
     const extraHours = parseInt(document.querySelector('input[name="extra_hours"]').value) || 0;
-    extraCost += extraHours * 50;
+    const hoursCost = extraHours * 50;
+    if (hoursCost > 0) {
+        extraCost += hoursCost;
+        breakdown.push(`Extra Hours: €${hoursCost.toFixed(2)}`);
+    }
     
     const totalPrice = basePrice + extraCost;
+    
+    // Update display
     document.getElementById('grand_total').textContent = '€' + totalPrice.toFixed(2);
     
     // Update payment button text
     const payButton = document.getElementById('woocommerce-pay-button');
     if (payButton) {
         payButton.textContent = 'Pay €' + totalPrice.toFixed(2);
+    }
+    
+    // Update breakdown display (if you have one)
+    const breakdownElement = document.getElementById('price-breakdown');
+    if (breakdownElement) {
+        if (breakdown.length > 0) {
+            breakdownElement.innerHTML = '<strong>Price Breakdown:</strong><br>' + breakdown.join('<br>') + 
+                                        '<br><strong>Total: €' + totalPrice.toFixed(2) + '</strong>';
+        } else {
+            breakdownElement.innerHTML = '';
+        }
     }
     
     return totalPrice;
