@@ -3,37 +3,33 @@
 get_header();
 
 // Initialize variables
-//$tour_id = $tour_date = $tour_adults = $tour_price = $tour_title = $tour_image = '';
-
-// Collect query params safely
 $tour_id       = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
 $tour_price    = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
 $tour_adults   = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
-$tour_child   = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
+$tour_child    = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
 $tour_date     = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
 $tour_time     = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
 
-
-  
-
-    // Get tour details if valid tour ID
-    if ($tour_id > 0) {
-        $tour = get_post($tour_id);
-        if ($tour && $tour->post_type === 'tours') {
-            $tour_title = esc_html($tour->post_title);
-            $tour_image = get_the_post_thumbnail_url($tour_id, 'medium');
-        }
+// Get tour details if valid tour ID
+if ($tour_id > 0) {
+    $tour = get_post($tour_id);
+    if ($tour && $tour->post_type === 'tours') {
+        $tour_title = esc_html($tour->post_title);
+        $tour_image = get_the_post_thumbnail_url($tour_id, 'medium');
     }
+}
 
-    $total_persons = $tour_adults + $tour_child;
+$total_persons = $tour_adults + $tour_child;
 
-    // Format datetime-local value
+// Format datetime-local value
 $datetime_value = '';
 if ($tour_date && $tour_time) {
-    // Ensure HH:MM format (pad with 0 if needed)
     $formatted_time = sprintf("%02d:00", intval($tour_time));
     $datetime_value = $tour_date . 'T' . $formatted_time;
 }
+
+// Define hidden product ID for bookings
+$booking_product_id = 26324 ; 
 
 ?>
 <div class="divider-sm"></div>
@@ -44,12 +40,15 @@ if ($tour_date && $tour_time) {
             <div class="col-12 col-lg-8">
                 <div class="content">
                   
-                    <form id="booking-form" action="<?php echo esc_url(site_url('/process-booking')); ?>" method="POST">
+                <form id="booking-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
                         <?php wp_nonce_field('booking_nonce', 'booking_nonce_field'); ?>
                         <input type="hidden" name="tour_id" value="<?php echo esc_attr($tour_id); ?>">
                         <input type="hidden" name="tour_date" value="<?php echo esc_attr($tour_date); ?>">
                         <input type="hidden" name="tour_adults" value="<?php echo esc_attr($tour_adults); ?>">
+                        <input type="hidden" name="tour_child" value="<?php echo esc_attr($tour_child); ?>">
                         <input type="hidden" name="tour_price" value="<?php echo esc_attr($tour_price); ?>">
+                        <input type="hidden" name="booking_product_id" value="<?php echo esc_attr($booking_product_id); ?>">
+                        <input type="hidden" name="action" value="process_booking">
 
                         <!-- Step Indicators -->
                         <div class="stepper-wrapper mb-5">
@@ -128,7 +127,7 @@ if ($tour_date && $tour_time) {
 
                         <!-- Step 2: Activity Details -->
                         <div class="step p-4 shadow-sm border-0 mb-5">
-                            <form id="step2Form" class="needs-validation" novalidate>
+                            <div id="step2Form" class="needs-validation" novalidate>
 
                                 <!-- Vehicle Section -->
                                 <div class="mb-4">
@@ -258,8 +257,7 @@ if ($tour_date && $tour_time) {
                                     <p class="mb-0"><strong id="grand_total">€<?php echo $tour_price?></strong></p>
                                 </div>
 
-                            </form>
-
+                            </div>
 
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
@@ -271,28 +269,28 @@ if ($tour_date && $tour_time) {
                         <div class="step p-4 shadow-sm border-0">
                             <h5 class="mb-3">Payment details</h5>
 
-                            <!-- Payment Method -->
+                            <!-- WooCommerce Payment Methods -->
                             <div class="mb-4">
                                 <label class="form-label">Pay with</label>
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="radio" name="payment_method" value="card"
-                                        id="payment-method-card" checked>
-                                    <label class="form-check-label fw-semibold" for="payment-method-card">Credit/Debit
-                                        Card</label>
-                                </div>
-                            </div>
-
-                            <!-- Stripe Payment Element -->
-                            <div id="card-payment-section">
-                                <div id="payment-element" class="mb-3"></div>
-                                <div id="payment-errors" class="alert alert-danger d-none mb-3"></div>
-
-                                <?php if (WP_DEBUG): ?>
-                                <div class="alert alert-info mb-3">
-                                    <small>TEST MODE: Use test card 4242 4242 4242 4242 with any future date and
-                                        CVC</small>
-                                </div>
-                                <?php endif; ?>
+                                <?php 
+                                // Get available payment gateways
+                                if (class_exists('WC_Payment_Gateways')) {
+                                    $gateways = WC()->payment_gateways->get_available_payment_gateways();
+                                    
+                                    if ($gateways) {
+                                        $first = true;
+                                        foreach ($gateways as $gateway) {
+                                            echo '<div class="form-check mb-3">';
+                                            echo '<input class="form-check-input" type="radio" name="payment_method" value="' . esc_attr($gateway->id) . '" id="payment-method-' . esc_attr($gateway->id) . '" ' . ($first ? 'checked' : '') . '>';
+                                            echo '<label class="form-check-label fw-semibold" for="payment-method-' . esc_attr($gateway->id) . '">' . esc_html($gateway->get_title()) . '</label>';
+                                            echo '</div>';
+                                            $first = false;
+                                        }
+                                    } else {
+                                        echo '<p class="text-danger">No payment methods available. Please configure payment methods in WooCommerce.</p>';
+                                    }
+                                }
+                                ?>
                             </div>
 
                             <div class="text-muted small mb-4">
@@ -304,9 +302,8 @@ if ($tour_date && $tour_time) {
 
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
-                                <button id="submit-button" class="btn btn-success">
-                                    <span id="button-text">Pay €<?php echo number_format($tour_price, 2); ?></span>
-                                    <span id="button-spinner" class="spinner-border spinner-border-sm d-none"></span>
+                                <button type="submit" class="btn btn-success" id="woocommerce-pay-button">
+                                    Pay €<?php echo number_format($tour_price, 2); ?>
                                 </button>
                             </div>
                         </div>
@@ -354,112 +351,10 @@ if ($tour_date && $tour_time) {
     <div class="divider-sm"></div>
 </div>
 
-
-
-<?php get_footer();?>
+<?php get_footer(); ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const stripe = Stripe('<?php echo esc_js(get_option('stripe_publishable_key')); ?>');
-    let elements;
-
-    initializeStripePayment();
-
-    async function initializeStripePayment() {
-        try {
-            const response = await fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    action: 'stripe_create_payment_intent',
-                    tour_id: '<?php echo $tour_id; ?>',
-                    amount: '<?php echo $tour_price * 100; ?>', // in cents
-                    nonce: '<?php echo wp_create_nonce("stripe_payment_nonce"); ?>'
-                })
-            });
-
-            const data = await response.json();
-            console.log('Stripe server response:', data);
-
-            if (!data.success || !data.data?.clientSecret) {
-                throw new Error(data.data?.message || 'Missing clientSecret from server');
-            }
-
-            const clientSecret = data.data.clientSecret;
-
-            // Customize Stripe Elements appearance
-            const appearance = {
-                theme: 'stripe',
-                variables: {
-                    colorPrimary: '#28a745',
-                    colorBackground: '#ffffff',
-                    colorText: '#212529',
-                    fontFamily: 'system-ui, -apple-system, sans-serif'
-                }
-            };
-
-            elements = stripe.elements({
-                clientSecret,
-                appearance
-            });
-
-            const paymentElement = elements.create('payment', {
-                layout: 'tabs',
-                fields: {
-                    billingDetails: {
-                        name: 'auto',
-                        email: 'auto'
-                    }
-                }
-            });
-
-            paymentElement.mount('#payment-element');
-
-        } catch (error) {
-            console.error('Error:', error);
-            const errorElement = document.getElementById('payment-errors');
-            errorElement.textContent = 'Error initializing payment. Please try again.';
-            errorElement.classList.remove('d-none');
-        }
-    }
-
-    document.getElementById('booking-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const submitButton = document.getElementById('submit-button');
-        const buttonText = document.getElementById('button-text');
-        const buttonSpinner = document.getElementById('button-spinner');
-        const errorElement = document.getElementById('payment-errors');
-
-        submitButton.disabled = true;
-        buttonText.textContent = 'Processing...';
-        buttonSpinner.classList.remove('d-none');
-        errorElement.classList.add('d-none');
-
-        const {
-            error
-        } = await stripe.confirmPayment({
-            elements,
-            confirmParams: {
-                return_url: '<?php echo esc_url(site_url('/booking-confirmation')); ?>',
-                receipt_email: document.querySelector('input[name="email"]').value,
-            }
-        });
-
-        if (error) {
-            errorElement.textContent = error.message;
-            errorElement.classList.remove('d-none');
-            submitButton.disabled = false;
-            buttonText.textContent = 'Pay €<?php echo number_format($tour_price, 2); ?>';
-            buttonSpinner.classList.add('d-none');
-        }
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
     const steps = document.querySelectorAll(".step");
     const stepperItems = document.querySelectorAll(".stepper-item");
     let currentStep = 0;
@@ -500,8 +395,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize first step
     showStep(currentStep);
 });
-</script>
-<script>
+
 // Bootstrap validation + toggle for invoice and premium
 (function () {
   'use strict';
@@ -512,30 +406,78 @@ document.addEventListener("DOMContentLoaded", function() {
   const premiumWrapper = document.querySelector('#premiumWrapper');
 
   // Invoice toggle
-  needInvoice.addEventListener('change', function() {
-    invoiceFields.style.display = this.checked ? 'block' : 'none';
-    document.querySelectorAll('#invoiceFields input').forEach(input => {
-      input.required = this.checked && input.name !== "vat_id";
+  if (needInvoice) {
+    needInvoice.addEventListener('change', function() {
+      invoiceFields.style.display = this.checked ? 'block' : 'none';
+      document.querySelectorAll('#invoiceFields input').forEach(input => {
+        input.required = this.checked && input.name !== "vat_id";
+      });
     });
-  });
+  }
 
   // Premium toggle (only if Sedan selected)
-  vehicleSelect.addEventListener('change', function() {
-    if (this.value === 'sedan') {
-      premiumWrapper.style.display = 'block';
-    } else {
-      premiumWrapper.style.display = 'none';
-      document.querySelector('#premium_upgrade').checked = false;
-    }
-  });
+  if (vehicleSelect) {
+    vehicleSelect.addEventListener('change', function() {
+      if (this.value === 'sedan') {
+        premiumWrapper.style.display = 'block';
+      } else {
+        premiumWrapper.style.display = 'none';
+        document.querySelector('#premium_upgrade').checked = false;
+      }
+    });
+  }
 
   // Bootstrap validation
-  form.addEventListener('submit', function (event) {
-    if (!form.checkValidity()) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    form.classList.add('was-validated');
-  }, false);
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  }
 })();
+
+
+// Price calculation
+function calculateTotalPrice() {
+    let basePrice = <?php echo $tour_price; ?>;
+    let extraCost = 0;
+    
+    // Vehicle premium upgrade
+    if (document.querySelector('#premium_upgrade').checked) {
+        extraCost += basePrice * 0.2; // 20% premium
+    }
+    
+    // Child seats (example: €5 each)
+    const babySeats = parseInt(document.querySelector('input[name="baby_seat"]').value) || 0;
+    const toddlerSeats = parseInt(document.querySelector('input[name="toddler_seat"]').value) || 0;
+    const boosterSeats = parseInt(document.querySelector('input[name="booster_seat"]').value) || 0;
+    extraCost += (babySeats + toddlerSeats + boosterSeats) * 5;
+    
+    // Additional hours (example: €50 per hour)
+    const extraHours = parseInt(document.querySelector('input[name="extra_hours"]').value) || 0;
+    extraCost += extraHours * 50;
+    
+    const totalPrice = basePrice + extraCost;
+    document.getElementById('grand_total').textContent = '€' + totalPrice.toFixed(2);
+    
+    // Update payment button text
+    const payButton = document.getElementById('woocommerce-pay-button');
+    if (payButton) {
+        payButton.textContent = 'Pay €' + totalPrice.toFixed(2);
+    }
+    
+    return totalPrice;
+}
+
+// Add event listeners for price-changing elements
+document.querySelectorAll('#premium_upgrade, input[name="baby_seat"], input[name="toddler_seat"], input[name="booster_seat"], input[name="extra_hours"]').forEach(element => {
+    element.addEventListener('change', calculateTotalPrice);
+    element.addEventListener('input', calculateTotalPrice);
+});
+
+// Initial calculation
+calculateTotalPrice();
 </script>

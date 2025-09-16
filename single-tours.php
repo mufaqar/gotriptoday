@@ -99,12 +99,8 @@ $review_count = count($tour_comments);
                     </div>
                 </div>
                 <div class="d-lg-block d-none w-100">
-                    <?php get_template_part('partials/tours/reviews', null, array(
-    'tour_comments' => $tour_comments,
-    'review_count' => $review_count
-));  ?>
+                    <?php get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments,'review_count' => $review_count));  ?>
                 </div>
-
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <div class="tour_overview">
@@ -113,40 +109,34 @@ $review_count = count($tour_comments);
                     </div>
                     <?php get_template_part('partials/tours/tour_itinerary'); ?>
                 </div>
-
                 <div class="tour_included">
                     <h2 class="pb-3">What's Included</h2>
                     <div class="d-flex flex-lg-row flex-column gap-2 align-items-start">
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2">
-                                <?php
-
-                                // ✅ INCLUDED
-                                $included = get_post_meta($post->ID, "included", true);
-
-                                if (!empty($included) && is_array($included)) {
-                                    foreach ($included as $feature => $is_included) {
-                                        if ($is_included && $is_included !== 'false') {
-                                            echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-check text-black'></i> $feature</li>";
+                                <?php                              
+                                    $included = get_post_meta($post->ID, "included", true);
+                                    if (!empty($included) && is_array($included)) {
+                                        foreach ($included as $feature => $is_included) {
+                                            if ($is_included && $is_included !== 'false') {
+                                                echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-check text-black'></i> $feature</li>";
+                                            }
                                         }
                                     }
-                                }
                                 ?>
                             </ul>
                         </div>
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2 ">
-                                <?php
-                                // ✅Not INCLUDED
-                                $not_included = get_post_meta($post->ID, "not_included", true);
-
-                                if (!empty($not_included) && is_array($not_included)) {
-                                    foreach ($not_included as $nofeature => $is_not_included) {
-                                        if ($is_not_included && $is_not_included !== 'false') {
-                                            echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-x text-black'></i> $nofeature</li>";
+                                <?php                              
+                                    $not_included = get_post_meta($post->ID, "not_included", true);
+                                    if (!empty($not_included) && is_array($not_included)) {
+                                        foreach ($not_included as $nofeature => $is_not_included) {
+                                            if ($is_not_included && $is_not_included !== 'false') {
+                                                echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-x text-black'></i> $nofeature</li>";
+                                            }
                                         }
                                     }
-                                }
                                 ?>
                             </ul>
                         </div>

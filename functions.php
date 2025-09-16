@@ -200,3 +200,82 @@ function get_tour_comments($post_id) {
     return $data;
 }
 
+
+
+// Process booking and create WooCommerce order
+add_action('admin_post_process_booking', 'process_booking_form');
+add_action('admin_post_nopriv_process_booking', 'process_booking_form');
+
+function process_booking_form() {
+    // Verify nonce
+    if (!isset($_POST['booking_nonce_field']) || !wp_verify_nonce($_POST['booking_nonce_field'], 'booking_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    // Get form data
+    $tour_id = isset($_POST['tour_id']) ? intval($_POST['tour_id']) : 0;
+    $tour_date = isset($_POST['tour_date']) ? sanitize_text_field($_POST['tour_date']) : '';
+    $tour_adults = isset($_POST['tour_adults']) ? intval($_POST['tour_adults']) : 0;
+    $tour_child = isset($_POST['tour_child']) ? intval($_POST['tour_child']) : 0;
+    $tour_price = isset($_POST['tour_price']) ? floatval($_POST['tour_price']) : 0;
+    $booking_product_id = isset($_POST['booking_product_id']) ? intval($_POST['booking_product_id']) : 0;
+    
+    // Get customer details
+    $customer_name = isset($_POST['passenger_name']) ? sanitize_text_field($_POST['passenger_name']) : '';
+    $customer_email = isset($_POST['passenger_email']) ? sanitize_email($_POST['passenger_email']) : '';
+    $customer_phone = isset($_POST['passenger_mobile']) ? sanitize_text_field($_POST['passenger_mobile']) : '';
+    
+    // Create WooCommerce order
+    if (class_exists('WooCommerce')) {
+        // Create order
+        $order = wc_create_order();
+        
+        // Get the booking product
+        $product = wc_get_product($booking_product_id);
+        
+        if ($product) {
+            // Add product to order with custom price
+            $order->add_product($product, 1, array(
+                'subtotal' => $tour_price,
+                'total' => $tour_price
+            ));
+            
+            // Set addresses
+            $address = array(
+                'first_name' => $customer_name,
+                'email'      => $customer_email,
+                'phone'      => $customer_phone,
+            );
+            
+            $order->set_address($address, 'billing');
+            $order->set_address($address, 'shipping');
+            
+            // Set payment method
+            $payment_method = isset($_POST['payment_method']) ? sanitize_text_field($_POST['payment_method']) : '';
+            $order->set_payment_method($payment_method);
+            
+            // Calculate totals
+            $order->calculate_totals();
+            
+            // Add booking details as order meta
+            $order->update_meta_data('_booking_tour_id', $tour_id);
+            $order->update_meta_data('_booking_tour_date', $tour_date);
+            $order->update_meta_data('_booking_adults', $tour_adults);
+            $order->update_meta_data('_booking_children', $tour_child);
+            $order->update_meta_data('_booking_pickup_address', sanitize_text_field($_POST['pickup_address']));
+            $order->update_meta_data('_booking_dropoff_address', sanitize_text_field($_POST['dropoff_address']));
+            $order->update_meta_data('_booking_notes', sanitize_textarea_field($_POST['driver_notes']));
+            
+            // Save order
+            $order->save();
+            
+            // Redirect to checkout
+            wp_redirect($order->get_checkout_payment_url());
+            exit;
+        }
+    }
+    
+    // If we get here, something went wrong
+    wp_redirect(home_url('/booking-error'));
+    exit;
+}
