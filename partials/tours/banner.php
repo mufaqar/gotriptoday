@@ -1,3 +1,8 @@
+<?php $args = isset($args) ? $args : array();
+$review_count = isset($args['review_count']) ? $args['review_count'] : 0;
+
+?>
+
 <div class="tour-details-header d-flex flex-lg-row flex-column gap-lg-4 align-items-start justify-content-between">
     <div class="col-12 col-lg-9">
         <div class="tour-details-meta py-2 mb-3 d-lg-flex d-none">

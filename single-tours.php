@@ -85,7 +85,9 @@ $review_count = count($tour_comments);
                     </div>
                 </div>
                 <div class="d-lg-none d-flex mt-5">
-                    <?php get_template_part('partials/tours/banner'); ?>
+                    <?php get_template_part('partials/tours/banner', null, array(
+    'review_count' => $review_count
+));  ?>
                 </div>
                 <div class="meta_info">
                     <ul class="list-unstyled d-flex flex-lg-row flex-row align-items-center gap-lg-5 gap-3">
@@ -106,7 +108,10 @@ $review_count = count($tour_comments);
                     </div>
                 </div>
                 <div class="d-lg-block d-none w-100">
-                    <?php get_template_part('partials/tours/reviews'); ?>
+                    <?php get_template_part('partials/tours/reviews', null, array(
+    'tour_comments' => $tour_comments,
+    'review_count' => $review_count
+));  ?>
                 </div>
 
                 <!-- Tour Details Content -->

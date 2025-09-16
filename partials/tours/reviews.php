@@ -1,3 +1,7 @@
+<?php $args = isset($args) ? $args : array();
+$tour_comments = isset($args['tour_comments']) ? $args['tour_comments'] : array();
+$review_count = isset($args['review_count']) ? $args['review_count'] : 0; ?>
+
 <div class="tour_reviews">
     <div class="d-flex flex-lg-row flex-column justify-content-between">
         <h2 class="pb-3">Why travelers loved this</h2>
