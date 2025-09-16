@@ -1,4 +1,4 @@
- <div class="sidebar-widget">
+ <div id="tour_booking" class="sidebar-widget">
      <?php $tour_price = get_post_meta($post->ID, "pricing", true); ?>
      <div class="h4 fw-bold mb-4">From € <?php echo $tour_price; ?><span class="h6"> Per Person</span>
      </div>
