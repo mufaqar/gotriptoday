@@ -14,62 +14,13 @@ $review_count = count($tour_comments);
     <div class="divider"></div>
     <div class="container">
         <div class="divider-sm"></div>
-        <div
-            class="tour-details-header d-flex flex-lg-row flex-column gap-lg-4 align-items-start justify-content-between">
-            <div class="col-12 col-lg-9">
-                <div class="tour-details-meta py-2 mb-3">
-                    <ul class="list-unstyled d-flex flex-wrap gap-2">
-                        <li><a href="<?php bloginfo('url'); ?>">Home</a></li>
-                        <li>/</li>
-                        <li><a href="<?php echo home_url('/day-trips'); ?>">Tours</a></li>
-                        <li>/</li>
-                        <li><?php the_title() ?></li>
-                    </ul>
-                </div>
-                <h2 class="mb-3"><?php the_title() ?></h2>
-                <ul class="list-unstyled mb-3 d-flex flex-wrap gap-2 text-black"
-                    style="font-size:14px; font-weight: 500;">
-                    <li class="d-flex align-items-center">
-                        <i class='text-success pe-1 ti ti-star-filled'></i>
-                        <i class='text-success pe-1 ti ti-star-filled'></i>
-                        <i class='text-success pe-1 ti ti-star-filled'></i>
-                        <i class='text-success pe-1 ti ti-star-filled'></i>
-                        <i class='text-success pe-1 ti ti-star-filled'></i>
-                        <span class="d-inline-flex text-decoration-underline"><?php echo $review_count ?> Reviews</span>
-                    </li>
-                    <li>|</li>
-                    <li>
-                        <i class=' pe-1 ti ti-rosette-discount-check' style="color: #e25a3a;font-size: 120%;"></i>
-                        Recommended by 95% of travelers
-                    </li>
-                    <li>|</li>
-                    <li>
-                       <?php echo get_post_meta($post->ID, "address", true); ?>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-12 col-lg-3">
-                <ul class="list-unstyled d-flex flex-column gap-1 text-black" style="font-size:14px; font-weight: 500;">
-                    <li> <i class='text-success pe-1 ti ti-phone'></i>
-                        Book online or call: <a href="tel:+4901701479446" target="_blank"
-                            class="text-decoration-underline">+49 0 170 1479446</a>
-                    </li>
-                    <li> <i class='text-success pe-1 ti ti-brand-wechat'></i>
-                        <a href="#" target="_blank" class="text-decoration-underline">Chat now</a>
-                    </li>
-                </ul>
-                <ul class="list-unstyled d-flex justify-content-lg-end justify-content-start text-black mt-5"
-                    style="font-size:14px; font-weight: 500;">
-                    <li style="background-color:#f5f5f5; width: fit-content; padding: .25rem; border-radius: .375rem;">
-                        <i class='text-success pe-1 ti ti-tag'></i> Lowest Price Guarantee
-                    </li>
-                </ul>
-
-            </div>
+        <div class="d-lg-flex d-none">
+            <?php get_template_part('partials/tours/banner'); ?>
         </div>
         <div class="divider-xs"></div>
         <div class="row g-5">
             <div class="col-12 col-lg-8">
+
                 <div class="d-flex flex-row gap-4 align-items-start">
                     <!-- Vertical Thumbs -->
                     <div class="swiper destination-thumbs col-lg-2 col-3 d-lg-flex d-none">
@@ -133,97 +84,38 @@ $review_count = count($tour_comments);
                         <button class="destination-details-button-next"><i class="icon-arrow-right"></i></button>
                     </div>
                 </div>
+                <div class="d-lg-none d-flex mt-5">
+                    <?php get_template_part('partials/tours/banner'); ?>
+                </div>
                 <div class="meta_info">
-                    <ul class="list-unstyled d-flex flex-lg-row flex-column align-items-center gap-lg-5 gap-3">
+                    <ul class="list-unstyled d-flex flex-lg-row flex-row align-items-center gap-lg-5 gap-3">
                         <li class="d-flex align-items-center gap-1">
-                            <i class='icon ti ti-clock'></i> 5 hours 30 minutes (approx.)
+                            <i class='icon ti ti-clock'></i> 5 h 30 m
                         </li>
                         <li class="d-flex align-items-center gap-1">
                             <i class='icon ti ti-device-mobile'></i> Mobile ticket
                         </li>
                         <li class="d-flex align-items-center gap-1">
-                            <i class='icon ti ti-messages'></i> Offered in: English and 1 more
+                            <i class='icon ti ti-messages'></i> English and 1 more
                         </li>
                     </ul>
                 </div>
-                <div class="tour_reviews">
-                    <div class="d-flex flex-lg-row flex-column justify-content-between">
-                        <h2 class="pb-3">Why travelers loved this</h2>
-                        <h4><i class='text-success pe-1 ti ti-star-filled'></i> 4.8 · <p
-                                class="d-inline-flex text-black text-decoration-underline"><?php echo $review_count ?>
-                                Reviews</p>
-                        </h4>
-                    </div>
-
-
-
-
-                    <div class="review_list d-flex flex-lg-row flex-column gap-4">
-
-                        <?php if (!empty($tour_comments)): ?>
-                            <?php foreach ($tour_comments as $c): ?>
-                                <div class="review_box">
-                                    <div class="d-flex flex-lg-row flex-column justify-content-between">
-                                        <ul class="list-unstyled d-flex">
-                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                            <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
-                                        </ul>
-                                        <p class="d-inline-flex"><?php echo esc_html($c['author']); ?>·
-                                            <?php echo esc_html($c['date']); ?>
-                                        </p>
-                                    </div>
-                                    <p><?php echo esc_html($c['content']); ?></p>
-                                </div>
-                            <?php endforeach; ?>
-
-                        <?php endif; ?>
-
-
-
-
-
+                <div class="col-12 col-lg-4 d-lg-none d-flex">
+                    <div class="d-flex flex-column gap-5 mt-5">
+                        <?php get_template_part('partials/tours/sidebar'); ?>
                     </div>
                 </div>
+                <div class="d-lg-block d-none w-100">
+                    <?php get_template_part('partials/tours/reviews'); ?>
+                </div>
+
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <div class="tour_overview">
                         <h2 class="pb-3">Overview</h2>
                         <?php echo get_post_meta($post->ID, "tour_overview", true); ?>
                     </div>
-                    <div class="tour_itinerary">
-                        <h2 class="pb-3">Trip Itinerary</h2>
-
-                        <?php $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
-                        ?>
-                        <div>
-                            <?php
-                            $counter = 0;
-                            foreach ($trip_itinerary as $itinerary) {
-                                $counter++;
-                                $title = $itinerary['title'];
-                                $description = $itinerary['description'];
-                                $ticket_info = $itinerary['ticket_info'];
-                                ?>
-                                <div class="itinerary_item">
-                                    <span class="list_marker"><?php echo $counter; ?></span>
-                                    <div>
-                                        <h5 class="pb-3"> <?php echo $title; ?></h5>
-                                        <p>
-                                            <?php echo $description; ?>
-                                        </p>
-                                        <p class="itinerary_detail">
-                                            <?php echo $ticket_info; ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
+                    <?php get_template_part('partials/tours/tour_itinerary'); ?>
                 </div>
 
                 <div class="tour_included">
@@ -304,9 +196,9 @@ $review_count = count($tour_comments);
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 d-lg-flex d-none">
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
-                   <?php get_template_part('partials/tours/sidebar'); ?>
+                    <?php get_template_part('partials/tours/sidebar'); ?>
                 </div>
             </div>
         </div>
@@ -487,6 +379,9 @@ $review_count = count($tour_comments);
     <!-- Divider -->
     <div class="container">
         <div class="row g-4">
+            <div class="d-lg-none d-block w-100">
+                <?php get_template_part('partials/tours/reviews'); ?>
+            </div>
             <div class="tour_overview">
                 <h2 class="pb-3">Related Tours</h2>
             </div>
@@ -517,13 +412,14 @@ $review_count = count($tour_comments);
             </div>
         </div>
     </div>
+    <div class="divider"></div>
 </section>
 <?php get_footer(); ?>
 
 
 <script>
     // Traveler selection functionality
-   
+
     // Open popup by ID
     function openPopup(id) {
         document.getElementById(id).classList.add('active');
@@ -569,4 +465,3 @@ $review_count = count($tour_comments);
 
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
-
