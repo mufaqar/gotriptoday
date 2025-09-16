@@ -1,15 +1,8 @@
-<?php get_header(); ?>
-<?php
-
+<?php get_header(); 
 $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
-
 $tour_comments = get_tour_comments(get_the_ID());
 $review_count = count($tour_comments);
-
-
 ?>
-
-
 <div class="tour-details-section">
     <div class="divider"></div>
     <div class="container">
@@ -34,10 +27,10 @@ $review_count = count($tour_comments);
                                 foreach ($image_ids as $image_id) {
                                     $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                     if ($thumb_url) { ?>
-                                        <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
-                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
+                                <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
@@ -73,10 +66,10 @@ $review_count = count($tour_comments);
                                 foreach ($image_ids as $image_id) {
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
-                                        <div class="swiper-slide">
-                                            <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
@@ -85,9 +78,7 @@ $review_count = count($tour_comments);
                     </div>
                 </div>
                 <div class="d-lg-none d-flex mt-5">
-                    <?php get_template_part('partials/tours/banner', null, array(
-    'review_count' => $review_count
-));  ?>
+                    <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count));  ?>
                 </div>
                 <div class="meta_info">
                     <ul class="list-unstyled d-flex flex-lg-row flex-row align-items-center gap-lg-5 gap-3">
@@ -423,50 +414,49 @@ $review_count = count($tour_comments);
 
 
 <script>
-    // Traveler selection functionality
+// Traveler selection functionality
 
-    // Open popup by ID
-    function openPopup(id) {
-        document.getElementById(id).classList.add('active');
+// Open popup by ID
+function openPopup(id) {
+    document.getElementById(id).classList.add('active');
+}
+
+// Close popup by ID
+function closePopup(id) {
+    document.getElementById(id).classList.remove('active');
+}
+
+// Close when clicking outside popup
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('pop_up_wrapper')) {
+        e.target.classList.remove('active');
     }
+});
 
-    // Close popup by ID
-    function closePopup(id) {
-        document.getElementById(id).classList.remove('active');
-    }
+document.querySelectorAll('.wishlist_btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    // Close when clicking outside popup
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('pop_up_wrapper')) {
-            e.target.classList.remove('active');
-        }
-    });
-
-    document.querySelectorAll('.wishlist_btn').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Close other open dropdowns (optional)
-            document.querySelectorAll('.share_links').forEach(menu => {
-                if (menu !== this.nextElementSibling) {
-                    menu.classList.remove('active');
-                }
-            });
-
-            // Toggle this dropdown
-            const dropdown = this.nextElementSibling;
-            dropdown.classList.toggle('active');
-        });
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.wishlist li')) {
-            document.querySelectorAll('.share_links').forEach(menu => {
+        // Close other open dropdowns (optional)
+        document.querySelectorAll('.share_links').forEach(menu => {
+            if (menu !== this.nextElementSibling) {
                 menu.classList.remove('active');
-            });
-        }
-    });
+            }
+        });
 
+        // Toggle this dropdown
+        const dropdown = this.nextElementSibling;
+        dropdown.classList.toggle('active');
+    });
+});
+
+// Close when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.wishlist li')) {
+        document.querySelectorAll('.share_links').forEach(menu => {
+            menu.classList.remove('active');
+        });
+    }
+});
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
