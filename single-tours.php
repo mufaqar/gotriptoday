@@ -131,13 +131,8 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                         <button class="btn btn-link p-0 mt-2 read-more-btn" type="button">Show All</button>
                         <?php endif; ?>
                     </div>
-
-
-
                     <?php
-                   
                         get_template_part('partials/tours/itinerary', null, array('trip_itinerary' => $trip_itinerary));
-                   
                     ?>
                 </div>
                 <div class="tour_included">
