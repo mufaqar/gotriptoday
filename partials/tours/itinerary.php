@@ -1,3 +1,8 @@
+<?php $args = isset($args) ? $args : array();
+$trip_itinerary = isset($args['trip_itinerary']) ? $args['trip_itinerary'] : 0;
+
+?>
+
 <div class="tour_itinerary d-lg-block d-none">
     <h2 class="pb-3">Trip Itinerary</h2>
 

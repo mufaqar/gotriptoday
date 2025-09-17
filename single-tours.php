@@ -2,6 +2,8 @@
 $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
 $tour_comments = get_tour_comments(get_the_ID());
 $review_count = count($tour_comments);
+
+$trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
 ?>
 <div class="tour-details-section">
     <div class="divider"></div>
@@ -107,7 +109,7 @@ $review_count = count($tour_comments);
                         <h2 class="pb-3">Overview</h2>
                         <?php echo get_post_meta($post->ID, "tour_overview", true); ?>
                     </div>
-                    <?php get_template_part('partials/tours/tour_itinerary'); ?>
+                    <?php get_template_part('partials/tours/tour_itinerary', null , array('trip_itinerary' => $trip_itinerary )); ?>
                 </div>
                 <div class="tour_included">
                     <h2 class="pb-3">What's Included</h2>
