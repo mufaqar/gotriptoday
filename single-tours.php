@@ -121,9 +121,9 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                             ?>
 
                         <div class="overview-content">
-                            <span class="short-text"><?php echo esc_html($short_text); ?></span>
+                            <span class="short-text"><?php echo ($short_text); ?></span>
                             <?php if ($is_long): ?>
-                            <span class="full-text" style="display:none;"><?php echo esc_html($overview_text); ?></span>
+                            <span class="full-text" style="display:none;"><?php echo ($overview_text); ?></span>
                             <?php endif; ?>
                         </div>
 
