@@ -201,8 +201,6 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
             </div>
             <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
-                 
-
                     <?php   if ( ! wp_is_mobile() ) {
                           get_template_part('partials/tours/sidebar'); 
                         } 
