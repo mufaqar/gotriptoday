@@ -111,25 +111,22 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <div class="tour_overview">
-
                         <h2 class="pb-3">Overview</h2>
                         <?php
-$overview_text = wp_strip_all_tags($tour_overview); // removes <p>, <br>, etc.
-$max_chars     = 150;
-$is_long       = mb_strlen($overview_text) > $max_chars;
-$short_text    = $is_long ? mb_substr($overview_text, 0, $max_chars) . '...' : $overview_text;
-?>
-
-<div class="overview-content">
-    <span class="short-text"><?php echo esc_html($short_text); ?></span>
-    <?php if ($is_long): ?>
-        <span class="full-text" style="display:none;"><?php echo esc_html($overview_text); ?></span>
-    <?php endif; ?>
-</div>
-
-<?php if ($is_long): ?>
-    <button class="btn btn-link p-0 mt-2 read-more-btn" type="button">Show All</button>
-<?php endif; ?>
+                                $overview_text = wp_strip_all_tags($tour_overview); // removes <p>, <br>, etc.
+                                $max_chars     = 150;
+                                $is_long       = mb_strlen($overview_text) > $max_chars;
+                                $short_text    = $is_long ? mb_substr($overview_text, 0, $max_chars) . '...' : $overview_text;
+                                ?>
+                        <div class="overview-content">
+                            <span class="short-text"><?php echo esc_html($short_text); ?></span>
+                            <?php if ($is_long): ?>
+                            <span class="full-text" style="display:none;"><?php echo esc_html($overview_text); ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <?php if ($is_long): ?>
+                        <button class="btn btn-link p-0 mt-2 read-more-btn" type="button">Show All</button>
+                        <?php endif; ?>
                     </div>
                     <?php
                         get_template_part('partials/tours/itinerary', null, array('trip_itinerary' => $trip_itinerary));

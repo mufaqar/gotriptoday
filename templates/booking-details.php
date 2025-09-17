@@ -360,25 +360,41 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 0;
 
     function showStep(step) {
-        // Show the correct step content
         steps.forEach((s, i) => s.classList.toggle("active", i === step));
 
-        // Update stepper status
         stepperItems.forEach((item, i) => {
             item.classList.remove("active", "completed");
             if (i < step) {
-                item.classList.add("completed"); // previous steps
+                item.classList.add("completed");
             } else if (i === step) {
-                item.classList.add("active"); // current step
+                item.classList.add("active");
             }
         });
     }
 
+    function validateStep(stepIndex) {
+        let valid = true;
+        const inputs = steps[stepIndex].querySelectorAll("input, select, textarea");
+
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                valid = false;
+                input.classList.add("is-invalid");
+            } else {
+                input.classList.remove("is-invalid");
+            }
+        });
+
+        return valid;
+    }
+
     document.querySelectorAll(".next").forEach(btn => {
         btn.addEventListener("click", () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
+            if (validateStep(currentStep)) {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
             }
         });
     });
