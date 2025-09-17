@@ -353,8 +353,9 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
             <?php if (wp_is_mobile()): ?>
                 <?php get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count)); ?>
             <?php endif; ?>
-            <div class="tour_overview">
-                <h2 class="pb-3">Related Tours</h2>
+            
+            <div class="">
+                <h2 class="pb-3 pt-lg-5">Related Tours</h2>
             </div>
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
