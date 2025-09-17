@@ -90,6 +90,39 @@
      </form>
  </div>
 
+
+ <!-- Traveler Selection Modal -->
+<div class="traveler-modal" id="traveler-modal">
+    <div class="traveler-modal-content">
+        <h3 class="mb-3">Select Travelers</h3>
+        <div class="info-text">
+            You can select up to 14 travelers in total.
+        </div>
+        <div class="age-group">
+            <div class="age-title">Adult (Age 13-99)</div>
+            <div class="age-range">Minimum: 1, Maximum: 14</div>
+            <div class="counter">
+                <div class="counter-btn minus-btn" data-group="adult" onclick="updateCounter('adult', -1)">-</div>
+                <div class="counter-value" id="adult-count">1</div>
+                <div class="counter-btn plus-btn" data-group="adult" onclick="updateCounter('adult', 1)">+</div>
+            </div>
+        </div>
+
+        <div class="age-group">
+            <div class="age-title">Child (Age 0-12)</div>
+            <div class="age-range">Minimum: 0, Maximum: 14</div>
+            <div class="counter">
+                <div class="counter-btn minus-btn" data-group="child" onclick="updateCounter('child', -1)">-</div>
+                <div class="counter-value" id="child-count">0</div>
+                <div class="counter-btn plus-btn" data-group="child" onclick="updateCounter('child', 1)">+</div>
+            </div>
+        </div>
+
+        <button class="apply-btn" onclick="applyTravelerSelection()">Apply</button>
+    </div>
+</div>
+
+
  <script>
 let adultCount = 1;
 let childCount = 0;

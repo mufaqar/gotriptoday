@@ -97,7 +97,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                 </div>
                 <div class="col-12 col-lg-4 d-lg-none d-flex">
                     <div class="d-flex flex-column gap-5 mt-5">
-                        <?php get_template_part('partials/tours/sidebar'); ?>
+                        <?php  if (  wp_is_mobile() ) { get_template_part('partials/tours/sidebar'); } ?>
                     </div>
                 </div>
                 <div class="d-lg-block d-none w-100">
@@ -199,45 +199,20 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 d-lg-flex d-none">
+            <div class="col-12 col-lg-4">
                 <div class="d-flex flex-column gap-5 sticky-sidebar">
-                    <?php get_template_part('partials/tours/sidebar'); ?>
+                 
+
+                    <?php   if ( ! wp_is_mobile() ) {
+                          get_template_part('partials/tours/sidebar'); 
+                        } 
+                        ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Traveler Selection Modal -->
-<div class="traveler-modal" id="traveler-modal">
-    <div class="traveler-modal-content">
-        <h3 class="mb-3">Select Travelers</h3>
-        <div class="info-text">
-            You can select up to 14 travelers in total.
-        </div>
-        <div class="age-group">
-            <div class="age-title">Adult (Age 13-99)</div>
-            <div class="age-range">Minimum: 1, Maximum: 14</div>
-            <div class="counter">
-                <div class="counter-btn minus-btn" data-group="adult" onclick="updateCounter('adult', -1)">-</div>
-                <div class="counter-value" id="adult-count">1</div>
-                <div class="counter-btn plus-btn" data-group="adult" onclick="updateCounter('adult', 1)">+</div>
-            </div>
-        </div>
-
-        <div class="age-group">
-            <div class="age-title">Child (Age 0-12)</div>
-            <div class="age-range">Minimum: 0, Maximum: 14</div>
-            <div class="counter">
-                <div class="counter-btn minus-btn" data-group="child" onclick="updateCounter('child', -1)">-</div>
-                <div class="counter-value" id="child-count">0</div>
-                <div class="counter-btn plus-btn" data-group="child" onclick="updateCounter('child', 1)">+</div>
-            </div>
-        </div>
-
-        <button class="apply-btn" onclick="applyTravelerSelection()">Apply</button>
-    </div>
-</div>
 
 <!-- Divider -->
 <div class="divider"></div>
