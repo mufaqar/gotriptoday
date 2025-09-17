@@ -1,4 +1,4 @@
-<div class="trip-box wow fadeInUp position-relative" data-wow-delay="400ms" data-wow-duration="1000ms">
+<div class="trip-box bg-white wow fadeInUp position-relative" data-wow-delay="400ms" data-wow-duration="1000ms">
     <ul class="list-unstyled d-flex justify-content-between gap-2 wishlist">
          <li>
         <?php 

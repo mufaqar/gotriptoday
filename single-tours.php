@@ -1,21 +1,20 @@
-<?php get_header(); 
+<?php get_header();
 $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
 $tour_comments = get_tour_comments(get_the_ID());
 $review_count = count($tour_comments);
-
+$tour_overview = get_post_meta($post->ID, "tour_overview", true);
 $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
 ?>
 <div class="tour-details-section">
     <div class="divider"></div>
     <div class="container">
         <div class="divider-sm"></div>
-        <div class="d-lg-flex d-none">
-            <?php get_template_part('partials/tours/banner'); ?>
-        </div>
+        <?php if (!wp_is_mobile()): ?>
+            <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
+        <?php endif; ?>
         <div class="divider-xs"></div>
         <div class="row g-5">
             <div class="col-12 col-lg-8">
-
                 <div class="d-flex flex-row gap-4 align-items-start">
                     <!-- Vertical Thumbs -->
                     <div class="swiper destination-thumbs col-lg-2 col-3 d-lg-flex d-none">
@@ -29,16 +28,15 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                                 foreach ($image_ids as $image_id) {
                                     $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                     if ($thumb_url) { ?>
-                            <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                            </div>
-                            <?php }
+                                        <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
+                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                                        </div>
+                                    <?php }
                                 }
                             } ?>
                         </div>
 
                     </div>
-
                     <!-- Main Slider -->
                     <div class="swiper destination-details-wrapper col-lg-10 col-12 position-relative">
                         <ul class="list-unstyled d-flex gap-2 wishlist">
@@ -68,10 +66,10 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                                 foreach ($image_ids as $image_id) {
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
-                            <div class="swiper-slide">
-                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
-                            </div>
-                            <?php }
+                                        <div class="swiper-slide">
+                                            <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                                        </div>
+                                    <?php }
                                 }
                             } ?>
                         </div>
@@ -79,11 +77,14 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                         <button class="destination-details-button-next"><i class="icon-arrow-right"></i></button>
                     </div>
                 </div>
-                <div class="d-lg-none d-flex mt-5">
-                    <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count));  ?>
-                </div>
+                <?php if (wp_is_mobile()): ?>
+                    <div class="mt-5">
+                        <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="meta_info">
-                    <ul class="list-unstyled d-flex flex-lg-row flex-row align-items-center gap-lg-5 gap-3">
+                    <ul class="list-unstyled d-flex flex-lg-row flex-row align-items-center gap-lg-5 gap-1">
                         <li class="d-flex align-items-center gap-1">
                             <i class='icon ti ti-clock'></i> 5 h 30 m
                         </li>
@@ -95,65 +96,64 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                         </li>
                     </ul>
                 </div>
-                <div class="col-12 col-lg-4 d-lg-none d-flex">
-                    <div class="d-flex flex-column gap-5 mt-5">
-                        <?php  if (  wp_is_mobile() ) { get_template_part('partials/tours/sidebar'); } ?>
+                <?php if (wp_is_mobile()): ?>
+                    <div class="col-12 col-lg-4">
+                        <div class="d-flex flex-column gap-5 mt-5">
+                            <?php get_template_part('partials/tours/sidebar'); ?>
+                        </div>
                     </div>
-                </div>
-                <div class="d-lg-block d-none w-100">
-                    <?php   if ( ! wp_is_mobile() ) {
-                          get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments,'review_count' => $review_count));  
-                        } 
-                        ?>
-                </div>
-
-
-
+                <?php endif; ?>
+                <!-- Tour reviews -->
+                <?php if (!wp_is_mobile()) {
+                    get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count));
+                }
+                ?>
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <div class="tour_overview">
                         <h2 class="pb-3">Overview</h2>
-                        <?php echo get_post_meta($post->ID, "tour_overview", true); ?>
+                        <div class="overview-content" style="max-height: 120px; overflow: hidden;">
+                            <?php echo wp_kses_post($tour_overview); ?>
+                        </div>
+
+                        <?php if (!empty($tour_overview)): ?>
+                            <button class="btn btn-link p-0 mt-2 read-more-btn">Read More</button>
+                        <?php endif; ?>
                     </div>
-                    <?php 
-
-                    if ( wp_is_mobile() ) {
-                            get_template_part('partials/tours/itinerary', null , array('trip_itinerary' => $trip_itinerary ));
-                        } 
-
+                    <?php
+                    if (wp_is_mobile()) {
+                        get_template_part('partials/tours/itinerary', null, array('trip_itinerary' => $trip_itinerary));
+                    }
                     ?>
-
-
-
                 </div>
                 <div class="tour_included">
                     <h2 class="pb-3">What's Included</h2>
                     <div class="d-flex flex-lg-row flex-column gap-2 align-items-start">
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2">
-                                <?php                              
-                                    $included = get_post_meta($post->ID, "included", true);
-                                    if (!empty($included) && is_array($included)) {
-                                        foreach ($included as $feature => $is_included) {
-                                            if ($is_included && $is_included !== 'false') {
-                                                echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-check text-black'></i> $feature</li>";
-                                            }
+                                <?php
+                                $included = get_post_meta($post->ID, "included", true);
+                                if (!empty($included) && is_array($included)) {
+                                    foreach ($included as $feature => $is_included) {
+                                        if ($is_included && $is_included !== 'false') {
+                                            echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-check text-black'></i> $feature</li>";
                                         }
                                     }
+                                }
                                 ?>
                             </ul>
                         </div>
                         <div>
                             <ul class="list-unstyled d-flex flex-column gap-2 ">
-                                <?php                              
-                                    $not_included = get_post_meta($post->ID, "not_included", true);
-                                    if (!empty($not_included) && is_array($not_included)) {
-                                        foreach ($not_included as $nofeature => $is_not_included) {
-                                            if ($is_not_included && $is_not_included !== 'false') {
-                                                echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-x text-black'></i> $nofeature</li>";
-                                            }
+                                <?php
+                                $not_included = get_post_meta($post->ID, "not_included", true);
+                                if (!empty($not_included) && is_array($not_included)) {
+                                    foreach ($not_included as $nofeature => $is_not_included) {
+                                        if ($is_not_included && $is_not_included !== 'false') {
+                                            echo "<li class='d-flex gap-2 align-items-center'><i class='ti ti-x text-black'></i> $nofeature</li>";
                                         }
                                     }
+                                }
                                 ?>
                             </ul>
                         </div>
@@ -200,20 +200,16 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-                <div class="d-flex flex-column gap-5 sticky-sidebar">
-                    <?php   if ( ! wp_is_mobile() ) {
-                          get_template_part('partials/tours/sidebar'); 
-                        } 
-                        ?>
-                </div>
+                <?php if (!wp_is_mobile()): ?>
+                    <div class="d-flex flex-column gap-5 sticky-sidebar">
+                        <?php get_template_part('partials/tours/sidebar'); ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Divider -->
-<div class="divider"></div>
 <!-- Tour_additional Popup -->
 <div id="tour_additional_popup" class="pop_up_wrapper">
     <div class="cancellation_pop_up ">
@@ -226,7 +222,6 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
             </button>
         </div>
         <div class="pb-5">
-
             <?php echo get_post_meta($post->ID, "additional_info", true); ?>
         </div>
     </div>
@@ -355,9 +350,9 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
     <!-- Divider -->
     <div class="container">
         <div class="row g-4">
-            <div class="d-lg-none d-block w-100">
-                <?php get_template_part('partials/tours/reviews'); ?>
-            </div>
+            <?php if (wp_is_mobile()): ?>
+                <?php get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count)); ?>
+            <?php endif; ?>
             <div class="tour_overview">
                 <h2 class="pb-3">Related Tours</h2>
             </div>
@@ -394,49 +389,67 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
 
 
 <script>
-// Traveler selection functionality
+    // Traveler selection functionality
 
-// Open popup by ID
-function openPopup(id) {
-    document.getElementById(id).classList.add('active');
-}
-
-// Close popup by ID
-function closePopup(id) {
-    document.getElementById(id).classList.remove('active');
-}
-
-// Close when clicking outside popup
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('pop_up_wrapper')) {
-        e.target.classList.remove('active');
+    // Open popup by ID
+    function openPopup(id) {
+        document.getElementById(id).classList.add('active');
     }
-});
 
-document.querySelectorAll('.wishlist_btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
+    // Close popup by ID
+    function closePopup(id) {
+        document.getElementById(id).classList.remove('active');
+    }
 
-        // Close other open dropdowns (optional)
-        document.querySelectorAll('.share_links').forEach(menu => {
-            if (menu !== this.nextElementSibling) {
-                menu.classList.remove('active');
-            }
-        });
-
-        // Toggle this dropdown
-        const dropdown = this.nextElementSibling;
-        dropdown.classList.toggle('active');
+    // Close when clicking outside popup
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('pop_up_wrapper')) {
+            e.target.classList.remove('active');
+        }
     });
-});
 
-// Close when clicking outside
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.wishlist li')) {
-        document.querySelectorAll('.share_links').forEach(menu => {
-            menu.classList.remove('active');
+    document.querySelectorAll('.wishlist_btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Close other open dropdowns (optional)
+            document.querySelectorAll('.share_links').forEach(menu => {
+                if (menu !== this.nextElementSibling) {
+                    menu.classList.remove('active');
+                }
+            });
+
+            // Toggle this dropdown
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('active');
         });
-    }
-});
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.wishlist li')) {
+            document.querySelectorAll('.share_links').forEach(menu => {
+                menu.classList.remove('active');
+            });
+        }
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.querySelector(".read-more-btn");
+        const content = document.querySelector(".overview-content");
+        let expanded = false;
+
+        btn.addEventListener("click", function () {
+            if (expanded) {
+                content.style.maxHeight = "120px";
+                btn.textContent = "Read More";
+            } else {
+                content.style.maxHeight = "none";
+                btn.textContent = "Read Less";
+            }
+            expanded = !expanded;
+        });
+    });
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>
