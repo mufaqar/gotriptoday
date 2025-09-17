@@ -39,7 +39,7 @@ $review_count = isset($args['review_count']) ? $args['review_count'] : 0;
         <?php endif ?>
         <?php if (wp_is_mobile()): ?>
             <ul class="list-unstyled mb-3 d-flex flex-row gap-2 align-items-center text-black review_list"
-                style="font-size:14px; font-weight: 500;">
+                style="font-size:13px; font-weight: 500;">
                 <li class="d-flex flex-lg-row flex-column align-items-center">
                     <span class="d-inline-flex d-lg-none text-decoration-underline"><?php echo $review_count ?></span>
                     <span class="d-flex">
