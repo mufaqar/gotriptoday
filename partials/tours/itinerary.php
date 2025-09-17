@@ -1,12 +1,7 @@
-<?php $args = isset($args) ? $args : array();
-$trip_itinerary = isset($args['trip_itinerary']) ? $args['trip_itinerary'] : 0;
-
-?>
-
 <div class="tour_itinerary d-lg-block d-none">
     <h2 class="pb-3">Trip Itinerary</h2>
 
-    <?php $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
+    <?php $trip_itinerary = $args['trip_itinerary'] ?? ''; 
     ?>
     <div>
         <?php

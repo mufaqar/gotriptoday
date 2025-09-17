@@ -101,15 +101,30 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                     </div>
                 </div>
                 <div class="d-lg-block d-none w-100">
-                    <?php get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments,'review_count' => $review_count));  ?>
+                    <?php   if ( ! wp_is_mobile() ) {
+                          get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments,'review_count' => $review_count));  
+                        } 
+                        ?>
                 </div>
+
+
+
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <div class="tour_overview">
                         <h2 class="pb-3">Overview</h2>
                         <?php echo get_post_meta($post->ID, "tour_overview", true); ?>
                     </div>
-                    <?php get_template_part('partials/tours/tour_itinerary', null , array('trip_itinerary' => $trip_itinerary )); ?>
+                    <?php 
+
+                    if ( wp_is_mobile() ) {
+                            get_template_part('partials/tours/itinerary', null , array('trip_itinerary' => $trip_itinerary ));
+                        } 
+
+                    ?>
+
+
+
                 </div>
                 <div class="tour_included">
                     <h2 class="pb-3">What's Included</h2>
