@@ -431,3 +431,8 @@ function calculate_final_price($base_price, $premium_upgrade, $baby_seat, $toddl
     return $final_price;
 }
 
+
+// Hide admin bar for non-admins
+add_filter('show_admin_bar', function($show) {
+    return current_user_can('manage_options') ? $show : false;
+});
