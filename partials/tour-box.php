@@ -1,4 +1,5 @@
-<?php $review_count = $args['review_count'] ?? ''; ?>
+<?php  $review_count = isset($args['review_count']) ? $args['review_count'] : 0;
+?>
 <div class="trip-box bg-white wow fadeInUp position-relative" data-wow-delay="400ms" data-wow-duration="1000ms">
     <ul class="list-unstyled d-flex justify-content-between gap-2 wishlist">
          <li>

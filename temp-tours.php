@@ -83,8 +83,10 @@ get_header();
                         if ($tours_query->have_posts()):
                             while ($tours_query->have_posts()):
                                 $tours_query->the_post();
+                                $tour_comments = get_tour_comments(get_the_ID());
+                                $review_count = count($tour_comments);
                                 echo '<div class="col-12 col-lg-3">';
-                                get_template_part('partials/tour', 'box');
+                                get_template_part('partials/tour', 'box',array('review_count' => $review_count  )  );
                                 echo '</div>';
                             endwhile;
                             wp_reset_postdata();
