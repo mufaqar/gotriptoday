@@ -1,6 +1,10 @@
 <?php $args = isset($args) ? $args : array();
 $tour_comments = isset($args['tour_comments']) ? $args['tour_comments'] : array();
-$review_count = isset($args['review_count']) ? $args['review_count'] : 0; ?>
+$review_count = isset($args['review_count']) ? $args['review_count'] : 0; 
+// Limit to 2 comments only
+$tour_comments = array_slice($tour_comments, 0, 2);
+?>
+
 
 <div class="tour_reviews">
     <div class="d-flex flex-lg-row flex-column justify-content-between">

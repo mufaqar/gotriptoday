@@ -328,6 +328,9 @@
   .meta_info ul li {
     font-size: 12px !important;
   }
+  .meta_info ul li i {
+  font-size: 20px!important;
+}
 }
 
 /*Plugin Setting*/
@@ -1450,12 +1453,12 @@ strong {
 }
 
 /* End Single Tour*/
-.review_list li {
+.tour-details-header .review_list li {
   border-right: 1px solid rgba(118, 118, 118, 0.849);
   padding-right: 8px;
 }
 
-.review_list li:last-child {
+.tour-details-header .review_list li:last-child {
   border-right: none;
 }
 

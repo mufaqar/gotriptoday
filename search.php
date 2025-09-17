@@ -29,5 +29,6 @@
             </div>
         </div>
     </div>
+    <div class="divider"></div>
 </section>
 <?php get_footer(); ?>
