@@ -375,7 +375,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                             while ($tours_query->have_posts()):
                                 $tours_query->the_post();
                                 echo '<div class="col-12 col-lg-6">';
-                                get_template_part('partials/tour', 'card');
+                                get_template_part('partials/tour', 'box');
                                 echo '</div>';
                             endwhile;
                             wp_reset_postdata();
