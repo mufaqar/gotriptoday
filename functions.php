@@ -375,8 +375,7 @@ function process_booking_form() {
             $order->add_order_note($order_notes);
             
             // Calculate totals
-            $order->calculate_totals();
-            
+            $order->calculate_totals();            
             // Also save as order meta for easy access
             $order->update_meta_data('_booking_tour_id', $tour_id);
             $order->update_meta_data('_booking_tour_date', $tour_date);
