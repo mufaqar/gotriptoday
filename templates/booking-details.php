@@ -25,7 +25,7 @@ $total_persons = $tour_adults + $tour_child;
 $datetime_value = '';
 if ($tour_date && $tour_time) {
     $formatted_time = sprintf("%02d:00", intval($tour_time));
-    $datetime_value = $tour_date . 'T' . $formatted_time;
+    $datetime_value = $tour_date . ' ' . $formatted_time;
 }
 
 // Define hidden product ID for bookings
@@ -71,13 +71,13 @@ $booking_product_id = 26324 ;
                             <h5 class="mb-3">Booking details</h5>
                             <div class="row g-3">
                                 <!-- Pax -->
-                                <div class="col-md-6">
+                                <div class="col-md-6 d-none">
                                     <label class="form-label">Number of Passengers (1–14)</label>
                                     <input type="number" name="pax" min="1" max="14" value="<?php echo $total_persons?>" class="form-control" required>
                                 </div>
 
                                 <!-- Pickup date & time -->
-                                <div class="col-md-6">
+                                <div class="col-md-6 d-none">
                                     <label class="form-label">Pickup Date & Time</label>
                                     <input type="datetime-local" name="pickup_datetime" class="form-control"   value="<?php echo esc_attr($datetime_value); ?>"  required>
                                 </div>
@@ -89,21 +89,21 @@ $booking_product_id = 26324 ;
                                         class="form-control" required>
                                 </div>
 
-                                <!-- Drop-off address -->
+                             
                                 <div class="col-12">
-                                    <label class="form-label">Drop-off Address (optional if hourly)</label>
+                                    <label class="form-label">Drop-off Address (optional if pre discussed)</label>
                                     <input type="text" name="dropoff_address" placeholder="Enter drop-off location"
                                         class="form-control">
                                 </div>
 
-                                <!-- Trip type -->
-                                <div class="col-md-6">
+                              
+                                <!-- <div class="col-md-6">
                                     <label class="form-label">Trip Type</label>
                                     <select name="trip_type" class="form-select">
                                         <option value="one-way" selected>One-way</option>
                                         <option value="hourly">Hourly</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <!-- Flight / Port / Train info -->
                                 <div class="col-md-6">
@@ -131,7 +131,7 @@ $booking_product_id = 26324 ;
 
                                 <!-- Vehicle Section -->
                                 <div class="mb-4">
-                                    <h5>Vehicle Selection</h5>
+                                    <!-- <h5>Vehicle Selection</h5> -->
                                     <select name="vehicle" id="vehicle" class="form-select" required>
                                         <option value="">Select Vehicle</option>
                                         <option value="sedan">Sedan (1–3 pax)</option>
@@ -268,10 +268,10 @@ $booking_product_id = 26324 ;
                         </div>
 
                         <!-- Step 3: Payment -->
-                        <div class="step p-4 shadow-sm border-0">
+                        <!-- <div class="step p-4 shadow-sm border-0">
                             <h5 class="mb-3">Payment details</h5>
 
-                            <!-- WooCommerce Payment Methods -->
+                          
                             <div class="mb-4">
                                 <label class="form-label">Pay with</label>
                                 <?php 
@@ -306,7 +306,7 @@ $booking_product_id = 26324 ;
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
                                
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                   
                 </div>
@@ -322,8 +322,8 @@ $booking_product_id = 26324 ;
                         <?php endif; ?>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Date:</span>
-                                <span><?php echo esc_html($tour_date); ?></span>
+                                <span>Pickup Date & Time:</span>
+                                <span><?php echo esc_attr($datetime_value); ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Adults:</span>

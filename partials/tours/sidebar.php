@@ -1,4 +1,4 @@
- <div id="tour_booking" class="sidebar-widget">
+<div id="tour_booking" class="sidebar-widget">
      <?php $tour_price = get_discounted_price($post->ID, false);
      $discounted_price = get_discounted_price($post->ID, false);     
      ?>
@@ -29,19 +29,33 @@
              <div class="col-12 gap-2 py-2 tour_times">
                  <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
                  <?php             
-                        $start_time = '09:00 AM';
+                        $start_time = '09:30 AM';
                         $end_time = '05:00 PM';
                         $interval = 30; 
                         $time_slots = generateTimeSlots($start_time, $end_time, $interval);
                      ?>
                  <select name="tour_time" id="tour_time" class="py-2 bg-transparent" required>
-                     <option value="" selected disabled>Select Time</option>
+                     <option value="09:00 AM" selected >09:00 AM</option>
                      <?php foreach ($time_slots as $index => $time): ?>
                      <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
                      <?php endforeach; ?>
                  </select>
              </div>
          </div>
+         
+         <!-- Car Type Display Section -->
+         <div class="col-12 mt-3">
+             <div class="car-type-info p-3 rounded" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
+                 <h6 class="mb-2"><i class="ti ti-car"></i> Vehicle Selection</h6>
+                 <div id="car-type-display">
+                     <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
+                     <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
+                     <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
+                     <p class="mb-0 small">🚘 Car Type: Sedan</p>
+                 </div>
+             </div>
+         </div>
+         
          <div class="col-12">
              <div class="tour-booking-summary py-2">
                  <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
@@ -55,7 +69,7 @@
                      </li>
                      <li class="pt-2 border-top">
                          <span><strong>Total:</strong></span>
-                         <span id="total_price"><strong>€<?php echo $tour_price; ?></strong></span>
+                         <span id="total_price"><strong>€<?php echo $tour_price * 3; ?></strong></span>
                      </li>
                  </ul>
              </div>
@@ -205,6 +219,9 @@ function applyTravelerSelection() {
         helperEl.textContent = `Price = 3-passenger base + (${totalTravelers - 3}) additional passenger${(totalTravelers - 3) > 1 ? 's' : ''}.`;
     }
 
+    // Update car type display
+    updateCarTypeDisplay(totalTravelers);
+
     // Prices
     updateTotalPrice();
 
@@ -212,17 +229,94 @@ function applyTravelerSelection() {
     closeTravelerModal();
 }
 
+function updateCarTypeDisplay(totalTravelers) {
+    const carTypeDisplay = document.getElementById('car-type-display');
+    let carTypeHTML = '';
+    
+    if (totalTravelers <= 3) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
+            <p class="mb-0 small">🚘 Car Type: Sedan</p>
+        `;
+    } else if (totalTravelers === 4) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>MPV (4 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 4 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 3 large + 3 small</p>
+            <p class="mb-0 small">🚘 Car Type: MPV</p>
+        `;
+    } else if (totalTravelers >= 5 && totalTravelers <= 7) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 5–7 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 6 large + 6 small</p>
+            <p class="mb-0 small">🚐 Car Type: Van</p>
+        `;
+    } else if (totalTravelers >= 8 && totalTravelers <= 10) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 7–10 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 8–10 large + 8–10 small</p>
+            <p class="mb-0 small">🚘 + 🚐 Car Type: 1 Sedan + 1 Van</p>
+        `;
+    } else if (totalTravelers >= 11 && totalTravelers <= 14) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 10–14 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 12–14 large + 12–14 small</p>
+            <p class="mb-0 small">🚐 + 🚐 Car Type: 2 Vans / 1 Sprinter</p>
+        `;
+    }
+    
+    carTypeDisplay.innerHTML = carTypeHTML;
+}
+
 function updateTotalPrice() {
     const selectedPassengers = adultCount + childCount;
-    const billablePassengers = Math.max(3, selectedPassengers);
+    let billablePassengers;
+
+    // Determine pricing based on car type
+    if (selectedPassengers <= 3) {
+        billablePassengers = 3; // Sedan base
+    } else if (selectedPassengers === 4) {
+        billablePassengers = 4; // MPV
+    } else if (selectedPassengers >= 5 && selectedPassengers <= 7) {
+        billablePassengers = 5; // Van base
+    } else if (selectedPassengers >= 8 && selectedPassengers <= 10) {
+        billablePassengers = 8; // Sedan + Van
+    } else if (selectedPassengers >= 11 && selectedPassengers <= 14) {
+        billablePassengers = 10; // Two Vans / Sprinter
+    }
+
+    // 🔹 Total is always based on billablePassengers
     const totalPrice = billablePassengers * tourPrice;
 
+    let adultBillable = 0;
+    let childBillable = 0;
+
+    // Special case: if total ≤ 3, ALL base passengers count as adults
+    if (selectedPassengers <= 3) {
+        adultBillable = billablePassengers; 
+        childBillable = 0;
+    } else {
+        // Distribute proportionally when more than 3 passengers
+        adultBillable = Math.round((adultCount / selectedPassengers) * billablePassengers);
+        childBillable = billablePassengers - adultBillable;
+    }
+
+    const adultPrice = adultBillable * tourPrice;
+    const childPrice = childBillable * tourPrice;
+
     // Breakdown display
-    document.getElementById('price-per-adult').textContent = '€' + (adultCount * tourPrice).toFixed(2);
+    document.getElementById('summary-adult-count').textContent = adultBillable;
+    document.getElementById('price-per-adult').textContent = '€' + adultPrice.toFixed(2);
 
     if (childCount > 0) {
         document.getElementById('child-price-item').style.display = 'flex';
-        document.getElementById('price-per-child').textContent = '€' + (childCount * tourPrice).toFixed(2);
+        document.getElementById('summary-child-count').textContent = childBillable;
+        document.getElementById('price-per-child').textContent = '€' + childPrice.toFixed(2);
     } else {
         document.getElementById('child-price-item').style.display = 'none';
     }
@@ -231,6 +325,7 @@ function updateTotalPrice() {
     document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
     document.getElementById('tour_price').value = totalPrice.toFixed(2);
 }
+
 
 // Close modal when clicking outside
 document.getElementById('traveler-modal').addEventListener('click', function(e) {
