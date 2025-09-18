@@ -261,7 +261,9 @@ $booking_product_id = 26324 ;
 
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
-                                <button type="button" class="btn btn-success next">Continue to Payment</button>
+                                 <button type="submit" class="btn btn-success" id="woocommerce-pay-button">
+                                    Pay €<?php echo number_format($tour_price, 2); ?>
+                                </button>
                             </div>
                         </div>
 
@@ -302,9 +304,7 @@ $booking_product_id = 26324 ;
 
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
-                                <button type="submit" class="btn btn-success" id="woocommerce-pay-button">
-                                    Pay €<?php echo number_format($tour_price, 2); ?>
-                                </button>
+                               
                             </div>
                         </div>
                     </form>
