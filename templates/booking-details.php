@@ -3,12 +3,12 @@
 get_header();
 
 // Initialize variables
-$tour_id       = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
-$tour_price    = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
-$tour_adults   = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
-$tour_child    = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
-$tour_date     = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
-$tour_time     = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
+$tour_id = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
+$tour_price = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
+$tour_adults = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
+$tour_child = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
+$tour_date = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
+$tour_time = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
 
 $totalTravelers = $tour_adults + $tour_child;
 
@@ -22,10 +22,10 @@ if ($tour_id > 0) {
 }
 
 
- $tour_price = get_discounted_price($tour_id, false);
- $discounted_price = get_discounted_price($tour_id, false);     
+$tour_price = get_discounted_price($tour_id, false);
+$discounted_price = get_discounted_price($tour_id, false);
 
-   
+
 
 $total_persons = $tour_adults + $tour_child;
 
@@ -37,13 +37,13 @@ if ($tour_date && $tour_time) {
 }
 
 // Define hidden product ID for bookings
-$booking_product_id = 26324 ; 
+$booking_product_id = 26324;
 
 $vehicles = [
-    "Sedan (1–3 Persons)"         => ["price" => 150, "px" => 3,  "capacity" => "1–3", "icon" => "🚘", "luggage" => "2 large + 2 small"],
-    "MPV (4 Persons)"             => ["price" => 200, "px" => 4,  "capacity" => "4", "icon" => "🚙", "luggage" => "3 large + 3 small"],
-    "Van (5–7 Persons)"           => ["price" => 250, "px" => 5,  "capacity" => "5–7", "icon" => "🚐", "luggage" => "6 large + 6 small"],
-    "Sedan + Van (7–10 Persons)"  => ["price" => 400, "px" => 7,  "capacity" => "7–10", "icon" => "🚘 + 🚐", "luggage" => "10 large + 10 small"],
+    "Sedan (1–3 Persons)" => ["price" => 150, "px" => 3, "capacity" => "1–3", "icon" => "🚘", "luggage" => "2 large + 2 small"],
+    "MPV (4 Persons)" => ["price" => 200, "px" => 4, "capacity" => "4", "icon" => "🚙", "luggage" => "3 large + 3 small"],
+    "Van (5–7 Persons)" => ["price" => 250, "px" => 5, "capacity" => "5–7", "icon" => "🚐", "luggage" => "6 large + 6 small"],
+    "Sedan + Van (7–10 Persons)" => ["price" => 400, "px" => 7, "capacity" => "7–10", "icon" => "🚘 + 🚐", "luggage" => "10 large + 10 small"],
     "Two Vans / Sprinter (11–14)" => ["price" => 500, "px" => 11, "capacity" => "11–14", "icon" => "🚐 + 🚐", "luggage" => "14 large + 14 small"],
 ];
 // Determine vehicle based on travelers
@@ -62,7 +62,7 @@ if ($totalTravelers <= 3) {
 
 
 
-$updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
+$updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
 
 ?>
 <div class="divider-sm"></div>
@@ -105,11 +105,11 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
                             <h5 class="mb-3">Booking details</h5>
                             <div class="row g-3">
 
-                              
+
 
                                 <div class="col-md-6 d-none">
                                     <label class="form-label">Number of Passengers (1–14)</label>
-                                    <input type="number" name="pax" min="1" max="14" value="<?php echo $total_persons?>"
+                                    <input type="number" name="pax" min="1" max="14" value="<?php echo $total_persons ?>"
                                         class="form-control" required>
                                 </div>
 
@@ -136,49 +136,50 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
 
                                 <!-- Child Seat Selection -->
                                 <?php if ($tour_child > 0): ?>
-                                <div class="col-12">
-                                    <div class="card border-0  mt-4">
-                                        <div class="card-header bg-light">
-                                            <h6 class="mb-0">Child Seat Requirements</h6>
-                                        </div>
-                                        <div class="child-body">
-                                            <?php for ($i = 1; $i <= $tour_child; $i++): ?>
-                                            <div class="child-seat-selection mb-3 p-3 border-bottom">
-
-                                                <input type="hidden" name="child_seat_type[]"
-                                                    id="child_seat_<?php echo $i; ?>" value="">
-                                                <button type="button" class="btn btn-outline-success select-seat-btn"
-                                                    data-child="<?php echo $i; ?>" data-bs-toggle="modal"
-                                                    data-bs-target="#childSeatModal">
-                                                    Select Child Seat Type <?php echo $i; ?>
-                                                </button>
-                                                <span class="badge text-dark ms-2 text-h2"
-                                                    id="child_seat_label_<?php echo $i; ?>">Not selected</span>
+                                    <div class="col-12">
+                                        <div class="mt-4">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">Child Seat Requirements</h6>
                                             </div>
-                                            <?php endfor; ?>
+                                            <div class="child-body pt-3">
+                                                <?php for ($i = 1; $i <= $tour_child; $i++): ?>
+                                                    <div class="child-seat-selection mb-3 p-3 border-bottom bg-white">
+
+                                                        <input type="hidden" name="child_seat_type[]"
+                                                            id="child_seat_<?php echo $i; ?>" value="">
+                                                        <button type="button" class="btn btn-outline-success select-seat-btn"
+                                                            data-child="<?php echo $i; ?>" data-bs-toggle="modal"
+                                                            data-bs-target="#childSeatModal">
+                                                            Select Child Seat Type <?php echo $i; ?>
+                                                        </button>
+                                                        <p class="badge text-black ms-2 small"
+                                                            id="child_seat_label_<?php echo $i; ?>">Not selected</p>
+                                                    </div>
+                                                <?php endfor; ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endif; ?>
 
-                                
-                                <div class="row" id="vehicleOptions">
-                                         <h6 class="mb-0">Vehicle Type</h6>
+
+                                <div class="mt-4" id="vehicleOptions">
+                                    <h6 class="mb-0">Vehicle Type</h6>
                                     <?php foreach ($vehicles as $name => $details): ?>
-                                    <div class="mt-3 mb-3">
-                                        <div class="card d-flex flex-lg-row  p-3 vehicle-option <?php echo ($name === $highlightVehicle) ? 'active border-primary bg-light' : 'border'; ?>"
-                                            data-px="<?php echo esc_attr($details['px']); ?>"
-                                            data-name="<?php echo esc_attr($name); ?>">
-                                            <h5 class="mb-1"><?php echo $details['icon']; ?>
-                                                <?php echo esc_html($name); ?></h5>
-                                            <p class="mb-1 small">👤 Capacity: <?php echo $details['capacity']; ?>
-                                                persons</p>
-                                            <p class="mb-1 small">💰 Luggage: <?php echo $details['luggage']; ?></p>
-                                            <?php if ($name === $highlightVehicle): ?>
-                                            <span class="badge bg-primary">Selected</span>
-                                            <?php endif; ?>
+                                        <div class="mt-3 mb-3">
+                                            <div class="card d-flex flex-lg-row gap-2 justify-content-between align-items-center p-3 vehicle-option <?php echo ($name === $highlightVehicle) ? 'active border-success bg-light' : 'border'; ?>"
+                                                data-px="<?php echo esc_attr($details['px']); ?>"
+                                                data-name="<?php echo esc_attr($name); ?>">
+                                                <h6 class="mb-1"><?php echo $details['icon']; ?>
+                                                    <?php echo esc_html($name); ?>
+                                                </h6>
+                                                <p class="mb-0 small ">👤 Capacity: <?php echo $details['capacity']; ?>
+                                                    persons</p>
+                                                <p class="mb-0 small ">💰 Luggage: <?php echo $details['luggage']; ?></p>
+                                                <?php if ($name === $highlightVehicle): ?>
+                                                    <span class="badge bg-success">Selected</span>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
-                                    </div>
                                     <?php endforeach; ?>
                                 </div>
 
@@ -286,7 +287,7 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
                                 <!-- Price Box -->
                                 <div class="mb-4 p-3 border rounded bg-light">
                                     <h5>Total Price</h5>
-                                    <p class="mb-0"><strong id="grand_total">€<?php echo $tour_price?></strong></p>
+                                    <p class="mb-0"><strong id="grand_total">€<?php echo $tour_price ?></strong></p>
                                 </div>
 
                             </div>
@@ -308,8 +309,8 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
                     <div class="card-body">
                         <h3 class="card-title mb-3"><?php echo esc_html($tour_title); ?></h3>
                         <?php if ($tour_image): ?>
-                        <img src="<?php echo esc_url($tour_image); ?>" class="img-fluid rounded mb-3 w-100"
-                            alt="<?php echo esc_attr($tour_title); ?>">
+                            <img src="<?php echo esc_url($tour_image); ?>" class="img-fluid rounded mb-3 w-100"
+                                alt="<?php echo esc_attr($tour_title); ?>">
                         <?php endif; ?>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
@@ -325,9 +326,9 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
                                 <span><?php echo esc_html($tour_child); ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between fw-bold">
-                                <span>Total Price: </span>                               
-                               <span> €<span id="totalPrice"> <?php echo $updated_total_price ?></span></span>
-                              
+                                <span>Total Price: </span>
+                                <span> €<span id="totalPrice"> <?php echo $updated_total_price ?></span></span>
+
                             </li>
                         </ul>
                         <div class="icon footer_pickup">
@@ -380,234 +381,234 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
 <?php get_footer(); ?>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const steps = document.querySelectorAll(".step");
-    const stepperItems = document.querySelectorAll(".stepper-item");
-    let currentStep = 0;
+    document.addEventListener('DOMContentLoaded', function () {
+        const steps = document.querySelectorAll(".step");
+        const stepperItems = document.querySelectorAll(".stepper-item");
+        let currentStep = 0;
 
-    function showStep(step) {
-        steps.forEach((s, i) => s.classList.toggle("active", i === step));
+        function showStep(step) {
+            steps.forEach((s, i) => s.classList.toggle("active", i === step));
 
-        stepperItems.forEach((item, i) => {
-            item.classList.remove("active", "completed");
-            if (i < step) {
-                item.classList.add("completed");
-            } else if (i === step) {
-                item.classList.add("active");
-            }
-        });
-    }
-
-    function validateStep(stepIndex) {
-        let valid = true;
-        const inputs = steps[stepIndex].querySelectorAll("input, select, textarea");
-
-        inputs.forEach(input => {
-            if (!input.checkValidity()) {
-                valid = false;
-                input.classList.add("is-invalid");
-            } else {
-                input.classList.remove("is-invalid");
-            }
-        });
-
-        return valid;
-    }
-
-    document.querySelectorAll(".next").forEach(btn => {
-        btn.addEventListener("click", () => {
-            if (validateStep(currentStep)) {
-                if (currentStep < steps.length - 1) {
-                    currentStep++;
-                    showStep(currentStep);
+            stepperItems.forEach((item, i) => {
+                item.classList.remove("active", "completed");
+                if (i < step) {
+                    item.classList.add("completed");
+                } else if (i === step) {
+                    item.classList.add("active");
                 }
-            }
-        });
-    });
+            });
+        }
 
-    document.querySelectorAll(".prev").forEach(btn => {
-        btn.addEventListener("click", () => {
-            if (currentStep > 0) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        });
-    });
+        function validateStep(stepIndex) {
+            let valid = true;
+            const inputs = steps[stepIndex].querySelectorAll("input, select, textarea");
 
-    // Initialize first step
-    showStep(currentStep);
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    valid = false;
+                    input.classList.add("is-invalid");
+                } else {
+                    input.classList.remove("is-invalid");
+                }
+            });
 
+            return valid;
+        }
 
-});
-
-// Bootstrap validation + toggle for invoice and premium
-(function() {
-    'use strict';
-    const form = document.querySelector('#step2Form');
-    const needInvoice = document.querySelector('#need_invoice');
-    const invoiceFields = document.querySelector('#invoiceFields');
-
-    const premiumWrapper = document.querySelector('#premiumWrapper');
-
-    // Invoice toggle
-    if (needInvoice) {
-        needInvoice.addEventListener('change', function() {
-            invoiceFields.style.display = this.checked ? 'block' : 'none';
-            document.querySelectorAll('#invoiceFields input').forEach(input => {
-                input.required = this.checked && input.name !== "vat_id";
+        document.querySelectorAll(".next").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (validateStep(currentStep)) {
+                    if (currentStep < steps.length - 1) {
+                        currentStep++;
+                        showStep(currentStep);
+                    }
+                }
             });
         });
-    }
+
+        document.querySelectorAll(".prev").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        // Initialize first step
+        showStep(currentStep);
 
 
+    });
 
-    // Bootstrap validation
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    }
-})();
+    // Bootstrap validation + toggle for invoice and premium
+    (function () {
+        'use strict';
+        const form = document.querySelector('#step2Form');
+        const needInvoice = document.querySelector('#need_invoice');
+        const invoiceFields = document.querySelector('#invoiceFields');
 
+        const premiumWrapper = document.querySelector('#premiumWrapper');
 
-// Price calculation with detailed breakdown
-function calculateTotalPrice() {
-    let basePrice = <?php echo $tour_price; ?>;
-    let totalPrice = basePrice;
-    // Update display
-    document.getElementById('grand_total').textContent = '€' + totalPrice.toFixed(2);
-    // Update payment button text
-    const payButton = document.getElementById('woocommerce-pay-button');
-    if (payButton) {
-        payButton.textContent = 'Pay €' + totalPrice.toFixed(2);
-    }
-
-    // Update breakdown display (if you have one)
-    const breakdownElement = document.getElementById('price-breakdown');
-    if (breakdownElement) {
-        if (breakdown.length > 0) {
-            breakdownElement.innerHTML = '<strong>Price Breakdown:</strong><br>' + breakdown.join('<br>') +
-                '<br><strong>Total: €' + totalPrice.toFixed(2) + '</strong>';
-        } else {
-            breakdownElement.innerHTML = '';
+        // Invoice toggle
+        if (needInvoice) {
+            needInvoice.addEventListener('change', function () {
+                invoiceFields.style.display = this.checked ? 'block' : 'none';
+                document.querySelectorAll('#invoiceFields input').forEach(input => {
+                    input.required = this.checked && input.name !== "vat_id";
+                });
+            });
         }
+
+
+
+        // Bootstrap validation
+        if (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        }
+    })();
+
+
+    // Price calculation with detailed breakdown
+    function calculateTotalPrice() {
+        let basePrice = <?php echo $tour_price; ?>;
+        let totalPrice = basePrice;
+        // Update display
+        document.getElementById('grand_total').textContent = '€' + totalPrice.toFixed(2);
+        // Update payment button text
+        const payButton = document.getElementById('woocommerce-pay-button');
+        if (payButton) {
+            payButton.textContent = 'Pay €' + totalPrice.toFixed(2);
+        }
+
+        // Update breakdown display (if you have one)
+        const breakdownElement = document.getElementById('price-breakdown');
+        if (breakdownElement) {
+            if (breakdown.length > 0) {
+                breakdownElement.innerHTML = '<strong>Price Breakdown:</strong><br>' + breakdown.join('<br>') +
+                    '<br><strong>Total: €' + totalPrice.toFixed(2) + '</strong>';
+            } else {
+                breakdownElement.innerHTML = '';
+            }
+        }
+
+        return totalPrice;
     }
 
-    return totalPrice;
-}
 
 
+    // Initial calculation
+    calculateTotalPrice();
 
-// Initial calculation
-calculateTotalPrice();
 
+    document.addEventListener("DOMContentLoaded", function () {
+        let currentChild = null;
+        // When "Select Child Seat" button is clicked
+        document.querySelectorAll(".select-seat-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                currentChild = this.getAttribute("data-child");
+            });
+        });
 
-document.addEventListener("DOMContentLoaded", function() {
-    let currentChild = null;
-    // When "Select Child Seat" button is clicked
-    document.querySelectorAll(".select-seat-btn").forEach(btn => {
-        btn.addEventListener("click", function() {
-            currentChild = this.getAttribute("data-child");
+        // Handle seat option click inside modal
+        document.querySelectorAll(".seat-option").forEach(option => {
+            option.addEventListener("click", function () {
+                if (currentChild) {
+                    const seatValue = this.getAttribute("data-value");
+                    const seatLabel = this.querySelector("small").textContent;
+
+                    // Set hidden input value
+                    document.getElementById("child_seat_" + currentChild).value = seatValue;
+
+                    // Update label next to button
+                    document.getElementById("child_seat_label_" + currentChild).textContent =
+                        seatLabel;
+
+                    // Close modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById(
+                        "childSeatModal"));
+                    modal.hide();
+                }
+            });
         });
     });
 
-    // Handle seat option click inside modal
-    document.querySelectorAll(".seat-option").forEach(option => {
-        option.addEventListener("click", function() {
-            if (currentChild) {
-                const seatValue = this.getAttribute("data-value");
-                const seatLabel = this.querySelector("small").textContent;
 
-                // Set hidden input value
-                document.getElementById("child_seat_" + currentChild).value = seatValue;
+    document.addEventListener("DOMContentLoaded", function () {
+        let totalTravelers = <?php echo intval($total_persons); ?>;
+        let carTypeDisplay = document.getElementById("carTypeDisplay");
+        let carTypeHTML = "";
 
-                // Update label next to button
-                document.getElementById("child_seat_label_" + currentChild).textContent =
-                    seatLabel;
-
-                // Close modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById(
-                    "childSeatModal"));
-                modal.hide();
-            }
-        });
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    let totalTravelers = <?php echo intval($total_persons); ?>;
-    let carTypeDisplay = document.getElementById("carTypeDisplay");
-    let carTypeHTML = "";
-
-    if (totalTravelers <= 3) {
-        carTypeHTML = `
+        if (totalTravelers <= 3) {
+            carTypeHTML = `
             <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
             <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
             <p class="mb-0 small">🚘 Car Type: Sedan</p>
         `;
-    } else if (totalTravelers === 4) {
-        carTypeHTML = `
+        } else if (totalTravelers === 4) {
+            carTypeHTML = `
             <p class="mb-1"><strong>MPV (4 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 4 persons</p>
             <p class="mb-1 small">🧳 Luggage: 3 large + 3 small</p>
             <p class="mb-0 small">🚘 Car Type: MPV</p>
         `;
-    } else if (totalTravelers >= 5 && totalTravelers <= 7) {
-        carTypeHTML = `
+        } else if (totalTravelers >= 5 && totalTravelers <= 7) {
+            carTypeHTML = `
             <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 5–7 persons</p>
             <p class="mb-1 small">🧳 Luggage: 6 large + 6 small</p>
             <p class="mb-0 small">🚐 Car Type: Van</p>
         `;
-    } else if (totalTravelers >= 8 && totalTravelers <= 10) {
-        carTypeHTML = `
+        } else if (totalTravelers >= 8 && totalTravelers <= 10) {
+            carTypeHTML = `
             <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 7–10 persons</p>
             <p class="mb-1 small">🧳 Luggage: 8–10 large + 8–10 small</p>
             <p class="mb-0 small">🚘 + 🚐 Car Type: 1 Sedan + 1 Van</p>
         `;
-    } else if (totalTravelers >= 11 && totalTravelers <= 14) {
-        carTypeHTML = `
+        } else if (totalTravelers >= 11 && totalTravelers <= 14) {
+            carTypeHTML = `
             <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 10–14 persons</p>
             <p class="mb-1 small">🧳 Luggage: 12–14 large + 12–14 small</p>
             <p class="mb-0 small">🚐 + 🚐 Car Type: 2 Vans / 1 Sprinter</p>
         `;
-    }
+        }
 
-    carTypeDisplay.innerHTML = carTypeHTML;
-});
+        carTypeDisplay.innerHTML = carTypeHTML;
+    });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const vehicleOptions = document.querySelectorAll(".vehicle-option");
-    const totalPriceEl = document.getElementById("totalPrice");
+    document.addEventListener("DOMContentLoaded", function () {
+        const vehicleOptions = document.querySelectorAll(".vehicle-option");
+        const totalPriceEl = document.getElementById("totalPrice");
 
-    vehicleOptions.forEach(option => {
-        option.addEventListener("click", function() {
-            // Remove active class from all
-            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-primary",
-                "bg-light"));
-            vehicleOptions.forEach(opt => {
-                const badge = opt.querySelector(".badge");
-                if (badge) badge.remove();
+        vehicleOptions.forEach(option => {
+            option.addEventListener("click", function () {
+                // Remove active class from all
+                vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success",
+                    "bg-light"));
+                vehicleOptions.forEach(opt => {
+                    const badge = opt.querySelector(".badge");
+                    if (badge) badge.remove();
+                });
+
+                // Add active class to selected
+                this.classList.add("active", "border-success", "bg-light");
+                this.insertAdjacentHTML("beforeend",
+                    '<span class="badge bg-success">Selected</span>');
+
+                // Update total price
+                const px = this.getAttribute("data-px");
+                totalPriceEl.textContent = px * <?php echo $discounted_price; ?>;
             });
-
-            // Add active class to selected
-            this.classList.add("active", "border-primary", "bg-light");
-            this.insertAdjacentHTML("beforeend",
-                '<span class="badge bg-primary">Selected</span>');
-
-            // Update total price
-            const px = this.getAttribute("data-px");
-            totalPriceEl.textContent = px*<?php echo $discounted_price; ?>;
         });
     });
-});
 </script>
