@@ -2,64 +2,59 @@
 /* Template Name: Booking Details */
 get_header();
 
-// Initialize variables
-$tour_id = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
-$tour_price = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
-$tour_adults = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
-$tour_child = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
-$tour_date = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
-$tour_time = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
+    // Initialize variables
+    $tour_id = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
+    $tour_price = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
+    $tour_adults = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
+    $tour_child = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
+    $tour_date = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
+    $tour_time = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
 
-$totalTravelers = $tour_adults + $tour_child;
+    $totalTravelers = $tour_adults + $tour_child;
 
-// Get tour details if valid tour ID
-if ($tour_id > 0) {
-    $tour = get_post($tour_id);
-    if ($tour && $tour->post_type === 'tours') {
-        $tour_title = esc_html($tour->post_title);
-        $tour_image = get_the_post_thumbnail_url($tour_id, 'medium');
+    // Get tour details if valid tour ID
+    if ($tour_id > 0) {
+        $tour = get_post($tour_id);
+        if ($tour && $tour->post_type === 'tours') {
+            $tour_title = esc_html($tour->post_title);
+            $tour_image = get_the_post_thumbnail_url($tour_id, 'medium');
+        }
     }
-}
 
+    $tour_price = get_discounted_price($tour_id, false);
+    $discounted_price = get_discounted_price($tour_id, false);
+    $total_persons = $tour_adults + $tour_child;
+    // Format datetime-local value
+    $datetime_value = '';
+    if ($tour_date && $tour_time) {
+        $formatted_time = sprintf("%02d:00", intval($tour_time));
+        $datetime_value = $tour_date . ' ' . $formatted_time;
+    }
 
-$tour_price = get_discounted_price($tour_id, false);
-$discounted_price = get_discounted_price($tour_id, false);
-$total_persons = $tour_adults + $tour_child;
-// Format datetime-local value
-$datetime_value = '';
-if ($tour_date && $tour_time) {
-    $formatted_time = sprintf("%02d:00", intval($tour_time));
-    $datetime_value = $tour_date . ' ' . $formatted_time;
-}
+    // Define hidden product ID for bookings
+    $booking_product_id = 26324;
 
-// Define hidden product ID for bookings
-$booking_product_id = 26324;
-
-$vehicles = [
-    "Sedan (1–3 Persons)" => ["price" => 150, "px" => 3, "capacity" => "1–3", "icon" => "🚘", "luggage" => "2 large + 2 small"],
-    "MPV (4 Persons)" => ["price" => 200, "px" => 4, "capacity" => "4", "icon" => "🚙", "luggage" => "3 large + 3 small"],
-    "Van (5–7 Persons)" => ["price" => 250, "px" => 5, "capacity" => "5–7", "icon" => "🚐", "luggage" => "6 large + 6 small"],
-    "Sedan + Van (7–10 Persons)" => ["price" => 400, "px" => 7, "capacity" => "7–10", "icon" => "🚘 + 🚐", "luggage" => "10 large + 10 small"],
-    "Two Vans / Sprinter (11–14)" => ["price" => 500, "px" => 11, "capacity" => "11–14", "icon" => "🚐 + 🚐", "luggage" => "14 large + 14 small"],
-];
-// Determine vehicle based on travelers
-$highlightVehicle = '';
-if ($totalTravelers <= 3) {
-    $highlightVehicle = "Sedan (1–3 Persons)";
-} elseif ($totalTravelers == 4) {
-    $highlightVehicle = "MPV (4 Persons)";
-} elseif ($totalTravelers >= 5 && $totalTravelers <= 7) {
-    $highlightVehicle = "Van (5–7 Persons)";
-} elseif ($totalTravelers >= 8 && $totalTravelers <= 10) {
-    $highlightVehicle = "Sedan + Van (7–10 Persons)";
-} elseif ($totalTravelers >= 11 && $totalTravelers <= 14) {
-    $highlightVehicle = "Two Vans / Sprinter (10–14)";
-}
-
-
-
-$updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
-
+    $vehicles = [
+        "Sedan (1–3 Persons)" => ["price" => 150, "px" => 3, "capacity" => "1–3", "icon" => "🚘", "luggage" => "2 large + 2 small"],
+        "MPV (4 Persons)" => ["price" => 200, "px" => 4, "capacity" => "4", "icon" => "🚙", "luggage" => "3 large + 3 small"],
+        "Van (5–7 Persons)" => ["price" => 250, "px" => 5, "capacity" => "5–7", "icon" => "🚐", "luggage" => "6 large + 6 small"],
+        "Sedan + Van (7–10 Persons)" => ["price" => 400, "px" => 7, "capacity" => "7–10", "icon" => "🚘 + 🚐", "luggage" => "10 large + 10 small"],
+        "Two Vans / Sprinter (11–14)" => ["price" => 500, "px" => 11, "capacity" => "11–14", "icon" => "🚐 + 🚐", "luggage" => "14 large + 14 small"],
+    ];
+    // Determine vehicle based on travelers
+    $highlightVehicle = '';
+    if ($totalTravelers <= 3) {
+        $highlightVehicle = "Sedan (1–3 Persons)";
+    } elseif ($totalTravelers == 4) {
+        $highlightVehicle = "MPV (4 Persons)";
+    } elseif ($totalTravelers >= 5 && $totalTravelers <= 7) {
+        $highlightVehicle = "Van (5–7 Persons)";
+    } elseif ($totalTravelers >= 8 && $totalTravelers <= 10) {
+        $highlightVehicle = "Sedan + Van (7–10 Persons)";
+    } elseif ($totalTravelers >= 11 && $totalTravelers <= 14) {
+        $highlightVehicle = "Two Vans / Sprinter (10–14)";
+    }
+    $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
 ?>
 <div class="divider-sm"></div>
 <div class="booking_details">
@@ -75,9 +70,10 @@ $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
                         <input type="hidden" name="tour_adults" value="<?php echo esc_attr($tour_adults); ?>">
                         <input type="hidden" name="tour_child" value="<?php echo esc_attr($tour_child); ?>">
                         <input type="hidden" name="tour_price" value="<?php echo esc_attr($tour_price); ?>">
-                        <input type="hidden" name="booking_product_id" value="<?php echo esc_attr($booking_product_id); ?>">
+                        <input type="hidden" name="booking_product_id"
+                            value="<?php echo esc_attr($booking_product_id); ?>">
                         <input type="hidden" name="action" value="process_booking">
-                        <input type="hidden" name="pax"  value="<?php echo $total_persons ?>">
+                        <input type="hidden" name="pax" value="<?php echo $total_persons ?>">
                         <input type="hidden" name="pickup_datetime" value="<?php echo esc_attr($datetime_value); ?>">
                         <!-- Step Indicators -->
                         <div class="stepper-wrapper mb-5">
@@ -98,7 +94,7 @@ $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
                         <!-- Step 1: Contact Info -->
                         <div class="step active p-4 shadow-sm border-0 mb-5">
                             <h5 class="mb-3">Booking details</h5>
-                            <div class="row g-3">   
+                            <div class="row g-3">
                                 <div class="col-12">
                                     <label class="form-label">Pickup Address</label>
                                     <input type="text" name="pickup_address" placeholder="Enter pickup location"
@@ -223,10 +219,8 @@ $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
                                             <label for="company_name" class="form-label">Company Name</label>
                                             <input type="text" class="form-control" id="company_name"
                                                 name="company_name">
-                                            <div class="invalid-feedback">Company name is required if invoice is
-                                                selected.</div>
+                                            <div class="invalid-feedback">Company name is required if invoice is selected.</div>
                                         </div>
-
                                         <div class="mb-3">
                                             <label for="invoice_address" class="form-label">Invoice Address</label>
                                             <input type="text" class="form-control mb-2" id="invoice_street"
@@ -239,7 +233,6 @@ $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
                                                 name="invoice_country" placeholder="Country">
                                             <div class="invalid-feedback">All invoice address fields are required.</div>
                                         </div>
-
                                         <div class="mb-3">
                                             <label for="vat_id" class="form-label">VAT ID (optional)</label>
                                             <input type="text" class="form-control" id="vat_id" name="vat_id">
@@ -256,22 +249,17 @@ $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
                                     </label>
                                     <div class="invalid-feedback">You must agree before continuing.</div>
                                 </div>
-
                                 <!-- Price Box -->
                                 <div class="mb-4 p-3 border rounded bg-light">
                                     <h5>Total Price</h5>
-                                     <span> €<span class="totalPrice"> <?php echo $updated_total_price ?></span></span>
+                                    <span> €<span class="totalPrice"> <?php echo $updated_total_price ?></span></span>
                                 </div>
-
                             </div>
-
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
-                               
-
                                 <button type="submit" class="btn btn-success" id="woocommerce-pay-button">
-    Pay €<span class="totalPrice"><?php echo $updated_total_price; ?></span>
-</button>
+                                    Pay €<span class="totalPrice"><?php echo $updated_total_price; ?></span>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -454,11 +442,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function calculateTotalPrice() {
     const selectedVehicle = document.querySelector('.vehicle-option.active');
     if (!selectedVehicle) return;
-    
+
     const px = parseInt(selectedVehicle.getAttribute("data-px"));
     const discountedPrice = <?php echo $discounted_price; ?>;
     const totalPrice = px * discountedPrice;
-    
+
     // Update ALL elements with the totalPrice class
     const totalPriceElements = document.querySelectorAll(".totalPrice");
     totalPriceElements.forEach(el => {
@@ -482,7 +470,8 @@ document.addEventListener("DOMContentLoaded", function() {
     vehicleOptions.forEach(option => {
         option.addEventListener("click", function() {
             // Remove active class from all
-            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success", "bg-light"));
+            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success",
+                "bg-light"));
             vehicleOptions.forEach(opt => {
                 const badge = opt.querySelector(".badge");
                 if (badge) badge.remove();
@@ -490,7 +479,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Add active class to selected
             this.classList.add("active", "border-success", "bg-light");
-            this.insertAdjacentHTML("beforeend", '<span class="badge bg-success">Selected</span>');
+            this.insertAdjacentHTML("beforeend",
+                '<span class="badge bg-success">Selected</span>');
 
             // Update prices
             calculateTotalPrice();
@@ -590,7 +580,8 @@ document.addEventListener("DOMContentLoaded", function() {
     vehicleOptions.forEach(option => {
         option.addEventListener("click", function() {
             // Remove active class from all
-            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success", "bg-light"));
+            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success",
+                "bg-light"));
             vehicleOptions.forEach(opt => {
                 const badge = opt.querySelector(".badge");
                 if (badge) badge.remove();
@@ -598,7 +589,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Add active class to selected
             this.classList.add("active", "border-success", "bg-light");
-            this.insertAdjacentHTML("beforeend", '<span class="badge bg-success">Selected</span>');
+            this.insertAdjacentHTML("beforeend",
+                '<span class="badge bg-success">Selected</span>');
 
             // Update prices
             calculateTotalPrice();
