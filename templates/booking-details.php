@@ -163,8 +163,9 @@ $updated_total_price =  $vehicles[$highlightVehicle]['px']*$discounted_price ;
 
                                 
                                 <div class="row" id="vehicleOptions">
+                                         <h6 class="mb-0">Vehicle Type</h6>
                                     <?php foreach ($vehicles as $name => $details): ?>
-                                    <div class="col-12 mb-3">
+                                    <div class="mt-3 mb-3">
                                         <div class="card d-flex flex-lg-row  p-3 vehicle-option <?php echo ($name === $highlightVehicle) ? 'active border-primary bg-light' : 'border'; ?>"
                                             data-px="<?php echo esc_attr($details['px']); ?>"
                                             data-name="<?php echo esc_attr($name); ?>">
