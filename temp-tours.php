@@ -23,7 +23,7 @@ get_header();
                                 </svg>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="name" class="form-control" placeholder="Explore Tour"
+                                <input type="text" id="name" class="form-control" placeholder="Explore from"
                                     value="<?php echo get_search_query(); ?>" name="s">
                                 <input type="hidden" name="post_type" value="tours" />
                             </div>
