@@ -46,7 +46,7 @@
          <!-- Car Type Display Section -->
          <div class="col-12 mt-3">
              <div class="car-type-info p-3 rounded" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
-                 <h6 class="mb-2"><i class="ti ti-car"></i> Vehicle Selection</h6>
+                 <h6 class="mb-2"><i class="ti ti-car"></i> Vehicle Info</h6>
                  <div id="car-type-display">
                      <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
                      <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
