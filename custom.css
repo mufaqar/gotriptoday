@@ -59,11 +59,11 @@
   margin-bottom: 20px !important;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li {
   margin: 0 !important;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li>a {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li > a {
   font-size: 14px !important;
   font-weight: 600 !important;
   text-transform: capitalize !important;
@@ -73,7 +73,7 @@
   position: relative;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li>a::before {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li > a::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -86,7 +86,7 @@
   transition: all ease-in-out 0.3s;
 }
 
-.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active>a::before {
+.go_trip_form .chbs-tab.ui-tabs .ui-tabs-nav > li.ui-tabs-active > a::before {
   border: 5px solid #3cb371;
 }
 
@@ -143,7 +143,7 @@
   color: rgb(255, 255, 255) !important;
 }
 
-.chbs-main .chbs-main-content>div>div:last-child {
+.chbs-main .chbs-main-content > div > div:last-child {
   margin-top: 20px !important;
 }
 
@@ -181,7 +181,13 @@
   margin-right: 12px;
 }
 
-.go_trip_bookingform .chbs-booking-form-id-10007 .chbs-main-navigation-default>ul>li.chbs-state-selected>a>span:first-child {
+.go_trip_bookingform
+  .chbs-booking-form-id-10007
+  .chbs-main-navigation-default
+  > ul
+  > li.chbs-state-selected
+  > a
+  > span:first-child {
   background-color: #3cb371;
 }
 
@@ -193,12 +199,12 @@
   margin-bottom: 20px;
 }
 
-.go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav>li {
+.go_trip_bookingform .chbs-main .chbs-tab.ui-tabs .ui-tabs-nav > li {
   width: 50% !important;
   border-radius: 50px !important;
 }
 
-.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav>li a {
+.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav > li a {
   background-color: transparent !important;
   border: none !important;
   border-radius: 50px !important;
@@ -206,16 +212,25 @@
   font-weight: 700 !important;
 }
 
-.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active>a {
+.go_trip_bookingform .chbs-tab.ui-tabs .ui-tabs-nav > li.ui-tabs-active > a {
   background-color: #3cb371 !important;
   border-color: #3cb371 !important;
 }
 
-.go_trip_bookingform .chbs-booking-form-id-10007 .chbs-tab.ui-tabs .ui-tabs-nav>li.ui-tabs-active+li>a {
+.go_trip_bookingform
+  .chbs-booking-form-id-10007
+  .chbs-tab.ui-tabs
+  .ui-tabs-nav
+  > li.ui-tabs-active
+  + li
+  > a {
   border: none !important;
 }
 
-.go_trip_bookingform .chbs-booking-form-id-10007 .chbs-tab.ui-tabs .ui-tabs-panel {
+.go_trip_bookingform
+  .chbs-booking-form-id-10007
+  .chbs-tab.ui-tabs
+  .ui-tabs-panel {
   border: none !important;
 }
 
@@ -236,7 +251,7 @@
   border: none;
 }
 
-.go_trip_bookingform .chbs-main .chbs-form-field>label {
+.go_trip_bookingform .chbs-main .chbs-form-field > label {
   color: #161920;
   font-size: 14px;
   font-weight: 600;
@@ -303,7 +318,11 @@
     padding-bottom: 15px !important;
   }
 
-  .go_trip_form .chbs-main.chbs-widget.chbs-widget-style-4 .chbs-main-content-step-1>div+div {
+  .go_trip_form
+    .chbs-main.chbs-widget.chbs-widget-style-4
+    .chbs-main-content-step-1
+    > div
+    + div {
     text-align: left !important;
   }
 
@@ -329,8 +348,8 @@
     font-size: 12px !important;
   }
   .meta_info ul li i {
-  font-size: 20px!important;
-}
+    font-size: 20px !important;
+  }
 }
 
 /*Plugin Setting*/
@@ -379,11 +398,15 @@
 
 .go_trip_Customform .jet-form-builder__field.jet-form-builder-repeater,
 .go_trip_Customform .jet-form-builder-repeater__row,
-.go_trip_Customform .jet-form-builder-repeater__row-fields .jet-form-builder-row {
+.go_trip_Customform
+  .jet-form-builder-repeater__row-fields
+  .jet-form-builder-row {
   padding: 0;
 }
 
-.go_trip_Customform .jet-form-builder-repeater__row-fields :where(.wp-block-columns) {
+.go_trip_Customform
+  .jet-form-builder-repeater__row-fields
+  :where(.wp-block-columns) {
   margin-bottom: 0;
 }
 
@@ -1467,4 +1490,8 @@ strong {
   font-weight: 700;
   line-height: 1.3;
   font-size: 1.25rem;
+}
+
+.seat-option {
+  cursor: pointer;
 }

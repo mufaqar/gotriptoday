@@ -8,7 +8,7 @@ get_header();
     <div class="container">
         <div class="divider-sm"></div>
         <div class="search_banner tour_banner mt-5">
-            <h2>Day Trips</h2>
+            <h2>Explore around, wherever you are, in one day.</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""
                     action="<?php echo esc_url(home_url('/')); ?>">
@@ -23,7 +23,7 @@ get_header();
                                 </svg>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="name" class="form-control" placeholder="Search Tour"
+                                <input type="text" id="name" class="form-control" placeholder="Explore Tour"
                                     value="<?php echo get_search_query(); ?>" name="s">
                                 <input type="hidden" name="post_type" value="tours" />
                             </div>
