@@ -56,7 +56,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                             </li>
                             <li>
                                 <button class="wishlist_btn" id="add-to-wishlist" data-tour-id="<?php the_ID(); ?>">
-                                    <i class='icon ti ti-heart'></i> Add to Wishlist
+                                    <i class='icon ti ti-heart'></i>
                                 </button>
                             </li>
                         </ul>
