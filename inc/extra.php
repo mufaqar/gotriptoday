@@ -184,23 +184,14 @@ function get_discounted_price($post_id, $formatted = true) {
  * Remove WooCommerce My Account menu items
  */
 add_filter( 'woocommerce_account_menu_items', 'mufaqar_remove_my_account_links', 999 );
-function mufaqar_remove_my_account_links( $menu_links ) {
-    
+function mufaqar_remove_my_account_links( $menu_links ) {    
     // Remove Dashboard
     unset( $menu_links['dashboard'] );
-
-    // Remove Downloads
     unset( $menu_links['downloads'] );
-
-    // Remove Addresses
     unset( $menu_links['edit-address'] );
-
-
-    // Change "Orders" to "Day Trip Orders"
     if ( isset( $menu_links['orders'] ) ) {
         $menu_links['orders'] = __( 'Day Trip Orders', 'textdomain' );
     }
-
     return $menu_links;
 }
 
