@@ -103,11 +103,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                     </div>
                 </div>
                 <?php endif; ?>
-                <!-- Tour reviews -->
-                <?php if (!wp_is_mobile()) {
-                    get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count));
-                }
-                ?>
+
                 <!-- Tour Details Content -->
                 <div class="tour-details-content">
                     <div class="tour_overview">
@@ -203,7 +199,14 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                             Contact Support
                         </button>
                     </div>
+
+
                 </div>
+                <!-- Tour reviews -->
+                <?php if (!wp_is_mobile()) {
+                        get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count));
+                    }
+                ?>
             </div>
             <div class="col-12 col-lg-4">
                 <?php if (!wp_is_mobile()): ?>

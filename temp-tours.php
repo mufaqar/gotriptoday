@@ -1,6 +1,5 @@
 <?php
 /*Template Name: Tours*/
-
 get_header();
 ?>
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
@@ -41,33 +40,10 @@ get_header();
 
 <!-- Tour List Section -->
 <section class="tour-list-section">
+       <div class="divider-sm"></div>
     <!-- Divider -->
     <div class="container">
-        <div class="row mb-4 mt-4">
-            <div class="filter_bar d-flex align-items-center justify-content-between flex-wrap gap-2 p-3 rounded">
-
-                <!-- Category Pills -->
-                <div class="d-flex flex-wrap gap-2">
-
-
-                    <?php
-                        $terms = get_terms([
-                            'taxonomy'   => 'toour-properties',
-                            'hide_empty' => true, // Hide empty categories
-                        ]);
-
-                        if (!empty($terms) && !is_wp_error($terms)) :
-                            foreach ($terms as $term) :  ?>
-                    <button class="btn rounded-pill px-3 btn-outline-dark tour-filter-button"
-                        value="<?php echo esc_attr($term->term_id); ?>">
-                        <?php echo esc_html($term->name); ?> [<?php echo intval($term->count); ?>]
-                    </button>
-                    <?php endforeach;
-                        endif;
-                        ?>
-                </div>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="col-12 col-md-12">
                 <div class="tour-list-content">
