@@ -10,7 +10,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
     <div class="container">
         <div class="divider-sm"></div>
         <?php if (!wp_is_mobile()): ?>
-            <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
+        <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
         <?php endif; ?>
         <div class="divider-xs"></div>
         <div class="row g-5">
@@ -28,10 +28,10 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                                 foreach ($image_ids as $image_id) {
                                     $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                     if ($thumb_url) { ?>
-                                        <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
-                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
+                                <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
@@ -56,7 +56,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                             </li>
                             <li>
                                 <button class="wishlist_btn" id="add-to-wishlist" data-tour-id="<?php the_ID(); ?>">
-                                    <i class='icon ti ti-heart'></i> Add to Wishlist
+                                    <i class='icon ti ti-heart'></i>
                                 </button>
                             </li>
                         </ul>
@@ -66,10 +66,10 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                                 foreach ($image_ids as $image_id) {
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
-                                        <div class="swiper-slide">
-                                            <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
-                                        </div>
-                                    <?php }
+                            <div class="swiper-slide">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                            </div>
+                            <?php }
                                 }
                             } ?>
                         </div>
@@ -78,9 +78,9 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                     </div>
                 </div>
                 <?php if (wp_is_mobile()): ?>
-                    <div class="mt-5">
-                        <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
-                    </div>
+                <div class="mt-5">
+                    <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
+                </div>
                 <?php endif; ?>
 
                 <div class="meta_info">
@@ -97,11 +97,11 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                     </ul>
                 </div>
                 <?php if (wp_is_mobile()): ?>
-                    <div class="col-12 col-lg-4">
-                        <div class="d-flex flex-column gap-5 mt-5">
-                            <?php get_template_part('partials/tours/sidebar'); ?>
-                        </div>
+                <div class="col-12 col-lg-4">
+                    <div class="d-flex flex-column gap-5 mt-5">
+                        <?php get_template_part('partials/tours/sidebar'); ?>
                     </div>
+                </div>
                 <?php endif; ?>
                 <!-- Tour reviews -->
                 <?php if (!wp_is_mobile()) {
@@ -112,18 +112,24 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                 <div class="tour-details-content">
                     <div class="tour_overview">
                         <h2 class="pb-3">Overview</h2>
-                        <div class="overview-content" style="max-height: 120px; overflow: hidden;">
-                            <?php echo wp_kses_post($tour_overview); ?>
+                        <?php
+                                $overview_text = wp_strip_all_tags($tour_overview); // removes <p>, <br>, etc.
+                                $max_chars     = 150;
+                                $is_long       = mb_strlen($overview_text) > $max_chars;
+                                $short_text    = $is_long ? mb_substr($overview_text, 0, $max_chars) . '...' : $overview_text;
+                                ?>
+                        <div class="overview-content">
+                            <span class="short-text"><?php echo esc_html($short_text); ?></span>
+                            <?php if ($is_long): ?>
+                            <span class="full-text" style="display:none;"><?php echo esc_html($overview_text); ?></span>
+                            <?php endif; ?>
                         </div>
-
-                        <?php if (!empty($tour_overview)): ?>
-                            <button class="btn btn-link p-0 mt-2 read-more-btn">Read More</button>
+                        <?php if ($is_long): ?>
+                        <button class="btn btn-link p-0 mt-2 read-more-btn" type="button">Show All</button>
                         <?php endif; ?>
                     </div>
                     <?php
-                    if (wp_is_mobile()) {
                         get_template_part('partials/tours/itinerary', null, array('trip_itinerary' => $trip_itinerary));
-                    }
                     ?>
                 </div>
                 <div class="tour_included">
@@ -201,9 +207,9 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
             </div>
             <div class="col-12 col-lg-4">
                 <?php if (!wp_is_mobile()): ?>
-                    <div class="d-flex flex-column gap-5 sticky-sidebar">
-                        <?php get_template_part('partials/tours/sidebar'); ?>
-                    </div>
+                <div class="d-flex flex-column gap-5 sticky-sidebar">
+                    <?php get_template_part('partials/tours/sidebar'); ?>
+                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -351,10 +357,11 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
     <div class="container">
         <div class="row g-4">
             <?php if (wp_is_mobile()): ?>
-                <?php get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count)); ?>
+            <?php get_template_part('partials/tours/reviews', null, array('tour_comments' => $tour_comments, 'review_count' => $review_count)); ?>
             <?php endif; ?>
-            <div class="tour_overview">
-                <h2 class="pb-3">Related Tours</h2>
+
+            <div class="">
+                <h2 class="pb-3 pt-lg-5">Related Tours</h2>
             </div>
             <div class="col-12 col-md-8">
                 <div class="tour-list-content">
@@ -368,9 +375,10 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                         $tours_query = new WP_Query($args);
                         if ($tours_query->have_posts()):
                             while ($tours_query->have_posts()):
-                                $tours_query->the_post();
+                                $tours_query->the_post();                               
                                 echo '<div class="col-12 col-lg-6">';
-                                get_template_part('partials/tour', 'box');
+                                get_template_part('partials/tour','box',array('review_count' => $review_count  )
+                                );
                                 echo '</div>';
                             endwhile;
                             wp_reset_postdata();
@@ -389,67 +397,62 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
 
 
 <script>
-    // Traveler selection functionality
+// Traveler selection functionality
 
-    // Open popup by ID
-    function openPopup(id) {
-        document.getElementById(id).classList.add('active');
+// Open popup by ID
+function openPopup(id) {
+    document.getElementById(id).classList.add('active');
+}
+
+// Close popup by ID
+function closePopup(id) {
+    document.getElementById(id).classList.remove('active');
+}
+
+// Close when clicking outside popup
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('pop_up_wrapper')) {
+        e.target.classList.remove('active');
     }
+});
 
-    // Close popup by ID
-    function closePopup(id) {
-        document.getElementById(id).classList.remove('active');
-    }
+document.querySelectorAll('.wishlist_btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    // Close when clicking outside popup
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('pop_up_wrapper')) {
-            e.target.classList.remove('active');
-        }
-    });
-
-    document.querySelectorAll('.wishlist_btn').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Close other open dropdowns (optional)
-            document.querySelectorAll('.share_links').forEach(menu => {
-                if (menu !== this.nextElementSibling) {
-                    menu.classList.remove('active');
-                }
-            });
-
-            // Toggle this dropdown
-            const dropdown = this.nextElementSibling;
-            dropdown.classList.toggle('active');
-        });
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.wishlist li')) {
-            document.querySelectorAll('.share_links').forEach(menu => {
+        // Close other open dropdowns (optional)
+        document.querySelectorAll('.share_links').forEach(menu => {
+            if (menu !== this.nextElementSibling) {
                 menu.classList.remove('active');
-            });
-        }
-    });
-
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const btn = document.querySelector(".read-more-btn");
-        const content = document.querySelector(".overview-content");
-        let expanded = false;
-
-        btn.addEventListener("click", function () {
-            if (expanded) {
-                content.style.maxHeight = "120px";
-                btn.textContent = "Read More";
-            } else {
-                content.style.maxHeight = "none";
-                btn.textContent = "Read Less";
             }
-            expanded = !expanded;
+        });
+
+        // Toggle this dropdown
+        const dropdown = this.nextElementSibling;
+        dropdown.classList.toggle('active');
+    });
+});
+
+// Close when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.wishlist li')) {
+        document.querySelectorAll('.share_links').forEach(menu => {
+            menu.classList.remove('active');
+        });
+    }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".read-more-btn").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            const parent = btn.closest(".tour_overview");
+            parent.querySelector(".short-text").style.display = "none";
+            parent.querySelector(".full-text").style.display = "inline";
+            btn.style.display = "none"; // hide button after expanding
         });
     });
+});
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/sticky.js"></script>

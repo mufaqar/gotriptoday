@@ -8,7 +8,7 @@ get_header();
     <div class="container">
         <div class="divider-sm"></div>
         <div class="search_banner tour_banner mt-5">
-            <h2>Day Trips</h2>
+            <h2>Explore around, wherever you are, in one day.</h2>
             <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms" data-wow-duration="1000ms">
                 <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""
                     action="<?php echo esc_url(home_url('/')); ?>">
@@ -23,7 +23,7 @@ get_header();
                                 </svg>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="name" class="form-control" placeholder="Search Tour"
+                                <input type="text" id="name" class="form-control" placeholder="Explore from"
                                     value="<?php echo get_search_query(); ?>" name="s">
                                 <input type="hidden" name="post_type" value="tours" />
                             </div>
@@ -83,8 +83,10 @@ get_header();
                         if ($tours_query->have_posts()):
                             while ($tours_query->have_posts()):
                                 $tours_query->the_post();
+                                $tour_comments = get_tour_comments(get_the_ID());
+                                $review_count = count($tour_comments);
                                 echo '<div class="col-12 col-lg-3">';
-                                get_template_part('partials/tour', 'box');
+                                get_template_part('partials/tour', 'box',array('review_count' => $review_count  )  );
                                 echo '</div>';
                             endwhile;
                             wp_reset_postdata();

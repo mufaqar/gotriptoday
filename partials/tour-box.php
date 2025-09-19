@@ -1,3 +1,5 @@
+<?php  $review_count = isset($args['review_count']) ? $args['review_count'] : 0;
+?>
 <div class="trip-box bg-white wow fadeInUp position-relative" data-wow-delay="400ms" data-wow-duration="1000ms">
     <ul class="list-unstyled d-flex justify-content-between gap-2 wishlist">
          <li>
@@ -29,7 +31,7 @@
             <span class="text-success">
                 <i class="ti ti-star-filled"></i>
             </span>
-            <span>4.9 (120 reviews)</span>
+            <span>4.9 (<?php echo $review_count ?> reviews)</span>
         </p>
         <h6 class="mb-2 trip-title"> <a href="<?php the_permalink() ?>"><?php the_title() ?></a></h6>
         <div class="trip-meta mb-1">

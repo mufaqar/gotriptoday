@@ -47,14 +47,14 @@ get_header(); ?>
                             type="button" role="tab" aria-controls="tab1" aria-selected="true">Transfer</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="tab-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
-                            role="tab" aria-controls="tab2" aria-selected="false">Day Trip</button>
+                        <button class="tab-link" href="<?php echo home_url('/day-trip'); ?>" type="button"
+                            onclick="redirectToDayTrip()">Day Trip</button>
                     </li>
                 </ul>
                 <div class="tab-content pt-3" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
                         <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
-                             <?php get_template_part('partials/content', 'tab1'); ?>
+                            <?php get_template_part('partials/content', 'tab1'); ?>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
@@ -310,7 +310,9 @@ get_header(); ?>
                 <div class="section-heading">
                     <span class="sub-title text-white">Get in touch</span>
                     <h2 class="mb-4 text-white">Have Questions? We're Listening</h2>
-                    <p class="text-white mb-5">At GoTripToday, we turn journeys into unforgettable experiences. Based in Germany and serving international travelers, we craft seamless and personalized travel adventures worldwide.</p>
+                    <p class="text-white mb-5">At GoTripToday, we turn journeys into unforgettable experiences. Based in
+                        Germany and serving international travelers, we craft seamless and personalized travel
+                        adventures worldwide.</p>
                 </div>
 
                 <form id="contactForm" class="me-lg-5" action="#" method="post">
@@ -469,4 +471,10 @@ jQuery(document).ready(function($) {
         window.location.href = bookingUrl + '?' + $(this).serialize();
     });
 });
+
+function redirectToDayTrip() {
+    const dayTripUrl = "<?php echo home_url('/day-trip'); ?>";
+    window.location.href = dayTripUrl;
+    document.getElementById('tab2-tab').addEventListener('click', redirectToDayTrip);
+}
 </script>

@@ -2,35 +2,59 @@
 /* Template Name: Booking Details */
 get_header();
 
-// Initialize variables
-$tour_id       = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
-$tour_price    = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
-$tour_adults   = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
-$tour_child    = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
-$tour_date     = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
-$tour_time     = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
+    // Initialize variables
+    $tour_id = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
+    $tour_price = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
+    $tour_adults = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
+    $tour_child = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
+    $tour_date = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
+    $tour_time = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
 
-// Get tour details if valid tour ID
-if ($tour_id > 0) {
-    $tour = get_post($tour_id);
-    if ($tour && $tour->post_type === 'tours') {
-        $tour_title = esc_html($tour->post_title);
-        $tour_image = get_the_post_thumbnail_url($tour_id, 'medium');
+    $totalTravelers = $tour_adults + $tour_child;
+
+    // Get tour details if valid tour ID
+    if ($tour_id > 0) {
+        $tour = get_post($tour_id);
+        if ($tour && $tour->post_type === 'tours') {
+            $tour_title = esc_html($tour->post_title);
+            $tour_image = get_the_post_thumbnail_url($tour_id, 'medium');
+        }
     }
-}
 
-$total_persons = $tour_adults + $tour_child;
+    $tour_price = get_discounted_price($tour_id, false);
+    $discounted_price = get_discounted_price($tour_id, false);
+    $total_persons = $tour_adults + $tour_child;
+    // Format datetime-local value
+    $datetime_value = '';
+    if ($tour_date && $tour_time) {
+        $formatted_time = sprintf("%02d:00", intval($tour_time));
+        $datetime_value = $tour_date . ' ' . $formatted_time;
+    }
 
-// Format datetime-local value
-$datetime_value = '';
-if ($tour_date && $tour_time) {
-    $formatted_time = sprintf("%02d:00", intval($tour_time));
-    $datetime_value = $tour_date . 'T' . $formatted_time;
-}
+    // Define hidden product ID for bookings
+    $booking_product_id = 26324;
 
-// Define hidden product ID for bookings
-$booking_product_id = 26324 ; 
-
+    $vehicles = [
+        "Sedan (1–3 Persons)" => ["price" => 150, "px" => 3, "capacity" => "1–3", "icon" => "🚘", "luggage" => "2 large + 2 small"],
+        "MPV (4 Persons)" => ["price" => 200, "px" => 4, "capacity" => "4", "icon" => "🚙", "luggage" => "3 large + 3 small"],
+        "Van (5–7 Persons)" => ["price" => 250, "px" => 5, "capacity" => "5–7", "icon" => "🚐", "luggage" => "6 large + 6 small"],
+        "Sedan + Van (7–10 Persons)" => ["price" => 400, "px" => 7, "capacity" => "7–10", "icon" => "🚘 + 🚐", "luggage" => "10 large + 10 small"],
+        "Two Vans / Sprinter (11–14)" => ["price" => 500, "px" => 11, "capacity" => "11–14", "icon" => "🚐 + 🚐", "luggage" => "14 large + 14 small"],
+    ];
+    // Determine vehicle based on travelers
+    $highlightVehicle = '';
+    if ($totalTravelers <= 3) {
+        $highlightVehicle = "Sedan (1–3 Persons)";
+    } elseif ($totalTravelers == 4) {
+        $highlightVehicle = "MPV (4 Persons)";
+    } elseif ($totalTravelers >= 5 && $totalTravelers <= 7) {
+        $highlightVehicle = "Van (5–7 Persons)";
+    } elseif ($totalTravelers >= 8 && $totalTravelers <= 10) {
+        $highlightVehicle = "Sedan + Van (7–10 Persons)";
+    } elseif ($totalTravelers >= 11 && $totalTravelers <= 14) {
+        $highlightVehicle = "Two Vans / Sprinter (10–14)";
+    }
+    $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
 ?>
 <div class="divider-sm"></div>
 <div class="booking_details">
@@ -39,17 +63,18 @@ $booking_product_id = 26324 ;
         <div class="row g-5">
             <div class="col-12 col-lg-8">
                 <div class="content">
-                  
-                <form id="booking-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
+                    <form id="booking-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
                         <?php wp_nonce_field('booking_nonce', 'booking_nonce_field'); ?>
                         <input type="hidden" name="tour_id" value="<?php echo esc_attr($tour_id); ?>">
                         <input type="hidden" name="tour_date" value="<?php echo esc_attr($tour_date); ?>">
                         <input type="hidden" name="tour_adults" value="<?php echo esc_attr($tour_adults); ?>">
                         <input type="hidden" name="tour_child" value="<?php echo esc_attr($tour_child); ?>">
                         <input type="hidden" name="tour_price" value="<?php echo esc_attr($tour_price); ?>">
-                        <input type="hidden" name="booking_product_id" value="<?php echo esc_attr($booking_product_id); ?>">
+                        <input type="hidden" name="booking_product_id"
+                            value="<?php echo esc_attr($booking_product_id); ?>">
                         <input type="hidden" name="action" value="process_booking">
-
+                        <input type="hidden" name="pax" value="<?php echo $total_persons ?>">
+                        <input type="hidden" name="pickup_datetime" value="<?php echo esc_attr($datetime_value); ?>">
                         <!-- Step Indicators -->
                         <div class="stepper-wrapper mb-5">
                             <div class="stepper-item active">
@@ -70,40 +95,66 @@ $booking_product_id = 26324 ;
                         <div class="step active p-4 shadow-sm border-0 mb-5">
                             <h5 class="mb-3">Booking details</h5>
                             <div class="row g-3">
-                                <!-- Pax -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Number of Passengers (1–14)</label>
-                                    <input type="number" name="pax" min="1" max="14" value="<?php echo $total_persons?>" class="form-control" required>
-                                </div>
-
-                                <!-- Pickup date & time -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Pickup Date & Time</label>
-                                    <input type="datetime-local" name="pickup_datetime" class="form-control"   value="<?php echo esc_attr($datetime_value); ?>"  required>
-                                </div>
-
-                                <!-- Pickup address -->
                                 <div class="col-12">
                                     <label class="form-label">Pickup Address</label>
                                     <input type="text" name="pickup_address" placeholder="Enter pickup location"
                                         class="form-control" required>
                                 </div>
-
-                                <!-- Drop-off address -->
                                 <div class="col-12">
-                                    <label class="form-label">Drop-off Address (optional if hourly)</label>
+                                    <label class="form-label">Drop-off Address (optional if pre discussed)</label>
                                     <input type="text" name="dropoff_address" placeholder="Enter drop-off location"
                                         class="form-control">
                                 </div>
 
-                                <!-- Trip type -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Trip Type</label>
-                                    <select name="trip_type" class="form-select">
-                                        <option value="one-way" selected>One-way</option>
-                                        <option value="hourly">Hourly</option>
-                                    </select>
+                                <!-- Child Seat Selection -->
+                                <?php if ($tour_child > 0): ?>
+                                <div class="col-12">
+                                    <div class="mt-4">
+                                        <div class="card-header bg-light">
+                                            <h6 class="mb-0">Child Seat Requirements</h6>
+                                        </div>
+                                        <div class="child-body pt-3">
+                                            <?php for ($i = 1; $i <= $tour_child; $i++): ?>
+                                            <div class="child-seat-selection mb-3 p-2 rounded border bg-white">
+
+                                                <input type="hidden" name="child_seat_type[]"
+                                                    id="child_seat_<?php echo $i; ?>" value="">
+                                                <button type="button" class="btn btn-outline-success select-seat-btn"
+                                                    data-child="<?php echo $i; ?>" data-bs-toggle="modal"
+                                                    data-bs-target="#childSeatModal">
+                                                    Select Child Seat Type <?php echo $i; ?>
+                                                </button>
+                                                <p class="badge text-black ms-2 small"
+                                                    id="child_seat_label_<?php echo $i; ?>">Not selected</p>
+                                            </div>
+                                            <?php endfor; ?>
+                                        </div>
+                                    </div>
                                 </div>
+                                <?php endif; ?>
+
+
+                                <div class="mt-4" id="vehicleOptions">
+                                    <h6 class="mb-0">Vehicle Type</h6>
+                                    <?php foreach ($vehicles as $name => $details): ?>
+                                    <div class="mt-3 mb-3">
+                                        <div class="card d-flex flex-lg-row gap-2 justify-content-between align-items-center p-3 vehicle-option <?php echo ($name === $highlightVehicle) ? 'active border-success bg-light' : 'border'; ?>"
+                                            data-px="<?php echo esc_attr($details['px']); ?>"
+                                            data-name="<?php echo esc_attr($name); ?>">
+                                            <h6 class="mb-1"><?php echo $details['icon']; ?>
+                                                <?php echo esc_html($name); ?>
+                                            </h6>
+                                            <p class="mb-0 small ">👤 Capacity: <?php echo $details['capacity']; ?>
+                                                persons</p>
+                                            <p class="mb-0 small ">💰 Luggage: <?php echo $details['luggage']; ?></p>
+                                            <?php if ($name === $highlightVehicle): ?>
+                                            <span class="badge bg-success">Selected</span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+
 
                                 <!-- Flight / Port / Train info -->
                                 <div class="col-md-6">
@@ -118,6 +169,7 @@ $booking_product_id = 26324 ;
                                     <textarea name="driver_notes" rows="3" class="form-control"
                                         placeholder="Any special instructions for your driver..."></textarea>
                                 </div>
+
                             </div>
 
                             <div class="mt-4 text-end">
@@ -128,56 +180,6 @@ $booking_product_id = 26324 ;
                         <!-- Step 2: Activity Details -->
                         <div class="step p-4 shadow-sm border-0 mb-5">
                             <div id="step2Form" class="needs-validation" novalidate>
-
-                                <!-- Vehicle Section -->
-                                <div class="mb-4">
-                                    <h5>Vehicle Selection</h5>
-                                    <select name="vehicle" id="vehicle" class="form-select" required>
-                                        <option value="">Select Vehicle</option>
-                                        <option value="sedan">Sedan (1–3 pax)</option>
-                                        <option value="mpv">MPV (1–4 pax)</option>
-                                        <option value="van">Van (1–7 pax)</option>
-                                        <option value="van_sedan">Van + Sedan (1–10 pax)</option>
-                                        <option value="two_vans">Two Vans (1–14 pax)</option>
-                                        <option value="sprinter">Sprinter (1–14 pax)</option>
-                                    </select>
-                                    <div class="invalid-feedback">Please select a vehicle.</div>
-                                </div>
-
-                                <!-- Premium Upgrade (only visible if Sedan is chosen via JS) -->
-                                <div class="form-check mb-4" id="premiumWrapper" style="display:none;">
-                                    <input class="form-check-input" type="checkbox" id="premium_upgrade"
-                                        name="premium_upgrade" value="1">
-                                    <label class="form-check-label" for="premium_upgrade">
-                                        Premium Upgrade (+20%)
-                                    </label>
-                                </div>
-
-                                <!-- Extras Section -->
-                                <div class="mb-4">
-                                    <h5>Extras</h5>
-                                    <label class="form-label">Child Seats</label>
-                                    <div class="row g-2">
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control" name="baby_seat" min="0" max="5"
-                                                value="0" placeholder="Baby Seat (0–3 yrs)">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control" name="toddler_seat" min="0"
-                                                max="5" value="0" placeholder="Toddler Seat (3–6 yrs)">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control" name="booster_seat" min="0"
-                                                max="5" value="0" placeholder="Booster (6+ yrs)">
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-3">
-                                        <label for="extra_hours" class="form-label">Additional Hours</label>
-                                        <input type="number" class="form-control" id="extra_hours" name="extra_hours"
-                                            min="0" max="8" value="0">
-                                    </div>
-                                </div>
 
                                 <!-- Passenger & Invoice Details -->
                                 <div class="mb-4">
@@ -217,10 +219,8 @@ $booking_product_id = 26324 ;
                                             <label for="company_name" class="form-label">Company Name</label>
                                             <input type="text" class="form-control" id="company_name"
                                                 name="company_name">
-                                            <div class="invalid-feedback">Company name is required if invoice is
-                                                selected.</div>
+                                            <div class="invalid-feedback">Company name is required if invoice is selected.</div>
                                         </div>
-
                                         <div class="mb-3">
                                             <label for="invoice_address" class="form-label">Invoice Address</label>
                                             <input type="text" class="form-control mb-2" id="invoice_street"
@@ -233,7 +233,6 @@ $booking_product_id = 26324 ;
                                                 name="invoice_country" placeholder="Country">
                                             <div class="invalid-feedback">All invoice address fields are required.</div>
                                         </div>
-
                                         <div class="mb-3">
                                             <label for="vat_id" class="form-label">VAT ID (optional)</label>
                                             <input type="text" class="form-control" id="vat_id" name="vat_id">
@@ -250,65 +249,21 @@ $booking_product_id = 26324 ;
                                     </label>
                                     <div class="invalid-feedback">You must agree before continuing.</div>
                                 </div>
-
                                 <!-- Price Box -->
                                 <div class="mb-4 p-3 border rounded bg-light">
                                     <h5>Total Price</h5>
-                                    <p class="mb-0"><strong id="grand_total">€<?php echo $tour_price?></strong></p>
+                                    <span> €<span class="totalPrice"> <?php echo $updated_total_price ?></span></span>
                                 </div>
-
                             </div>
-
-                            <div class="mt-4 d-flex justify-content-between">
-                                <button type="button" class="btn btn-secondary prev">Previous</button>
-                                <button type="button" class="btn btn-success next">Continue to Payment</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Payment -->
-                        <div class="step p-4 shadow-sm border-0">
-                            <h5 class="mb-3">Payment details</h5>
-
-                            <!-- WooCommerce Payment Methods -->
-                            <div class="mb-4">
-                                <label class="form-label">Pay with</label>
-                                <?php 
-                                // Get available payment gateways
-                                if (class_exists('WC_Payment_Gateways')) {
-                                    $gateways = WC()->payment_gateways->get_available_payment_gateways();
-                                    
-                                    if ($gateways) {
-                                        $first = true;
-                                        foreach ($gateways as $gateway) {
-                                            echo '<div class="form-check mb-3">';
-                                            echo '<input class="form-check-input" type="radio" name="payment_method" value="' . esc_attr($gateway->id) . '" id="payment-method-' . esc_attr($gateway->id) . '" ' . ($first ? 'checked' : '') . '>';
-                                            echo '<label class="form-check-label fw-semibold" for="payment-method-' . esc_attr($gateway->id) . '">' . esc_html($gateway->get_title()) . '</label>';
-                                            echo '</div>';
-                                            $first = false;
-                                        }
-                                    } else {
-                                        echo '<p class="text-danger">No payment methods available. Please configure payment methods in WooCommerce.</p>';
-                                    }
-                                }
-                                ?>
-                            </div>
-
-                            <div class="text-muted small mb-4">
-                                🔒 You'll be charged €<?php echo number_format($tour_price, 2); ?>.
-                                By clicking <strong>Pay Now</strong>, you agree to our
-                                <a href="#" class="text-decoration-underline">Terms of Use</a> and
-                                <a href="#" class="text-decoration-underline">Privacy Policy</a>.
-                            </div>
-
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
                                 <button type="submit" class="btn btn-success" id="woocommerce-pay-button">
-                                    Pay €<?php echo number_format($tour_price, 2); ?>
+                                    Pay €<span class="totalPrice"><?php echo $updated_total_price; ?></span>
                                 </button>
                             </div>
                         </div>
                     </form>
-                  
+
                 </div>
             </div>
 
@@ -322,8 +277,8 @@ $booking_product_id = 26324 ;
                         <?php endif; ?>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Date:</span>
-                                <span><?php echo esc_html($tour_date); ?></span>
+                                <span>Pickup Date & Time:</span>
+                                <span><?php echo esc_attr($datetime_value); ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Adults:</span>
@@ -334,8 +289,9 @@ $booking_product_id = 26324 ;
                                 <span><?php echo esc_html($tour_child); ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between fw-bold">
-                                <span>Total:</span>
-                                <span>€<?php echo number_format($tour_price, 2); ?></span>
+                                <span>Total Price: </span>
+                                <span> €<span class="totalPrice"> <?php echo $updated_total_price ?></span></span>
+
                             </li>
                         </ul>
                         <div class="icon footer_pickup">
@@ -351,6 +307,40 @@ $booking_product_id = 26324 ;
     <div class="divider-sm"></div>
 </div>
 
+<!-- Child Seat Modal -->
+<div class="modal fade" id="childSeatModal" tabindex="-1" aria-labelledby="childSeatModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title" id="childSeatModalLabel">Select Child Seat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-3">Select your child's age and weight at the time of travel:</p>
+                <ul class="list-group seat-options">
+                    <li class="list-group-item seat-option curser-pointer" data-value="rear_facing">
+                        <strong>Rear-facing infant seat</strong><br>
+                        <small>0–1 year, 0–26 lbs (0–12 kg)</small>
+                    </li>
+                    <li class="list-group-item seat-option" data-value="forward_facing">
+                        <strong>Forward-facing w/harness</strong><br>
+                        <small>1–4 years, 18–36 lbs (8–16 kg)</small>
+                    </li>
+                    <li class="list-group-item seat-option" data-value="booster_high_back">
+                        <strong>Booster seat with high back</strong><br>
+                        <small>4–6 years, 30–50 lbs (14–23 kg)</small>
+                    </li>
+                    <li class="list-group-item seat-option" data-value="backless_booster">
+                        <strong>Backless booster</strong><br>
+                        <small>6–12 years, 44–72 lbs (20–32 kg)</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <?php get_footer(); ?>
 
 <script>
@@ -360,25 +350,41 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 0;
 
     function showStep(step) {
-        // Show the correct step content
         steps.forEach((s, i) => s.classList.toggle("active", i === step));
 
-        // Update stepper status
         stepperItems.forEach((item, i) => {
             item.classList.remove("active", "completed");
             if (i < step) {
-                item.classList.add("completed"); // previous steps
+                item.classList.add("completed");
             } else if (i === step) {
-                item.classList.add("active"); // current step
+                item.classList.add("active");
             }
         });
     }
 
+    function validateStep(stepIndex) {
+        let valid = true;
+        const inputs = steps[stepIndex].querySelectorAll("input, select, textarea");
+
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                valid = false;
+                input.classList.add("is-invalid");
+            } else {
+                input.classList.remove("is-invalid");
+            }
+        });
+
+        return valid;
+    }
+
     document.querySelectorAll(".next").forEach(btn => {
         btn.addEventListener("click", () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
+            if (validateStep(currentStep)) {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
             }
         });
     });
@@ -394,115 +400,201 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize first step
     showStep(currentStep);
+
+
 });
 
 // Bootstrap validation + toggle for invoice and premium
-(function () {
-  'use strict';
-  const form = document.querySelector('#step2Form');
-  const needInvoice = document.querySelector('#need_invoice');
-  const invoiceFields = document.querySelector('#invoiceFields');
-  const vehicleSelect = document.querySelector('#vehicle');
-  const premiumWrapper = document.querySelector('#premiumWrapper');
+(function() {
+    'use strict';
+    const form = document.querySelector('#step2Form');
+    const needInvoice = document.querySelector('#need_invoice');
+    const invoiceFields = document.querySelector('#invoiceFields');
 
-  // Invoice toggle
-  if (needInvoice) {
-    needInvoice.addEventListener('change', function() {
-      invoiceFields.style.display = this.checked ? 'block' : 'none';
-      document.querySelectorAll('#invoiceFields input').forEach(input => {
-        input.required = this.checked && input.name !== "vat_id";
-      });
-    });
-  }
+    const premiumWrapper = document.querySelector('#premiumWrapper');
 
-  // Premium toggle (only if Sedan selected)
-  if (vehicleSelect) {
-    vehicleSelect.addEventListener('change', function() {
-      if (this.value === 'sedan') {
-        premiumWrapper.style.display = 'block';
-      } else {
-        premiumWrapper.style.display = 'none';
-        document.querySelector('#premium_upgrade').checked = false;
-      }
-    });
-  }
+    // Invoice toggle
+    if (needInvoice) {
+        needInvoice.addEventListener('change', function() {
+            invoiceFields.style.display = this.checked ? 'block' : 'none';
+            document.querySelectorAll('#invoiceFields input').forEach(input => {
+                input.required = this.checked && input.name !== "vat_id";
+            });
+        });
+    }
 
-  // Bootstrap validation
-  if (form) {
-    form.addEventListener('submit', function (event) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  }
+
+
+    // Bootstrap validation
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    }
 })();
 
 
 // Price calculation with detailed breakdown
 function calculateTotalPrice() {
-    let basePrice = <?php echo $tour_price; ?>;
-    let extraCost = 0;
-    let breakdown = [];
-    
-    // Vehicle premium upgrade
-    const premiumUpgrade = document.querySelector('#premium_upgrade').checked;
-    if (premiumUpgrade) {
-        const premiumCost = basePrice * 0.2;
-        extraCost += premiumCost;
-        breakdown.push(`Premium Upgrade: €${premiumCost.toFixed(2)}`);
-    }
-    
-    // Child seats (€5 each)
-    const babySeats = parseInt(document.querySelector('input[name="baby_seat"]').value) || 0;
-    const toddlerSeats = parseInt(document.querySelector('input[name="toddler_seat"]').value) || 0;
-    const boosterSeats = parseInt(document.querySelector('input[name="booster_seat"]').value) || 0;
-    const seatCost = (babySeats + toddlerSeats + boosterSeats) * 5;
-    if (seatCost > 0) {
-        extraCost += seatCost;
-        breakdown.push(`Child Seats: €${seatCost.toFixed(2)}`);
-    }
-    
-    // Additional hours (€50 per hour)
-    const extraHours = parseInt(document.querySelector('input[name="extra_hours"]').value) || 0;
-    const hoursCost = extraHours * 50;
-    if (hoursCost > 0) {
-        extraCost += hoursCost;
-        breakdown.push(`Extra Hours: €${hoursCost.toFixed(2)}`);
-    }
-    
-    const totalPrice = basePrice + extraCost;
-    
-    // Update display
-    document.getElementById('grand_total').textContent = '€' + totalPrice.toFixed(2);
-    
+    const selectedVehicle = document.querySelector('.vehicle-option.active');
+    if (!selectedVehicle) return;
+
+    const px = parseInt(selectedVehicle.getAttribute("data-px"));
+    const discountedPrice = <?php echo $discounted_price; ?>;
+    const totalPrice = px * discountedPrice;
+
+    // Update ALL elements with the totalPrice class
+    const totalPriceElements = document.querySelectorAll(".totalPrice");
+    totalPriceElements.forEach(el => {
+        el.textContent = totalPrice.toFixed(2);
+    });
+
     // Update payment button text
     const payButton = document.getElementById('woocommerce-pay-button');
     if (payButton) {
-        payButton.textContent = 'Pay €' + totalPrice.toFixed(2);
+        payButton.innerHTML = 'Pay €' + totalPrice.toFixed(2);
     }
-    
-    // Update breakdown display (if you have one)
-    const breakdownElement = document.getElementById('price-breakdown');
-    if (breakdownElement) {
-        if (breakdown.length > 0) {
-            breakdownElement.innerHTML = '<strong>Price Breakdown:</strong><br>' + breakdown.join('<br>') + 
-                                        '<br><strong>Total: €' + totalPrice.toFixed(2) + '</strong>';
-        } else {
-            breakdownElement.innerHTML = '';
-        }
-    }
-    
+
     return totalPrice;
 }
 
-// Add event listeners for price-changing elements
-document.querySelectorAll('#premium_upgrade, input[name="baby_seat"], input[name="toddler_seat"], input[name="booster_seat"], input[name="extra_hours"]').forEach(element => {
-    element.addEventListener('change', calculateTotalPrice);
-    element.addEventListener('input', calculateTotalPrice);
+// Call this when vehicle selection changes
+document.addEventListener("DOMContentLoaded", function() {
+    const vehicleOptions = document.querySelectorAll(".vehicle-option");
+    const totalPriceElements = document.querySelectorAll(".totalPrice");
+
+    vehicleOptions.forEach(option => {
+        option.addEventListener("click", function() {
+            // Remove active class from all
+            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success",
+                "bg-light"));
+            vehicleOptions.forEach(opt => {
+                const badge = opt.querySelector(".badge");
+                if (badge) badge.remove();
+            });
+
+            // Add active class to selected
+            this.classList.add("active", "border-success", "bg-light");
+            this.insertAdjacentHTML("beforeend",
+                '<span class="badge bg-success">Selected</span>');
+
+            // Update prices
+            calculateTotalPrice();
+        });
+    });
 });
+
 
 // Initial calculation
 calculateTotalPrice();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let currentChild = null;
+    // When "Select Child Seat" button is clicked
+    document.querySelectorAll(".select-seat-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+            currentChild = this.getAttribute("data-child");
+        });
+    });
+
+    // Handle seat option click inside modal
+    document.querySelectorAll(".seat-option").forEach(option => {
+        option.addEventListener("click", function() {
+            if (currentChild) {
+                const seatValue = this.getAttribute("data-value");
+                const seatLabel = this.querySelector("small").textContent;
+
+                // Set hidden input value
+                document.getElementById("child_seat_" + currentChild).value = seatValue;
+
+                // Update label next to button
+                document.getElementById("child_seat_label_" + currentChild).textContent =
+                    seatLabel;
+
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById(
+                    "childSeatModal"));
+                modal.hide();
+            }
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let totalTravelers = <?php echo intval($total_persons); ?>;
+    let carTypeDisplay = document.getElementById("carTypeDisplay");
+    let carTypeHTML = "";
+
+    if (totalTravelers <= 3) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
+            <p class="mb-0 small">🚘 Car Type: Sedan</p>
+        `;
+    } else if (totalTravelers === 4) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>MPV (4 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 4 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 3 large + 3 small</p>
+            <p class="mb-0 small">🚘 Car Type: MPV</p>
+        `;
+    } else if (totalTravelers >= 5 && totalTravelers <= 7) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 5–7 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 6 large + 6 small</p>
+            <p class="mb-0 small">🚐 Car Type: Van</p>
+        `;
+    } else if (totalTravelers >= 8 && totalTravelers <= 10) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 7–10 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 8–10 large + 8–10 small</p>
+            <p class="mb-0 small">🚘 + 🚐 Car Type: 1 Sedan + 1 Van</p>
+        `;
+    } else if (totalTravelers >= 11 && totalTravelers <= 14) {
+        carTypeHTML = `
+            <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>
+            <p class="mb-1 small">👤 Capacity: 10–14 persons</p>
+            <p class="mb-1 small">🧳 Luggage: 12–14 large + 12–14 small</p>
+            <p class="mb-0 small">🚐 + 🚐 Car Type: 2 Vans / 1 Sprinter</p>
+        `;
+    }
+
+    carTypeDisplay.innerHTML = carTypeHTML;
+});
+
+
+// Call this when vehicle selection changes
+document.addEventListener("DOMContentLoaded", function() {
+    const vehicleOptions = document.querySelectorAll(".vehicle-option");
+    const totalPriceElements = document.querySelectorAll(".totalPrice");
+
+    vehicleOptions.forEach(option => {
+        option.addEventListener("click", function() {
+            // Remove active class from all
+            vehicleOptions.forEach(opt => opt.classList.remove("active", "border-success",
+                "bg-light"));
+            vehicleOptions.forEach(opt => {
+                const badge = opt.querySelector(".badge");
+                if (badge) badge.remove();
+            });
+
+            // Add active class to selected
+            this.classList.add("active", "border-success", "bg-light");
+            this.insertAdjacentHTML("beforeend",
+                '<span class="badge bg-success">Selected</span>');
+
+            // Update prices
+            calculateTotalPrice();
+        });
+    });
+});
 </script>

@@ -375,8 +375,7 @@ function process_booking_form() {
             $order->add_order_note($order_notes);
             
             // Calculate totals
-            $order->calculate_totals();
-            
+            $order->calculate_totals();            
             // Also save as order meta for easy access
             $order->update_meta_data('_booking_tour_id', $tour_id);
             $order->update_meta_data('_booking_tour_date', $tour_date);
@@ -432,3 +431,8 @@ function calculate_final_price($base_price, $premium_upgrade, $baby_seat, $toddl
     return $final_price;
 }
 
+
+// Hide admin bar for non-admins
+add_filter('show_admin_bar', function($show) {
+    return current_user_can('manage_options') ? $show : false;
+});

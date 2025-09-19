@@ -50,11 +50,11 @@
 <body <?php body_class(); ?>>
 
 
-    <!-- <div class="preloader" id="preloader">
+    <div class="preloader" id="preloader">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div> -->
+    </div>
 
     <header class="header-area style-three">
         <div class="container-fluid">
@@ -78,8 +78,8 @@
 					]); ?>
                     <div class="header-navigation d-flex flex-wrap align-items-center gap-3 mt-4 mt-xl-0">
                         <div class="header-search-btn">
-                            <a href="" class="btn">
-                                <i class="ti ti-user-check"></i>
+                            <a href="<?php echo is_user_logged_in() ? site_url('/dashboard') : wp_login_url(); ?>" class="btn">
+                                    <i class="ti ti-user-check"></i>
                             </a>
                         </div>
                         <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Get A Quote<i

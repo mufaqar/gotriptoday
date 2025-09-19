@@ -17,7 +17,7 @@ $tour_comments = array_slice($tour_comments, 0, 2);
     <div class="review_list d-flex flex-lg-row flex-column gap-4">
         <?php if (!empty($tour_comments)): ?>
             <?php foreach ($tour_comments as $c): ?>
-                <div class="review_box">
+                <div class="review_box col-12 col-lg-6">
                     <div class="d-flex flex-lg-row flex-column justify-content-between">
                         <ul class="list-unstyled d-flex">
                             <li><i class='text-success pe-1 ti ti-star-filled'></i></li>
