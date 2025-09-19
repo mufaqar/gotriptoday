@@ -205,13 +205,3 @@ function mufaqar_remove_my_account_links( $menu_links ) {
 }
 
 
-
-add_filter( 'woocommerce_order_item_name', 'mufaqar_change_order_item_title', 10, 3 );
-function mufaqar_change_order_item_title( $item_name, $item, $is_visible ) {
-    // Example: If the product name is "Booking", change it
-    if ( $item->get_name() === 'Booking' ) {
-        $item_name = __( 'Day Trip Booking', 'textdomain' );
-    }
-
-    return $item_name;
-}
