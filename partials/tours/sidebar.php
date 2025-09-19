@@ -104,7 +104,6 @@
     </form>
 </div>
 
-
 <!-- Traveler Selection Modal -->
 <div class="traveler-modal" id="traveler-modal">
     <div class="traveler-modal-content">
@@ -121,7 +120,6 @@
                 <div class="counter-btn plus-btn" data-group="adult" onclick="updateCounter('adult', 1)">+</div>
             </div>
         </div>
-
         <div class="age-group">
             <div class="age-title">Child (Age 0-12)</div>
             <div class="age-range">Minimum: 0, Maximum: 5</div>
@@ -131,177 +129,162 @@
                 <div class="counter-btn plus-btn" data-group="child" onclick="updateCounter('child', 1)">+</div>
             </div>
         </div>
-
         <button class="apply-btn" onclick="applyTravelerSelection()">Apply</button>
     </div>
 </div>
 
 
 <script>
-let adultCount = 1;
-let childCount = 0;
-const maxTravelers = 14;
-const maxChildCount = 5; // NEW RULE
-const tourPrice = <?php echo $tour_price; ?>;
-
-
-
-
-
-
-function openTravelerModal() {
-    document.getElementById('traveler-modal').style.display = 'flex';
-}
-
-function closeTravelerModal() {
-    document.getElementById('traveler-modal').style.display = 'none';
-}
-
-function updateCounter(type, change) {
-    if (type === 'adult') {
-        if (change === 1 && (adultCount + childCount) < maxTravelers) {
-            adultCount++;
-        } else if (change === -1 && adultCount > 1) {
-            adultCount--;
-        }
-    } else if (type === 'child') {
-        if (change === 1 && (adultCount + childCount) < maxTravelers && childCount < maxChildCount) {
-            childCount++;
-        } else if (change === -1 && childCount > 0) {
-            childCount--;
-        }
+    let adultCount = 1;
+    let childCount = 0;
+    const maxTravelers = 14;
+    const maxChildCount = 5; // NEW RULE
+    const tourPrice = <?php echo $tour_price; ?>;
+    function openTravelerModal() {
+        document.getElementById('traveler-modal').style.display = 'flex';
     }
 
-    document.getElementById('adult-count').textContent = adultCount;
-    document.getElementById('child-count').textContent = childCount;
+    function closeTravelerModal() {
+        document.getElementById('traveler-modal').style.display = 'none';
+    }
 
-    // Update button states
-    document.querySelectorAll('.counter-btn').forEach(btn => {
-        const group = btn.getAttribute('data-group');
-        const isMinus = btn.classList.contains('minus-btn');
-
-        if (group === 'adult') {
-            if (isMinus) {
-                btn.disabled = adultCount <= 1;
-                btn.style.opacity = adultCount <= 1 ? 0.5 : 1;
-            } else {
-                btn.disabled = (adultCount + childCount) >= maxTravelers;
-                btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+    function updateCounter(type, change) {
+        if (type === 'adult') {
+            if (change === 1 && (adultCount + childCount) < maxTravelers) {
+                adultCount++;
+            } else if (change === -1 && adultCount > 1) {
+                adultCount--;
             }
-        } else if (group === 'child') {
-            if (isMinus) {
-                btn.disabled = childCount <= 0;
-                btn.style.opacity = childCount <= 0 ? 0.5 : 1;
-            } else {
-                btn.disabled = (adultCount + childCount) >= maxTravelers || childCount >= maxChildCount;
-                btn.style.opacity = (adultCount + childCount) >= maxTravelers || childCount >= maxChildCount ?
-                    0.5 : 1;
+        } else if (type === 'child') {
+            if (change === 1 && (adultCount + childCount) < maxTravelers && childCount < maxChildCount) {
+                childCount++;
+            } else if (change === -1 && childCount > 0) {
+                childCount--;
             }
         }
+
+        document.getElementById('adult-count').textContent = adultCount;
+        document.getElementById('child-count').textContent = childCount;
+
+        // Update button states
+        document.querySelectorAll('.counter-btn').forEach(btn => {
+            const group = btn.getAttribute('data-group');
+            const isMinus = btn.classList.contains('minus-btn');
+
+            if (group === 'adult') {
+                if (isMinus) {
+                    btn.disabled = adultCount <= 1;
+                    btn.style.opacity = adultCount <= 1 ? 0.5 : 1;
+                } else {
+                    btn.disabled = (adultCount + childCount) >= maxTravelers;
+                    btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+                }
+            } else if (group === 'child') {
+                if (isMinus) {
+                    btn.disabled = childCount <= 0;
+                    btn.style.opacity = childCount <= 0 ? 0.5 : 1;
+                } else {
+                    btn.disabled = (adultCount + childCount) >= maxTravelers || childCount >= maxChildCount;
+                    btn.style.opacity = (adultCount + childCount) >= maxTravelers || childCount >= maxChildCount ?
+                        0.5 : 1;
+                }
+            }
+        });
+    }
+
+
+    function applyTravelerSelection() {
+        // Update summary text
+        const summaryText =
+            `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
+        document.getElementById('traveler-summary').textContent = summaryText;
+
+        // Hidden inputs
+        document.getElementById('adult_count_input').value = adultCount;
+        document.getElementById('child_count_input').value = childCount;
+
+        // Summary counts
+        document.getElementById('summary-adult-count').textContent = adultCount;
+        document.getElementById('summary-child-count').textContent = childCount;
+
+        // Helper line
+        const totalTravelers = adultCount + childCount;
+
+
+        // Update car type display
+        updateCarTypeDisplay(totalTravelers);
+
+        // Prices
+        updateTotalPrice();
+
+        // Close modal
+        closeTravelerModal();
+    }
+
+    function updateCarTypeDisplay(totalTravelers) {
+        const carTypeDisplay = document.getElementById('car-type-display');
+        let carTypeHTML = '';
+
+        if (totalTravelers <= 3) {
+            carTypeHTML = `
+                <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>          
+                <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 2 large + 2 small</p>         
+            `;
+        } else if (totalTravelers === 4) {
+            carTypeHTML = `
+                <p class="mb-1"><strong>MPV (4 Persons)</strong></p>          
+                <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 3 large + 3 small</p>           
+            `;
+        } else if (totalTravelers >= 5 && totalTravelers <= 7) {
+            carTypeHTML = `
+                <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>          
+                <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 6 large + 6 small</p>        
+            `;
+        } else if (totalTravelers >= 8 && totalTravelers <= 10) {
+            carTypeHTML = `
+                <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>           
+                <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 8–10 large + 8–10 small</p>          
+            `;
+        } else if (totalTravelers >= 11 && totalTravelers <= 14) {
+            carTypeHTML = `
+                <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>          
+                <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 12–14 large + 12–14 small</p>           
+            `;
+        }
+
+        carTypeDisplay.innerHTML = carTypeHTML;
+    }
+
+    function updateTotalPrice() {
+        const selectedPassengers = adultCount + childCount;
+        let billablePassengers;
+
+        if (selectedPassengers <= 3) {
+            billablePassengers = 3;
+        } else if (selectedPassengers === 4) {
+            billablePassengers = 4;
+        } else if (selectedPassengers >= 5 && selectedPassengers <= 7) {
+            billablePassengers = 5;
+        } else if (selectedPassengers >= 8 && selectedPassengers <= 10) {
+            billablePassengers = 8;
+        } else if (selectedPassengers >= 11 && selectedPassengers <= 14) {
+            billablePassengers = 10;
+        }
+
+        const totalPrice = billablePassengers * tourPrice;
+        document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
+        document.getElementById('tour_price').value = totalPrice.toFixed(2);
+    }
+    // Close modal when clicking outside
+    document.getElementById('traveler-modal').addEventListener('click', function(e) {
+        if (e.target === this) closeTravelerModal();
     });
-}
 
 
-function applyTravelerSelection() {
-    // Update summary text
-    const summaryText =
-        `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
-    document.getElementById('traveler-summary').textContent = summaryText;
-
-    // Hidden inputs
-    document.getElementById('adult_count_input').value = adultCount;
-    document.getElementById('child_count_input').value = childCount;
-
-    // Summary counts
-    document.getElementById('summary-adult-count').textContent = adultCount;
-    document.getElementById('summary-child-count').textContent = childCount;
-
-    // Helper line
-    const totalTravelers = adultCount + childCount;
-
-
-    // Update car type display
-    updateCarTypeDisplay(totalTravelers);
-
-    // Prices
-    updateTotalPrice();
-
-    // Close modal
-    closeTravelerModal();
-}
-
-function updateCarTypeDisplay(totalTravelers) {
-    const carTypeDisplay = document.getElementById('car-type-display');
-    let carTypeHTML = '';
-
-    if (totalTravelers <= 3) {
-        carTypeHTML = `
-            <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>          
-            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 2 large + 2 small</p>
-         
-        `;
-    } else if (totalTravelers === 4) {
-        carTypeHTML = `
-            <p class="mb-1"><strong>MPV (4 Persons)</strong></p>          
-            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 3 large + 3 small</p>
-           
-        `;
-    } else if (totalTravelers >= 5 && totalTravelers <= 7) {
-        carTypeHTML = `
-            <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>          
-            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 6 large + 6 small</p>
-        
-        `;
-    } else if (totalTravelers >= 8 && totalTravelers <= 10) {
-        carTypeHTML = `
-            <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>           
-            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 8–10 large + 8–10 small</p>
-          
-        `;
-    } else if (totalTravelers >= 11 && totalTravelers <= 14) {
-        carTypeHTML = `
-            <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>
-          
-            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 12–14 large + 12–14 small</p>
-           
-        `;
-    }
-
-    carTypeDisplay.innerHTML = carTypeHTML;
-}
-
-function updateTotalPrice() {
-    const selectedPassengers = adultCount + childCount;
-    let billablePassengers;
-
-    if (selectedPassengers <= 3) {
-        billablePassengers = 3;
-    } else if (selectedPassengers === 4) {
-        billablePassengers = 4;
-    } else if (selectedPassengers >= 5 && selectedPassengers <= 7) {
-        billablePassengers = 5;
-    } else if (selectedPassengers >= 8 && selectedPassengers <= 10) {
-        billablePassengers = 8;
-    } else if (selectedPassengers >= 11 && selectedPassengers <= 14) {
-        billablePassengers = 10;
-    }
-
-    const totalPrice = billablePassengers * tourPrice;
-
-    // Update total only
-    document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
-    document.getElementById('tour_price').value = totalPrice.toFixed(2);
-}
-// Close modal when clicking outside
-document.getElementById('traveler-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeTravelerModal();
-});
-
-
-// Initialize button states
-document.addEventListener('DOMContentLoaded', function() {
-    updateCounter('adult', 0);
-    updateCounter('child', 0);
-    updateTotalPrice();
-});
+    // Initialize button states
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCounter('adult', 0);
+        updateCounter('child', 0);
+        updateTotalPrice();
+    });
 </script>
