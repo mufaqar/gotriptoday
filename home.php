@@ -47,19 +47,16 @@ get_header(); ?>
                             type="button" role="tab" aria-controls="tab1" aria-selected="true">Transfer</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="tab-link" href="<?php echo home_url('/day-trip'); ?>" type="button"
-                            onclick="redirectToDayTrip()">Day Trip</button>
+                        <a class="tab-link" href="<?php echo home_url('/day-trip'); ?>" type="button">Day Trip</a>
                     </li>
                 </ul>
-                <div class="tab-content pt-3" id="myTabContent">
+                <div class="tab-content pt-3" id="">
                     <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
                         <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
                             <?php get_template_part('partials/content', 'tab1'); ?>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                        <?php get_template_part('partials/content', 'tab2'); ?>
-                    </div>
+
                 </div>
             </div>
 
@@ -471,10 +468,4 @@ jQuery(document).ready(function($) {
         window.location.href = bookingUrl + '?' + $(this).serialize();
     });
 });
-
-function redirectToDayTrip() {
-    const dayTripUrl = "<?php echo home_url('/day-trip'); ?>";
-    window.location.href = dayTripUrl;
-    document.getElementById('tab2-tab').addEventListener('click', redirectToDayTrip);
-}
 </script>

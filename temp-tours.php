@@ -1,6 +1,5 @@
 <?php
 /*Template Name: Tours*/
-
 get_header();
 ?>
 <div class="breadcrumb-section bg-img jarallax" data-jarallax data-speed="0.6"
