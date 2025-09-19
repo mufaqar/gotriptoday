@@ -14,17 +14,9 @@
                  <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
                  <input type="date" id="tour_date" name="tour_date" class="form-control p-0 bg-transparent h-auto"
                      value="<?php echo date('Y-m-d'); ?>" required>
-             </div>
-             <div class="col-12 gap-2 py-2 tour_travelers">
-                 <label class="form-label mb-0 text-heading">Travelers</label>
-                 <div class="traveler-selection" onclick="openTravelerModal()" required>
-                     <span id="traveler-summary">1 Adult, 0 Children</span>
-                     <i class="ti ti-chevron-down float-end"></i>
-                 </div>
-                 <!-- Helper line -->
-                <small id="traveler-helper" class="text-muted d-block mt-1">
-                    Minimum charge equals 3 passengers (sedan base).
-                </small>
+
+
+
              </div>
              <div class="col-12 gap-2 py-2 tour_times">
                  <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
@@ -41,33 +33,39 @@
                      <?php endforeach; ?>
                  </select>
              </div>
+             <div class="col-12 gap-2 py-2 tour_travelers">
+                 <label class="form-label mb-0 text-heading">Travelers</label>
+                 <div class="traveler-selection" onclick="openTravelerModal()" required>
+                     <span id="traveler-summary">1 Adult, 0 Children</span>
+                     <i class="ti ti-chevron-down float-end"></i>
+                 </div>
+                 
+             </div>
+             
          </div>
          
          <!-- Car Type Display Section -->
-         <div class="col-12 mt-3">
-             <div class="car-type-info p-3 rounded" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">
-                 <h6 class="mb-2"><i class="ti ti-car"></i> Vehicle Info</h6>
+         <div class="row my-2">
+             <div class="car-type-info p-3 rounded" style="background-color: #f8f9fa; border: 1px solid #e9ecef;">                 
                  <div id="car-type-display">
-                     <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
-                     <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
-                     <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
-                     <p class="mb-0 small">🚘 Car Type: Sedan</p>
+                     <p class="mb-1"><i class="ti ti-car"></i> <strong>Sedan (1–3 Persons)</strong></p>                  
+                     <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 2 large + 2 small</p>                    
                  </div>
              </div>
          </div>
          
-         <div class="col-12">
+         <div class="row">
              <div class="tour-booking-summary py-2">
                  <ul class="list-unstyled d-flex flex-column gap-2 bg-white p-0">
-                     <li>
+                     <!-- <li>
                          <span><strong>Adult (<span id="summary-adult-count">1</span>x):</strong></span>
-                         <span id="price-per-adult">€<?php echo $tour_price; ?></span>
+                         <span id="price-per-adult">€<?php //echo $tour_price; ?></span>
                      </li>
                      <li id="child-price-item" style="display: none;">
                          <span><strong>Child (<span id="summary-child-count">0</span>x):</strong></span>
                          <span id="price-per-child">€0.00</span>
-                     </li>
-                     <li class="pt-2 border-top">
+                     </li> -->
+                     <li class="">
                          <span><strong>Total:</strong></span>
                          <span id="total_price"><strong>€<?php echo $tour_price * 3; ?></strong></span>
                      </li>
@@ -212,12 +210,7 @@ function applyTravelerSelection() {
 
     // Helper line
     const totalTravelers = adultCount + childCount;
-    const helperEl = document.getElementById('traveler-helper');
-    if (totalTravelers <= 3) {
-        helperEl.textContent = "Minimum charge equals 3 passengers (sedan base).";
-    } else {
-        helperEl.textContent = `Price = 3-passenger base + (${totalTravelers - 3}) additional passenger${(totalTravelers - 3) > 1 ? 's' : ''}.`;
-    }
+    
 
     // Update car type display
     updateCarTypeDisplay(totalTravelers);
@@ -237,35 +230,35 @@ function updateCarTypeDisplay(totalTravelers) {
         carTypeHTML = `
             <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 2 large + 2 small</p>
             <p class="mb-0 small">🚘 Car Type: Sedan</p>
         `;
     } else if (totalTravelers === 4) {
         carTypeHTML = `
             <p class="mb-1"><strong>MPV (4 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 4 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 3 large + 3 small</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 3 large + 3 small</p>
             <p class="mb-0 small">🚘 Car Type: MPV</p>
         `;
     } else if (totalTravelers >= 5 && totalTravelers <= 7) {
         carTypeHTML = `
             <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 5–7 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 6 large + 6 small</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 6 large + 6 small</p>
             <p class="mb-0 small">🚐 Car Type: Van</p>
         `;
     } else if (totalTravelers >= 8 && totalTravelers <= 10) {
         carTypeHTML = `
             <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 7–10 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 8–10 large + 8–10 small</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 8–10 large + 8–10 small</p>
             <p class="mb-0 small">🚘 + 🚐 Car Type: 1 Sedan + 1 Van</p>
         `;
     } else if (totalTravelers >= 11 && totalTravelers <= 14) {
         carTypeHTML = `
             <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>
             <p class="mb-1 small">👤 Capacity: 10–14 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 12–14 large + 12–14 small</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 12–14 large + 12–14 small</p>
             <p class="mb-0 small">🚐 + 🚐 Car Type: 2 Vans / 1 Sprinter</p>
         `;
     }

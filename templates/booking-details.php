@@ -35,11 +35,11 @@ get_header();
     $booking_product_id = 26324;
 
     $vehicles = [
-        "Sedan (1–3 Persons)" => ["price" => 150, "px" => 3, "capacity" => "1–3", "icon" => "🚘", "luggage" => "2 large + 2 small"],
-        "MPV (4 Persons)" => ["price" => 200, "px" => 4, "capacity" => "4", "icon" => "🚙", "luggage" => "3 large + 3 small"],
-        "Van (5–7 Persons)" => ["price" => 250, "px" => 5, "capacity" => "5–7", "icon" => "🚐", "luggage" => "6 large + 6 small"],
-        "Sedan + Van (7–10 Persons)" => ["price" => 400, "px" => 7, "capacity" => "7–10", "icon" => "🚘 + 🚐", "luggage" => "10 large + 10 small"],
-        "Two Vans / Sprinter (11–14)" => ["price" => 500, "px" => 11, "capacity" => "11–14", "icon" => "🚐 + 🚐", "luggage" => "14 large + 14 small"],
+        "Sedan (1–3 Persons)" => ["price" => 150, "px" => 3, "capacity" => "1–3", "icon" => "<i class='ti ti-car'></i>", "luggage" => "2 large + 2 small"],
+        "MPV (4 Persons)" => ["price" => 200, "px" => 4, "capacity" => "4", "icon" => "<i class='ti ti-camper'></i>", "luggage" => "3 large + 3 small"],
+        "Van (5–7 Persons)" => ["price" => 250, "px" => 5, "capacity" => "5–7", "icon" => "<i class='ti ti-caravan'></i>", "luggage" => "6 large + 6 small"],
+        "Sedan + Van (7–10 Persons)" => ["price" => 400, "px" => 7, "capacity" => "8–10", "icon" => "<i class='ti ti-car'></i> + <i class='ti ti-caravan'></i>", "luggage" => "10 large + 10 small"],
+        "Two Vans / Sprinter (11–14)" => ["price" => 500, "px" => 11, "capacity" => "11–14", "icon" => "<i class='ti ti-caravan'></i> + <i class='ti ti-caravan'></i>", "luggage" => "14 large + 14 small"],
     ];
     // Determine vehicle based on travelers
     $highlightVehicle = '';
@@ -134,19 +134,37 @@ get_header();
                                 <?php endif; ?>
 
 
+                                <?php
+                                    
+                                    function getMinCapacity($capacity) {
+                                        if (strpos($capacity, '–') !== false) {
+                                            $parts = explode('–', $capacity);
+                                            return (int) trim($parts[0]);
+                                        }
+                                        return (int) trim($capacity);
+                                    }
+
+                                    // Get highlight vehicle minimum capacity
+                                    $highlightCapacity = isset($vehicles[$highlightVehicle]) ? getMinCapacity($vehicles[$highlightVehicle]['capacity']) : 0;
+                                    ?>
+
                                 <div class="mt-4" id="vehicleOptions">
-                                    <h6 class="mb-0">Vehicle Type</h6>
+                                    <h6 class="mb-0">Vehicle Type (Min <?php echo $highlightCapacity; ?> seats)</h6>
+
                                     <?php foreach ($vehicles as $name => $details): ?>
+                                     <?php 
+                                        $vehicleMinCapacity = getMinCapacity($details['capacity']);
+                                        if ($vehicleMinCapacity < $highlightCapacity) continue;
+                                        ?>
                                     <div class="mt-3 mb-3">
                                         <div class="card d-flex flex-lg-row gap-2 justify-content-between align-items-center p-3 vehicle-option <?php echo ($name === $highlightVehicle) ? 'active border-success bg-light' : 'border'; ?>"
                                             data-px="<?php echo esc_attr($details['px']); ?>"
                                             data-name="<?php echo esc_attr($name); ?>">
                                             <h6 class="mb-1"><?php echo $details['icon']; ?>
-                                                <?php echo esc_html($name); ?>
-                                            </h6>
-                                            <p class="mb-0 small ">👤 Capacity: <?php echo $details['capacity']; ?>
+                                                <?php echo esc_html($name); ?></h6>
+                                            <p class="mb-0 small"><i class="ti ti-users"></i> Capacity: <?php echo $details['capacity']; ?>
                                                 persons</p>
-                                            <p class="mb-0 small ">💰 Luggage: <?php echo $details['luggage']; ?></p>
+                                            <p class="mb-0 small"><i class="ti ti-luggage"></i> Luggage: <?php echo $details['luggage']; ?></p>
                                             <?php if ($name === $highlightVehicle): ?>
                                             <span class="badge bg-success">Selected</span>
                                             <?php endif; ?>
@@ -154,6 +172,7 @@ get_header();
                                     </div>
                                     <?php endforeach; ?>
                                 </div>
+
 
 
                                 <!-- Flight / Port / Train info -->
@@ -219,7 +238,8 @@ get_header();
                                             <label for="company_name" class="form-label">Company Name</label>
                                             <input type="text" class="form-control" id="company_name"
                                                 name="company_name">
-                                            <div class="invalid-feedback">Company name is required if invoice is selected.</div>
+                                            <div class="invalid-feedback">Company name is required if invoice is
+                                                selected.</div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="invoice_address" class="form-label">Invoice Address</label>
@@ -534,37 +554,37 @@ document.addEventListener("DOMContentLoaded", function() {
     if (totalTravelers <= 3) {
         carTypeHTML = `
             <p class="mb-1"><strong>Sedan (1–3 Persons)</strong></p>
-            <p class="mb-1 small">👤 Capacity: 1–3 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 2 large + 2 small</p>
-            <p class="mb-0 small">🚘 Car Type: Sedan</p>
+            <p class="mb-1 small"><i class="ti ti-users"></i> Capacity: 1–3 persons</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 2 large + 2 small</p>
+            <p class="mb-0 small"><i class="ti ti-car"></i> Car Type: Sedan</p>
         `;
     } else if (totalTravelers === 4) {
         carTypeHTML = `
             <p class="mb-1"><strong>MPV (4 Persons)</strong></p>
-            <p class="mb-1 small">👤 Capacity: 4 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 3 large + 3 small</p>
-            <p class="mb-0 small">🚘 Car Type: MPV</p>
+            <p class="mb-1 small"><i class="ti ti-users"></i> Capacity: 4 persons</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 3 large + 3 small</p>
+            <p class="mb-0 small"><i class="ti ti-car"></i> Car Type: MPV</p>
         `;
     } else if (totalTravelers >= 5 && totalTravelers <= 7) {
         carTypeHTML = `
             <p class="mb-1"><strong>Van (5–7 Persons)</strong></p>
-            <p class="mb-1 small">👤 Capacity: 5–7 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 6 large + 6 small</p>
-            <p class="mb-0 small">🚐 Car Type: Van</p>
+            <p class="mb-1 small"><i class="ti ti-users"></i> Capacity: 5–7 persons</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 6 large + 6 small</p>
+            <p class="mb-0 small"><i class="ti ti-caravan"></i> Car Type: Van</p>
         `;
     } else if (totalTravelers >= 8 && totalTravelers <= 10) {
         carTypeHTML = `
             <p class="mb-1"><strong>Sedan + Van (7–10 Persons)</strong></p>
-            <p class="mb-1 small">👤 Capacity: 7–10 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 8–10 large + 8–10 small</p>
-            <p class="mb-0 small">🚘 + 🚐 Car Type: 1 Sedan + 1 Van</p>
+            <p class="mb-1 small"><i class="ti ti-users"></i> Capacity: 7–10 persons</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 8–10 large + 8–10 small</p>
+            <p class="mb-0 small"><i class="ti ti-car"></i> + <i class="ti ti-caravan"></i> Car Type: 1 Sedan + 1 Van</p>
         `;
     } else if (totalTravelers >= 11 && totalTravelers <= 14) {
         carTypeHTML = `
             <p class="mb-1"><strong>Two Vans / Sprinter (10–14 Persons)</strong></p>
-            <p class="mb-1 small">👤 Capacity: 10–14 persons</p>
-            <p class="mb-1 small">🧳 Luggage: 12–14 large + 12–14 small</p>
-            <p class="mb-0 small">🚐 + 🚐 Car Type: 2 Vans / 1 Sprinter</p>
+            <p class="mb-1 small"><i class="ti ti-users"></i> Capacity: 10–14 persons</p>
+            <p class="mb-1 small"><i class="ti ti-luggage"></i> Luggage: 12–14 large + 12–14 small</p>
+            <p class="mb-0 small"><i class="ti ti-caravan"></i> + <i class="ti ti-caravan"></i> Car Type: 2 Vans / 1 Sprinter</p>
         `;
     }
 
