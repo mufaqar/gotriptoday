@@ -1537,6 +1537,7 @@ strong {
   margin-bottom: 6px;
 
 }
+.woocommerce-account .woocommerce-MyAccount-navigation li a br{  display: none !important;}
 
 .woocommerce-account .woocommerce-MyAccount-navigation li a:hover {
   background: #3cb371;
