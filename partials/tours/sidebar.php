@@ -141,7 +141,13 @@
 let adultCount = 1;
 let childCount = 0;
 const maxTravelers = 14;
+const maxChildCount = 5; // NEW RULE
 const tourPrice = <?php echo $tour_price; ?>;
+
+
+
+
+
 
 function openTravelerModal() {
     document.getElementById('traveler-modal').style.display = 'flex';
@@ -159,7 +165,7 @@ function updateCounter(type, change) {
             adultCount--;
         }
     } else if (type === 'child') {
-        if (change === 1 && (adultCount + childCount) < maxTravelers) {
+        if (change === 1 && (adultCount + childCount) < maxTravelers && childCount < maxChildCount) {
             childCount++;
         } else if (change === -1 && childCount > 0) {
             childCount--;
@@ -187,12 +193,13 @@ function updateCounter(type, change) {
                 btn.disabled = childCount <= 0;
                 btn.style.opacity = childCount <= 0 ? 0.5 : 1;
             } else {
-                btn.disabled = (adultCount + childCount) >= maxTravelers;
-                btn.style.opacity = (adultCount + childCount) >= maxTravelers ? 0.5 : 1;
+                btn.disabled = (adultCount + childCount) >= maxTravelers || childCount >= maxChildCount;
+                btn.style.opacity = (adultCount + childCount) >= maxTravelers || childCount >= maxChildCount ? 0.5 : 1;
             }
         }
     });
 }
+
 
 function applyTravelerSelection() {
     // Update summary text
@@ -200,13 +207,13 @@ function applyTravelerSelection() {
         `${adultCount} Adult${adultCount !== 1 ? 's' : ''}${childCount > 0 ? `, ${childCount} Child${childCount !== 1 ? 'ren' : ''}` : ''}`;
     document.getElementById('traveler-summary').textContent = summaryText;
 
-    // Hidden inputs
+   // Hidden inputs
     document.getElementById('adult_count_input').value = adultCount;
     document.getElementById('child_count_input').value = childCount;
 
     // Summary counts
-  document.getElementById('summary-adult-count').textContent = adultCount;
- document.getElementById('summary-child-count').textContent = childCount;
+    document.getElementById('summary-adult-count').textContent = adultCount;
+    document.getElementById('summary-child-count').textContent = childCount;
 
     // Helper line
     const totalTravelers = adultCount + childCount;
@@ -288,6 +295,7 @@ function updateTotalPrice() {
 document.getElementById('traveler-modal').addEventListener('click', function(e) {
     if (e.target === this) closeTravelerModal();
 });
+
 
 // Initialize button states
 document.addEventListener('DOMContentLoaded', function() {
