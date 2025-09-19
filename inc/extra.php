@@ -178,3 +178,40 @@ function get_discounted_price($post_id, $formatted = true) {
     return $formatted ? number_format($price, 2) . "€" : number_format($price, 2);
 }
 
+
+
+/**
+ * Remove WooCommerce My Account menu items
+ */
+add_filter( 'woocommerce_account_menu_items', 'mufaqar_remove_my_account_links', 999 );
+function mufaqar_remove_my_account_links( $menu_links ) {
+    
+    // Remove Dashboard
+    unset( $menu_links['dashboard'] );
+
+    // Remove Downloads
+    unset( $menu_links['downloads'] );
+
+    // Remove Addresses
+    unset( $menu_links['edit-address'] );
+
+
+    // Change "Orders" to "Day Trip Orders"
+    if ( isset( $menu_links['orders'] ) ) {
+        $menu_links['orders'] = __( 'Day Trip Orders', 'textdomain' );
+    }
+
+    return $menu_links;
+}
+
+
+
+add_filter( 'woocommerce_order_item_name', 'mufaqar_change_order_item_title', 10, 3 );
+function mufaqar_change_order_item_title( $item_name, $item, $is_visible ) {
+    // Example: If the product name is "Booking", change it
+    if ( $item->get_name() === 'Booking' ) {
+        $item_name = __( 'Day Trip Booking', 'textdomain' );
+    }
+
+    return $item_name;
+}
