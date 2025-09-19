@@ -9,10 +9,9 @@ $tour_comments = array_slice($tour_comments, 0, 2);
 <div class="tour_reviews">
     <div class="d-flex flex-lg-row flex-column justify-content-between">
         <h2 class="pb-3">Why travelers loved this</h2>
-        <h4><i class='text-success pe-1 ti ti-star-filled'></i> 4.8 · <p
-                class="d-inline-flex text-black text-decoration-underline"><?php echo $review_count ?>
-                Reviews</p>
-        </h4>
+        <!-- <h4><i class='text-success pe-1 ti ti-star-filled'></i> 4.9 · 
+        <p class="d-inline-flex text-black text-decoration-underline"><?php //echo $review_count ?> Reviews</p>
+        </h4> -->
     </div>
     <div class="review_list d-flex flex-lg-row flex-column gap-4">
         <?php if (!empty($tour_comments)): ?>

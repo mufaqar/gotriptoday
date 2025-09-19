@@ -124,7 +124,7 @@
 
         <div class="age-group">
             <div class="age-title">Child (Age 0-12)</div>
-            <div class="age-range">Minimum: 0, Maximum: 14</div>
+            <div class="age-range">Minimum: 0, Maximum: 5</div>
             <div class="counter">
                 <div class="counter-btn minus-btn" data-group="child" onclick="updateCounter('child', -1)">-</div>
                 <div class="counter-value" id="child-count">0</div>

@@ -8,7 +8,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
 <div class="tour-details-section">
     <div class="divider"></div>
     <div class="container">
-        <div class="divider-sm"></div>
+        <div class="divider-xs"></div>
         <?php if (!wp_is_mobile()): ?>
         <?php get_template_part('partials/tours/banner', null, array('review_count' => $review_count)); ?>
         <?php endif; ?>
