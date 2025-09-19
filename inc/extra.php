@@ -156,7 +156,7 @@ function get_discounted_price($post_id, $formatted = true) {
     $discount = (float) get_post_meta($post_id, "discount", true);  // Discount percent
 
     if ($price <= 0) {
-        return $formatted ? "N/A" : 0;
+        return $formatted ? "N/A" : number_format(0, 2);
     }
 
     // Calculate discounted price if discount exists
@@ -166,17 +166,15 @@ function get_discounted_price($post_id, $formatted = true) {
         if ($formatted) {
             return sprintf(
                 '<del class="sale_price">%s€</del> %s€',
-                number_format($price, 0),
+                number_format($price, 2),
                 number_format($discounted_price, 2)
             );
         }
 
-        return $discounted_price;
+        return number_format($discounted_price, 2);
     }
 
     // No discount case
-    return $formatted ? number_format($price, 0) . "€" : $price;
+    return $formatted ? number_format($price, 2) . "€" : number_format($price, 2);
 }
-
-
 
