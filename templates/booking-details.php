@@ -106,12 +106,12 @@ get_header();
                                         class="form-control">
                                 </div>
 
-                                <!-- Child Seat Selection -->
+                                <!-- Children Seat Selection -->
                                 <?php if ($tour_child > 0): ?>
                                 <div class="col-12">
                                     <div class="mt-4">
                                         <div class="card-header bg-light">
-                                            <h6 class="mb-0">Child Seat Requirements</h6>
+                                            <h6 class="mb-0">Children Seat Requirements</h6>
                                         </div>
                                         <div class="child-body pt-3">
                                             <?php for ($i = 1; $i <= $tour_child; $i++): ?>
@@ -122,7 +122,7 @@ get_header();
                                                 <button type="button" class="btn btn-outline-success select-seat-btn"
                                                     data-child="<?php echo $i; ?>" data-bs-toggle="modal"
                                                     data-bs-target="#childSeatModal">
-                                                    Select Child Seat Type <?php echo $i; ?>
+                                                    Select Children Seat Type <?php echo $i; ?>
                                                 </button>
                                                 <p class="badge text-black ms-2 small"
                                                     id="child_seat_label_<?php echo $i; ?>">Not selected</p>
@@ -305,7 +305,7 @@ get_header();
                                 <span><?php echo esc_html($tour_adults); ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>Childs:</span>
+                                <span>Children:</span>
                                 <span><?php echo esc_html($tour_child); ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between fw-bold">
@@ -327,16 +327,16 @@ get_header();
     <div class="divider-sm"></div>
 </div>
 
-<!-- Child Seat Modal -->
+<!-- Children Seat Modal -->
 <div class="modal fade" id="childSeatModal" tabindex="-1" aria-labelledby="childSeatModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-3 shadow">
             <div class="modal-header">
-                <h5 class="modal-title" id="childSeatModalLabel">Select Child Seat</h5>
+                <h5 class="modal-title" id="childSeatModalLabel">Select Children Seat</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="mb-3">Select your child's age and weight at the time of travel:</p>
+                <p class="mb-3">Select your children's age and weight at the time of travel:</p>
                 <ul class="list-group seat-options">
                     <li class="list-group-item seat-option curser-pointer" data-value="rear_facing">
                         <strong>Rear-facing infant seat</strong><br>
@@ -515,7 +515,7 @@ calculateTotalPrice();
 
 document.addEventListener("DOMContentLoaded", function() {
     let currentChild = null;
-    // When "Select Child Seat" button is clicked
+    // When "Select Children Seat" button is clicked
     document.querySelectorAll(".select-seat-btn").forEach(btn => {
         btn.addEventListener("click", function() {
             currentChild = this.getAttribute("data-child");

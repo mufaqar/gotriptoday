@@ -420,7 +420,7 @@ function calculate_final_price($base_price, $premium_upgrade, $baby_seat, $toddl
         $final_price += $base_price * 0.2;
     }
     
-    // Child seats (€5 each)
+    // Children seats (€5 each)
     $seat_cost = ($baby_seat + $toddler_seat + $booster_seat) * 5;
     $final_price += $seat_cost;
     
