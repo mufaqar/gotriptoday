@@ -170,15 +170,11 @@ function get_discounted_price($post_id, $formatted = true) {
                 number_format($discounted_price, 2)
             );
         }
-
         return number_format($discounted_price, 2);
     }
-
     // No discount case
     return $formatted ? number_format($price, 2) . "€" : number_format($price, 2);
 }
-
-
 
 /**
  * Remove WooCommerce My Account menu items
