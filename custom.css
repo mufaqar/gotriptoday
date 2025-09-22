@@ -1441,10 +1441,6 @@ strong {
   cursor: pointer;
 }
 
-.traveler-selection:hover {
-  border-color: #0d6efd;
-}
-
 .traveler-modal {
   display: none;
   position: fixed;
