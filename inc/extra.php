@@ -191,8 +191,6 @@ function mufaqar_remove_my_account_links( $menu_links ) {
     return $menu_links;
 }
 
-
-
 function mufaqar_enqueue_flatpickr() {
     // Flatpickr CSS
     wp_enqueue_style( 'flatpickr-css', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css' );
