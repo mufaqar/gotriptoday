@@ -2,13 +2,27 @@
 /* Template Name: Booking Details */
 get_header();
 
-    // Initialize variables
+   
+
+if ( isset($_POST['tour_datetime']) ) {
+    $tour_datetime = sanitize_text_field($_POST['tour_datetime']);
+
+    // Split into date & time
+    $datetime_parts = explode(' ', $tour_datetime, 2); 
+
+    $tour_date = $datetime_parts[0];   // e.g. 2025-09-23
+    $tour_time = $datetime_parts[1];   // e.g. 09:00 AM
+} else {
+    $tour_date = '';
+    $tour_time = '';
+}
+
+
     $tour_id = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
     $tour_price = isset($_GET['tour_price']) ? floatval($_GET['tour_price']) : 0;
     $tour_adults = isset($_GET['adult_count']) ? intval($_GET['adult_count']) : 0;
     $tour_child = isset($_GET['child_count']) ? intval($_GET['child_count']) : 0;
-    $tour_date = isset($_GET['tour_date']) ? sanitize_text_field($_GET['tour_date']) : '';
-    $tour_time = isset($_GET['tour_time']) ? sanitize_text_field($_GET['tour_time']) : '';
+  
 
     $totalTravelers = $tour_adults + $tour_child;
 
