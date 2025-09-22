@@ -1,32 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <?php if (is_search()) { ?>
     <meta name="robots" content="noindex, nofollow" />
     <?php } ?>
     <title>
         <?php
-				/*
-				 * Print the <title> tag based on what is being viewed.
-				 */
-				global $page, $paged, $post;
-			
+				global $page, $paged, $post;			
 				wp_title( '|', true, 'right' );
-			
-				// Add the blog name.
 				bloginfo( 'name' );
-			
-				// Add the blog description for the home/front page.
 				$site_description = get_bloginfo( 'description', 'display' );
 				if ( $site_description && ( is_home() || is_front_page() ) )
 					echo " | $site_description";
-			
-				// Add a page number if necessary:
 				if ( $paged >= 2 || $page >= 2 )
 					echo ' | ' . sprintf( __( 'Page %s', 'wpv' ), max( $paged, $page ) );
             ?>
