@@ -20,7 +20,6 @@
             ?>
     </title>
     <link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/favicon.ico" />
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/animate.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/tabler-icons.min.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/bootstrap.min.css">
