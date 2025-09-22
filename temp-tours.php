@@ -25,7 +25,7 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="search_banner tour_banner mt-5">
-                <h1>Explore around, wherever you are, in one day.</h1>
+                <h2>Explore around, wherever you are, in one day.</h2>
                 <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms"
                     data-wow-duration="1000ms">
                     <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""

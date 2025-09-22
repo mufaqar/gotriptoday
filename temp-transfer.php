@@ -27,7 +27,7 @@ get_header(); ?>
     <div class="container">
         <div class="row">
             <div class="search_banner tour_banner mt-5">
-                <h1><?php the_title()?></h1>
+                <h2><?php the_title()?></h2>
                 
             </div>
 
