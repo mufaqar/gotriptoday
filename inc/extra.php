@@ -22,7 +22,7 @@
         }
 
         // Send Email
-        $to = 'mufaqar@gmail.com';
+        $to = 'mufaqar@gmail.com,info@gotriptoday.com';
         $headers = array('Content-Type: text/html; charset=UTF-8');
         $body = "<strong>Name:</strong> $name<br><strong>Email:</strong> $email<br><strong>Subject:</strong> $subject<br><strong>Message:</strong><br>$message";
 
