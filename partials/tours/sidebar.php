@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <?php $tour_price = get_discounted_price($post->ID, false);
       $discounted_price = get_discounted_price($post->ID, false);     
     ?>
@@ -9,26 +11,16 @@
         <input type="hidden" id="adult_count_input" name="adult_count" value="1">
         <input type="hidden" id="child_count_input" name="child_count" value="0">
         <div class="row">
-            <div class="col-12 gap-2 py-2 tour_date">
-                <label for="tour_date" class="form-label mb-0 text-heading">Date</label>
-                <input type="date" id="tour_date" name="tour_date" class="form-control p-0 bg-transparent h-auto"
-                    value="<?php echo date('Y-m-d'); ?>" required>
+            <!-- Flatpickr CSS -->
+
+
+            <div class="col-12 gap-2 py-2 tour_datetime">
+                <label for="tour_datetime" class="form-label mb-0 text-heading">Select Date & Time</label>
+                <input type="text" id="tour_datetime" name="tour_datetime" class="form-control"
+                    placeholder="Pick date & time" required>
             </div>
-            <div class="col-12 gap-2 py-2 tour_times">
-                <label for="tour_time" class="form-label mb-0 text-heading">Start Time</label>
-                <?php             
-                        $start_time = '09:30 AM';
-                        $end_time = '05:00 PM';
-                        $interval = 30; 
-                        $time_slots = generateTimeSlots($start_time, $end_time, $interval);
-                     ?>
-                <select name="tour_time" id="tour_time" class="py-2 bg-transparent" required>
-                    <option value="09:00 AM" selected>09:00 AM</option>
-                    <?php foreach ($time_slots as $index => $time): ?>
-                    <option value="<?php echo $index + 2; ?>"><?php echo $time; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+
+
             <div class="col-12 gap-2 py-2 tour_travelers">
                 <label class="form-label mb-0 text-heading">Travelers</label>
                 <div class="traveler-selection" onclick="openTravelerModal()" required>

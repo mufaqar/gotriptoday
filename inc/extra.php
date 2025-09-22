@@ -192,3 +192,26 @@ function mufaqar_remove_my_account_links( $menu_links ) {
 }
 
 
+
+function mufaqar_enqueue_flatpickr() {
+    // Flatpickr CSS
+    wp_enqueue_style( 'flatpickr-css', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css' );
+
+    // Flatpickr JS
+    wp_enqueue_script( 'flatpickr-js', 'https://cdn.jsdelivr.net/npm/flatpickr', array('jquery'), null, true );
+
+    // Your custom init script
+    wp_add_inline_script( 'flatpickr-js', "
+        jQuery(document).ready(function($) {
+            flatpickr('#tour_datetime', {
+                enableTime: true,
+                dateFormat: 'Y-m-d h:i K',
+                minDate: 'today',
+                time_24hr: false,
+                minuteIncrement: 30
+            });
+        });
+    " );
+}
+add_action( 'wp_enqueue_scripts', 'mufaqar_enqueue_flatpickr' );
+
