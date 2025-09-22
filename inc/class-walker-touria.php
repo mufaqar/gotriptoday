@@ -1,6 +1,4 @@
-
 <?php
-
 class Touria_Walker_Nav_Menu extends Walker_Nav_Menu {
     // Start level
     function start_lvl(&$output, $depth = 0, $args = []) {
