@@ -198,7 +198,8 @@ function mufaqar_enqueue_flatpickr() {
     // Flatpickr JS
     wp_enqueue_script( 'flatpickr-js', 'https://cdn.jsdelivr.net/npm/flatpickr', array('jquery'), null, true );
 
-    // Your custom init script
+  
+   // Your custom init script
     wp_add_inline_script( 'flatpickr-js', "
         jQuery(document).ready(function($) {
             flatpickr('#tour_datetime', {
@@ -206,7 +207,9 @@ function mufaqar_enqueue_flatpickr() {
                 dateFormat: 'Y-m-d h:i K',
                 minDate: 'today',
                 time_24hr: false,
-                minuteIncrement: 30
+                minuteIncrement: 30,
+                minTime: '09:00',
+                defaultDate: new Date().setHours(9,0,0,0) // today at 9:00 AM
             });
         });
     " );
