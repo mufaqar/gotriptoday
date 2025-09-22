@@ -60,6 +60,8 @@ if (navarToggler) {
     });
 }
 
+
+
 if (header) {
     function stickyNavigation() {
         if (window.pageYOffset > 10) {
