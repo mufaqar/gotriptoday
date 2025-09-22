@@ -207,14 +207,3 @@ add_filter('show_admin_bar', function($show) {
 });
 
 
-
-add_action('wp_footer', function() {
-    if( current_user_can('administrator') ) {
-        if (wp_mail('mufaqar@gmail.com', 'Test Email from WP', 'If you got this, email works!')) {
-            echo '<p>Email sent successfully.</p>';
-        } else {
-            echo '<p>Email sending failed.</p>';
-        }
-    }
-});
-
