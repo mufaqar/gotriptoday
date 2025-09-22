@@ -12,8 +12,8 @@
         <input type="hidden" id="child_count_input" name="child_count" value="0">
         <div class="row">
             <div class="col-12 gap-2 py-2 tour_datetime">
-                <label for="tour_datetime" class="form-label mb-0 text-heading">Select Date & Time</label>
-                <input type="text" id="tour_datetime" name="tour_datetime" class="form-control"
+                <label for="tour_datetime" class="form-label mb-3 text-heading">Select Date & Time</label>
+                <input type="text" id="tour_datetime" name="tour_datetime" class="form-control"style="border:1px solid #dee2e6;"
                     placeholder="Pick date & time" required>
             </div>
             <div class="col-12 gap-2 py-2 tour_travelers">
