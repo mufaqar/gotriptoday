@@ -651,7 +651,8 @@
   color: #fff;
 }
 
-.search_banner h2 {
+.search_banner h2,
+.search_banner h1 {
   color: #ffffff;
   text-align: center;
   font-size: 40px;
