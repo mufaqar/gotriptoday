@@ -67,7 +67,6 @@
                     aria-controls="touriaNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="ti ti-menu-deep"></i>
                 </button>
-
                 <!-- Navbar Nav -->
                 <div class="collapse justify-content-xl-end navbar-collapse" id="touriaNav">
                     <?php wp_nav_menu([
