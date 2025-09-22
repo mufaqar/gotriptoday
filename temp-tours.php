@@ -15,32 +15,17 @@ get_header();
     </div>
 
     <!-- Background Slider -->
-    <div class="swiper background-swiper">
-        <div class="swiper-wrapper h-100">
-            <div class="swiper-slide h-100"
+    <div class="background-swiper1">
+        <div class="h-100">
+            <div class="h-100 tour_slide"
                 style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
-            </div>
-            <div class="swiper-slide h-100"
-                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/1.jpg')">
-            </div>
+            </div>            
         </div>
     </div>
-
-    <!-- Background Slider Navigation -->
-    <div class="background-slider-nav d-none d-sm-flex">
-        <div class="background-button-prev">
-            <i class="icon-arrow-left"></i>
-        </div>
-        <div class="background-button-next">
-            <i class="icon-arrow-right"></i>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
-
             <div class="search_banner tour_banner mt-5">
-                <h2>Explore around, wherever you are, in one day.</h2>
+                <h1>Explore around, wherever you are, in one day.</h1>
                 <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms"
                     data-wow-duration="1000ms">
                     <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""

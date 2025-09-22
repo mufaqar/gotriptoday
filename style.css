@@ -2696,6 +2696,34 @@ picture.jarallax-img img {
   z-index: 10;
 }
 
+.background-swiper1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+.background-swiper1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      color-stop(8.81%, #161920),
+      color-stop(99.92%, rgba(22, 25, 32, 0.06)));
+  background: linear-gradient(90deg,
+      #161920 8.81%,
+      rgba(22, 25, 32, 0.06) 99.92%);
+  z-index: 10;
+}
+
+
 .search-form-container {
   position: relative;
   z-index: 10;

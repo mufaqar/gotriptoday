@@ -3,11 +3,39 @@
 
 get_header(); ?>
 
-<?php $bg_image =  get_template_directory_uri() . '/assets/img/bg-img/slide1.webp';
 
-get_template_part('partials/content', 'breadcrumb', [
-    'bg' => $bg_image
-]); ?>
+<section class="hero-section bg-dark">
+    <!-- Cloud Image -->
+    <div class="cloud-img"></div>
+
+    <!-- Social Icons -->
+    <div class="social-icons d-none d-sm-flex">
+        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
+                class="ti ti-brand-facebook"></i></a>
+        <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
+        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+    </div>
+
+    <!-- Background Slider -->
+    <div class="background-swiper1">
+        <div class="h-100">
+            <div class="h-100 tour_slide"
+                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
+            </div>            
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="search_banner tour_banner mt-5">
+                <h1><?php the_title()?></h1>
+                
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
 
 
 <!-- Booking Section -->
