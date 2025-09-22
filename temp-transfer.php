@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<?php $bg_image =  get_template_directory_uri() . '/assets/images/car_ride.jpg';
+<?php $bg_image =  get_template_directory_uri() . '/assets/img/bg-img/slide1.webp';
 
 get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image
