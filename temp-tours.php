@@ -38,6 +38,71 @@ get_header();
     <div class="divider-sm"></div>
 </div>
 
+<!-- Hero Section -->
+<section class="hero-section bg-dark">
+    <!-- Cloud Image -->
+    <div class="cloud-img"></div>
+
+    <!-- Social Icons -->
+    <div class="social-icons d-none d-sm-flex">
+        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
+                class="ti ti-brand-facebook"></i></a>
+        <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
+        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+    </div>
+
+    <!-- Background Slider -->
+    <div class="swiper background-swiper">
+        <div class="swiper-wrapper h-100">
+            <div class="swiper-slide h-100"
+                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
+            </div>
+            <div class="swiper-slide h-100"
+                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/1.jpg')">
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Slider Navigation -->
+    <div class="background-slider-nav d-none d-sm-flex">
+        <div class="background-button-prev">
+            <i class="icon-arrow-left"></i>
+        </div>
+        <div class="background-button-next">
+            <i class="icon-arrow-right"></i>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <ul class="nav forms-tabs mb-3" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="tab-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1"
+                            type="button" role="tab" aria-controls="tab1" aria-selected="true">Transfer</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="tab-link" href="<?php echo home_url('/day-trip'); ?>" type="button">Day Trip</a>
+                    </li>
+                </ul>
+                <div class="tab-content pt-3" id="">
+                    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                        <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                            <?php get_template_part('partials/content', 'tab1'); ?>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
 <!-- Tour List Section -->
 <section class="tour-list-section">
        <div class="divider-sm"></div>
