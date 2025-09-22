@@ -78,7 +78,7 @@
 					]); ?>
                     <div class="header-navigation d-flex flex-wrap align-items-center gap-3 mt-4 mt-xl-0">
                         <div class="header-search-btn">
-                            <a href="<?php echo is_user_logged_in() ? site_url('/my-account/orders/') : wp_login_url(); ?>" class="btn">
+                            <a href="<?php echo is_user_logged_in() ? site_url('/my-account/orders/') : site_url('/login')  ?>" class="btn">
                                     <i class="ti ti-user-check"></i>
                             </a>
                         </div>
