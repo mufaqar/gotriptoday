@@ -29,7 +29,7 @@
         if(wp_mail($to, 'Contact Form: '.$subject, $body, $headers)){
             wp_send_json_success('Thank you! Your message has been sent.');
         } else {
-            wp_send_json_error('Email could not be sent. Please try again later.');
+            wp_send_json_error('Email could not be sent. Please try again later..');
         }
     }
     add_action('wp_ajax_submit_contact_form', 'handle_contact_form');
