@@ -208,6 +208,11 @@ add_filter('show_admin_bar', function($show) {
 
 
 
+// Tell WordPress this theme supports WooCommerce
+add_action( 'after_setup_theme', function() {
+    add_theme_support( 'woocommerce' );
+});
+
 // Send customer-processing-order email on order creation
 add_action( 'woocommerce_new_order', function( $order_id ) {
     $order = wc_get_order( $order_id );
