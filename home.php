@@ -3,20 +3,16 @@
 
 get_header(); ?>
 
-<!-- Hero Section -->
-<section class="hero-section bg-dark">
-    <!-- Cloud Image -->
-    <div class="cloud-img"></div>
 
-    <!-- Social Icons -->
+<section class="hero-section bg-dark">
+
+    <div class="cloud-img"></div> 
     <div class="social-icons d-none d-sm-flex">
         <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
                 class="ti ti-brand-facebook"></i></a>
         <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
         <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
     </div>
-
-    <!-- Background Slider -->
     <div class="swiper background-swiper">
         <div class="swiper-wrapper h-100">
             <div class="swiper-slide h-100"
@@ -27,7 +23,6 @@ get_header(); ?>
             </div>
         </div>
     </div>
-
     <!-- Background Slider Navigation -->
     <div class="background-slider-nav d-none d-sm-flex">
         <div class="background-button-prev">
