@@ -19,12 +19,21 @@ get_header();
         <div class="h-100">
             <div class="h-100 tour_slide"
                 style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/slide1.webp')">
-            </div>            
+            </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
             <div class="search_banner tour_banner mt-5">
+                <ul class="nav forms-tabs mb-3 mx-auto" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="tab-link" href="<?php echo home_url('/booking-page'); ?>" type="button">Transfer</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="tab-link active" href="<?php echo home_url('/day-trip'); ?>" type="button">Day
+                            Trip</a>
+                    </li>
+                </ul>
                 <h2>Explore around, wherever you are, in one day.</h2>
                 <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms"
                     data-wow-duration="1000ms">

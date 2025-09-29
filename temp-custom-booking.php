@@ -9,12 +9,8 @@ get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image
 ]); ?>
 
-<section class="">
-    <!-- Divider -->
+<section>
     <div class="divider"></div>
-
-
-
     <div class="container">
         <div class="row g-5">
             <!-- Form -->
@@ -23,7 +19,6 @@ get_template_part('partials/content', 'breadcrumb', [
                     <?php echo do_shortcode('[jet_fb_form form_id="23868" submit_type="ajax" required_mark="*" fields_layout="column" fields_label_tag="div" markup_type="div" enable_progress="1" clear=""]') ?>
                 </div>
             </div>
-
             <!-- Content -->
             <div class="col-12 col-lg-6">
                 <div class="about-content ps-md-5">
