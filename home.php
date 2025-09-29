@@ -455,7 +455,7 @@ get_header(); ?>
 
 <?php get_footer(); ?>
 
-<script>
+<!-- <script>
 jQuery(document).ready(function($) {
     $('form[name="chbs-form"]').on('submit', function(e) {
         e.preventDefault();
@@ -463,4 +463,4 @@ jQuery(document).ready(function($) {
         window.location.href = bookingUrl + '?' + $(this).serialize();
     });
 });
-</script>
+</script> -->
