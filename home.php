@@ -4,15 +4,8 @@
 get_header(); ?>
 
 
-<section class="hero-section bg-dark">
-
-    <div class="cloud-img"></div> 
-    <div class="social-icons d-none d-sm-flex">
-        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
-                class="ti ti-brand-facebook"></i></a>
-        <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
-        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
-    </div>
+<section class="hero-section bg-dark">    
+    <?php gotriptoday_social_icons(); ?>
     <div class="swiper background-swiper">
         <div class="swiper-wrapper h-100">
             <div class="swiper-slide h-100"
@@ -454,13 +447,3 @@ get_header(); ?>
 </section>
 
 <?php get_footer(); ?>
-
-<!-- <script>
-jQuery(document).ready(function($) {
-    $('form[name="chbs-form"]').on('submit', function(e) {
-        e.preventDefault();
-        let bookingUrl = "<?php echo home_url('/booking-page/'); ?>";
-        window.location.href = bookingUrl + '?' + $(this).serialize();
-    });
-});
-</script> -->

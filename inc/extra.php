@@ -216,3 +216,23 @@ function mufaqar_enqueue_flatpickr() {
 }
 add_action( 'wp_enqueue_scripts', 'mufaqar_enqueue_flatpickr' );
 
+
+
+// Reusable social icons function
+function gotriptoday_social_icons() {
+    ?>
+    <div class="cloud-img"></div> 
+    <div class="social-icons d-none d-sm-flex">
+        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank" rel="noopener">
+            <i class="ti ti-brand-facebook"></i>
+        </a>
+        <a href="https://www.tiktok.com/@gotriptoday" target="_blank" rel="noopener">
+            <i class="ti ti-brand-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank" rel="noopener">
+            <i class="ti ti-brand-instagram"></i>
+        </a>
+    </div>
+    <?php
+}
+

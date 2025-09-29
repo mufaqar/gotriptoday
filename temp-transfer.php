@@ -5,17 +5,7 @@ get_header(); ?>
 
 
 <section class="hero-section bg-dark">
-    <!-- Cloud Image -->
-    <div class="cloud-img"></div>
-
-    <!-- Social Icons -->
-    <div class="social-icons d-none d-sm-flex">
-        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
-                class="ti ti-brand-facebook"></i></a>
-        <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
-        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
-    </div>
-
+     <?php gotriptoday_social_icons(); ?>
     <!-- Background Slider -->
     <div class="background-swiper1">
         <div class="h-100">
