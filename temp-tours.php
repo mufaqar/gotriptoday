@@ -15,7 +15,7 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="search_banner tour_banner mt-5">
-                <ul class="nav forms-tabs mb-3 mx-auto other_nav" id="myTab" role="tablist">
+                <ul class="nav forms-tabs mb-3 mx-auto " id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="tab-link" href="<?php echo home_url('/booking-page'); ?>" type="button">Transfer</a>
                     </li>
@@ -24,7 +24,7 @@ get_header();
                             Trip</a>
                     </li>
                 </ul>
-                <h2>Explore around, wherever you are, in one day.</h2>
+                <h2 class="heading_nav">Explore around, wherever you are, in one day.</h2>
                 <div class="hero-search-form wow fadeInUp w-full mt-3" data-wow-delay="900ms"
                     data-wow-duration="1000ms">
                     <form class="row align-items-center g-3 g-xxl-2 search-form" role="search" method="get" class=""
