@@ -44,7 +44,6 @@
                 </div>
             </div>
     <?php } ?>
-
     <header class="header-area style-three">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-xl">
