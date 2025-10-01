@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,13 +36,14 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-
-    <!-- <div class="preloader" id="preloader">
-        <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div> -->
+    <?php
+        if ( ! is_page_template( 'temp-transfer.php' ) ) { ?>
+            <div class="preloader" id="preloader">
+                <div class="spinner-grow" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+    <?php } ?>
 
     <header class="header-area style-three">
         <div class="container-fluid">
@@ -64,8 +66,9 @@
 					]); ?>
                     <div class="header-navigation d-flex flex-wrap align-items-center gap-3 mt-4 mt-xl-0">
                         <div class="header-search-btn">
-                            <a href="<?php echo is_user_logged_in() ? site_url('/my-account/orders/') : site_url('/login')  ?>" class="btn">
-                                    <i class="ti ti-user-check"></i>
+                            <a href="<?php echo is_user_logged_in() ? site_url('/my-account/orders/') : site_url('/login')  ?>"
+                                class="btn">
+                                <i class="ti ti-user-check"></i>
                             </a>
                         </div>
                         <a class="btn btn-success" href="<?php echo home_url('/custom-booking'); ?>">Get A Quote<i
