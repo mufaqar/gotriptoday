@@ -14,7 +14,7 @@ get_header();
     </div>
     <div class="container">
         <div class="row">
-            <div class="search_banner tour_banner mt-5">
+            <div class="search_banner tour_banner ">
                 <ul class="nav forms-tabs mb-3 mx-auto " id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="tab-link" href="<?php echo home_url('/booking-page'); ?>" type="button">Transfer</a>
