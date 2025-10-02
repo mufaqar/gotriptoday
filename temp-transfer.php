@@ -52,7 +52,7 @@ get_header(); ?>
         <!-- Divider -->
         <div class="divider"></div>
          <div class="col-12 col-md-12 tour-details-content mtn">
-                <ul class="list-unstyled mb-3">
+                <ul class="list-unstyled mb-3 transfer_features">
                     <li><i class="ti ti-lock-check"></i>Secure Booking </li>
                     <li><i class="ti ti-rosette-discount-check"></i>Satisfaction Guarantee </li>
                     <li><i class="ti ti-heart-check"></i> Flexible Scheduling </li>

@@ -1605,7 +1605,25 @@ strong {
   background-position: bottom;
 }
 
+.other_nav {
+  margin-top: -60px;
+}
 
-.other_nav { margin-top: -60px;}
+.heading_nav {
+  padding-top: 120px;
+}
 
-.heading_nav { padding-top: 120px;}
+.transfer_features {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+
+.transfer_features li i  {
+  border: 1px solid #3cb371;
+  padding: 5px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chbs-vehicle-content { display: flex !important; flex-direction: column !important;}
