@@ -40,7 +40,7 @@ get_header(); ?>
                 </ul>
                 <div class="tab-content pt-3" id="">
                     <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-                        <div class="go_trip_form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
+                        <div class="go_trip_form">
                             <?php get_template_part('partials/content', 'tab1'); ?>
                         </div>
                     </div>
