@@ -98,3 +98,15 @@ get_header(); ?>
 </section>
 
 <?php get_footer(); ?>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+   const urlParams = new URLSearchParams(window.location.search);
+   if (urlParams.get("widget_second_step") === "1" && !sessionStorage.getItem("widget_reloaded")) {
+       sessionStorage.setItem("widget_reloaded", "1");
+       window.location.reload(true);
+   }
+});
+
+</script>
