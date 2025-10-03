@@ -208,18 +208,3 @@ add_filter('show_admin_bar', function($show) {
 
 
 
-add_action('wp_footer', function () {
-    ?>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const payBtn = document.querySelector(".chbs-booking-complete-payment-woocommerce a");
-        if (payBtn) {
-            payBtn.addEventListener("click", function (e) {
-                e.stopPropagation(); // prevent CHBS scripts from blocking
-                window.location.href = this.href;
-            });
-        }
-    });
-    </script>
-    <?php
-});
