@@ -92,15 +92,11 @@ get_header(); ?>
             ?>
         </div>
     </div>
-
-    <!-- Divider -->
     <div class="divider"></div>
 </section>
 
 <?php get_footer(); ?>
-
 <script>
-
     document.addEventListener("DOMContentLoaded", function() {
    const urlParams = new URLSearchParams(window.location.search);
    if (urlParams.get("widget_second_step") === "1" && !sessionStorage.getItem("widget_reloaded")) {
@@ -108,5 +104,4 @@ get_header(); ?>
        window.location.reload(true);
    }
 });
-
 </script>
