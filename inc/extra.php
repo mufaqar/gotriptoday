@@ -185,8 +185,11 @@ add_filter( 'woocommerce_order_item_get_formatted_meta_data', 'mufaqar_hide_item
 function mufaqar_hide_item_meta_on_checkout( $formatted_meta, $item ) {
     if ( is_checkout() ) {
         // List meta keys to hide (case-sensitive)
-        $hide_keys = array(
-           
+        $hide_keys = array(  
+            'Final Price',
+            'Passenger Name',
+            'Passenger Email',
+            'Passenger Phone',
             'Adults',
             'Children',
             'Total Passengers',
