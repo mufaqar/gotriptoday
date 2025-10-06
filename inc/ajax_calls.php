@@ -113,61 +113,49 @@ function process_booking_form() {
         try {
            
 
-            // Before creating the order, handle user creation/assignment
-            $user_id = email_exists( $customer_email );
+             // ✅ Handle user (silent auto-create if not exist)
+                $user_id = 0;
+                if (!empty($customer_email)) {
+                    $user_id = email_exists($customer_email);
 
-            if ( ! $user_id && ! empty( $customer_email ) ) {
-                // Create a username from the email prefix
-                $username = sanitize_user( current( explode( '@', $customer_email ) ), true );
+                    if (!$user_id) {
+                        // Create username from email
+                        $username = sanitize_user(current(explode('@', $customer_email)));
+                        if (username_exists($username)) {
+                            $username .= '_' . wp_generate_password(4, false);
+                        }
 
-                // Ensure username is unique
-                if ( username_exists( $username ) ) {
-                    $username .= '_' . wp_generate_password( 4, false );
-                }
+                        // Generate random password
+                        $password = wp_generate_password(12, false);
+                        $user_id = wp_create_user($username, $password, $customer_email);
 
-                // Generate a random password
-                $password = wp_generate_password( 12, false );
-
-                // Create the new user
-                $user_id = wp_create_user( $username, $password, $customer_email );
-
-                if ( ! is_wp_error( $user_id ) ) {
-                    // Update user meta with name & phone
-                    if ( ! empty( $customer_name ) ) {
-                        $name_parts = explode( ' ', $customer_name, 2 );
-                        wp_update_user( array(
-                            'ID'         => $user_id,
-                            'first_name' => $name_parts[0],
-                            'last_name'  => isset( $name_parts[1] ) ? $name_parts[1] : '',
-                        ) );
+                        if (!is_wp_error($user_id)) {
+                            // Save user meta info
+                            if (!empty($customer_name)) {
+                                $name_parts = explode(' ', $customer_name, 2);
+                                wp_update_user([
+                                    'ID'         => $user_id,
+                                    'first_name' => $name_parts[0],
+                                    'last_name'  => isset($name_parts[1]) ? $name_parts[1] : '',
+                                ]);
+                            }
+                            update_user_meta($user_id, 'billing_phone', $customer_phone);
+                        } else {
+                            $user_id = 0; // fallback to guest
+                        }
                     }
-                    update_user_meta( $user_id, 'billing_phone', $customer_phone );
-
-                    // Optionally, email login credentials to the new user
-                    wp_mail(
-                        $customer_email,
-                        __( 'Your new account details', 'your-text-domain' ),
-                        sprintf(
-                            "Hello %s,\n\nAn account has been created for you.\n\nLogin: %s\nPassword: %s\n\nYou can log in here: %s",
-                            $customer_name,
-                            $username,
-                            $password,
-                            wp_login_url()
-                        )
-                    );
-                } else {
-                    $user_id = 0; // fallback if creation failed
                 }
-            }
 
-            // Now create WooCommerce order
-            $order = wc_create_order();
+                // ✅ Create WooCommerce order
+                $order = wc_create_order();
+                if ($user_id) {
+                    $order->set_customer_id($user_id);
+                } else {
+                    $order->set_customer_id(0);
+                }
 
-            // If a user was found/created, assign order to them
-            if ( $user_id ) {
-                $order->set_customer_id( $user_id );
-            }
-
+           
+           
             // Retrieve product
             $product = wc_get_product( $booking_product_id );
 
