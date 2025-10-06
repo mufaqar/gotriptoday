@@ -180,10 +180,14 @@ function gotriptoday_social_icons() {
 /**
  * Exclude selected order item meta from customer/admin emails.
  */
+/**
+ * Hide specific order item meta keys on the checkout page.
+ */
 add_filter( 'woocommerce_display_item_meta', function( $html, $item, $args ) {
 
     // Define meta keys you want to HIDE (these are the names you added using wc_add_order_item_meta)
     $hidden_meta = array(
+    
         'Adults',
         'Children',
         'Base Price (per px)',
@@ -199,7 +203,7 @@ add_filter( 'woocommerce_display_item_meta', function( $html, $item, $args ) {
         'VAT ID'
     );
 
-     // Loop through and remove them from display
+    // Loop through and remove them from display
     foreach ( $hidden_meta as $key ) {
         $pattern = '/<li[^>]*>\s*' . preg_quote( $key, '/' ) . '\s*:[^<]*<\/li>/i';
         $html = preg_replace( $pattern, '', $html );
