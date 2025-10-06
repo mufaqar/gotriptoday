@@ -178,36 +178,41 @@ function gotriptoday_social_icons() {
 
 
 /**
- * Exclude selected order item meta from customer/admin emails.
+ * Hide specific order item meta on the checkout page.
  */
-/**
- * Hide specific order item meta keys on the checkout page.
- */
-add_filter( 'woocommerce_display_item_meta', function( $html, $item, $args ) {
+add_filter( 'woocommerce_order_item_get_formatted_meta_data', 'mufaqar_hide_item_meta_on_checkout', 10, 2 );
 
-    // Define meta keys you want to HIDE (these are the names you added using wc_add_order_item_meta)
-    $hidden_meta = array(
-    
-        'Adults',
-        'Children',
-        'Base Price (per px)',
-        'PX (vehicle multiplier)',
-        'Final Price',
-        'Invoice Required',
-        'Invoice Street',
-        'Invoice ZIP',
-        'Invoice Country',
-        'Passenger Email',
-        'Passenger Phone',
-        'Invoice City',
-        'VAT ID'
-    );
+function mufaqar_hide_item_meta_on_checkout( $formatted_meta, $item ) {
+    if ( is_checkout() ) {
+        // List meta keys to hide (case-sensitive)
+        $hide_keys = array(
+           
+            'Adults',
+            'Children',
+            'Total Passengers',
+            'Pickup Date & Time',
+            'Pickup Address',
+            'Drop-off Address',
+            'Transport Info',
+            'Driver Notes',
+            'Vehicle Type',
+            'Base Price (per px)',
+            'PX (vehicle multiplier)',
+            'Invoice Required',
+            'Company Name',
+            'Invoice Street',
+            'Invoice City',
+            'Invoice ZIP',
+            'Invoice Country',
+            'VAT ID',
+        );
 
-    // Loop through and remove them from display
-    foreach ( $hidden_meta as $key ) {
-        $pattern = '/<li[^>]*>\s*' . preg_quote( $key, '/' ) . '\s*:[^<]*<\/li>/i';
-        $html = preg_replace( $pattern, '', $html );
+        foreach ( $formatted_meta as $key => $meta ) {
+            if ( in_array( $meta->display_key, $hide_keys, true ) ) {
+                unset( $formatted_meta[ $key ] );
+            }
+        }
     }
 
-    return $html;
-}, 10, 3 );
+    return $formatted_meta;
+}
