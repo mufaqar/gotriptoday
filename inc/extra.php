@@ -221,3 +221,28 @@ function mufaqar_hide_item_meta_on_checkout( $formatted_meta, $item ) {
 
     return $formatted_meta;
 }
+
+/**
+ * Change product title on checkout page.
+ */
+add_filter( 'woocommerce_cart_item_name', 'mufaqar_change_checkout_product_title', 10, 3 );
+
+function mufaqar_change_checkout_product_title( $product_name, $cart_item, $cart_item_key ) {
+    // Change title only on checkout page
+    if ( is_checkout() ) {
+        // Example 1: Change all product titles to a fixed text
+        $product_name = 'Your Airport Transfer Booking';
+
+        // Example 2: OR change based on product ID
+        // if ( isset( $cart_item['product_id'] ) && $cart_item['product_id'] == 123 ) {
+        //     $product_name = 'Custom Tour Booking';
+        // }
+
+        // Example 3: OR use custom meta if available
+        // if ( ! empty( $cart_item['tour_date'] ) ) {
+        //     $product_name = 'Transfer on ' . esc_html( $cart_item['tour_date'] );
+        // }
+    }
+
+    return $product_name;
+}
