@@ -113,49 +113,15 @@ function process_booking_form() {
         try {
            
 
-             // ✅ Handle user (silent auto-create if not exist)
-                $user_id = 0;
-                if (!empty($customer_email)) {
-                    $user_id = email_exists($customer_email);
-
-                    if (!$user_id) {
-                        // Create username from email
-                        $username = sanitize_user(current(explode('@', $customer_email)));
-                        if (username_exists($username)) {
-                            $username .= '_' . wp_generate_password(4, false);
-                        }
-
-                        // Generate random password
-                        $password = wp_generate_password(12, false);
-                        $user_id = wp_create_user($username, $password, $customer_email);
-
-                        if (!is_wp_error($user_id)) {
-                            // Save user meta info
-                            if (!empty($customer_name)) {
-                                $name_parts = explode(' ', $customer_name, 2);
-                                wp_update_user([
-                                    'ID'         => $user_id,
-                                    'first_name' => $name_parts[0],
-                                    'last_name'  => isset($name_parts[1]) ? $name_parts[1] : '',
-                                ]);
-                            }
-                            update_user_meta($user_id, 'billing_phone', $customer_phone);
-                        } else {
-                            $user_id = 0; // fallback to guest
-                        }
-                    }
-                }
-
-                // ✅ Create WooCommerce order
-                $order = wc_create_order();
-                if ($user_id) {
-                    $order->set_customer_id($user_id);
-                } else {
-                    $order->set_customer_id(0);
-                }
-
            
-           
+            // Now create WooCommerce order
+            $order = wc_create_order();
+
+            // If a user was found/created, assign order to them
+            if ( $user_id ) {
+                $order->set_customer_id( $customer_email );
+            }
+
             // Retrieve product
             $product = wc_get_product( $booking_product_id );
 
