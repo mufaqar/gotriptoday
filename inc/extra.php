@@ -190,6 +190,8 @@ function mufaqar_hide_item_meta_on_checkout( $formatted_meta, $item ) {
             'Passenger Name',
             'Passenger Email',
             'Passenger Phone',
+            'Pickup Date & Time',
+            'Tour Date',
             'Adults',
             'Children',
             'Total Passengers',
