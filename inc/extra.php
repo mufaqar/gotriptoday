@@ -161,18 +161,45 @@ add_action( 'wp_enqueue_scripts', 'mufaqar_enqueue_flatpickr' );
 // Reusable social icons function
 function gotriptoday_social_icons() {
     ?>
-    <div class="cloud-img"></div> 
-    <div class="social-icons d-none d-sm-flex">
-        <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank" rel="noopener">
-            <i class="ti ti-brand-facebook"></i>
-        </a>
-        <a href="https://www.tiktok.com/@gotriptoday" target="_blank" rel="noopener">
-            <i class="ti ti-brand-tiktok"></i>
-        </a>
-        <a href="https://www.instagram.com/gotriptodaycom/" target="_blank" rel="noopener">
-            <i class="ti ti-brand-instagram"></i>
-        </a>
-    </div>
-    <?php
+<div class="cloud-img"></div>
+<div class="social-icons d-none d-sm-flex">
+    <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank" rel="noopener">
+        <i class="ti ti-brand-facebook"></i>
+    </a>
+    <a href="https://www.tiktok.com/@gotriptoday" target="_blank" rel="noopener">
+        <i class="ti ti-brand-tiktok"></i>
+    </a>
+    <a href="https://www.instagram.com/gotriptodaycom/" target="_blank" rel="noopener">
+        <i class="ti ti-brand-instagram"></i>
+    </a>
+</div>
+<?php
 }
 
+
+/**
+ * Exclude selected order item meta from customer/admin emails.
+ */
+add_filter( 'woocommerce_order_item_display_meta_key', function( $display_key, $meta, $item ) {
+    $hidden_keys = array(
+        'Adults',
+        'Children',
+        'Base Price (per px)',
+        'PX (vehicle multiplier)',
+        'Final Price',
+        'Invoice Required',
+        'Invoice Street',
+        'Invoice ZIP',
+        'Invoice Country',
+        'Passenger Email',
+        'Passenger Phone',
+        'Invoice City',
+        'VAT ID'
+    );
+
+    if ( in_array( $display_key, $hidden_keys ) ) {
+        return ''; // Hide it
+    }
+
+    return $display_key;
+}, 10, 3 );
