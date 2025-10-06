@@ -180,8 +180,10 @@ function gotriptoday_social_icons() {
 /**
  * Exclude selected order item meta from customer/admin emails.
  */
-add_filter( 'woocommerce_order_item_display_meta_key', function( $display_key, $meta, $item ) {
-    $hidden_keys = array(
+add_filter( 'woocommerce_display_item_meta', function( $html, $item, $args ) {
+
+    // Define meta keys you want to HIDE (these are the names you added using wc_add_order_item_meta)
+    $hidden_meta = array(
         'Adults',
         'Children',
         'Base Price (per px)',
@@ -197,9 +199,11 @@ add_filter( 'woocommerce_order_item_display_meta_key', function( $display_key, $
         'VAT ID'
     );
 
-    if ( in_array( $display_key, $hidden_keys ) ) {
-        return ''; // Hide it
+     // Loop through and remove them from display
+    foreach ( $hidden_meta as $key ) {
+        $pattern = '/<li[^>]*>\s*' . preg_quote( $key, '/' ) . '\s*:[^<]*<\/li>/i';
+        $html = preg_replace( $pattern, '', $html );
     }
 
-    return $display_key;
+    return $html;
 }, 10, 3 );
