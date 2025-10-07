@@ -15,19 +15,8 @@ $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 $order    = wc_get_order($order_id);
 
 //print "<pre>";
-//print_r($order); // For debugging purposes, remove in production
-
-
-
-
-   
-
-
-
-
-
-
-
+//print_r($order); // For debugging purposes, remove in production 
+// 
 ?>
 
 <div class="container my-5">
@@ -89,24 +78,24 @@ $order    = wc_get_order($order_id);
                                     Qty: <?php echo esc_html($item->get_quantity()); ?>
                                 </small> -->
                             </div>
-                           
-                                            <div class="text-end fw-bold">
+
+                            <div class="text-end fw-bold">
                                 <?php echo wp_kses_post($order->get_formatted_line_subtotal($item)); ?>
                             </div>
                         </div>
-                         <div class="mt-3">
-                             <ul class="list-unstyled mb-0 small text-muted d-flex flex-column gap-2">
+                        <div class="mt-3">
+                            <ul class="list-unstyled mb-0 small text-muted d-flex flex-column gap-2">
                                 <?php if ($pickup_date): ?>
-                                    <li><strong>Pickup Date & Time:</strong> <?php echo esc_html($pickup_date); ?></li>
+                                <li><strong>Pickup Date & Time:</strong> <?php echo esc_html($pickup_date); ?></li>
                                 <?php endif; ?>
 
-                              
+
 
                                 <?php if ($pickup_address): ?>
-                                    <li><strong>Pickup Address:</strong> <?php echo esc_html($pickup_address); ?></li>
+                                <li><strong>Pickup Address:</strong> <?php echo esc_html($pickup_address); ?></li>
                                 <?php endif; ?>
                             </ul>
-                            </div>
+                        </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -151,7 +140,7 @@ $order    = wc_get_order($order_id);
                         <!-- <a href="#" class="btn btn-success w-50">
                             <i class="bi bi-receipt"></i> Get Receipt
                         </a> -->
-                        
+
                     </div>
                 </div>
 
@@ -167,7 +156,7 @@ $order    = wc_get_order($order_id);
                         <button class="btn btn-success w-50" onclick="window.print()">
                             <i class="bi bi-printer"></i> Print
                         </button>
-                        
+
                     </div>
                 </div>
             </div>
