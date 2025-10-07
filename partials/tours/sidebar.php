@@ -253,6 +253,7 @@ function updateTotalPrice() {
     const totalPrice = billablePassengers * tourPrice;
     document.getElementById('total_price').innerHTML = '<strong>€' + totalPrice.toFixed(2) + '</strong>';
     document.getElementById('tour_price').value = totalPrice.toFixed(2);
+    
 }
 // Close modal when clicking outside
 document.getElementById('traveler-modal').addEventListener('click', function(e) {

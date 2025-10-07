@@ -3,8 +3,8 @@
 
 
 // Hook registrations (keep these if not already present)
-add_action('admin_post_process_booking', 'process_booking_form');
-add_action('admin_post_nopriv_process_booking', 'process_booking_form');
+//add_action('admin_post_process_booking', 'process_booking_form');
+//add_action('admin_post_nopriv_process_booking', 'process_booking_form');
 
 /**
  * Process booking form submitted from the Booking Details template.
@@ -252,7 +252,7 @@ function process_booking_form() {
             $order->save();
 
             // Redirect customer to checkout payment URL
-            $checkout_url = $order->get_checkout_payment_url();
+            $checkout_url =  home_url('/checkout/'); 
             if ( $checkout_url ) {
                 wp_safe_redirect( $checkout_url );
                 exit;
@@ -287,6 +287,110 @@ function calculate_final_price( $base_px_price, $px_multiplier = 1, $extras = ar
     }
     return $final;
 }
+
+
+// Handle booking form submission
+add_action('admin_post_process_booking', 'handle_booking_submission');
+add_action('admin_post_nopriv_process_booking', 'handle_booking_submission');
+
+function handle_booking_submission() {
+    if (!isset($_POST['booking_nonce_field']) || !wp_verify_nonce($_POST['booking_nonce_field'], 'booking_nonce')) {
+        wp_die('Security check failed.');
+    }
+
+     // Ensure WooCommerce session is ready
+    if (function_exists('WC')) {
+        if (null === WC()->session) {
+            WC()->initialize_session();
+        }
+        if (null === WC()->cart) {
+            wc_load_cart();
+        }
+    }
+
+
+    
+    $product_id     = 25579; // Your WooCommerce product ID
+
+    // Sanitize inputs
+    $tour_id          = intval( $_POST['tour_id'] );
+    $pickup_address   = sanitize_text_field( $_POST['pickup_address'] ?? '' );
+    $dropoff_address  = sanitize_text_field( $_POST['dropoff_address'] ?? '' );
+    $pickup_datetime  = sanitize_text_field( $_POST['pickup_datetime'] ?? '' );
+    $tour_adults      = intval( $_POST['tour_adults'] ?? 0 );
+    $tour_child       = intval( $_POST['tour_child'] ?? 0 );
+    $driver_notes     = sanitize_textarea_field( $_POST['driver_notes'] ?? '' );
+    $passenger_name   = sanitize_text_field( $_POST['passenger_name'] ?? '' );
+    $passenger_email  = sanitize_email( $_POST['passenger_email'] ?? '' );
+    $passenger_mobile = sanitize_text_field( $_POST['passenger_mobile'] ?? '' );
+    $vehicle_type     = sanitize_text_field( $_POST['vehicle_type'] ?? '' ); // 👈 From hidden input (next step)
+    $final_price      = floatval( $_POST['final_price'] ?? 0 );
+
+      // Group all booking data properly
+    $booking_data = [
+        'Tour ID'          => $tour_id,
+        'Pickup DateTime'  => $pickup_datetime,
+        'Pickup Address'   => $pickup_address,
+        'Dropoff Address'  => $dropoff_address,
+        'Adults'           => $tour_adults,
+        'Children'         => $tour_child,
+        'Passenger Name'   => $passenger_name,
+        'Passenger Email'  => $passenger_email,
+        'Passenger Mobile' => $passenger_mobile,
+        'Driver Notes'     => $driver_notes,
+        'Vehicle Type'     => $vehicle_type,
+        'Total Price'      => $final_price,
+    ];
+    // Add to WooCommerce cart
+    WC()->cart->empty_cart(); // optional – if you want only 1 booking at a time
+    WC()->cart->add_to_cart(
+        $product_id,
+        1,
+        0,
+        [],
+        ['booking_data' => $booking_data] // 👈 correctly nested
+    );
+
+    // Redirect to checkout
+    wp_safe_redirect(wc_get_checkout_url());
+    exit;
+}
+
+
+// Display custom booking meta in cart & checkout
+add_filter('woocommerce_get_item_data', function ($item_data, $cart_item) {
+    if (isset($cart_item['booking_data'])) {
+        foreach ($cart_item['booking_data'] as $key => $value) {
+            $item_data[] = [
+                'key'   => $key,
+                'value' => $value,
+            ];
+        }
+    }
+    return $item_data;
+}, 10, 2);
+
+// Save meta to order item
+add_action('woocommerce_checkout_create_order_line_item', function ($item, $cart_item_key, $values, $order) {
+    if (isset($values['booking_data'])) {
+        foreach ($values['booking_data'] as $key => $value) {
+            $item->add_meta_data($key, $value);
+        }
+    }
+}, 10, 4);
+
+
+add_action('woocommerce_before_calculate_totals', function ($cart) {
+    if (is_admin() && !defined('DOING_AJAX')) return;
+
+    foreach ($cart->get_cart() as $cart_item) {
+        if (isset($cart_item['booking_data']['Total Price'])) {
+            $price = floatval($cart_item['booking_data']['Total Price']);
+            $cart_item['data']->set_price($price);
+        }
+    }
+});
+
 
 
 
