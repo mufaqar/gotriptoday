@@ -503,30 +503,3 @@ function custom_hide_product_column_checkout( $columns ) {
 add_filter( 'woocommerce_checkout_cart_item_visible', '__return_false' );
 add_filter( 'woocommerce_checkout_cart_item_quantity', '__return_false' );
 
-// Redirect chauffeur booking to normal checkout
-function redirect_chauffeur_to_normal_checkout() {
-    // Check if we're on the chauffeur checkout page
-    if (function_exists('is_chauffeur_checkout') && is_chauffeur_checkout()) {
-        wp_redirect(wc_get_checkout_url());
-        exit;
-    }
-    
-    // Alternative check by URL
-    if (strpos($_SERVER['REQUEST_URI'], 'chauffeur-checkout') !== false || 
-        strpos($_SERVER['REQUEST_URI'], 'booking-checkout') !== false) {
-        wp_redirect(wc_get_checkout_url());
-        exit;
-    }
-}
-add_action('template_redirect', 'redirect_chauffeur_to_normal_checkout');
-
-// Remove chauffeur booking system's checkout page from WooCommerce
-function remove_chauffeur_checkout_page($pages) {
-    foreach ($pages as $key => $page) {
-        if (strpos($page, 'chauffeur') !== false || strpos($page, 'booking') !== false) {
-            unset($pages[$key]);
-        }
-    }
-    return $pages;
-}
-add_filter('woocommerce_checkout_pages', 'remove_chauffeur_checkout_page');
