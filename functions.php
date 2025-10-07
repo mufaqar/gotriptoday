@@ -208,3 +208,8 @@ add_filter('show_admin_bar', function($show) {
 
 
 
+add_filter('woocommerce_get_checkout_order_received_url', 'mufaqar_custom_thankyou_redirect', 10, 2);
+function mufaqar_custom_thankyou_redirect($order_received_url, $order) {
+    // Redirect after successful checkout
+    return home_url('/thank-you/?order_id=' . $order->get_id());
+}
