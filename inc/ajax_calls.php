@@ -480,3 +480,26 @@ function filter_tours_callback() {
 
 //add_action('wp_ajax_filter_tours', 'filter_tours_callback');
 //add_action('wp_ajax_nopriv_filter_tours', 'filter_tours_callback');
+
+
+// Hide specific product details from checkout page
+function custom_hide_checkout_product_details( $item_name, $item ) {
+    // Check if we're on checkout page
+    if ( is_checkout() && ! is_wc_endpoint_url() ) {
+        // Return empty string to hide product details
+        return '';
+    }
+    return $item_name;
+}
+add_filter( 'woocommerce_order_item_name', 'custom_hide_checkout_product_details', 10, 2 );
+
+// Or hide entire product column
+function custom_hide_product_column_checkout( $columns ) {
+    if ( is_checkout() ) {
+        unset( $columns['product'] );
+    }
+    return $columns;
+}
+add_filter( 'woocommerce_checkout_cart_item_visible', '__return_false' );
+add_filter( 'woocommerce_checkout_cart_item_quantity', '__return_false' );
+?>
