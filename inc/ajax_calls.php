@@ -502,4 +502,30 @@ function custom_hide_product_column_checkout( $columns ) {
 }
 add_filter( 'woocommerce_checkout_cart_item_visible', '__return_false' );
 add_filter( 'woocommerce_checkout_cart_item_quantity', '__return_false' );
-?>
+
+
+// Detect and override chauffeur template
+function override_chauffeur_templates($template) {
+    global $post;
+    
+    if (!$post) return $template;
+    
+    // Check if current page is chauffeur checkout
+    $is_chauffeur_page = (
+        strpos($post->post_content, '[chauffeur_checkout') !== false ||
+        strpos($post->post_content, '[booking_checkout') !== false ||
+        has_shortcode($post->post_content, 'chauffeur_checkout') ||
+        has_shortcode($post->post_content, 'booking_checkout')
+    );
+    
+    if ($is_chauffeur_page && is_page()) {
+        // Force WooCommerce checkout template
+        $checkout_template = WC()->plugin_path() . '/templates/checkout/form-checkout.php';
+        if (file_exists($checkout_template)) {
+            return $checkout_template;
+        }
+    }
+    
+    return $template;
+}
+add_filter('template_include', 'override_chauffeur_templates', 99);
