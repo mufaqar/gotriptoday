@@ -310,7 +310,7 @@ function handle_booking_submission() {
 
 
     
-    $product_id     = 25579; // Your WooCommerce product ID
+    $product_id     = 26324; // Your WooCommerce product ID
 
     // Sanitize inputs
     $tour_id          = intval( $_POST['tour_id'] );
