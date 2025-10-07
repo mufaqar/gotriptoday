@@ -503,8 +503,6 @@ function custom_hide_product_column_checkout( $columns ) {
 add_filter( 'woocommerce_checkout_cart_item_visible', '__return_false' );
 add_filter( 'woocommerce_checkout_cart_item_quantity', '__return_false' );
 
-
-<?php
 // Redirect chauffeur booking to normal checkout
 function redirect_chauffeur_to_normal_checkout() {
     // Check if we're on the chauffeur checkout page
