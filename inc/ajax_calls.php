@@ -503,3 +503,35 @@ function custom_hide_product_column_checkout( $columns ) {
 add_filter( 'woocommerce_checkout_cart_item_visible', '__return_false' );
 add_filter( 'woocommerce_checkout_cart_item_quantity', '__return_false' );
 
+
+
+
+
+
+
+
+// Hide specific checkout fields
+add_filter( 'woocommerce_checkout_fields' , 'hide_checkout_fields' );
+
+function hide_checkout_fields( $fields ) {
+    // Hide billing company field
+    unset($fields['billing']['billing_company']);
+    
+    // Hide shipping company field
+    unset($fields['shipping']['shipping_company']);
+    
+    // You can hide other fields as needed:
+     unset($fields['billing']['billing_address_2']);
+     unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_country']);
+     unset($fields['billing']['billing_state']);
+      unset($fields['billing']['billing_city']);
+
+    
+    
+    
+    
+    return $fields;
+}
+
