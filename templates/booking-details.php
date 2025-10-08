@@ -293,9 +293,9 @@ $updated_total_price = $vehicles[$highlightVehicle]['px'] * $discounted_price;
                                     <span> €<span class="totalPrice"> <?php echo $updated_total_price ?></span></span>
                                 </div>
                             </div>
-                            <input type="text" id="final_price" name="final_price"
+                            <input type="hidden" id="final_price" name="final_price"
                                 value="<?php echo esc_attr($updated_total_price); ?>">
-                            <input type="text" name="vehicle_type" id="vehicle_type" value="">
+                            <input type="hidden" name="vehicle_type" id="vehicle_type" value="">
 
                             <div class="mt-4 d-flex justify-content-between">
                                 <button type="button" class="btn btn-secondary prev">Previous</button>
@@ -498,6 +498,12 @@ function calculateTotalPrice() {
     totalPriceElements.forEach(el => {
         el.textContent = totalPrice.toFixed(2);
     });
+
+      // ✅ Update the hidden final_price input field
+    const finalPriceInput = document.getElementById('final_price');
+    if (finalPriceInput) {
+        finalPriceInput.value = totalPrice.toFixed(2);
+    }
 
     // Update payment button text
     const payButton = document.getElementById('woocommerce-pay-button');
