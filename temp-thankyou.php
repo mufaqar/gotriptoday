@@ -153,9 +153,16 @@ $order    = wc_get_order($order_id);
                             class="btn btn-outline-success w-50">
                             <i class="bi bi-envelope"></i> Email
                         </a>
-                        <button class="btn btn-success w-50" onclick="window.print()">
-                            <i class="bi bi-printer"></i> Print
-                        </button>
+                       <?php
+                        $order_id = isset( $order_number ) ? intval( $order_number ) : 0;
+
+                        if ( $order_id ) :
+                            $order_url = wc_get_endpoint_url( 'view-order', $order_id, wc_get_page_permalink( 'myaccount' ) );
+                        ?>
+                            <a class="btn btn-success w-50" href="<?php echo esc_url( $order_url ); ?>">
+                                <i class="bi bi-printer"></i> Order Details
+                            </a>
+                        <?php endif; ?>
 
                     </div>
                 </div>

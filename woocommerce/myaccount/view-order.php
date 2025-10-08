@@ -300,12 +300,12 @@ if ($first_tour_item) {
                         </a>
                         <?php endif; ?>
 
-                        <a href="#" class="action-link">
+                        <a href="mailto:info@gotriptoday.com" class="action-link">
                             <i class="bi bi-question-circle"></i> Get Help
                         </a>
 
                         <?php if ($order->get_status() === 'completed' && $is_tour) : ?>
-                        <a href="#" class="action-link">
+                        <a href="mailto:info@gotriptoday.com" class="action-link">
                             <i class="bi bi-calendar-check"></i> Manage Tour Booking
                         </a>
                         <?php endif; ?>
