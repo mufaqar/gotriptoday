@@ -9,7 +9,7 @@ $bg = isset($args['bg']) ? esc_url($args['bg']) : get_template_directory_uri() .
         <!-- Breadcrumb Content -->
         <div class="breadcrumb-content">
             <div class="divider"></div>
-            <h2><?php the_title()?></h2>
+            <h1><?php the_title()?></h1>
            
         </div>
     </div>
