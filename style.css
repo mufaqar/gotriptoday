@@ -4,7 +4,7 @@ Theme URI: https://gotriptoday.com/
 Author: Mufaqar
 Author URI: https://mufaqar.com
 Description:  Go Trip Today Theme
-Version: 2.0.5
+Version: 2.0.6
 License: GNU General Public License 
 Text Domain: gt_theme
 Tags: custom theme development for gotriptoday
@@ -9356,7 +9356,6 @@ textarea.form-control {
   padding-top: 112px;
 }
 
-
 .breadcrumb-section .breadcrumb-content h1 {
   color: #ffffff;
   text-align: center;
@@ -9365,7 +9364,7 @@ textarea.form-control {
   margin-bottom: 0.75rem;
 }
 
- .breadcrumb-content h1 {
+.breadcrumb-content h1 {
   color: #ffffff !important;
 }
 
