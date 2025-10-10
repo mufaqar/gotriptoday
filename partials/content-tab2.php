@@ -1,6 +1,6 @@
 <div class="hero-content home-one">
-    <h2 class="text-white mb-5 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
-        Explore around, wherever you are, in one day.</h2>
+    <h1 class="text-white mb-5 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
+        Explore around, wherever you are, in one day.</h1>
 
     <div class="hero-search-form wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1000ms">
         <form class="row align-items-center g-3 g-xxl-2" method="GET"
