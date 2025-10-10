@@ -9535,6 +9535,7 @@ textarea.form-control {
 
 a.woocommerce-button {
   background: #3cb371 !important;
+  margin: 0 5px !important;
 }
 
 .shop_table th {
