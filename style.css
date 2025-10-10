@@ -9365,6 +9365,10 @@ textarea.form-control {
   margin-bottom: 0.75rem;
 }
 
+ .breadcrumb-content h1 {
+  color: #ffffff !important;
+}
+
 @media only screen and (min-width: 576px) {
   .breadcrumb-section .breadcrumb-content h1 {
     font-size: 42px;
