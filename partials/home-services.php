@@ -2,12 +2,12 @@
  <section class="trip-section">
      <!-- Trolley -->
      <div class="trolley-img">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/trolley.svg" alt="">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/trolley.svg" alt="Trolley Image">
      </div>
 
      <!-- Plane -->
      <div class="plane-img">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/plane.svg" alt="">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/plane.svg" alt="Trip Image">
      </div>
 
      <!-- Divider -->
@@ -30,7 +30,7 @@
              <!-- Premium Card -->
              <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/preimium-transfer.webp" alt="">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/preimium-transfer.webp" alt="Transfer Image">
                      <!-- Trip Body -->
                      <div class="trip-body">
                          <h4 class="mb-4 trip-title">Premium Transfer</h4>
@@ -84,7 +84,7 @@
              <!-- Curated Stops Card -->
              <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Curated.webp" alt="">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Curated.webp" alt="Curated Image">
                      <!-- Trip Body -->
                      <div class="trip-body">
                          <h4 class="mb-4 trip-title">Curated Stops</h4>
@@ -137,7 +137,7 @@
              <!-- Unforgetable Day Trips Card -->
              <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unforgetable.png" alt="">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unforgetable.png" alt="Unforgetable Image">
                      <!-- Trip Body -->
                      <div class="trip-body">
                          <h4 class="mb-4 trip-title">Unforgettable Day Trips</h4>
@@ -193,7 +193,7 @@
              <!-- Custom Booking Card -->
              <div class="col-12 col-md-6 col-lg-3">
                  <div class="trip-card service-card wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/CustomBooking.webp" alt="">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/CustomBooking.webp" alt="Custom Booking Image">
                      <!-- Trip Body -->
                      <div class="trip-body">
                          <h4 class="mb-4 trip-title">Custom Booking</h4>

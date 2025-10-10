@@ -64,17 +64,17 @@ get_header(); ?>
                 <div class="about-thumbnail">
                     <!-- Shape -->
                     <div class="shape wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/shape.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/core-img/shape.png" alt="Shape">
                     </div>
 
                     <!-- First Image -->
                     <div class="first-img wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/7.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/7.jpg" alt="First Image">
                     </div>
 
                     <!-- Second Image -->
                     <div class="second-img wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/8.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/8.jpg" alt="<?php bloginfo('name'); ?>">
 
                         <!-- Play Video -->
                         <div class="play-video-btn video-btn" data-video="https://youtu.be/zCSmY_WjvPs">
@@ -86,7 +86,7 @@ get_header(); ?>
 
                     <!-- Third Image -->
                     <div class="third-img wow fadeInUp" data-wow-delay="800ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/9.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/9.jpg" alt="Image 9">
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@ get_header(); ?>
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="featured-destination-card wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/city.jpg" alt="City Tour">
                     <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
                         <div>
                             <h4 class="text-white">City Tour</h4>
@@ -266,7 +266,7 @@ get_header(); ?>
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="featured-destination-card wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/reserve.jpg" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/reserve.jpg" alt="Reserve">
                     <div class="overlay-content d-flex flex-wrap gap-4 align-items-end justify-content-between">
                         <div>
                             <h4 class="text-white">Reserve Your Fleet</h4>

@@ -9,7 +9,7 @@
                 <div class="footer-card pe-lg-5">
                     <a href="<?php bloginfo('url'); ?>" class="footer-logo mb-4">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_white.png" width="190"
-                            alt="">
+                            alt="footer Logo">
                     </a>
                     <p class="mb-4 text-white"> Connects you with exclusive chauffeur services, focusing on luxury,
                         comfort, and punctuality.

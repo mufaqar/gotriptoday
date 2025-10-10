@@ -21,17 +21,17 @@ get_template_part('partials/content', 'breadcrumb', [
                 <div class="why-choose-thumbnail">
                     <!-- First Image -->
                     <div class="first-img wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/21.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/21.jpg" alt="Why Choose Us">
                     </div>
 
                     <!-- Second Image -->
                     <div class="second-img wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/20.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/20.jpg" alt="Why Choose Us 1">
                     </div>
 
                     <!-- Third Image -->
                     <div class="third-img wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1000ms">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/22.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/22.jpg" alt="Why Choose Us 3">
                     </div>
                 </div>
             </div>

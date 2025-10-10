@@ -29,7 +29,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                                     $thumb_url = wp_get_attachment_image_url($image_id, 'thumbnail');
                                     if ($thumb_url) { ?>
                             <div class="swiper-slide  <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="<?php echo esc_url($thumb_url); ?>" alt="" class="w-100 rounded">
+                                <img src="<?php echo esc_url($thumb_url); ?>" alt="Gallery Image" class="w-100 rounded">
                             </div>
                             <?php }
                                 }
@@ -67,7 +67,7 @@ $trip_itinerary = get_post_meta($post->ID, "trip_itinerary", true);
                                     $image_url = wp_get_attachment_image_url($image_id, 'full');
                                     if ($image_url) { ?>
                             <div class="swiper-slide">
-                                <img src="<?php echo esc_url($image_url); ?>" alt="" class="w-100 rounded">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="Image " class="w-100 rounded">
                             </div>
                             <?php }
                                 }
